@@ -1,0 +1,44 @@
+# Dépendances Node
+node_modules/
+.pnp
+.pnp.js
+
+# Builds
+dist/
+build/
+.vitepress/dist/
+.vitepress/cache/
+
+# Environnements
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Éditeurs
+.DS_Store
+.vscode/settings.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.idea/
+Thumbs.db
+
+# Fichiers temporaires
+*.tmp
+*.bak
+
+# Fichiers de travail internes et de développement dans .dev/
+.dev/
+
+# Local symlinks for demo site compatibility
+/assets
+/css
+/js

@@ -1,0 +1,128 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout
+  title="Blocs de code"
+  description="Documentation du composant bloc de code du Design System Mali."
+  pageTitle="Blocs de code"
+  pageSubtitle="Le DSML intègre un composant de rendu de code source avec coloration syntaxique, copie en un clic et support multi-langages."
+>
+
+  <h2 class="ml-title-2">Présentation</h2>
+  <p class="ml-body-compact" style="margin-top: var(--ml-space-2);">
+    Le composant bloc de code est conçu pour afficher des extraits de code de manière lisible et accessible. Il propose automatiquement la coloration syntaxique (via <strong>Shiki</strong>), un bouton de copie et un indicateur de langage.
+  </p>
+
+  <h2 class="ml-title-2">Utilisation (Astro)</h2>
+  <p class="ml-body-compact" style="margin-top: var(--ml-space-2); margin-bottom: var(--ml-space-3);">
+    Dans les pages Astro du site de documentation, importez et utilisez le composant <code>CodeBlock</code> :
+  </p>
+  <CodeBlock code={`---
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<CodeBlock
+  code='<button class="ml-btn ml-btn-primary">Valider</button>'
+  lang="html"
+/>
+
+<!-- With displayed filename -->
+<CodeBlock
+  code='<link rel="stylesheet" href="/dsml/css/dsml.css">'
+  lang="html"
+  filename="index.html"
+/>`} lang="astro" filename="ma-page.astro" />
+
+  <h2 class="ml-title-2">Propriétés</h2>
+  <div style="overflow-x: auto; margin-top: var(--ml-space-3); margin-bottom: var(--ml-space-6);">
+    <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="background: var(--ml-color-neutral-50); border-bottom: 2px solid var(--ml-color-neutral-200);">
+          <th style="padding: 10px 14px; text-align: left; font-family: var(--ml-font-title); font-weight: 700;">Prop</th>
+          <th style="padding: 10px 14px; text-align: left; font-family: var(--ml-font-title); font-weight: 700;">Type</th>
+          <th style="padding: 10px 14px; text-align: left; font-family: var(--ml-font-title); font-weight: 700;">Défaut</th>
+          <th style="padding: 10px 14px; text-align: left; font-family: var(--ml-font-title); font-weight: 700;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['code', 'string', '—', 'Le code source à afficher (obligatoire)'],
+          ['lang', 'string', '"html"', 'Langage pour la coloration syntaxique'],
+          ['filename', 'string', '""', 'Nom de fichier affiché dans l\'en-tête (optionnel)'],
+        ].map(([prop, type, def, desc]) => (
+          <tr style="border-bottom: 1px solid var(--ml-color-neutral-100);">
+            <td style="padding: 10px 14px;"><code>{prop}</code></td>
+            <td style="padding: 10px 14px; color: var(--ml-color-neutral-500); font-family: monospace;">{type}</td>
+            <td style="padding: 10px 14px; color: var(--ml-color-neutral-500);"><code>{def}</code></td>
+            <td style="padding: 10px 14px; color: var(--ml-color-neutral-600);">{desc}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="ml-title-2">Langages supportés</h2>
+  <p class="ml-body-compact" style="margin-top: var(--ml-space-2); margin-bottom: var(--ml-space-4);">
+    Le composant supporte tous les langages de <a href="https://shiki.style/languages" target="_blank" rel="noopener" style="color: var(--ml-color-green-600);">Shiki</a>. Les plus courants pour le DSML :
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: var(--ml-space-3); margin-bottom: var(--ml-space-6);">
+    {['html', 'css', 'javascript', 'typescript', 'astro', 'json', 'bash', 'text'].map(lang => (
+      <div style="background: var(--ml-color-neutral-0); border: 1px solid var(--ml-color-neutral-200); border-radius: var(--ml-radius-m); padding: var(--ml-space-3) var(--ml-space-4); text-align: center;">
+        <code style="font-size: 13px; font-weight: 700; color: var(--ml-color-green-700);">{lang}</code>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="ml-title-2">Exemples par langage</h2>
+
+  <h3 class="ml-title-3">HTML</h3>
+  <CodeBlock code={`<div class="ml-card ml-card-hover">
+  <div class="ml-card-body">
+    <h3 class="ml-title-3">Titre de la carte</h3>
+    <p class="ml-body-compact">Description courte du contenu.</p>
+    <a href="/detail" class="ml-btn ml-btn-primary ml-btn-sm">Lire la suite</a>
+  </div>
+</div>`} lang="html" />
+
+  <h3 class="ml-title-3">CSS</h3>
+  <CodeBlock code={`.mon-section {
+  padding: var(--ml-space-8) var(--ml-space-4);
+  background: var(--ml-color-green-50);
+  border-radius: var(--ml-radius-l);
+  font-family: var(--ml-font-body);
+}`} lang="css" />
+
+  <h3 class="ml-title-3">JavaScript</h3>
+  <CodeBlock code={`// Ouvrir un accordéon programmatiquement
+const btn = document.querySelector('.ml-accordion-btn');
+btn.setAttribute('aria-expanded', 'true');
+btn.nextElementSibling.hidden = false;`} lang="javascript" />
+
+  <h3 class="ml-title-3">Bash (installation)</h3>
+  <CodeBlock code={`# Via CDN — aucune installation requise
+<link rel="stylesheet" href="https://cdn.mali.gov.ml/dsml/css/dsml.css">
+
+# Ou en copiant le dossier core/ dans votre projet
+cp -r dsml/core/ mon-projet/vendor/dsml/`} lang="bash" />
+
+  <h2 class="ml-title-2">Usage en HTML pur (sans Astro)</h2>
+  <p class="ml-body-compact" style="margin-top: var(--ml-space-2);">
+    En dehors du site de documentation, le DSML propose une classe CSS <code>.ml-code-block</code> pour styliser des balises <code>&lt;pre&gt;&lt;code&gt;</code> nativement. Aucun JavaScript n'est requis.
+  </p>
+  <CodeBlock code={`<pre class="ml-code-block">
+<code class="language-html">&lt;button class="ml-btn ml-btn-primary"&gt;
+  Valider
+&lt;/button&gt;</code>
+</pre>`} lang="html" />
+
+  <div class="ml-alert ml-alert-info" style="margin-top: var(--ml-space-6);">
+    <div class="ml-alert-dot"></div>
+    <div class="ml-alert-content">
+      La coloration syntaxique dans le HTML pur n'est pas incluse dans le DSML de base. Pour l'activer, intégrez une bibliothèque légère comme <strong>Highlight.js</strong> ou <strong>Prism.js</strong> en parallèle.
+    </div>
+  </div>
+
+</DocsLayout>

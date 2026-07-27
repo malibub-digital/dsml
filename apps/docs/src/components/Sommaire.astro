@@ -1,0 +1,26 @@
+---
+interface SummaryItem {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  title?: string;
+  items: SummaryItem[];
+}
+
+const { title = "SOMMAIRE", items = [] } = Astro.props;
+---
+
+{items.length > 0 && (
+  <nav class="ml-summary" aria-label="Sommaire de la page">
+    <div class="ml-summary__title">{title}</div>
+    <ol class="ml-summary__list">
+      {items.map((item) => (
+        <li class="ml-summary__item">
+          <a href={item.href} class="ml-summary__link">{item.label}</a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}

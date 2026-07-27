@@ -1,0 +1,185 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout
+  title="Formulaires"
+  description="Composants de formulaires du DSML."
+  pageTitle="Formulaires"
+  pageSubtitle="Composants de saisie pour collecter proprement les données usagers, inspirés de l'esthétique minimaliste de shadcn/ui et de la robustesse de GOV.UK."
+>
+
+  <h2 class="ml-title-2">1. Champs de saisie &amp; Sélecteurs</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Champs standards agrémentés de textes d'aide explicatifs sous le champ.</p>
+  <div class="demo-preview" style="display: flex; flex-direction: column; align-items: stretch; max-width: 500px; margin: 0 auto; gap: var(--ml-space-4); width: 100%;">
+    <div class="ml-form-group">
+      <label class="ml-label" for="ex-name">Nom complet</label>
+      <input type="text" class="ml-input" id="ex-name" placeholder="Ex : Fatoumata Keïta">
+      <span class="ml-form-helper">Saisissez votre nom tel qu'il figure sur votre acte de naissance.</span>
+    </div>
+    <div class="ml-form-group">
+      <label class="ml-label" for="ex-select">Démarche requise</label>
+      <select class="ml-select" id="ex-select">
+        <option>Sélectionner une option</option>
+        <option>Passeport</option>
+        <option>Visa</option>
+      </select>
+    </div>
+    <div class="ml-form-group">
+      <label class="ml-label" for="ex-textarea">Observations / Précisions</label>
+      <textarea class="ml-textarea" id="ex-textarea" placeholder="Détaillez votre demande ici..."></textarea>
+    </div>
+  </div>
+  <CodeBlock code={`<!-- Simple input with helper text -->
+<div class="ml-form-group">
+  <label class="ml-label" for="name">Nom complet</label>
+  <input type="text" class="ml-input" id="name" placeholder="Ex...">
+  <span class="ml-form-helper">Texte d'aide explicatif...</span>
+</div>
+
+<div class="ml-form-group">
+  <label class="ml-label" for="select">Démarche requise</label>
+  <select class="ml-select" id="select">
+    <option>Sélectionner</option>
+  </select>
+</div>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">2. Sélection &amp; Commutateurs</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Composants interactifs stylisés pour les choix multiples ou binaires.</p>
+  <div class="demo-preview" style="display: flex; flex-direction: column; align-items: flex-start; max-width: 500px; margin: 0 auto; gap: var(--ml-space-4); width: 100%;">
+    <div>
+      <div style="font-size: 12px; font-weight: 700; color: var(--ml-color-neutral-500); margin-bottom: 8px;">Cases à cocher (.ml-checkbox)</div>
+      <label class="ml-checkbox-container">
+        <input type="checkbox" class="ml-checkbox" checked>
+        J'accepte les conditions d'utilisation
+      </label>
+      <label class="ml-checkbox-container ml-disabled">
+        <input type="checkbox" class="ml-checkbox" disabled>
+        Option désactivée
+      </label>
+    </div>
+
+    <div>
+      <div style="font-size: 12px; font-weight: 700; color: var(--ml-color-neutral-500); margin-bottom: 8px;">Boutons radio (.ml-radio)</div>
+      <label class="ml-radio-container">
+        <input type="radio" name="ex-radio-group-2" class="ml-radio" checked>
+        Retrait au consulat (Lyon)
+      </label>
+      <label class="ml-radio-container">
+        <input type="radio" name="ex-radio-group-2" class="ml-radio">
+        Envoi postal sécurisé
+      </label>
+    </div>
+
+    <div>
+      <div style="font-size: 12px; font-weight: 700; color: var(--ml-color-neutral-500); margin-bottom: 8px;">Commutateur (.ml-switch)</div>
+      <label class="ml-switch-container">
+        <input type="checkbox" class="ml-switch">
+        Activer les notifications SMS
+      </label>
+    </div>
+  </div>
+  <CodeBlock code={`<!-- Custom checkbox -->
+<label class="ml-checkbox-container">
+  <input type="checkbox" class="ml-checkbox" checked>
+  J'accepte les conditions
+</label>
+ 
+<label class="ml-radio-container">
+  <input type="radio" name="options" class="ml-radio" checked>
+  Option A
+</label>
+ 
+<label class="ml-switch-container">
+  <input type="checkbox" class="ml-switch">
+  Activer les notifications SMS
+</label>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">3. États Désactivé (Disabled) &amp; Lecture seule (Read-Only)</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Champs bloqués ou affichés à titre informatif.</p>
+  <div class="demo-preview" style="display: flex; flex-direction: column; align-items: stretch; max-width: 500px; margin: 0 auto; gap: var(--ml-space-4); width: 100%;">
+    <div class="ml-form-group">
+      <label class="ml-label" for="ex-disabled">Identifiant bloqué (Désactivé)</label>
+      <input type="text" class="ml-input" id="ex-disabled" value="1050987A" disabled>
+    </div>
+    <div class="ml-form-group">
+      <label class="ml-label" for="ex-readonly">Adresse IP (Lecture seule)</label>
+      <input type="text" class="ml-input" id="ex-readonly" value="192.168.1.50" readonly>
+    </div>
+  </div>
+  <CodeBlock code={`<input type="text" class="ml-input" value="Donnée" disabled>
+<input type="text" class="ml-input" value="Donnée" readonly>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">4. Groupes d'éléments (Input Groups)</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Pour accoler des unités ou des boutons d'action directement aux champs.</p>
+  <div class="demo-preview" style="display: flex; flex-direction: column; align-items: stretch; max-width: 500px; margin: 0 auto; gap: var(--ml-space-4); width: 100%;">
+    <div class="ml-form-group">
+      <label class="ml-label">Frais de dossier (FCFA)</label>
+      <div class="ml-input-group">
+        <input type="number" class="ml-input" placeholder="Montant">
+        <span class="ml-input-group-addon">FCFA</span>
+      </div>
+    </div>
+    
+    <div class="ml-form-group">
+      <label class="ml-label">Rechercher une démarche</label>
+      <div class="ml-input-group">
+        <span class="ml-input-group-addon">🔍</span>
+        <input type="text" class="ml-input" placeholder="ex : Passeport">
+        <button class="ml-btn ml-btn-primary">Rechercher</button>
+      </div>
+    </div>
+  </div>
+  <CodeBlock code={`<!-- Input group with suffix -->
+<div class="ml-input-group">
+  <input type="number" class="ml-input" placeholder="Montant">
+  <span class="ml-input-group-addon">FCFA</span>
+</div>
+
+<!-- Input group with prefix and action button -->
+<div class="ml-input-group">
+  <span class="ml-input-group-addon">🔍</span>
+  <input type="text" class="ml-input" placeholder="Rechercher...">
+  <button class="ml-btn ml-btn-primary">Rechercher</button>
+</div>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">5. États de validation (Succès / Erreur)</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Retours colorés et messages explicatifs pour guider l'utilisateur.</p>
+  <div class="demo-preview" style="display: flex; flex-direction: column; align-items: stretch; max-width: 500px; margin: 0 auto; gap: var(--ml-space-4); width: 100%;">
+    <div class="ml-form-group">
+      <label class="ml-label" for="ex-error-nina">Numéro NINA</label>
+      <input type="text" class="ml-input ml-input-error" id="ex-error-nina" value="1050987A">
+      <span class="ml-error-message">⚠️ Le numéro NINA doit comporter 14 chiffres.</span>
+    </div>
+    <div class="ml-form-group">
+      <label class="ml-label" for="ex-success-email">Adresse e-mail</label>
+      <input type="email" class="ml-input ml-input-success" id="ex-success-email" value="contact@mali.ml">
+      <span class="ml-success-message">✓ L'adresse e-mail est valide.</span>
+    </div>
+  </div>
+  <CodeBlock code={`<!-- Error state -->
+<div class="ml-form-group">
+  <label class="ml-label" for="nina">Numéro NINA</label>
+  <input type="text" class="ml-input ml-input-error" id="nina">
+  <span class="ml-error-message">⚠️ Message d'erreur...</span>
+</div>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">6. Zone de téléversement (Drag &amp; Drop Upload)</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Composant premium pour envoyer des justificatifs ou des pièces jointes.</p>
+  <div class="demo-preview" style="max-width: 500px; margin: 0 auto; width: 100%;">
+    <div class="ml-upload" style="width: 100%;">
+      <input type="file" id="ex-file" accept="image/*,application/pdf">
+      <div class="ml-upload-icon">📤</div>
+      <div class="ml-upload-text">Glissez-déposez vos fichiers ici</div>
+      <div class="ml-upload-desc">Formats acceptés : PDF, PNG, JPG (Max. 5 Mo)</div>
+    </div>
+  </div>
+  <CodeBlock code={`<div class="ml-upload">
+  <input type="file" id="my-file">
+  <div class="ml-upload-icon">📤</div>
+  <div class="ml-upload-text">Glissez-déposez vos fichiers ici</div>
+  <div class="ml-upload-desc">PDF, PNG, JPG jusqu'à 5 Mo</div>
+</div>`} lang="html" />
+
+</DocsLayout>

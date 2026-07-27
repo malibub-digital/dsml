@@ -1,0 +1,48 @@
+{
+  "name": "@dsml/core",
+  "version": "0.1.0",
+  "description": "Design System Mali — Système de conception officiel pour les administrations publiques maliennes",
+  "keywords": [
+    "design-system",
+    "mali",
+    "css",
+    "html",
+    "administration",
+    "gouvernement",
+    "accessible",
+    "dsml"
+  ],
+  "homepage": "https://dsml.ml",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malibub-digital/dsml.git"
+  },
+  "license": "MIT",
+  "main": "css/dsml.css",
+  "style": "css/dsml.css",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "css",
+    "js",
+    "assets",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "style": "./css/dsml.css",
+      "import": "./css/dsml.css",
+      "require": "./css/dsml.css"
+    },
+    "./css/dsml.css": "./css/dsml.css",
+    "./css/dsml-icons.css": "./css/dsml-icons.css",
+    "./css/*": "./css/*",
+    "./assets/*": "./assets/*",
+    "./js/*": "./js/*"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

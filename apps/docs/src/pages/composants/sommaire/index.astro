@@ -1,0 +1,81 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import CodeBlock from '../../../components/CodeBlock.astro';
+import Sommaire from '../../../components/Sommaire.astro';
+
+const summaryItems = [
+  { href: "#usage", label: "1. Quand utiliser le sommaire ?" },
+  { href: "#structure", label: "2. Structure & Code HTML" },
+  { href: "#astro-component", label: "3. Utilisation avec le composant Astro" },
+  { href: "#accessibility", label: "4. Rôles & Accessibilité" },
+];
+---
+
+<DocsLayout
+  title="Sommaire"
+  description="Composant Sommaire (ml-summary) pour naviguer entre les sections d'une page."
+  pageTitle="Sommaire (Table of Contents)"
+  pageSubtitle="Permet à l'usager de repérer la structure d'un document ou d'une démarche et d'y naviguer directement."
+>
+
+  <Sommaire items={summaryItems} />
+
+  <h2 id="usage" class="ml-title-2" style="margin-top: var(--ml-space-8);">1. Quand utiliser le sommaire ?</h2>
+  <p class="ml-body" style="color: var(--ml-color-neutral-700); margin-bottom: var(--ml-space-4);">
+    Le composant <strong>Sommaire</strong> est recommandé sur toutes les pages éditoriales longues, articles de blog, guides de procédures administratives et pages de documentation.
+  </p>
+  <div class="doc-note">
+    <strong>Bonne pratique UX :</strong> Ne pas confondre le <em>Sommaire</em> (qui utilise des ancres <code>#</code> in-page) et le <em>Menu Latéral</em> (qui pointe vers des URLs de pages distinctes).
+  </div>
+
+  <h2 id="structure" class="ml-title-2" style="margin-top: var(--ml-space-8);">2. Structure & Code HTML</h2>
+  <div class="demo-preview" style="display: block; width: 100%;">
+    <nav class="ml-summary" aria-label="Sommaire de la page">
+      <div class="ml-summary__title">SOMMAIRE</div>
+      <ol class="ml-summary__list">
+        <li class="ml-summary__item"><a href="#section-1" class="ml-summary__link" onclick="return false;">1. Inscription et pièces à fournir</a></li>
+        <li class="ml-summary__item"><a href="#section-2" class="ml-summary__link" onclick="return false;">2. Délais d'instruction</a></li>
+        <li class="ml-summary__item"><a href="#section-3" class="ml-summary__link" onclick="return false;">3. Contact & Assistance</a></li>
+      </ol>
+    </nav>
+  </div>
+
+  <CodeBlock code={`<nav class="ml-summary" aria-label="Sommaire de la page">
+  <div class="ml-summary__title">SOMMAIRE</div>
+  <ol class="ml-summary__list">
+    <li class="ml-summary__item">
+      <a href="#section-1" class="ml-summary__link">1. Inscription et pièces à fournir</a>
+    </li>
+    <li class="ml-summary__item">
+      <a href="#section-2" class="ml-summary__link">2. Délais d'instruction</a>
+    </li>
+    <li class="ml-summary__item">
+      <a href="#section-3" class="ml-summary__link">3. Contact & Assistance</a>
+    </li>
+  </ol>
+</nav>`} lang="html" />
+
+  <h2 id="astro-component" class="ml-title-2" style="margin-top: var(--ml-space-8);">3. Utilisation avec le composant Astro</h2>
+  <p class="ml-body" style="color: var(--ml-color-neutral-700); margin-bottom: var(--ml-space-4);">
+    Dans vos projets Astro, vous pouvez directement importer et réutiliser le composant <code>Sommaire.astro</code> :
+  </p>
+
+  <CodeBlock code={`---
+import Sommaire from '../components/Sommaire.astro';
+
+const items = [
+  { href: "#section1", label: "1. Présentation générale" },
+  { href: "#section2", label: "2. Formalités nécessaires" }
+];
+---
+
+<Sommaire title="SOMMAIRE" items={items} />`} lang="astro" />
+
+  <h2 id="accessibility" class="ml-title-2" style="margin-top: var(--ml-space-8);">4. Rôles & Accessibilité</h2>
+  <ul style="color: var(--ml-color-neutral-700); font-size: 15px; line-height: 1.6; padding-left: 20px;">
+    <li>Le composant englobant utilise l'élément <code>&lt;nav&gt;</code> avec un attribut <code>aria-label="Sommaire de la page"</code>.</li>
+    <li>La liste utilise un élément ordonné <code>&lt;ol&gt;</code> pour exprimer la hiérarchie séquentielle des sections.</li>
+    <li>Chaque lien pointe explicitement vers l'identifiant (<code>id="..."</code>) du titre de section correspondant.</li>
+  </ul>
+
+</DocsLayout>

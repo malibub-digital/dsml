@@ -1,0 +1,1024 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  pageTitle?: string;
+  pageSubtitle?: string;
+  currentSection?: string;
+}
+
+const {
+  title = "Documentation — DSML",
+  description = "Documentation du Design System Mali",
+  pageTitle = "",
+  pageSubtitle = "",
+  currentSection = "",
+} = Astro.props;
+
+const sidebarNav = [
+  {
+    group: "Démarrage",
+    items: [
+      { href: "/introduction/", label: "Introduction", id: "introduction" },
+      { href: "/installation/", label: "Installation", id: "installation" },
+      { href: "/changelog/", label: "Changelog", id: "changelog" },
+    ],
+  },
+  {
+    group: "Fondations",
+    items: [
+      { href: "/fondations/couleurs/", label: "01. Couleurs", id: "couleurs" },
+      {
+        href: "/fondations/typographie/",
+        label: "02. Typographie",
+        id: "typographie",
+      },
+      {
+        href: "/fondations/espacements/",
+        label: "03. Espacements",
+        id: "espacements",
+      },
+      {
+        href: "/fondations/rayons-ombres/",
+        label: "04. Rayons & Ombres",
+        id: "rayons-ombres",
+      },
+      {
+        href: "/fondations/pictogrammes/",
+        label: "05. Pictogrammes",
+        id: "pictogrammes",
+      },
+      { href: "/fondations/icones/", label: "06. Icônes", id: "icones" },
+      { href: "/fondations/marque-nationale/", label: "07. Marque & Drapeau", id: "marque-nationale" },
+    ],
+  },
+  {
+    group: "Composants",
+    items: [
+      { href: "/composants/boutons/", label: "Boutons", id: "boutons" },
+      { href: "/composants/alertes/", label: "Alertes", id: "alertes" },
+      { href: "/composants/cartes/", label: "Cartes", id: "cartes" },
+      {
+        href: "/composants/formulaires/",
+        label: "Formulaires",
+        id: "formulaires",
+      },
+      { href: "/composants/badges/", label: "Badges & Tags", id: "badges" },
+      {
+        href: "/composants/accordeons/",
+        label: "Accordéons",
+        id: "accordeons",
+      },
+      {
+        href: "/composants/navigation/",
+        label: "Navigation",
+        id: "navigation",
+      },
+      {
+        href: "/composants/sommaire/",
+        label: "Sommaire",
+        id: "sommaire",
+      },
+      { href: "/composants/recherche/", label: "Recherche", id: "recherche" },
+      {
+        href: "/composants/articles/",
+        label: "Contenu & Articles",
+        id: "articles",
+      },
+      {
+        href: "/composants/blocs-de-code/",
+        label: "Blocs de code",
+        id: "blocs-de-code",
+      },
+    ],
+  },
+  {
+    group: "Gabarits",
+    items: [
+      {
+        href: "/layouts/header-footer/",
+        label: "En-tête & Pied de page",
+        id: "header-footer",
+      },
+      {
+        href: "/layouts/cadrages-photo/",
+        label: "Cadrages Photo",
+        id: "cadrages-photo",
+      },
+    ],
+  },
+];
+
+const currentPath = Astro.url.pathname;
+
+let activeGroup = "Démarrage";
+if (currentPath.includes("/fondations/")) {
+  activeGroup = "Fondations";
+} else if (currentPath.includes("/composants/")) {
+  activeGroup = "Composants";
+} else if (currentPath.includes("/layouts/")) {
+  activeGroup = "Gabarits";
+}
+
+const filteredSidebarNav = sidebarNav.filter(
+  (section) => section.group === activeGroup,
+);
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} | Design System Mali</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0B7A2F" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:url" content="https://dsml.ml{Astro.url.pathname}" />
+    <meta property="og:image" content="https://dsml.ml/images/hero-mali.png" />
+    <meta
+      property="og:image:alt"
+      content="Design System Mali - République du Mali"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://dsml.ml/images/hero-mali.png" />
+    <meta
+      name="twitter:image:alt"
+      content="Design System Mali - République du Mali"
+    />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://dsml.ml{Astro.url.pathname}" />
+
+    <!-- Polices Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- DSML Core -->
+    <link rel="stylesheet" href="/dsml/css/dsml.css" />
+    <link rel="stylesheet" href="/dsml/css/dsml-icons.css" />
+
+    <style>
+      /* Layout documentation */
+      .docs-shell {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        overflow-x: clip;
+        max-width: 100vw;
+      }
+      .docs-body {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        flex: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+        padding: 0 var(--ml-space-6);
+        gap: 0;
+        min-width: 0;
+      }
+      @media (max-width: 860px) {
+        .docs-body {
+          grid-template-columns: 1fr;
+          padding: 0 var(--ml-space-4);
+        }
+        .docs-sidebar {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          width: 280px;
+          background: var(--ml-color-neutral-0);
+          z-index: 1000;
+          padding: var(--ml-space-6) var(--ml-space-4);
+          box-shadow: var(--ml-shadow-3);
+          overflow-y: auto;
+        }
+        .docs-sidebar.is-open {
+          display: block !important;
+        }
+        .docs-mobile-nav-toggle {
+          display: inline-flex !important;
+        }
+        .docs-content {
+          padding: var(--ml-space-4) 0 var(--ml-space-12) 0 !important;
+        }
+      }
+
+      .docs-mobile-nav-toggle {
+        display: none;
+        align-items: center;
+        gap: var(--ml-space-2);
+        background: var(--ml-color-neutral-100);
+        border: 1px solid var(--ml-color-neutral-300);
+        color: var(--ml-color-neutral-800);
+        padding: 8px 14px;
+        border-radius: var(--ml-radius-s);
+        font-family: var(--ml-font-title);
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        margin-bottom: var(--ml-space-4);
+        width: 100%;
+        justify-content: space-between;
+      }
+      .docs-sidebar-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(4px);
+        z-index: 999;
+      }
+      .docs-sidebar-overlay.is-open {
+        display: block;
+      }
+
+      /* Sidebar */
+      .docs-sidebar {
+        padding-top: var(--ml-space-8);
+        padding-bottom: var(--ml-space-8);
+        padding-right: var(--ml-space-6);
+        border-right: 1px solid var(--ml-color-neutral-200);
+      }
+      .sidebar-sticky {
+        position: sticky;
+        top: 90px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        scrollbar-width: thin;
+      }
+      .sidebar-group {
+        margin-bottom: var(--ml-space-5);
+      }
+      .sidebar-group-title {
+        font-family: var(--ml-font-title);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ml-color-neutral-400);
+        padding: 0 var(--ml-space-3);
+        margin-bottom: var(--ml-space-1);
+      }
+      .sidebar-link {
+        display: block;
+        padding: 7px 12px;
+        border-radius: var(--ml-radius-s);
+        font-size: 14px;
+        color: var(--ml-color-neutral-700);
+        font-weight: 500;
+        text-decoration: none;
+        transition:
+          background 0.12s,
+          color 0.12s;
+        line-height: 1.4;
+      }
+      .sidebar-link:hover {
+        background: var(--ml-color-neutral-100);
+        color: var(--ml-color-neutral-900);
+      }
+      .sidebar-link.active {
+        background: var(--ml-color-green-50);
+        color: var(--ml-color-green-700);
+        font-weight: 700;
+        border-left: 3px solid var(--ml-color-green-500);
+        border-radius: 0 var(--ml-radius-s) var(--ml-radius-s) 0;
+        padding-left: 9px;
+      }
+
+      /* Contenu docs */
+      .docs-content {
+        padding: var(--ml-space-8) 0 var(--ml-space-16) var(--ml-space-8);
+        min-width: 0;
+      }
+      .docs-content h1.ml-display {
+        margin-bottom: var(--ml-space-3);
+      }
+      .docs-content h2.ml-title-2 {
+        margin-top: var(--ml-space-10);
+        margin-bottom: var(--ml-space-3);
+      }
+      .docs-content h3.ml-title-3 {
+        margin-top: var(--ml-space-6);
+        margin-bottom: var(--ml-space-2);
+      }
+
+      /* Bloc de démonstration */
+      .demo-preview {
+        background: var(--ml-color-neutral-0);
+        border: 1px solid var(--ml-color-neutral-200);
+        border-radius: var(--ml-radius-m);
+        padding: var(--ml-space-6);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: var(--ml-space-3);
+        flex-wrap: wrap;
+        margin-bottom: var(--ml-space-4);
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+      @media (max-width: 640px) {
+        .demo-preview {
+          padding: var(--ml-space-4) var(--ml-space-3);
+          gap: var(--ml-space-2) var(--ml-space-3);
+        }
+      }
+      .code-wrapper {
+        position: relative;
+        margin-top: 0;
+      }
+      .code-block {
+        background: var(--ml-color-neutral-900);
+        color: #e2e8f0;
+        border-bottom-left-radius: var(--ml-radius-m);
+        border-bottom-right-radius: var(--ml-radius-m);
+        padding: var(--ml-space-4) var(--ml-space-5);
+        font-family: monospace;
+        font-size: 13px;
+        overflow-x: auto;
+        margin: 0;
+        line-height: 1.6;
+      }
+      .demo-preview + .code-wrapper .code-block {
+        border-radius: 0 0 var(--ml-radius-m) var(--ml-radius-m);
+      }
+      .standalone-code .code-block {
+        border-radius: var(--ml-radius-m);
+        margin-top: var(--ml-space-3);
+      }
+      .copy-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: none;
+        border-radius: var(--ml-radius-s);
+        padding: 5px 10px;
+        font-family: var(--ml-font-title);
+        font-weight: 700;
+        font-size: 11px;
+        cursor: pointer;
+        transition: background 0.15s;
+      }
+      .copy-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Couleurs swatches */
+      .palette-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: var(--ml-space-3);
+        margin-top: var(--ml-space-3);
+      }
+      .color-swatch {
+        border: 1px solid var(--ml-color-neutral-200);
+        border-radius: var(--ml-radius-m);
+        overflow: hidden;
+      }
+      .swatch-color {
+        height: 56px;
+      }
+      .swatch-info {
+        padding: 8px 10px;
+      }
+      .swatch-name {
+        font-weight: 700;
+        font-size: 12px;
+      }
+      .swatch-var {
+        font-family: monospace;
+        font-size: 10px;
+        color: var(--ml-color-neutral-500);
+        margin-top: 2px;
+        word-break: break-all;
+      }
+
+      /* Fil de navigation */
+      .docs-breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: var(--ml-space-2);
+        font-size: 13px;
+        color: var(--ml-color-neutral-500);
+        margin-bottom: var(--ml-space-4);
+      }
+      .docs-breadcrumb a {
+        color: var(--ml-color-neutral-500);
+        text-decoration: none;
+      }
+      .docs-breadcrumb a:hover {
+        color: var(--ml-color-green-600);
+      }
+      .docs-breadcrumb span {
+        color: var(--ml-color-neutral-400);
+      }
+
+      /* Alerte info docs */
+      .doc-note {
+        background: var(--ml-color-river-50);
+        border-left: 3px solid var(--ml-color-river-500);
+        border-radius: 0 var(--ml-radius-s) var(--ml-radius-s) 0;
+        padding: var(--ml-space-3) var(--ml-space-4);
+        font-size: 14px;
+        margin: var(--ml-space-4) 0;
+      }
+
+      /* Spacing demo lines */
+      .spacing-item {
+        display: flex;
+        align-items: center;
+        gap: var(--ml-space-4);
+        padding: var(--ml-space-2) 0;
+        border-bottom: 1px solid var(--ml-color-neutral-100);
+      }
+      .spacing-var {
+        font-family: monospace;
+        font-size: 13px;
+        width: 180px;
+        flex-shrink: 0;
+      }
+      .spacing-bar {
+        height: 20px;
+        background: var(--ml-gradient-green);
+        border-radius: 3px;
+      }
+
+      /* Galerie de pictogrammes & icones */
+      .pictogram-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: var(--ml-space-4);
+        margin-top: var(--ml-space-6);
+      }
+      .gallery-card {
+        background-color: var(--ml-color-neutral-0);
+        border: 1px solid var(--ml-color-neutral-200);
+        border-radius: var(--ml-radius-l);
+        padding: var(--ml-space-4);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--ml-space-2);
+        box-shadow: var(--ml-shadow-soft);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .gallery-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--ml-shadow-ambient);
+      }
+      .gallery-card .ml-pictogram {
+        margin-bottom: var(--ml-space-2);
+      }
+      .gallery-card-title {
+        font-family: var(--ml-font-title);
+        font-weight: 700;
+        font-size: 15px;
+        margin: 0;
+        color: var(--ml-color-neutral-900);
+      }
+      .gallery-card-meta {
+        font-size: 12px;
+        color: var(--ml-color-neutral-500);
+        margin-bottom: var(--ml-space-2);
+      }
+      .gallery-copy-btn {
+        margin-top: auto;
+        width: 100%;
+        background-color: var(--ml-color-neutral-50);
+        color: var(--ml-color-neutral-900);
+        border: 1px solid var(--ml-color-neutral-200);
+        padding: 6px 12px;
+        font-family: var(--ml-font-title);
+        font-weight: 700;
+        font-size: 12px;
+        border-radius: var(--ml-radius-s);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .gallery-copy-btn:hover {
+        background-color: var(--ml-color-green-50);
+        color: var(--ml-color-green-600);
+        border-color: var(--ml-color-green-200);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="docs-shell">
+      <!-- HEADER DSML OFFICIEL -->
+      <header class="ml-header ml-header-sticky ml-header-shrinkable" id="site-header">
+        <div class="container">
+          <div class="header-top">
+            <a href="/" class="brand-block">
+              <img
+                src="/dsml/assets/logo-mali.svg"
+                alt="Armoiries du Mali"
+                class="ml-header-logo"
+                width="42"
+                height="42"
+              />
+              <div class="brand-text">
+                <div class="brand-title">RÉPUBLIQUE DU MALI</div>
+                <div class="site-title">Design System Mali</div>
+                <div class="ml-tricolor-bar">
+                  <div class="green"></div>
+                  <div class="yellow"></div>
+                  <div class="red"></div>
+                </div>
+              </div>
+            </a>
+            <div
+              class="header-actions"
+              style="display: flex; gap: var(--ml-space-3); align-items: center;"
+            >
+              <button
+                class="ml-search-trigger"
+                style="padding: 6px 12px; border: 1px solid var(--ml-color-neutral-300); background: var(--ml-color-neutral-0); border-radius: var(--ml-radius-s); cursor: pointer; display: flex; align-items: center; gap: var(--ml-space-2); font-family: var(--ml-font-title); font-size: 13px; font-weight: 600; color: var(--ml-color-neutral-700); transition: all 0.15s ease;"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  style="width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.5;"
+                  ><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  ></path></svg
+                >
+                <span class="ml-search-text-full">Rechercher</span>
+                <kbd
+                  style="background: var(--ml-color-neutral-100); color: var(--ml-color-neutral-500); padding: 1px 5px; border-radius: 3px; font-size: 10px; font-family: inherit; font-weight: normal; margin-left: 2px; border: 1px solid var(--ml-color-neutral-200);"
+                  >/</kbd
+                >
+              </button>
+              <button
+                class="ml-header-burger"
+                aria-label="Menu principal nav"
+                aria-expanded="false"
+              >
+                <svg viewBox="0 0 24 24"
+                  ><path d="M4 6h16M4 12h16M4 18h16"></path></svg
+                >
+              </button>
+            </div>
+          </div>
+          <nav class="ml-header-nav" aria-label="Menu principal">
+            <div class="ml-header-nav-header">
+              <span>Navigation</span>
+              <button class="ml-header-nav-close" aria-label="Fermer le menu">&times;</button>
+            </div>
+            <a
+              href="/"
+              class={`ml-nav-item ${currentPath === "/" ? "active" : ""}`}
+              >Accueil</a
+            >
+            <a
+              href="/introduction/"
+              class={`ml-nav-item ${currentPath.startsWith("/introduction") || currentPath.startsWith("/installation") || currentPath.startsWith("/changelog") ? "active" : ""}`}
+              >Introduction</a
+            >
+            <a
+              href="/fondations/couleurs/"
+              class={`ml-nav-item ${currentPath.startsWith("/fondations") ? "active" : ""}`}
+              >Fondations</a
+            >
+            <a
+              href="/composants/boutons/"
+              class={`ml-nav-item ${currentPath.startsWith("/composants") ? "active" : ""}`}
+              >Composants</a
+            >
+            <a
+              href="/layouts/header-footer/"
+              class={`ml-nav-item ${currentPath.startsWith("/layouts") ? "active" : ""}`}
+              >Gabarits</a
+            >
+          </nav>
+        </div>
+      </header>
+
+      <!-- Overlay mobile drawer -->
+      <div class="docs-sidebar-overlay" id="docs-sidebar-overlay"></div>
+
+      <!-- Corps : Sidebar + Contenu -->
+      <div class="docs-body">
+        <!-- Sidebar de navigation complète -->
+        <aside
+          class="docs-sidebar"
+          id="docs-sidebar"
+          aria-label="Navigation de la documentation"
+        >
+          <div class="sidebar-sticky">
+            <div
+              style="margin-bottom: var(--ml-space-4); padding-bottom: var(--ml-space-2); border-bottom: 1px solid var(--ml-color-neutral-200);"
+            >
+              <span
+                style="font-family: var(--ml-font-title); font-weight: 800; font-size: 14px; color: var(--ml-color-neutral-900);"
+                >Documentation</span
+              >
+            </div>
+            {
+              sidebarNav.map((section) => (
+                <details
+                  class="sidebar-group-details"
+                  open={section.group === activeGroup}
+                >
+                  <summary
+                    class="sidebar-group-summary"
+                    style="font-family: var(--ml-font-title); font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ml-color-neutral-600); padding: 8px 4px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none;"
+                  >
+                    <span>{section.group}</span>
+                    <span
+                      class="group-arrow"
+                      style="font-size: 10px; transition: transform 0.2s;"
+                    >
+                      ▼
+                    </span>
+                  </summary>
+                  <div
+                    class="sidebar-group-items"
+                    style="padding-left: 4px; margin-bottom: 12px;"
+                  >
+                    {section.items.map((item) => (
+                      <a
+                        href={item.href}
+                        class={`sidebar-link ${currentPath === item.href || (item.href !== "/" && currentPath.startsWith(item.href)) ? "active" : ""}`}
+                        aria-current={
+                          currentPath === item.href ? "page" : undefined
+                        }
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                </details>
+              ))
+            }
+          </div>
+        </aside>
+
+        <!-- Zone de contenu -->
+        <main class="docs-content" id="main-content">
+          <!-- Accordéon mobile sous-rubriques (ml-sidemenu) -->
+          <nav class="ml-sidemenu ml-mb-4" aria-label="Navigation de la section">
+            <button
+              type="button"
+              class="ml-sidemenu__btn"
+              id="ml-sidemenu-toggle"
+              aria-expanded="false"
+              aria-controls="ml-sidemenu-content"
+            >
+              <span>Dans cette rubrique ({activeGroup})</span>
+              <svg class="ml-sidemenu__btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="ml-sidemenu__content" id="ml-sidemenu-content">
+              <div class="ml-sidemenu__header">
+                <div class="ml-sidemenu__title">{activeGroup}</div>
+                <button
+                  type="button"
+                  class="ml-sidemenu__close"
+                  id="ml-sidemenu-close"
+                  aria-label="Fermer le menu"
+                >&times;</button>
+              </div>
+              <ul class="ml-sidemenu__list">
+                {filteredSidebarNav[0]?.items.map((item) => (
+                  <li class="ml-sidemenu__item">
+                    <a
+                      href={item.href}
+                      class={`ml-sidemenu__link ${currentPath === item.href || (item.href !== "/" && currentPath.startsWith(item.href)) ? "active" : ""}`}
+                      aria-current={currentPath === item.href ? "page" : undefined}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </nav>
+          {
+            pageTitle && (
+              <div style="margin-bottom: var(--ml-space-6); padding-bottom: var(--ml-space-6); border-bottom: 1px solid var(--ml-color-neutral-200);">
+                <h1 class="ml-display">{pageTitle}</h1>
+                {pageSubtitle && (
+                  <p
+                    class="ml-body"
+                    style="color: var(--ml-color-neutral-500); margin-top: var(--ml-space-2);"
+                  >
+                    {pageSubtitle}
+                  </p>
+                )}
+              </div>
+            )
+          }
+          <slot />
+        </main>
+      </div>
+
+      <!-- FOOTER DSML OFFICIEL -->
+      <footer class="ml-footer" aria-label="Pied de page">
+        <div class="container">
+          <div class="footer-top">
+            <div class="footer-brand">
+              <div class="brand-block">
+                <div class="ml-flag" aria-hidden="true">
+                  <div class="green"></div>
+                  <div class="yellow"></div>
+                  <div class="red"></div>
+                </div>
+                <div class="brand-text">
+                  <div class="brand-title">RÉPUBLIQUE DU MALI</div>
+                  <div class="brand-motto">Un Peuple – Un But – Une Foi</div>
+                </div>
+              </div>
+              <div class="footer-coords">
+                <strong>DSML — Design System Mali</strong><br />
+                Licence MIT · Projet ouvert<br />
+                <a
+                  href="https://github.com/malibub-digital/dsml"
+                  target="_blank"
+                  rel="noopener noreferrer">github.com/malibub-digital/dsml</a
+                >
+              </div>
+            </div>
+            <div class="footer-links-container">
+              <nav class="footer-col" aria-label="Fondations">
+                <div class="footer-col-title">Fondations</div>
+                <a href="/fondations/couleurs/">Couleurs</a>
+                <a href="/fondations/typographie/">Typographie</a>
+                <a href="/fondations/espacements/">Espacements</a>
+                <a href="/fondations/pictogrammes/">Pictogrammes</a>
+              </nav>
+              <nav class="footer-col" aria-label="Composants">
+                <div class="footer-col-title">Composants</div>
+                <a href="/composants/boutons/">Boutons</a>
+                <a href="/composants/cartes/">Cartes</a>
+                <a href="/composants/formulaires/">Formulaires</a>
+                <a href="/composants/navigation/">Navigation</a>
+              </nav>
+              <nav class="footer-col" aria-label="Ressources">
+                <div class="footer-col-title">Ressources</div>
+                <a href="/installation/">Installation</a>
+                <a href="/changelog/">Changelog</a>
+                <a
+                  href="https://github.com/malibub-digital/dsml"
+                  target="_blank"
+                  rel="noopener noreferrer">GitHub</a
+                >
+              </nav>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <div class="footer-bottom-links">
+              <a href="/mentions-legales/">Mentions légales</a>
+              <a href="/accessibilite/"
+                >Accessibilité : partiellement conforme</a
+              >
+            </div>
+            <div class="footer-credits">DSML v0.1 — Licence MIT</div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Modale de recherche globale -->
+    <dialog
+      class="ml-modal ml-search-modal"
+      id="ml-search-modal"
+      style="border: 1px solid var(--ml-color-neutral-200); border-radius: var(--ml-radius-m); padding: var(--ml-space-4); max-width: 550px; width: 100%; margin: 10% auto; background: var(--ml-color-neutral-0); box-shadow: var(--ml-shadow-ambient);"
+    >
+      <div
+        class="ml-modal-header"
+        style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--ml-color-neutral-200); padding-bottom: var(--ml-space-2); margin-bottom: var(--ml-space-3);"
+      >
+        <h3
+          class="ml-modal-title"
+          style="margin: 0; font-family: var(--ml-font-title); font-size: 16px; font-weight: 700;"
+        >
+          Recherche dans la documentation
+        </h3>
+        <button
+          class="ml-modal-close"
+          aria-label="Fermer la recherche"
+          style="border: none; background: transparent; font-size: 24px; cursor: pointer; line-height: 1; color: var(--ml-color-neutral-500);"
+          >&times;</button
+        >
+      </div>
+      <div class="ml-modal-body">
+        <div
+          class="ml-search-modal-input-wrapper"
+          style="display: flex; align-items: center; border: 1px solid var(--ml-color-neutral-300); border-radius: var(--ml-radius-s); padding: var(--ml-space-2) var(--ml-space-3); margin-bottom: var(--ml-space-4); background: var(--ml-color-neutral-0); gap: var(--ml-space-2);"
+        >
+          <span class="ml-search-modal-icon">🔍</span>
+          <input
+            type="text"
+            class="ml-search-modal-input"
+            placeholder="Que recherchez-vous ? (ex : boutons, cartes...)"
+            aria-label="Saisir votre recherche"
+            style="border: none; flex: 1; outline: none; font-size: 15px; font-family: var(--ml-font-body); background: transparent; color: var(--ml-color-neutral-900);"
+          />
+        </div>
+
+        <!-- Section Recherches fréquentes (popularSection) -->
+        <div class="ml-search-popular-section">
+          <div
+            class="ml-search-modal-section-title"
+            style="font-size: 11px; font-weight: 700; color: var(--ml-color-neutral-400); text-transform: uppercase; margin-bottom: var(--ml-space-2); letter-spacing: 0.05em;"
+          >
+            Recherches fréquentes
+          </div>
+          <ul
+            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--ml-space-2);"
+          >
+            <li>
+              <a
+                href="/fondations/couleurs/"
+                class="ml-search-modal-item"
+                style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; padding: var(--ml-space-2) var(--ml-space-3); border-radius: var(--ml-radius-s); background: var(--ml-color-neutral-50); color: var(--ml-color-neutral-900); font-family: var(--ml-font-body); transition: background 0.15s;"
+              >
+                <div>
+                  <div
+                    class="ml-search-modal-item-title"
+                    style="font-weight: 700; font-size: 14px;"
+                  >
+                    Couleurs (Palette officielle)
+                  </div>
+                  <div
+                    class="ml-search-modal-item-desc"
+                    style="font-size: 12px; color: var(--ml-color-neutral-500); margin-top: 2px;"
+                  >
+                    Vert, Or, Rouge, Niger River
+                  </div>
+                </div>
+                <span
+                  class="ml-search-modal-item-arrow"
+                  style="font-weight: 700; color: var(--ml-color-neutral-400);"
+                  >→</span
+                >
+              </a>
+            </li>
+            <li>
+              <a
+                href="/composants/boutons/"
+                class="ml-search-modal-item"
+                style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; padding: var(--ml-space-2) var(--ml-space-3); border-radius: var(--ml-radius-s); background: var(--ml-color-neutral-50); color: var(--ml-color-neutral-900); font-family: var(--ml-font-body); transition: background 0.15s;"
+              >
+                <div>
+                  <div
+                    class="ml-search-modal-item-title"
+                    style="font-weight: 700; font-size: 14px;"
+                  >
+                    Boutons (Buttons)
+                  </div>
+                  <div
+                    class="ml-search-modal-item-desc"
+                    style="font-size: 12px; color: var(--ml-color-neutral-500); margin-top: 2px;"
+                  >
+                    Composants de boutons primaires et secondaires
+                  </div>
+                </div>
+                <span
+                  class="ml-search-modal-item-arrow"
+                  style="font-weight: 700; color: var(--ml-color-neutral-400);"
+                  >→</span
+                >
+              </a>
+            </li>
+            <li>
+              <a
+                href="/layouts/header-footer/"
+                class="ml-search-modal-item"
+                style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; padding: var(--ml-space-2) var(--ml-space-3); border-radius: var(--ml-radius-s); background: var(--ml-color-neutral-50); color: var(--ml-color-neutral-900); font-family: var(--ml-font-body); transition: background 0.15s;"
+              >
+                <div>
+                  <div
+                    class="ml-search-modal-item-title"
+                    style="font-weight: 700; font-size: 14px;"
+                  >
+                    En-tête & Pied de page
+                  </div>
+                  <div
+                    class="ml-search-modal-item-desc"
+                    style="font-size: 12px; color: var(--ml-color-neutral-500); margin-top: 2px;"
+                  >
+                    Layouts de header et footer officiels
+                  </div>
+                </div>
+                <span
+                  class="ml-search-modal-item-arrow"
+                  style="font-weight: 700; color: var(--ml-color-neutral-400);"
+                  >→</span
+                >
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Section Résultats (resultsSection - hidden by default) -->
+        <div class="ml-search-results-section" style="display: none;">
+          <div
+            class="ml-search-modal-section-title"
+            style="font-size: 11px; font-weight: 700; color: var(--ml-color-neutral-400); text-transform: uppercase; margin-bottom: var(--ml-space-2); letter-spacing: 0.05em;"
+          >
+            Résultats de recherche
+          </div>
+          <ul
+            class="ml-search-modal-results-list"
+            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--ml-space-2); max-height: 250px; overflow-y: auto;"
+          >
+            <!-- Injecté dynamiquement par search.js -->
+          </ul>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Script global de recherche DSML -->
+    <script src="/dsml/js/search.js" is:inline></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Header shrink
+        const header = document.querySelector(".ml-header-shrinkable");
+        if (header) {
+          window.addEventListener(
+            "scroll",
+            () => {
+              header.classList.toggle("ml-scrolled", window.scrollY > 50);
+            },
+            { passive: true },
+          );
+        }
+
+        // Accordéon mobile sidemenu toggle & close
+        const sidemenuToggle = document.getElementById("ml-sidemenu-toggle");
+        const sidemenuClose = document.getElementById("ml-sidemenu-close");
+        if (sidemenuToggle) {
+          sidemenuToggle.addEventListener("click", () => {
+            const isExpanded = sidemenuToggle.getAttribute("aria-expanded") === "true";
+            sidemenuToggle.setAttribute("aria-expanded", (!isExpanded).toString());
+          });
+        }
+        if (sidemenuClose && sidemenuToggle) {
+          sidemenuClose.addEventListener("click", () => {
+            sidemenuToggle.setAttribute("aria-expanded", "false");
+          });
+        }
+
+        // Mobile Drawer Sidebar Toggle
+        const toggleBtn = document.getElementById("docs-mobile-nav-toggle");
+        const closeSidebarBtn = document.getElementById("close-docs-sidebar");
+        const sidebar = document.getElementById("docs-sidebar");
+        const overlay = document.getElementById("docs-sidebar-overlay");
+
+        const toggleDrawer = (open) => {
+          if (sidebar && overlay) {
+            sidebar.classList.toggle("is-open", open);
+            overlay.classList.toggle("is-open", open);
+            document.body.style.overflow = open ? "hidden" : "";
+          }
+        };
+
+        if (toggleBtn) {
+          toggleBtn.addEventListener("click", () => toggleDrawer(true));
+        }
+        if (closeSidebarBtn) {
+          closeSidebarBtn.addEventListener("click", () => toggleDrawer(false));
+        }
+        if (overlay) {
+          overlay.addEventListener("click", () => toggleDrawer(false));
+        }
+
+        // Copier code
+        document.querySelectorAll(".copy-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const pre = btn.nextElementSibling;
+            if (pre) {
+              navigator.clipboard.writeText(pre.textContent || "").then(() => {
+                btn.textContent = "Copié !";
+                setTimeout(() => (btn.textContent = "Copier"), 1800);
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

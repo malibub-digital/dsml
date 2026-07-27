@@ -1,0 +1,110 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout
+  title="Introduction"
+  description="Présentation du Design System Mali — principes, philosophie et architecture."
+  pageTitle="Introduction"
+  pageSubtitle="Le DSML est le cadre de conception et de développement officiel proposé pour les administrations publiques maliennes."
+>
+
+  <h2 class="ml-title-2">Pourquoi le DSML ?</h2>
+  <p class="ml-body-compact">
+    Le Design System Mali (DSML) a été conçu pour structurer, standardiser et accélérer le développement des produits numériques de l'État malien. Il répond à une triple exigence :
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--ml-space-4); margin-top: var(--ml-space-6);">
+    <div style="background: var(--ml-color-green-50); border: 1px solid var(--ml-color-green-200); border-radius: var(--ml-radius-m); padding: var(--ml-space-5);">
+      <div style="font-size: 24px; margin-bottom: var(--ml-space-3);">🏛️</div>
+      <h3 class="ml-title-3" style="margin-top: 0; margin-bottom: var(--ml-space-2);">Cohérence d'identité</h3>
+      <p class="ml-body-compact" style="color: var(--ml-color-neutral-600);">
+        Une signature d'État sobre, rassurante et professionnelle pour l'ensemble des sites administratifs maliens.
+      </p>
+    </div>
+    <div style="background: var(--ml-color-gold-50); border: 1px solid var(--ml-color-gold-200); border-radius: var(--ml-radius-m); padding: var(--ml-space-5);">
+      <div style="font-size: 24px; margin-bottom: var(--ml-space-3);">⚡</div>
+      <h3 class="ml-title-3" style="margin-top: 0; margin-bottom: var(--ml-space-2);">Performance technique</h3>
+      <p class="ml-body-compact" style="color: var(--ml-color-neutral-600);">
+        Extrêmement léger (HTML/CSS pur), sans frameworks lourds. Optimisé pour les connexions 3G/4G au Mali.
+      </p>
+    </div>
+    <div style="background: var(--ml-color-river-50); border: 1px solid var(--ml-color-river-200, #B2D4E8); border-radius: var(--ml-radius-m); padding: var(--ml-space-5);">
+      <div style="font-size: 24px; margin-bottom: var(--ml-space-3);">♿</div>
+      <h3 class="ml-title-3" style="margin-top: 0; margin-bottom: var(--ml-space-2);">Accessibilité</h3>
+      <p class="ml-body-compact" style="color: var(--ml-color-neutral-600);">
+        Bonnes pratiques ARIA, contraste WCAG AA, navigation clavier — pour tous les usagers.
+      </p>
+    </div>
+  </div>
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-6);">Principes fondateurs</h2>
+
+  <div style="display: flex; flex-direction: column; gap: var(--ml-space-3); margin-top: var(--ml-space-4);">
+    {[
+      {
+        num: "01",
+        title: "Zéro dépendance",
+        body: "Le cœur du DSML est du HTML + CSS + JS vanilla. Aucun framework ou bundler requis pour intégrer et utiliser le système. N'importe quelle équipe, même sans Node.js, peut l'adopter immédiatement."
+      },
+      {
+        num: "02",
+        title: "HTML-first",
+        body: "Le DSML suit la philosophie du web sémantique. Chaque composant fonctionne avec du HTML natif enrichi de classes CSS. Les frameworks (Vue, React) arrivent en couche optionnelle, pas en prérequis."
+      },
+      {
+        num: "03",
+        title: "Performance avant tout",
+        body: "Le fichier dsml.css fait ~80 Ko (non-minifié). Pas de JavaScript requis pour les composants statiques. Conçu pour les connexions mobiles limitées et les appareils d'entrée de gamme."
+      },
+      {
+        num: "04",
+        title: "Identité d'État, neutralité culturelle",
+        body: "La palette est sobre et neutre — jamais de motifs culturels excessifs. L'identité vient du drapeau, des armoiries et des trois couleurs nationales. Le système doit fonctionner pour tout ministère ou agence."
+      },
+    ].map(p => (
+      <div style="display: flex; gap: var(--ml-space-4); padding: var(--ml-space-4); background: var(--ml-color-neutral-0); border: 1px solid var(--ml-color-neutral-200); border-radius: var(--ml-radius-m);">
+        <div style="font-family: var(--ml-font-title); font-size: 22px; font-weight: 800; color: var(--ml-color-neutral-200); flex-shrink: 0; width: 48px; text-align: center; padding-top: 2px;">{p.num}</div>
+        <div>
+          <div style="font-family: var(--ml-font-title); font-weight: 700; font-size: 15px; margin-bottom: 4px;">{p.title}</div>
+          <p class="ml-body-compact" style="color: var(--ml-color-neutral-600); margin: 0;">{p.body}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="ml-title-2">Convention technique</h2>
+
+  <div class="ml-alert ml-alert-info" style="margin-top: var(--ml-space-4);">
+    <div class="ml-alert-dot"></div>
+    <div class="ml-alert-content">
+      <strong>Anglais pour le code, français pour les contenus :</strong> Par respect des standards ouverts du web, toutes les classes CSS et variables CSS sont rédigées en <strong>anglais technique</strong> (ex : <code>ml-btn</code>, <code>--ml-color-green-500</code>). Les guides, la documentation et les sites d'application sont en <strong>français</strong>.
+    </div>
+  </div>
+
+  <h2 class="ml-title-2">Architecture du dépôt</h2>
+  <CodeBlock code={`dsml/
+├── core/               ← Cœur CSS/HTML (zéro dépendance)
+│   ├── css/
+│   │   ├── dsml.css          # Feuille de style principale
+│   │   └── dsml-icons.css    # Bibliothèque d'icônes
+│   ├── js/
+│   │   └── search.js         # Recherche docs (optionnel)
+│   └── assets/
+│       ├── logo-mali.svg     # Armoiries officielles
+│       ├── logo-aes.svg      # Logo AES (optionnel)
+│       ├── icons/            # Icônes SVG individuelles
+│       └── pictograms/       # Pictogrammes DSML
+├── extensions/         ← Futures extensions (dsml-vue, dsml-react)
+├── docs/               ← Ce site de documentation (Astro)
+├── README.md
+└── LICENSE             # MIT`} lang="text" />
+
+  <div style="margin-top: var(--ml-space-10); padding: var(--ml-space-6); background: var(--ml-gradient-green); border-radius: var(--ml-radius-l); text-align: center;">
+    <h3 class="ml-title-3" style="color: white; margin-top: 0; margin-bottom: var(--ml-space-3);">Prêt à démarrer ?</h3>
+    <p class="ml-body-compact" style="color: rgba(255,255,255,0.8); margin-bottom: var(--ml-space-4);">Intégrez le DSML en 3 minutes, sans Node.js.</p>
+    <a href="/installation/" class="ml-btn ml-btn-accent ml-btn-lg">Guide d'installation →</a>
+  </div>
+
+</DocsLayout>

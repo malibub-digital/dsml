@@ -1,0 +1,246 @@
+---
+import { Code } from 'astro/components';
+
+interface Props {
+  code: string;
+  lang?: string;
+  filename?: string;
+}
+
+const { code, lang = "html", filename = "" } = Astro.props;
+---
+
+<div class="ml-premium-code-block" data-lang={lang}>
+  <div class="code-block-header">
+    <div class="window-controls">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+    </div>
+    {filename && <span class="file-name">{filename}</span>}
+    <span class="lang-badge">{lang.toUpperCase()}</span>
+    <button class="copy-btn" aria-label="Copier le code">
+      <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+      <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="display: none;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <span class="copy-text">Copier</span>
+    </button>
+  </div>
+  <div class="code-block-content">
+    <Code code={code.trim()} lang={lang} theme="github-dark" />
+  </div>
+</div>
+
+<style is:global>
+  /* Premium Code Block Styles */
+  .ml-premium-code-block {
+    position: relative;
+    background: var(--ml-color-neutral-900) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--ml-radius-l);
+    margin: var(--ml-space-4) 0 var(--ml-space-6) 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    max-width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  
+  .demo-preview + .ml-premium-code-block {
+    margin-top: var(--ml-space-4);
+  }
+  
+  .ml-premium-code-block:hover {
+    border-color: rgba(11, 122, 47, 0.4);
+    box-shadow: 0 12px 32px rgba(11, 122, 47, 0.12), 0 6px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .code-block-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--ml-space-2) var(--ml-space-4);
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-family: var(--ml-font-title);
+    min-height: 38px;
+    gap: 8px;
+  }
+
+  .window-controls {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .window-controls .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.75;
+  }
+
+  .window-controls .dot.red { background-color: #FF5F56; }
+  .window-controls .dot.yellow { background-color: #FFBD2E; }
+  .window-controls .dot.green { background-color: #27C93F; }
+
+  .file-name {
+    font-size: 11px;
+    color: var(--ml-color-neutral-400);
+    font-family: var(--ml-font-body);
+    font-weight: 500;
+    margin-left: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .lang-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--ml-color-neutral-500);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 2px 6px;
+    border-radius: var(--ml-radius-s);
+    margin-left: auto;
+    margin-right: 8px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .ml-premium-code-block .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--ml-color-neutral-300);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--ml-radius-s);
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+    flex-shrink: 0;
+  }
+
+  .ml-premium-code-block .copy-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--ml-color-neutral-0);
+  }
+  
+  .ml-premium-code-block .copy-btn.copied {
+    background: rgba(11, 122, 47, 0.2);
+    border-color: rgba(11, 122, 47, 0.4);
+    color: #EAF3EC;
+  }
+
+  .ml-premium-code-block .copy-btn svg {
+    flex-shrink: 0;
+  }
+
+  .code-block-content {
+    position: relative;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .ml-premium-code-block pre {
+    background: transparent !important;
+    padding: var(--ml-space-4) var(--ml-space-5);
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13.5px;
+    line-height: 1.6;
+    overflow-x: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  @media (max-width: 640px) {
+    .ml-premium-code-block pre {
+      padding: var(--ml-space-3) var(--ml-space-4);
+      font-size: 12.5px;
+    }
+  }
+
+  .ml-premium-code-block pre::-webkit-scrollbar {
+    height: 6px;
+  }
+  .ml-premium-code-block pre::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+  }
+  .ml-premium-code-block pre::-webkit-scrollbar-track {
+    background: transparent;
+  }
+</style>
+
+<script>
+  // Copy button handler
+  function setupCopyButtons() {
+    document.querySelectorAll('.ml-premium-code-block').forEach((block) => {
+      const copyBtn = block.querySelector('.copy-btn');
+      const pre = block.querySelector('pre');
+      
+      if (copyBtn && pre && !copyBtn.hasAttribute('data-has-listener')) {
+        copyBtn.setAttribute('data-has-listener', 'true');
+        const copyIcon = copyBtn.querySelector('.copy-icon') as HTMLElement;
+        const checkIcon = copyBtn.querySelector('.check-icon') as HTMLElement;
+        const copyText = copyBtn.querySelector('.copy-text') as HTMLElement;
+        
+        copyBtn.addEventListener('click', () => {
+          const textToCopy = pre.textContent || '';
+          
+          const onSuccess = () => {
+            if (copyIcon && checkIcon && copyText) {
+              copyIcon.style.display = 'none';
+              checkIcon.style.display = 'inline';
+              copyText.textContent = 'Copié !';
+              copyBtn.classList.add('copied');
+              
+              setTimeout(() => {
+                copyIcon.style.display = 'inline';
+                checkIcon.style.display = 'none';
+                copyText.textContent = 'Copier';
+                copyBtn.classList.remove('copied');
+              }, 2000);
+            }
+          };
+
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(textToCopy).then(onSuccess).catch(() => {
+              // Fallback
+              const textArea = document.createElement('textarea');
+              textArea.value = textToCopy;
+              document.body.appendChild(textArea);
+              textArea.select();
+              try { document.execCommand('copy'); onSuccess(); } catch(e) {}
+              document.body.removeChild(textArea);
+            });
+          } else {
+            const textArea = document.createElement('textarea');
+            textArea.value = textToCopy;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try { document.execCommand('copy'); onSuccess(); } catch(e) {}
+            document.body.removeChild(textArea);
+          }
+        });
+      }
+    });
+  }
+
+  // Setup on page load
+  setupCopyButtons();
+  
+  // Setup on view transition or dynamic updates if any
+  document.addEventListener('astro:page-load', setupCopyButtons);
+</script>

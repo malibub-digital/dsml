@@ -1,0 +1,517 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import pictograms from '../../data/pictograms.json';
+
+const categories = [...new Set(pictograms.map(p => p.category))].sort();
+---
+
+<DocsLayout
+  title="Pictogrammes & Illustrations"
+  description="Catalogue et règles d'utilisation des pictogrammes officiels du DSML."
+  pageTitle="Pictogrammes & Illustrations"
+  pageSubtitle="Les pictogrammes illustrent des thématiques et concepts administratifs de manière moderne, lisible et harmonieuse."
+>
+
+  <h2 class="ml-title-2">Structure &amp; Couches de couleur</h2>
+  <p class="ml-body">
+    Les pictogrammes DSML sont conçus en SVG multi-couches. Chaque élément SVG utilise des classes CSS standardisées permettant de personnaliser ou d'animer dynamiquement les aplats et contours selon l'identité visuelle de votre service.
+  </p>
+
+  <div class="picto-layers-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--ml-space-4); margin: var(--ml-space-5) 0 var(--ml-space-6) 0;">
+    <div class="layer-card">
+      <div class="layer-badge"><code class="ml-code">.ml-artwork-background</code></div>
+      <div class="layer-role">Fond d'illustration</div>
+      <div class="layer-desc">Formes d'arrière-plan douces (par défaut Vert 50 / Or 50)</div>
+    </div>
+    <div class="layer-card">
+      <div class="layer-badge"><code class="ml-code">.ml-artwork-major</code></div>
+      <div class="layer-role">Contours principaux</div>
+      <div class="layer-desc">Lignes directrices et structure de l'icône (Gris neutre 900)</div>
+    </div>
+    <div class="layer-card">
+      <div class="layer-badge"><code class="ml-code">.ml-artwork-minor</code></div>
+      <div class="layer-role">Accents officiels</div>
+      <div class="layer-desc">Sceaux de validation, détails d'attention (Or Sahel 500)</div>
+    </div>
+    <div class="layer-card">
+      <div class="layer-badge"><code class="ml-code">.ml-artwork-decorative</code></div>
+      <div class="layer-role">Détails secondaires</div>
+      <div class="layer-desc">Points de focalisation et motifs secondaires (Vert Menthe)</div>
+    </div>
+  </div>
+
+  <h2 class="ml-title-2">Exemple d'intégration</h2>
+  <p class="ml-body-compact">Insérez directement le SVG dans votre markup HTML ou intégrez-le au sein d'un composant d'information :</p>
+
+  <div class="demo-preview" style="display: flex; gap: var(--ml-space-6); align-items: center; justify-content: center; background: var(--ml-color-neutral-50); padding: var(--ml-space-6); border-radius: var(--ml-radius-l); border: 1px solid var(--ml-color-neutral-200); margin-top: var(--ml-space-3); flex-wrap: wrap;">
+    <div class="picto-demo-item" style="display: flex; flex-direction: column; align-items: center; gap: var(--ml-space-2); text-align: center;">
+      <div class="ml-pictogram" style="width: 72px; height: 72px;">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <symbol id="demo-building-decorative"><path d="M68 13a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM41 76a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM15 10a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></symbol>
+          <symbol id="demo-building-minor"><path d="M53 44a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H43a1 1 0 0 1-1-1V45a1 1 0 0 1 1-1Zm-6 7h-3v3h3v-3Zm5 0h-3v3h3v-3Zm-5-5h-3v3h3v-3Zm5 0h-3v3h3v-3Zm-7-14a1 1 0 0 1 1 1s-.4 1-1 1H35a1 1 0 0 1-1-1s.4-1 1-1h10Z"/></symbol>
+          <symbol id="demo-building-major"><path d="M29 18a1 1 0 0 1 1 1s-.4 1-1 1h-7v2h3a1 1 0 0 1 1 1h-1v2.7L40 18l15.6 7.6 24.5 12a1 1 0 0 1 .5 1.3l-2.5 5.5a1 1 0 0 1-1.4.5L60 37.6v4.9a1 1 0 1 1-2 0v-5.9L40 27.1 22 36.6V60h4V45a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v15h11a1 1 0 1 1 0 2H9a1 1 0 0 1 0-2h3v-2.1C9.4 57.6 8 55.9 8 53c0-2.9 1.4-7 4.1-12.4l.2-.5.8-.3h.4l.3.2.1.2C16.6 46 18 50.1 18 53c0 2.9-1.4 4.6-4 4.9V60h6V37.6l-1.5.8a1 1 0 0 1-1.4-.5l-2.5-5.5a1 1 0 0 1 .5-1.3l7.1-3.5V24h-1a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h8Z"/></symbol>
+          <use class="ml-artwork-decorative" href="#demo-building-decorative"/>
+          <use class="ml-artwork-minor" href="#demo-building-minor"/>
+          <use class="ml-artwork-major" href="#demo-building-major"/>
+        </svg>
+      </div>
+      <span class="ml-caption" style="font-weight: 600;">Style Standard</span>
+    </div>
+
+    <div class="picto-demo-card" style="display: flex; align-items: center; gap: var(--ml-space-4); background: var(--ml-color-neutral-0); padding: var(--ml-space-4) var(--ml-space-5); border-radius: var(--ml-radius-m); border: 1px solid var(--ml-color-neutral-200); box-shadow: var(--ml-shadow-soft); max-width: 380px;">
+      <div class="ml-pictogram" style="width: 56px; height: 56px;">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <symbol id="demo-acc-decorative"><path d="M61 73a1 1 0 0 1 0-2 1 1 0 0 1 0 2ZM69 10a1 1 0 0 1 0-2 1 1 0 0 1 0 2ZM14 12a1 1 0 0 1 0-2 1 1 0 0 1 0 2Z"/></symbol>
+          <symbol id="demo-acc-minor"><path d="M40 19a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-6 4a6 6 0 1 1 12 0 6 6 0 0 1-12 0Z"/></symbol>
+          <symbol id="demo-acc-major"><path d="M57 29a2.5 2.5 0 0 1 1.1 5l-11.4 3.3a1 1 0 0 0-.7 1v6.3l4.2 14.3a3 3 0 0 1-5.6 1.9L40 48.6l-4.6 12.2a3 3 0 0 1-5.6-1.9L34 44.6v-6.3a1 1 0 0 0-.7-1L21.9 34a2.5 2.5 0 0 1 1.1-5l16.9 2.7h.3L57 29ZM40 12c-15.5 0-28 12.5-28 28s12.5 28 28 28 28-12.5 28-28-12.5-28-28-28Z"/></symbol>
+          <use class="ml-artwork-decorative" href="#demo-acc-decorative"/>
+          <use class="ml-artwork-minor" href="#demo-acc-minor"/>
+          <use class="ml-artwork-major" href="#demo-acc-major"/>
+        </svg>
+      </div>
+      <div>
+        <h4 style="margin: 0 0 4px 0; font-size: 15px; font-weight: 700; color: var(--ml-color-neutral-900);">Services d'Accessibilité</h4>
+        <p style="margin: 0; font-size: 13px; color: var(--ml-color-neutral-600); line-height: 1.4;">Accès garanti aux démarches administratives pour tous les citoyens.</p>
+      </div>
+    </div>
+  </div>
+
+  <CodeBlock code={`<div class="ml-pictogram">
+  <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <use class="ml-artwork-decorative" href="#picto-id-decorative"/>
+    <use class="ml-artwork-minor" href="#picto-id-minor"/>
+    <use class="ml-artwork-major" href="#picto-id-major"/>
+  </svg>
+</div>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">Catalogue des pictogrammes</h2>
+  <p class="ml-body-compact">Filtrez le catalogue par mot-clé ou par catégorie. Cliquez sur n'importe quelle carte pour copier l'intégralité du code SVG.</p>
+  
+  <div class="picto-controls-wrapper">
+    <div class="picto-search-box">
+      <span class="ml-icon ml-icon-search-line search-input-icon"></span>
+      <input type="text" id="picto-search-input" class="ml-input" placeholder="Rechercher un pictogramme (ex: santé, bâtiment, accès...)">
+      <button id="picto-clear-btn" class="search-clear-btn" aria-label="Effacer la recherche" style="display: none;">&times;</button>
+    </div>
+
+    <div class="picto-category-pills" id="picto-category-pills">
+      <button class="cat-pill active" data-category="">Tous ({pictograms.length})</button>
+      {categories.map(cat => {
+        const count = pictograms.filter(p => p.category === cat).length;
+        return (
+          <button class="cat-pill" data-category={cat.toLowerCase()}>
+            {cat.charAt(0).toUpperCase() + cat.slice(1)} ({count})
+          </button>
+        );
+      })}
+    </div>
+  </div>
+
+  <div class="picto-status-bar">
+    <span id="picto-counter">Affichage de <strong>{pictograms.length}</strong> pictogrammes</span>
+  </div>
+
+  <div class="pictogram-gallery" id="picto-gallery-container">
+    {pictograms.map(picto => (
+      <div class="gallery-card" data-name={picto.name.toLowerCase()} data-category={picto.category.toLowerCase()}>
+        <div class="card-category-badge">{picto.category}</div>
+        <div class="picto-wrapper">
+          <div class="ml-pictogram" aria-hidden="true" set:html={picto.svg}></div>
+        </div>
+        <h3 class="gallery-card-title">{picto.name}</h3>
+        <button class="gallery-copy-btn">
+          <span class="btn-icon-copy">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </span>
+          <span class="btn-text">Copier le SVG</span>
+        </button>
+      </div>
+    ))}
+  </div>
+
+  <div id="picto-empty-state" class="picto-empty-state" style="display: none;">
+    <div class="empty-icon">🔍</div>
+    <h3>Aucun pictogramme trouvé</h3>
+    <p>Essayez de modifier vos termes de recherche ou de sélectionner une autre catégorie.</p>
+  </div>
+
+  <div id="copy-toast" class="copy-toast">
+    <span class="toast-check">✓</span>
+    <span id="toast-msg">Code SVG copié dans le presse-papier !</span>
+  </div>
+
+  <style>
+    /* Structure & Layers */
+    .layer-card {
+      background: var(--ml-color-neutral-0);
+      border: 1px solid var(--ml-color-neutral-200);
+      border-radius: var(--ml-radius-m);
+      padding: var(--ml-space-4);
+      box-shadow: var(--ml-shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .layer-badge {
+      margin-bottom: 2px;
+    }
+    .layer-role {
+      font-family: var(--ml-font-title);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--ml-color-neutral-900);
+    }
+    .layer-desc {
+      font-size: 12px;
+      color: var(--ml-color-neutral-600);
+      line-height: 1.4;
+    }
+
+    /* Controls & Filtering */
+    .picto-controls-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: var(--ml-space-4);
+      margin-top: var(--ml-space-4);
+      margin-bottom: var(--ml-space-4);
+    }
+    .picto-search-box {
+      position: relative;
+      max-width: 500px;
+      width: 100%;
+    }
+    .search-input-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--ml-color-neutral-400);
+      pointer-events: none;
+      --ml-icon-size: 18px;
+    }
+    .picto-search-box input {
+      padding-left: 40px;
+      padding-right: 36px;
+      height: 44px;
+      border-radius: var(--ml-radius-m);
+      font-size: 14px;
+    }
+    .search-clear-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: var(--ml-color-neutral-400);
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 4px;
+    }
+    .search-clear-btn:hover {
+      color: var(--ml-color-neutral-800);
+    }
+
+    .picto-category-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--ml-space-2);
+    }
+    .cat-pill {
+      background: var(--ml-color-neutral-100);
+      border: 1px solid var(--ml-color-neutral-200);
+      color: var(--ml-color-neutral-700);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-family: var(--ml-font-title);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .cat-pill:hover {
+      background: var(--ml-color-neutral-200);
+      color: var(--ml-color-neutral-900);
+    }
+    .cat-pill.active {
+      background: var(--ml-color-green-600);
+      border-color: var(--ml-color-green-600);
+      color: white;
+    }
+
+    .picto-status-bar {
+      font-size: 13px;
+      color: var(--ml-color-neutral-600);
+      margin-bottom: var(--ml-space-4);
+    }
+
+    /* Cards Grid */
+    .pictogram-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--ml-space-4);
+    }
+    .gallery-card {
+      position: relative;
+      background: var(--ml-color-neutral-0);
+      border: 1px solid var(--ml-color-neutral-200);
+      border-radius: var(--ml-radius-l);
+      padding: var(--ml-space-5) var(--ml-space-4) var(--ml-space-4) var(--ml-space-4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+    .gallery-card:hover {
+      border-color: var(--ml-color-green-400);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      transform: translateY(-3px);
+    }
+    .card-category-badge {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ml-color-neutral-500);
+      background: var(--ml-color-neutral-100);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .picto-wrapper {
+      width: 76px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: var(--ml-space-2) 0 var(--ml-space-3) 0;
+      background: var(--ml-color-neutral-50);
+      border-radius: var(--ml-radius-m);
+      padding: var(--ml-space-2);
+      transition: background 0.2s ease;
+    }
+    .gallery-card:hover .picto-wrapper {
+      background: var(--ml-color-green-50);
+    }
+    .gallery-card .ml-pictogram {
+      width: 64px;
+      height: 64px;
+    }
+    .gallery-card-title {
+      font-family: var(--ml-font-title);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--ml-color-neutral-900);
+      margin: 0 0 var(--ml-space-3) 0;
+      line-height: 1.3;
+    }
+    .gallery-copy-btn {
+      margin-top: auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--ml-color-neutral-100);
+      color: var(--ml-color-neutral-800);
+      border: 1px solid var(--ml-color-neutral-200);
+      padding: 7px 12px;
+      border-radius: var(--ml-radius-s);
+      font-family: var(--ml-font-title);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .gallery-card:hover .gallery-copy-btn {
+      background: var(--ml-color-green-600);
+      border-color: var(--ml-color-green-600);
+      color: white;
+    }
+    .gallery-copy-btn.copied {
+      background: var(--ml-color-green-700) !important;
+      border-color: var(--ml-color-green-700) !important;
+      color: white !important;
+    }
+
+    /* Empty state */
+    .picto-empty-state {
+      text-align: center;
+      padding: var(--ml-space-12) var(--ml-space-4);
+      background: var(--ml-color-neutral-50);
+      border: 1px dashed var(--ml-color-neutral-300);
+      border-radius: var(--ml-radius-l);
+      margin-top: var(--ml-space-4);
+    }
+    .picto-empty-state .empty-icon {
+      font-size: 36px;
+      margin-bottom: var(--ml-space-2);
+    }
+    .picto-empty-state h3 {
+      font-family: var(--ml-font-title);
+      font-size: 18px;
+      color: var(--ml-color-neutral-900);
+      margin: 0 0 var(--ml-space-1) 0;
+    }
+    .picto-empty-state p {
+      font-size: 14px;
+      color: var(--ml-color-neutral-600);
+      margin: 0;
+    }
+
+    /* Toast Notification */
+    .copy-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--ml-color-neutral-900);
+      color: white;
+      padding: 12px 20px;
+      border-radius: var(--ml-radius-m);
+      font-family: var(--ml-font-title);
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      z-index: 10000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+    .copy-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .toast-check {
+      background: var(--ml-color-green-500);
+      color: white;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: bold;
+    }
+  </style>
+
+  <script>
+    const searchInput = document.getElementById('picto-search-input') as HTMLInputElement;
+    const clearBtn = document.getElementById('picto-clear-btn') as HTMLButtonElement;
+    const categoryPills = document.querySelectorAll('.cat-pill') as NodeListOf<HTMLButtonElement>;
+    const cards = document.querySelectorAll('.gallery-card') as NodeListOf<HTMLElement>;
+    const counterEl = document.getElementById('picto-counter');
+    const emptyState = document.getElementById('picto-empty-state');
+    const toast = document.getElementById('copy-toast');
+    const toastMsg = document.getElementById('toast-msg');
+
+    let activeCategory = '';
+
+    function filterGallery() {
+      const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+      let visibleCount = 0;
+
+      if (clearBtn) {
+        clearBtn.style.display = query.length > 0 ? 'block' : 'none';
+      }
+
+      cards.forEach(card => {
+        const name = card.dataset.name || '';
+        const category = card.dataset.category || '';
+
+        const matchesQuery = !query || name.includes(query) || category.includes(query);
+        const matchesCategory = !activeCategory || category === activeCategory;
+
+        if (matchesQuery && matchesCategory) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (counterEl) {
+        counterEl.innerHTML = `Affichage de <strong>${visibleCount}</strong> pictogramme${visibleCount > 1 ? 's' : ''}`;
+      }
+
+      if (emptyState) {
+        emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    }
+
+    // Event handlers pour recherche
+    if (searchInput) {
+      searchInput.addEventListener('input', filterGallery);
+    }
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        filterGallery();
+        searchInput.focus();
+      });
+    }
+
+    // Event handlers pour catégories
+    categoryPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        categoryPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        activeCategory = pill.dataset.category || '';
+        filterGallery();
+      });
+    });
+
+    // Gestion de la copie du code SVG avec Toast
+    let toastTimeout: any;
+
+    cards.forEach(card => {
+      const handleCopy = (e: Event) => {
+        e.stopPropagation();
+        const svgContainer = card.querySelector('.ml-pictogram');
+        const btn = card.querySelector('.gallery-copy-btn');
+        const btnText = card.querySelector('.btn-text');
+        const pictoName = card.querySelector('.gallery-card-title')?.textContent || '';
+
+        if (!svgContainer) return;
+        const cleanSvg = svgContainer.innerHTML.trim();
+
+        navigator.clipboard.writeText(cleanSvg).then(() => {
+          if (btn && btnText) {
+            const originalText = btnText.textContent;
+            btnText.textContent = "SVG Copié !";
+            btn.classList.add('copied');
+
+            setTimeout(() => {
+              btnText.textContent = originalText;
+              btn.classList.remove('copied');
+            }, 1200);
+          }
+
+          if (toast && toastMsg) {
+            toastMsg.textContent = `Pictogramme « ${pictoName} » copié !`;
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+              toast.classList.remove('show');
+            }, 2500);
+          }
+        });
+      };
+
+      card.addEventListener('click', handleCopy);
+    });
+  </script>
+
+</DocsLayout>
+

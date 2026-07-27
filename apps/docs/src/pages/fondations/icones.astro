@@ -1,0 +1,163 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout
+  title="Icônes (Iconography)"
+  description="Catalogue des icônes Remix Icon intégrées au DSML."
+  pageTitle="Icônes"
+  pageSubtitle="Le DSML propose une riche bibliothèque de plus de 1 000 icônes issues de Remix Icon, intégrées de manière native via des masques CSS."
+>
+
+  <h2 class="ml-title-2">Principe de fonctionnement</h2>
+  <p class="ml-body">
+    Les icônes sont intégrées via des masques CSS. Cela permet un contrôle total de la couleur via la propriété CSS <code>color</code> ou le texte environnant (<code>currentColor</code>).
+  </p>
+
+  <h2 class="ml-title-2">Tailles</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Vous pouvez contrôler les dimensions avec les classes modificatrices suivantes :</p>
+  
+  <div class="demo-preview" style="display: flex; align-items: center; gap: var(--ml-space-4);">
+    <div style="text-align: center;">
+      <span class="ml-icon ml-icon-home-fill ml-icon--xs"></span>
+      <div class="ml-caption" style="margin-top: 4px;">XS (12px)<br><code>.ml-icon--xs</code></div>
+    </div>
+    <div style="text-align: center;">
+      <span class="ml-icon ml-icon-home-fill ml-icon--sm"></span>
+      <div class="ml-caption" style="margin-top: 4px;">SM (16px)<br><code>.ml-icon--sm</code></div>
+    </div>
+    <div style="text-align: center;">
+      <span class="ml-icon ml-icon-home-fill ml-icon--md"></span>
+      <div class="ml-caption" style="margin-top: 4px;">MD (24px - défaut)<br><code>.ml-icon--md</code></div>
+    </div>
+    <div style="text-align: center;">
+      <span class="ml-icon ml-icon-home-fill ml-icon--lg"></span>
+      <div class="ml-caption" style="margin-top: 4px;">LG (32px)<br><code>.ml-icon--lg</code></div>
+    </div>
+  </div>
+  
+  <CodeBlock code={`<!-- Standard icon (24px) -->
+<span class="ml-icon ml-icon-home-fill" aria-hidden="true"></span>
+
+<!-- Small icon (16px) -->
+<span class="ml-icon ml-icon-home-fill ml-icon--sm" aria-hidden="true"></span>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-6);">Couleurs &amp; Personnalisation</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Elles héritent automatiquement de la couleur du texte courant (<code>currentColor</code>). Vous pouvez modifier leur couleur en appliquant simplement la propriété CSS <code>color</code> :</p>
+  
+  <div class="demo-preview" style="display: flex; align-items: center; gap: var(--ml-space-6); flex-wrap: wrap;">
+    <div style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+      <span class="ml-icon ml-icon-home-fill" style="color: var(--ml-color-green-500); --ml-icon-size: 28px;"></span>
+      <div class="ml-caption">Mali Vert<br><code style="font-size:11px;">color: var(--ml-color-green-500)</code></div>
+    </div>
+    <div style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+      <span class="ml-icon ml-icon-heart-fill" style="color: var(--ml-color-red-500); --ml-icon-size: 28px;"></span>
+      <div class="ml-caption">Alerte Rouge<br><code style="font-size:11px;">color: var(--ml-color-red-500)</code></div>
+    </div>
+    <div style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+      <span class="ml-icon ml-icon-star-fill" style="color: var(--ml-color-gold-500); --ml-icon-size: 28px;"></span>
+      <div class="ml-caption">Sahel Or<br><code style="font-size:11px;">color: var(--ml-color-gold-500)</code></div>
+    </div>
+  </div>
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">Catalogue des icônes</h2>
+  <p class="ml-body-compact">Saisissez un mot-clé pour filtrer la bibliothèque d'icônes en temps réel. Cliquez sur le nom d'une icône pour copier son code HTML.</p>
+  
+  <div style="display: flex; gap: var(--ml-space-3); margin-top: var(--ml-space-4); max-width: 650px; flex-wrap: wrap; margin-bottom: var(--ml-space-6);">
+    <input type="text" id="icon-search-input" class="ml-input" placeholder="Rechercher une icône (ex: home, check, warning...)" style="flex: 1; min-width: 250px;">
+    <select id="icon-category-select" class="ml-select" style="width: 230px;">
+      <option value="">Toutes les catégories</option>
+    </select>
+  </div>
+
+  <div id="icon-gallery-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: var(--ml-space-3); margin-top: var(--ml-space-6);">
+    <!-- Dynamically populated -->
+  </div>
+
+  <script>
+    import icons from '../../data/icons.json';
+
+    const searchInput = document.getElementById('icon-search-input') as HTMLInputElement;
+    const categorySelect = document.getElementById('icon-category-select') as HTMLSelectElement;
+    const container = document.getElementById('icon-gallery-container');
+
+    // Initialiser les catégories
+    if (categorySelect) {
+      const categories = [...new Set(icons.map(i => i.category))].sort();
+      categories.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c;
+        opt.textContent = c.charAt(0).toUpperCase() + c.slice(1);
+        categorySelect.appendChild(opt);
+      });
+    }
+
+    function renderIcons() {
+      if (!container) return;
+      const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+      const category = categorySelect ? categorySelect.value : '';
+      
+      container.innerHTML = '';
+      
+      const filtered = icons.filter(i => {
+        const matchesQuery = i.name.toLowerCase().includes(query);
+        const matchesCategory = !category || i.category === category;
+        return matchesQuery && matchesCategory;
+      });
+      
+      const limit = 300;
+      const displayList = filtered.slice(0, limit);
+      
+      displayList.forEach(icon => {
+        const card = document.createElement('div');
+        card.className = 'gallery-card';
+        card.style.padding = 'var(--ml-space-3)';
+        card.style.display = 'flex';
+        card.style.flexDirection = 'column';
+        card.style.alignItems = 'center';
+        card.style.justifyContent = 'center';
+        card.style.gap = 'var(--ml-space-2)';
+        card.style.cursor = 'pointer';
+        card.style.border = '1px solid var(--ml-color-neutral-200)';
+        card.style.borderRadius = 'var(--ml-radius-s)';
+        card.style.background = 'var(--ml-color-neutral-0)';
+        card.title = 'Cliquez pour copier la balise HTML';
+        
+        card.innerHTML = `<span class="ml-icon ml-icon-${icon.name}" style="--ml-icon-size: 24px;"></span>` +
+          `<span class="ml-caption" style="text-align: center; word-break: break-all; font-size: 11px; color: var(--ml-color-neutral-900);">${icon.name}</span>`;
+        
+        card.addEventListener('click', () => {
+          const htmlSnippet = `<span class="ml-icon ml-icon-${icon.name}" aria-hidden="true"></span>`;
+          navigator.clipboard.writeText(htmlSnippet).then(() => {
+            const originalBg = card.style.background;
+            card.style.background = 'var(--ml-status-success-bg)';
+            setTimeout(() => { card.style.background = originalBg; }, 800);
+          });
+        });
+        
+        container.appendChild(card);
+      });
+      
+      if (filtered.length > limit) {
+        const info = document.createElement('div');
+        info.style.gridColumn = '1 / -1';
+        info.style.textAlign = 'center';
+        info.style.color = 'var(--ml-color-neutral-500)';
+        info.style.fontSize = '13px';
+        info.style.padding = 'var(--ml-space-4)';
+        info.innerHTML = `Affichage de ${limit} icônes sur ${filtered.length} correspondances. Affinez votre recherche pour en voir plus.`;
+        container.appendChild(info);
+      } else if (filtered.length === 0) {
+        container.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: var(--ml-space-4); color: var(--ml-color-neutral-500);">Aucune icône correspondante</div>';
+      }
+    }
+
+    if (searchInput) searchInput.addEventListener('input', renderIcons);
+    if (categorySelect) categorySelect.addEventListener('change', renderIcons);
+
+    // Initial render
+    renderIcons();
+  </script>
+
+</DocsLayout>

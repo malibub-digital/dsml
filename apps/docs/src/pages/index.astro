@@ -1,0 +1,992 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="DSML — Design System Mali | Documentation"
+  description="Documentation officielle du Design System Mali. Cadre de conception et de développement de référence pour les administrations publiques maliennes."
+>
+
+<style>
+  /* ================================================================
+     PAGE D'ACCUEIL — Styles spécifiques
+     ================================================================ */
+
+  /* ----- Hero ----- */
+  .hero {
+    background: var(--ml-gradient-dark);
+    position: relative;
+    overflow: hidden;
+    padding: 80px 0 72px;
+    color: white;
+  }
+
+  /* Motif géométrique tricolore en filigrane */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 60% 40% at 75% 50%, rgba(11, 122, 47, 0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 30% at 25% 80%, rgba(245, 197, 24, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* Bandes du drapeau en bas du hero */
+  .hero-flag {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    display: flex;
+  }
+  .hero-flag div {
+    flex: 1;
+    height: 100%;
+  }
+  .hero-flag .green { background: #14B83E; }
+  .hero-flag .yellow { background: #FBBF24; }
+  .hero-flag .red { background: #CE2029; }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(20, 184, 62, 0.15);
+    border: 1px solid rgba(20, 184, 62, 0.35);
+    color: #6EE89A;
+    font-family: var(--ml-font-title);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .hero-badge .pulse-dot {
+    width: 7px;
+    height: 7px;
+    background: #14B83E;
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  .hero-title {
+    font-family: var(--ml-font-title);
+    font-weight: 800;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.1;
+    color: white;
+    margin: 0 0 20px;
+    letter-spacing: -0.02em;
+  }
+  .hero-title .accent-green {
+    color: #6EE89A;
+  }
+
+  .hero-desc {
+    font-family: var(--ml-font-body);
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.65;
+    max-width: 560px;
+    margin: 0 0 36px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-hero-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ml-color-gold-500);
+    color: var(--ml-color-gold-900);
+    font-family: var(--ml-font-title);
+    font-weight: 800;
+    font-size: 15px;
+    padding: 13px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 2px solid transparent;
+  }
+  .btn-hero-primary:hover {
+    background: var(--ml-color-gold-600);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(245, 197, 24, 0.35);
+  }
+
+  .btn-hero-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--ml-font-title);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    transition: all 0.2s ease;
+  }
+  .btn-hero-secondary:hover {
+    background: rgba(255, 255, 255, 0.14);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  /* ----- Feature highlights ----- */
+  .features-bar {
+    background: var(--ml-color-neutral-0);
+    border-bottom: 1px solid var(--ml-color-neutral-200);
+    padding: 44px 0;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .feature-item {
+    padding: 0 28px;
+    border-right: 1px solid var(--ml-color-neutral-200);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .feature-item:first-child { padding-left: 0; }
+  .feature-item:last-child { border-right: none; padding-right: 0; }
+
+  .feature-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .feature-icon.green { background: var(--ml-color-green-50); color: var(--ml-color-green-600); }
+  .feature-icon.gold { background: var(--ml-color-gold-50); color: var(--ml-color-gold-700); }
+  .feature-icon.river { background: var(--ml-color-river-50); color: var(--ml-color-river-600); }
+  .feature-icon.neutral { background: var(--ml-color-neutral-100); color: var(--ml-color-neutral-700); }
+
+  .feature-text-title {
+    font-family: var(--ml-font-title);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ml-color-neutral-900);
+    margin: 0 0 4px;
+  }
+  .feature-text-desc {
+    font-family: var(--ml-font-body);
+    font-size: 13px;
+    color: var(--ml-color-neutral-500);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .feature-item {
+      border-right: none;
+      padding: 0;
+    }
+  }
+  @media (max-width: 480px) {
+    .features-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ----- Section générique ----- */
+  .section {
+    padding: 72px 0;
+  }
+  .section-alt {
+    background: var(--ml-color-neutral-50);
+    border-top: 1px solid var(--ml-color-neutral-200);
+    border-bottom: 1px solid var(--ml-color-neutral-200);
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+  .section-overtitle {
+    font-family: var(--ml-font-title);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ml-color-green-500);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: var(--ml-font-title);
+    font-weight: 800;
+    font-size: clamp(22px, 3vw, 30px);
+    color: var(--ml-color-neutral-900);
+    margin: 0 0 12px;
+    line-height: 1.2;
+  }
+  .section-desc {
+    font-family: var(--ml-font-body);
+    font-size: 15px;
+    color: var(--ml-color-neutral-500);
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ----- Steps (3 steps) ----- */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+  .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: calc(16.67% + 52px);
+    right: calc(16.67% + 52px);
+    height: 2px;
+    background: linear-gradient(90deg, var(--ml-color-green-200), var(--ml-color-gold-300), var(--ml-color-river-200));
+    z-index: 0;
+  }
+  @media (max-width: 768px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .steps-grid::before { display: none; }
+  }
+
+  .step-card {
+    background: var(--ml-color-neutral-0);
+    border: 1px solid var(--ml-color-neutral-200);
+    border-radius: 16px;
+    padding: 28px 24px 24px;
+    position: relative;
+    z-index: 1;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .step-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+    border-color: var(--ml-color-green-200);
+  }
+  .step-card:nth-child(2):hover { border-color: var(--ml-color-gold-300); }
+  .step-card:nth-child(3):hover { border-color: var(--ml-color-river-300); }
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--ml-color-green-500);
+    color: white;
+    font-family: var(--ml-font-title);
+    font-weight: 800;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(11, 122, 47, 0.3);
+  }
+  .step-card:nth-child(2) .step-num {
+    background: var(--ml-color-gold-600);
+    box-shadow: 0 4px 12px rgba(245, 197, 24, 0.35);
+  }
+  .step-card:nth-child(3) .step-num {
+    background: var(--ml-color-river-500);
+    box-shadow: 0 4px 12px rgba(27, 122, 148, 0.3);
+  }
+
+  .step-icon-area {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-bottom: 16px;
+  }
+  .step-icon-area.green { background: var(--ml-color-green-50); color: var(--ml-color-green-600); }
+  .step-icon-area.gold { background: var(--ml-color-gold-50); color: var(--ml-color-gold-700); }
+  .step-icon-area.river { background: var(--ml-color-river-50); color: var(--ml-color-river-600); }
+
+  .step-title {
+    font-family: var(--ml-font-title);
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--ml-color-neutral-900);
+    margin: 0 0 8px;
+  }
+  .step-desc {
+    font-family: var(--ml-font-body);
+    font-size: 14px;
+    color: var(--ml-color-neutral-500);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .step-code {
+    margin-top: 14px;
+    background: var(--ml-color-neutral-900);
+    color: #A8E6BE;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    overflow-x: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-all;
+    -webkit-overflow-scrolling: touch;
+  }
+  .step-code .dim { color: rgba(255,255,255,0.35); }
+  .step-code .hl { color: #FBBF24; }
+
+  /* ----- Preview composants ----- */
+  .preview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 768px) { .preview-grid { grid-template-columns: 1fr; } }
+
+  .preview-card {
+    background: var(--ml-color-neutral-0);
+    border: 1px solid var(--ml-color-neutral-200);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.25s ease;
+  }
+  .preview-card:hover {
+    box-shadow: var(--ml-shadow-ambient);
+    border-color: var(--ml-color-green-200);
+  }
+  .preview-card-label {
+    font-family: var(--ml-font-title);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ml-color-neutral-400);
+    padding: 12px 18px 8px;
+    border-bottom: 1px solid var(--ml-color-neutral-100);
+  }
+  .preview-card-demo {
+    padding: 24px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .preview-card-demo.col { flex-direction: column; align-items: flex-start; }
+
+  /* ----- Cards explore ----- */
+  .explore-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 640px) { .explore-grid { grid-template-columns: 1fr; } }
+
+  .explore-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid transparent;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .explore-card::after {
+    content: '→';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) translateX(0);
+    font-size: 18px;
+    font-weight: 800;
+    opacity: 0.3;
+    transition: all 0.25s ease;
+  }
+  .explore-card:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(4px);
+  }
+  .explore-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.09);
+  }
+
+  /* Green theme */
+  .explore-card.green {
+    background: var(--ml-color-green-50);
+    border-color: var(--ml-color-green-200);
+  }
+  .explore-card.green:hover { border-color: var(--ml-color-green-400); }
+  .explore-card.green .explore-icon { color: var(--ml-color-green-500); background: rgba(11, 122, 47, 0.1); }
+  .explore-card.green::after { color: var(--ml-color-green-500); }
+
+  /* Gold theme */
+  .explore-card.gold {
+    background: var(--ml-color-gold-50);
+    border-color: var(--ml-color-gold-200);
+  }
+  .explore-card.gold:hover { border-color: var(--ml-color-gold-500); }
+  .explore-card.gold .explore-icon { color: var(--ml-color-gold-600); background: rgba(245, 197, 24, 0.12); }
+  .explore-card.gold::after { color: var(--ml-color-gold-600); }
+
+  /* River theme */
+  .explore-card.river {
+    background: var(--ml-color-river-50);
+    border-color: var(--ml-color-river-200);
+  }
+  .explore-card.river:hover { border-color: var(--ml-color-river-500); }
+  .explore-card.river .explore-icon { color: var(--ml-color-river-500); background: rgba(27, 122, 148, 0.1); }
+  .explore-card.river::after { color: var(--ml-color-river-500); }
+
+  /* Neutral theme */
+  .explore-card.neutral {
+    background: var(--ml-color-neutral-100);
+    border-color: var(--ml-color-neutral-300);
+  }
+  .explore-card.neutral:hover { border-color: var(--ml-color-neutral-500); }
+  .explore-card.neutral .explore-icon { color: var(--ml-color-neutral-700); background: rgba(26,26,22,0.07); }
+  .explore-card.neutral::after { color: var(--ml-color-neutral-600); }
+
+  .explore-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .explore-text-title {
+    font-family: var(--ml-font-title);
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--ml-color-neutral-900);
+    margin: 0 0 4px;
+  }
+  .explore-text-desc {
+    font-family: var(--ml-font-body);
+    font-size: 13px;
+    color: var(--ml-color-neutral-500);
+    line-height: 1.5;
+    margin: 0;
+    padding-right: 24px;
+  }
+
+  /* ----- Code snippet ----- */
+  .quickstart {
+    background: var(--ml-color-neutral-900);
+    padding: 72px 0;
+  }
+  .snippet-wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .snippet-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0;
+    background: var(--ml-color-neutral-800);
+    padding: 12px 18px;
+    border-radius: 10px 10px 0 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .snippet-dots {
+    display: flex;
+    gap: 6px;
+  }
+  .snippet-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .snippet-dot:nth-child(1) { background: #FF5F57; }
+  .snippet-dot:nth-child(2) { background: #FFBD2E; }
+  .snippet-dot:nth-child(3) { background: #27C93F; }
+
+  .snippet-filename {
+    font-family: monospace;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    margin-left: -40px;
+  }
+  .snippet-copy-btn {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.12);
+    font-family: var(--ml-font-title);
+    font-weight: 700;
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .snippet-copy-btn:hover { background: rgba(255,255,255,0.16); color: white; }
+
+  .snippet-body {
+    background: #1A1E1C;
+    border-radius: 0 0 10px 10px;
+    padding: 22px 22px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    overflow-x: auto;
+  }
+  .code-comment { color: rgba(255,255,255,0.25); }
+  .code-tag { color: #79B8FF; }
+  .code-attr { color: #FFAB70; }
+  .code-val { color: #9ECBFF; }
+  .code-str { color: #A8E6BE; }
+  .code-special { color: #FBBF24; }
+
+  /* ----- CTA finale ----- */
+  .cta-final {
+    background: var(--ml-gradient-royal);
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-final::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(245, 197, 24, 0.08) 0%, transparent 70%);
+  }
+  .cta-final-content { position: relative; z-index: 1; }
+  .cta-final-title {
+    font-family: var(--ml-font-title);
+    font-weight: 800;
+    font-size: clamp(24px, 3.5vw, 36px);
+    color: white;
+    margin: 0 0 14px;
+  }
+  .cta-final-desc {
+    font-family: var(--ml-font-body);
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    margin: 0 0 36px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  .cta-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>
+
+  
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+
+        <!-- Badge Alpha -->
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          v0.1 — Alpha publique
+        </div>
+
+        <!-- Titre -->
+        <h1 class="hero-title">
+          Le design system<br>
+          de l'<span class="accent-green">État malien</span>
+        </h1>
+
+        <!-- Description -->
+        <p class="hero-desc">
+          Un cadre de conception et de développement officiel, léger et accessible, 
+          pour tous les services numériques de l'administration malienne.
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero-actions">
+          <a href="/introduction/" class="btn-hero-primary">
+            Démarrer maintenant
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://github.com/malibub-digital/dsml" target="_blank" rel="noopener noreferrer" class="btn-hero-secondary">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            Voir sur GitHub
+          </a>
+        </div>
+
+      </div>
+    </div>
+    <!-- Bandes du drapeau mali -->
+    <div class="hero-flag" aria-hidden="true">
+      <div class="green"></div>
+      <div class="yellow"></div>
+      <div class="red"></div>
+    </div>
+  </section>
+
+  
+  <section class="features-bar">
+    <div class="container">
+      <div class="features-grid">
+
+        <div class="feature-item">
+          <div class="feature-icon green">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <p class="feature-text-title">Identité d'État</p>
+            <p class="feature-text-desc">Charte graphique officielle de la République du Mali, intégrée par défaut.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon gold">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div>
+            <p class="feature-text-title">Aucune dépendance</p>
+            <p class="feature-text-desc">Une seule ligne de CSS. Zéro JavaScript requis, zéro Node.js.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon river">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            <p class="feature-text-title">Responsive natif</p>
+            <p class="feature-text-desc">Conçu pour tous les écrans, du mobile aux bornes administratives.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon neutral">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>
+          </div>
+          <div>
+            <p class="feature-text-title">Licence MIT</p>
+            <p class="feature-text-desc">Projet ouvert, librement réutilisable pour tout service public malien.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-overtitle">Démarrage</div>
+        <h2 class="section-title">Intégrez le DSML</h2>
+        <p class="section-desc">Sans Node.js, sans bundler. Une ligne de CSS suffit pour commencer.</p>
+      </div>
+
+      <div class="steps-grid">
+
+        <!-- Étape 1 -->
+        <div class="step-card">
+          <div class="step-icon-area green">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+          </div>
+          <div class="step-header">
+            <h3 class="step-title">Copiez le lien CSS</h3>
+          </div>
+          <p class="step-desc">Ajoutez une seule balise dans votre <code>&lt;head&gt;</code>.</p>
+          <div class="step-code">
+            <span class="dim">&lt;</span><span class="hl">link</span>
+            <span class="dim"> rel="stylesheet"</span><br>
+            &nbsp;&nbsp;<span class="dim">href="</span>https://cdn.dsml.ml/v0.1/dsml.css<span class="dim">"&gt;</span>
+          </div>
+        </div>
+
+        <!-- Étape 2 -->
+        <div class="step-card">
+          <div class="step-icon-area gold">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <polyline points="16 18 22 12 16 6"/>
+              <polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </div>
+          <div class="step-header">
+            <h3 class="step-title">Utilisez les classes</h3>
+          </div>
+          <p class="step-desc">Chaque composant s'active avec une simple classe HTML sémantique.</p>
+          <div class="step-code">
+            <span class="dim">&lt;</span><span class="hl">button</span>
+            <span class="dim"> class="</span><span style="color:#FBBF24">ml-btn ml-btn-primary</span><span class="dim">"&gt;</span><br>
+            &nbsp;&nbsp;Envoyer la demande<br>
+            <span class="dim">&lt;/</span><span class="hl">button</span><span class="dim">&gt;</span>
+          </div>
+        </div>
+
+        <!-- Étape 3 -->
+        <div class="step-card">
+          <div class="step-icon-area river">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <div class="step-header">
+            <h3 class="step-title">Livrez votre service</h3>
+          </div>
+          <p class="step-desc">Le design est conforme aux standards de l'État malien. Aucune configuration.</p>
+          <div class="step-code" style="color: #6EE89A; padding-top: 16px; padding-bottom: 16px;">
+            ✓ Identité d'État intégrée<br>
+            ✓ Responsive &amp; accessible<br>
+            ✓ 0 dépendance JS requise
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-overtitle">Aperçu</div>
+        <h2 class="section-title">Des composants prêts à l'emploi</h2>
+        <p class="section-desc">Boutons, alertes, badges et cartes — tous construits avec du HTML sémantique pur.</p>
+      </div>
+
+      <div class="preview-grid">
+
+        <!-- Preview : Boutons -->
+        <div class="preview-card">
+          <div class="preview-card-label">Boutons</div>
+          <div class="preview-card-demo">
+            <a href="/composants/boutons/" class="ml-btn ml-btn-primary">Primaire</a>
+            <a href="/composants/boutons/" class="ml-btn ml-btn-secondary">Secondaire</a>
+            <a href="/composants/boutons/" class="ml-btn ml-btn-accent">Accent</a>
+            <a href="/composants/boutons/" class="ml-btn ml-btn-ghost">Ghost</a>
+          </div>
+        </div>
+
+        <!-- Preview : Badges -->
+        <div class="preview-card">
+          <div class="preview-card-label">Badges & Statuts</div>
+          <div class="preview-card-demo">
+            <span class="ml-badge ml-badge-success">Approuvé</span>
+            <span class="ml-badge ml-badge-warning">En attente</span>
+            <span class="ml-badge ml-badge-error">Rejeté</span>
+            <span class="ml-badge ml-badge-info">En cours</span>
+          </div>
+        </div>
+
+        <!-- Preview : Alerte -->
+        <div class="preview-card">
+          <div class="preview-card-label">Alertes</div>
+          <div class="preview-card-demo col">
+            <div class="ml-alert ml-alert-success" style="width: 100%;">
+              <div class="ml-alert-dot"></div>
+              <div class="ml-alert-content">Votre dossier a été transmis avec succès.</div>
+            </div>
+            <div class="ml-alert ml-alert-info" style="width: 100%;">
+              <div class="ml-alert-dot"></div>
+              <div class="ml-alert-content">Ce formulaire est officiel et sécurisé.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preview : Carte -->
+        <div class="preview-card">
+          <div class="preview-card-label">Carte (Card)</div>
+          <div class="preview-card-demo" style="padding: 16px;">
+            <div class="ml-card" style="width: 100%; gap: 10px;">
+              <div class="ml-card-icon">
+                <span class="ml-icon ml-icon-government-fill" style="--ml-icon-size: 18px;"></span>
+              </div>
+              <div class="ml-card-title">Mairie de Bamako</div>
+              <div class="ml-card-desc">Services administratifs en ligne — état civil, permis, foncier.</div>
+              <div class="ml-card-link">Consulter →</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-overtitle">Documentation</div>
+        <h2 class="section-title">Explorer le système</h2>
+        <p class="section-desc">Fondations, composants et gabarits — une documentation complète pour chaque besoin.</p>
+      </div>
+
+      <div class="explore-grid">
+
+        <a href="/fondations/couleurs/" class="explore-card green">
+          <div class="explore-icon">
+            <span class="ml-icon ml-icon-palette-fill" style="--ml-icon-size: 22px;"></span>
+          </div>
+          <div>
+            <div class="explore-text-title">Fondations</div>
+            <p class="explore-text-desc">Couleurs officielles, typographie, espacements, rayons et ombres — les tokens fondamentaux.</p>
+          </div>
+        </a>
+
+        <a href="/composants/boutons/" class="explore-card gold">
+          <div class="explore-icon">
+            <span class="ml-icon ml-icon-layout-grid-fill" style="--ml-icon-size: 22px;"></span>
+          </div>
+          <div>
+            <div class="explore-text-title">Composants</div>
+            <p class="explore-text-desc">Boutons, alertes, cartes, formulaires, accordéons, badges et modules interactifs.</p>
+          </div>
+        </a>
+
+        <a href="/layouts/header-footer/" class="explore-card river">
+          <div class="explore-icon">
+            <span class="ml-icon ml-icon-window-fill" style="--ml-icon-size: 22px;"></span>
+          </div>
+          <div>
+            <div class="explore-text-title">Gabarits de page</div>
+            <p class="explore-text-desc">En-têtes officiels, pieds de page de la République, et agencements complets prêts à l'emploi.</p>
+          </div>
+        </a>
+
+        <a href="/installation/" class="explore-card neutral">
+          <div class="explore-icon">
+            <span class="ml-icon ml-icon-download-cloud-fill" style="--ml-icon-size: 22px;"></span>
+          </div>
+          <div>
+            <div class="explore-text-title">Installation</div>
+            <p class="explore-text-desc">Guide d'intégration en quelques minutes, avec ou sans outil de build.</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="quickstart">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 36px;">
+        <div class="section-overtitle" style="color: var(--ml-color-green-mint);">Code</div>
+        <h2 class="section-title" style="color: white;">Intégrez en 30 secondes</h2>
+        <p class="section-desc" style="color: rgba(255,255,255,0.5);">
+          Copiez ce bloc dans le <code style="background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; color: #A8E6BE;">&lt;head&gt;</code> de vos pages.
+        </p>
+      </div>
+
+      <div class="snippet-wrapper">
+        <div class="snippet-header">
+          <div class="snippet-dots">
+            <div class="snippet-dot"></div>
+            <div class="snippet-dot"></div>
+            <div class="snippet-dot"></div>
+          </div>
+          <span class="snippet-filename">index.html</span>
+          <button class="snippet-copy-btn" id="snippet-copy-btn">Copier</button>
+        </div>
+        <div class="snippet-body" id="snippet-body">
+          <span class="code-comment">&lt;!-- 1. Official DSML fonts --&gt;</span><br>
+          <span class="code-tag">&lt;link</span> <span class="code-attr">rel</span>=<span class="code-val">"preconnect"</span> <span class="code-attr">href</span>=<span class="code-val">"https://fonts.googleapis.com"</span><span class="code-tag">&gt;</span><br>
+          <span class="code-tag">&lt;link</span> <span class="code-attr">href</span>=<span class="code-val">"https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&amp;family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&amp;display=swap"</span> <span class="code-attr">rel</span>=<span class="code-val">"stylesheet"</span><span class="code-tag">&gt;</span><br>
+          <br>
+          <span class="code-comment">&lt;!-- 2. DSML stylesheet --&gt;</span><br>
+          <span class="code-tag">&lt;link</span> <span class="code-attr">rel</span>=<span class="code-val">"stylesheet"</span> <span class="code-attr">href</span>=<span class="code-special">"https://cdn.dsml.ml/v0.1/dsml.css"</span><span class="code-tag">&gt;</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  
+  <section class="cta-final">
+    <div class="container">
+      <div class="cta-final-content">
+        <h2 class="cta-final-title">Contribuez au Design System Mali</h2>
+        <p class="cta-final-desc">
+          Le DSML est un projet ouvert. Signalez un bug, proposez un composant ou améliorez la documentation.
+        </p>
+        <div class="cta-actions">
+          <a href="https://github.com/malibub-digital/dsml" target="_blank" rel="noopener noreferrer" class="btn-hero-primary">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            Ouvrir sur GitHub
+          </a>
+          <a href="/contribuer/" class="btn-hero-secondary">
+            Guide de contribution
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SCRIPTS
+       ====================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // --- Bouton Copier snippet ---
+      const copyBtn = document.getElementById('snippet-copy-btn');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+          const text = `<link rel="preconnect" href="https://fonts.googleapis.com">\n<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">\n\n<link rel="stylesheet" href="https://cdn.dsml.ml/v0.1/dsml.css">`;
+          navigator.clipboard.writeText(text).then(() => {
+            copyBtn.textContent = '✓ Copié !';
+            copyBtn.style.color = '#6EE89A';
+            setTimeout(() => {
+              copyBtn.textContent = 'Copier';
+              copyBtn.style.color = '';
+            }, 2000);
+          }).catch(() => {
+            copyBtn.textContent = 'Erreur';
+            setTimeout(() => copyBtn.textContent = 'Copier', 2000);
+          });
+        });
+      }
+
+    });
+  </script>
+
+</BaseLayout>

@@ -1,0 +1,66 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import CodeBlock from '../../../components/CodeBlock.astro';
+import Sommaire from '../../../components/Sommaire.astro';
+
+const summaryItems = [
+  { href: "#drapeau", label: "1. Drapeau Tricolore (.ml-flag)" },
+  { href: "#barre-tricolore", label: "2. Bandeau d'Exception (.ml-tricolor-bar)" },
+  { href: "#regles-usage", label: "3. Règles d'usage et conformité" },
+];
+---
+
+<DocsLayout
+  title="07. Marque & Drapeau"
+  description="Symboles républicains et identité de la République du Mali dans le DSML."
+  pageTitle="07. Marque & Drapeau Républicain"
+  pageSubtitle="Composants et règles d'affichage officiels des symboles de la République du Mali."
+>
+
+  <Sommaire items={summaryItems} />
+
+  <h2 id="drapeau" class="ml-title-2" style="margin-top: var(--ml-space-8);">1. Drapeau Tricolore (.ml-flag)</h2>
+  <p class="ml-body" style="color: var(--ml-color-neutral-700); margin-bottom: var(--ml-space-4);">
+    Le drapeau national officiel (Vert, Or, Rouge) est encadré et stylisé pour garantir l'uniformité sur les blocs d'en-tête, les cartes officielles et les pieds de page des ministères et agences.
+  </p>
+
+  <div class="demo-preview" style="display: flex; align-items: center; gap: var(--ml-space-4);">
+    <div class="ml-flag" aria-label="Drapeau de la République du Mali">
+      <div class="green"></div>
+      <div class="yellow"></div>
+      <div class="red"></div>
+    </div>
+    <span style="font-weight: 700; font-family: var(--ml-font-title);">République du Mali</span>
+  </div>
+
+  <CodeBlock code={`<div class="ml-flag" aria-label="Drapeau de la République du Mali">
+  <div class="green"></div>
+  <div class="yellow"></div>
+  <div class="red"></div>
+</div>`} lang="html" />
+
+  <h2 id="barre-tricolore" class="ml-title-2" style="margin-top: var(--ml-space-8);">2. Bandeau d'Exception (.ml-tricolor-bar)</h2>
+  <p class="ml-body" style="color: var(--ml-color-neutral-700); margin-bottom: var(--ml-space-4);">
+    La barre tricolore sous le titre de la marque souligne la signature officielle sur l'en-tête de tous les sites du gouvernement du Mali.
+  </p>
+
+  <div class="demo-preview" style="display: block; width: 100%; max-width: 300px;">
+    <div class="ml-tricolor-bar" style="height: 4px; display: flex; border-radius: 2px; overflow: hidden;">
+      <div class="green" style="flex: 1; background-color: #14A038;"></div>
+      <div class="yellow" style="flex: 1; background-color: #F5C518;"></div>
+      <div class="red" style="flex: 1; background-color: #CE2029;"></div>
+    </div>
+  </div>
+
+  <CodeBlock code={`<div class="ml-tricolor-bar">
+  <div class="green"></div>
+  <div class="yellow"></div>
+  <div class="red"></div>
+</div>`} lang="html" />
+
+  <h2 id="regles-usage" class="ml-title-2" style="margin-top: var(--ml-space-8);">3. Règles d'usage et conformité</h2>
+  <div class="doc-note">
+    <strong>Obligation légale & charte :</strong> Les couleurs officielles sont Vert (ISO/HEX #14A038), Or (#F5C518) et Rouge (#CE2029). L'ordre Vert - Jaune/Or - Rouge doit impérativement être respecté de gauche à droite.
+  </div>
+
+</DocsLayout>

@@ -1,0 +1,160 @@
+---
+---
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Démo Header Non-Fixe — DSML</title>
+    <link rel="stylesheet" href="/dsml/css/dsml.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--ml-color-neutral-50);
+        font-family: var(--ml-font-body);
+        color: var(--ml-color-neutral-900);
+      }
+      .demo-content {
+        padding: var(--ml-space-8) var(--ml-space-4);
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .demo-card {
+        background: var(--ml-color-neutral-0);
+        padding: var(--ml-space-6);
+        border-radius: var(--ml-radius-l);
+        border: 1px solid var(--ml-color-neutral-200);
+        margin-bottom: var(--ml-space-6);
+        box-shadow: var(--ml-shadow-soft);
+      }
+      .demo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--ml-space-4);
+        margin-top: var(--ml-space-4);
+      }
+      .demo-item {
+        background: var(--ml-color-neutral-100);
+        padding: var(--ml-space-4);
+        border-radius: var(--ml-radius-m);
+        border: 1px solid var(--ml-color-neutral-200);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="ml-header" id="demo-header">
+      <div class="container">
+        <div class="header-top">
+          <a href="#" class="brand-block">
+            <img src="/dsml/assets/logo-mali.svg" alt="Armoiries du Mali" class="ml-header-logo" />
+            <div class="brand-text">
+              <div class="brand-title">RÉPUBLIQUE DU MALI</div>
+              <div class="site-title">Ministère de l'Économie et des Finances</div>
+              <div class="ml-tricolor-bar">
+                <div class="green"></div>
+                <div class="yellow"></div>
+                <div class="red"></div>
+              </div>
+            </div>
+          </a>
+          <div class="header-actions">
+            <a href="#" class="header-link">Aide & Contact</a>
+            <button class="ml-header-burger" id="burger-btn" aria-label="Menu Mobile">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <nav class="ml-header-nav" id="demo-nav" aria-label="Menu principal">
+          <div class="ml-header-nav-header">
+            <span>Navigation</span>
+            <button class="ml-header-nav-close" id="close-btn" aria-label="Fermer le menu">&times;</button>
+          </div>
+          <a href="#" class="ml-nav-item active">Accueil</a>
+          <a href="#" class="ml-nav-item">Services en ligne</a>
+          <a href="#" class="ml-nav-item">Démarches & Impôts</a>
+          <a href="#" class="ml-nav-item">Actualités</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="demo-content">
+      <div class="demo-card">
+        <div class="ml-badge ml-badge-success" style="margin-bottom: var(--ml-space-2);">Comportement par Défaut</div>
+        <h1 class="ml-title-1">Mode 1 : En-tête Non-Fixe (Statique)</h1>
+        <p class="ml-body">
+          L'en-tête (<code>.ml-header</code>) défile naturellement avec le reste du document. C'est le comportement standard préconisé sur mobile et pour les portails de lecture de contenu afin de maximiser la surface d'affichage utile.
+        </p>
+      </div>
+
+      <div class="demo-card">
+        <h2 class="ml-title-2">Test de défilement (Scroll)</h2>
+        <p class="ml-body">
+          Faites défiler cette page vers le bas : l'en-tête remonte et s'efface naturellement avec le défilement.
+        </p>
+      </div>
+
+      <div class="demo-card">
+        <h3 class="ml-title-3">Services Administratifs en Ligne</h3>
+        <p class="ml-body-compact">Consultez l'ensemble des démarches disponibles pour les citoyens et les entreprises.</p>
+        <div class="demo-grid">
+          <div class="demo-item">
+            <h4 class="ml-label">Déclaration d'Impôts</h4>
+            <p class="ml-body-compact">Accès au portail de télédéclaration fiscale sécurisé.</p>
+          </div>
+          <div class="demo-item">
+            <h4 class="ml-label">Demande d'Acte d'État Civil</h4>
+            <p class="ml-body-compact">Extrait de naissance, certificat de mariage et de résidence.</p>
+          </div>
+          <div class="demo-item">
+            <h4 class="ml-label">Immatriculation d'Entreprise</h4>
+            <p class="ml-body-compact">Guichet unique pour la création et la gestion d'entreprises au Mali.</p>
+          </div>
+          <div class="demo-item">
+            <h4 class="ml-label">Marchés Publics</h4>
+            <p class="ml-body-compact">Consultation des avis d'appels d'offres et résultats.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3 class="ml-title-3">Actualités et Communiqués Officiels</h3>
+        <p class="ml-body">
+          Le Ministère de l'Économie annonce de nouvelles réformes administratives visant la dématérialisation complète des pièces officielles d'ici la fin de l'année.
+        </p>
+      </div>
+
+      <div class="demo-card" style="height: 350px;">
+        <h3 class="ml-title-3">Bloc d'information 1</h3>
+        <p class="ml-body">Continuez à défiler pour tester la remontée complète de l'en-tête.</p>
+      </div>
+
+      <div class="demo-card" style="height: 350px;">
+        <h3 class="ml-title-3">Bloc d'information 2</h3>
+        <p class="ml-body">Zone inférieure de défilement.</p>
+      </div>
+
+      <div class="demo-card" style="height: 350px;">
+        <h3 class="ml-title-3">Pied de page de démonstration</h3>
+        <p class="ml-body-compact">Fin de la page de démonstration.</p>
+      </div>
+    </main>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const burgerBtn = document.getElementById('burger-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const nav = document.getElementById('demo-nav');
+
+        if (burgerBtn && nav) {
+          burgerBtn.addEventListener('click', () => nav.classList.toggle('is-open'));
+        }
+        if (closeBtn && nav) {
+          closeBtn.addEventListener('click', () => nav.classList.remove('is-open'));
+        }
+      });
+    </script>
+  </body>
+</html>

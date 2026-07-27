@@ -1,0 +1,149 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout
+  title="Espacements"
+  description="Grille et système de marges et paddings (spacing tokens) du DSML."
+  pageTitle="Espacements"
+  pageSubtitle="Le rythme de mise en page utilise une grille d'espacement stricte à base 4px pour garantir la cohérence d'un écran à l'autre."
+>
+
+  <h2 class="ml-title-2">Tokens d'espacement</h2>
+  <p class="ml-body-compact" style="margin-top: var(--ml-space-2); margin-bottom: var(--ml-space-4);">
+    Chaque token correspond à un multiple de 4px. Utilisez toujours les variables CSS — jamais de valeurs arbitraires en dur.
+  </p>
+  
+  <div style="background-color: var(--ml-color-neutral-0); padding: 24px; border: 1px solid var(--ml-color-neutral-200); border-radius: var(--ml-radius-l); margin-top: var(--ml-space-4);">
+    <div class="spacing-item">
+      <span class="spacing-var">--ml-space-1 (4px)</span>
+      <div class="spacing-bar" style="width: 4px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-var">--ml-space-2 (8px)</span>
+      <div class="spacing-bar" style="width: 8px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-var">--ml-space-3 (12px)</span>
+      <div class="spacing-bar" style="width: 12px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-var">--ml-space-4 (16px)</span>
+      <div class="spacing-bar" style="width: 16px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-var">--ml-space-5 (20px)</span>
+      <div class="spacing-bar" style="width: 20px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-var">--ml-space-6 (24px)</span>
+      <div class="spacing-bar" style="width: 24px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-var">--ml-space-8 (32px)</span>
+      <div class="spacing-bar" style="width: 32px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-var">--ml-space-10 (40px)</span>
+      <div class="spacing-bar" style="width: 40px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-var">--ml-space-12 (48px)</span>
+      <div class="spacing-bar" style="width: 48px;"></div>
+    </div>
+    <div class="spacing-item">
+      <span class="spacing-var">--ml-space-16 (64px)</span>
+      <div class="spacing-bar" style="width: 64px;"></div>
+    </div>
+  </div>
+
+  <h2 class="ml-title-2">Classes utilitaires d'espacement</h2>
+  <p class="ml-body-compact" style="margin-top: var(--ml-space-2); margin-bottom: var(--ml-space-4);">
+    Le DSML fournit des classes utilitaires pour appliquer rapidement des marges et paddings sans écrire de CSS supplémentaire. Elles suivent la convention <code>ml-&#x7B;propriété&#x7D;-&#x7B;valeur&#x7D;</code>.
+  </p>
+
+  <div class="ml-alert ml-alert-info" style="margin-bottom: var(--ml-space-6);">
+    <div class="ml-alert-dot"></div>
+    <div class="ml-alert-content">
+      Ces classes sont conçues pour un usage <strong>ponctuel</strong> dans du HTML. Pour des composants récurrents, préférez des classes CSS dédiées dans votre propre feuille de style.
+    </div>
+  </div>
+
+  <h3 class="ml-title-3">Marges (margin)</h3>
+  <div style="overflow-x: auto; margin-top: var(--ml-space-3); margin-bottom: var(--ml-space-6);">
+    <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="background: var(--ml-color-neutral-50); border-bottom: 2px solid var(--ml-color-neutral-200);">
+          <th style="padding: 10px 14px; text-align: left; font-family: var(--ml-font-title); font-weight: 700;">Classe</th>
+          <th style="padding: 10px 14px; text-align: left; font-family: var(--ml-font-title); font-weight: 700;">Propriété CSS</th>
+          <th style="padding: 10px 14px; text-align: left; font-family: var(--ml-font-title); font-weight: 700;">Valeurs disponibles</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['ml-mt-{n}', 'margin-top', '0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16'],
+          ['ml-mb-{n}', 'margin-bottom', '0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16'],
+          ['ml-ml-{n}', 'margin-left', '0, 1, 2, 3, 4, 6, 8'],
+          ['ml-mr-{n}', 'margin-right', '0, 1, 2, 3, 4, 6, 8'],
+          ['ml-mx-auto', 'margin-left + right', 'auto (centrage horizontal)'],
+        ].map(([cls, prop, val]) => (
+          <tr style="border-bottom: 1px solid var(--ml-color-neutral-100);">
+            <td style="padding: 10px 14px;"><code>{cls}</code></td>
+            <td style="padding: 10px 14px; color: var(--ml-color-neutral-600);">{prop}</td>
+            <td style="padding: 10px 14px; color: var(--ml-color-neutral-500); font-size: 12px;">{val}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="ml-title-3">Paddings</h3>
+  <div style="overflow-x: auto; margin-top: var(--ml-space-3); margin-bottom: var(--ml-space-6);">
+    <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="background: var(--ml-color-neutral-50); border-bottom: 2px solid var(--ml-color-neutral-200);">
+          <th style="padding: 10px 14px; text-align: left; font-family: var(--ml-font-title); font-weight: 700;">Classe</th>
+          <th style="padding: 10px 14px; text-align: left; font-family: var(--ml-font-title); font-weight: 700;">Propriété CSS</th>
+          <th style="padding: 10px 14px; text-align: left; font-family: var(--ml-font-title); font-weight: 700;">Valeurs disponibles</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['ml-pt-{n}', 'padding-top', '0, 1, 2, 3, 4, 5, 6, 8, 10, 12'],
+          ['ml-pb-{n}', 'padding-bottom', '0, 1, 2, 3, 4, 5, 6, 8, 10, 12'],
+          ['ml-px-{n}', 'padding-left + right', '0, 3, 4, 6, 8'],
+          ['ml-py-{n}', 'padding-top + bottom', '0, 3, 4, 6, 8, 10'],
+        ].map(([cls, prop, val]) => (
+          <tr style="border-bottom: 1px solid var(--ml-color-neutral-100);">
+            <td style="padding: 10px 14px;"><code>{cls}</code></td>
+            <td style="padding: 10px 14px; color: var(--ml-color-neutral-600);">{prop}</td>
+            <td style="padding: 10px 14px; color: var(--ml-color-neutral-500); font-size: 12px;">{val}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="ml-title-2">Exemples d'utilisation</h2>
+  <p class="ml-body-compact" style="margin-top: var(--ml-space-2);">Dans vos propres feuilles de style, référencez toujours les variables :</p>
+  <CodeBlock code={`.mon-composant {
+  padding: var(--ml-space-4) var(--ml-space-6);
+  margin-bottom: var(--ml-space-8);
+  gap: var(--ml-space-3);
+}`} lang="css" />
+
+  <p class="ml-body-compact" style="margin-top: var(--ml-space-4);">Ou directement dans le HTML via les classes utilitaires pour des ajustements ponctuels :</p>
+  <CodeBlock code={`<!-- Add 32px bottom margin (space-8) -->
+<div class="ml-mb-8">...</div>
+
+<!-- Center block with max width -->
+<div class="ml-mx-auto" style="max-width: 600px;">...</div>
+
+<!-- Horizontal padding of 24px (space-6) -->
+<section class="ml-px-6">...</section>
+
+<!-- Remove top margin on heading -->
+<h2 class="ml-title-2 ml-mt-4">Titre rapproché</h2>`} lang="html" />
+
+</DocsLayout>

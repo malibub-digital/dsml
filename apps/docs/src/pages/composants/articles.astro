@@ -1,0 +1,87 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout
+  title="Contenu & Articles"
+  description="Styles typographiques et mise en page pour la publication d'articles et communiqués du DSML."
+  pageTitle="Contenu & Articles"
+  pageSubtitle="Ensemble de styles typographiques et de mise en page pour la publication de communiqués de presse, actualités administratives et articles de fond."
+>
+
+  <h2 class="ml-title-2">1. Structure de l'Article</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">
+    Le conteneur <code>.ml-article</code> limite la largeur à 720px pour maintenir un confort de lecture optimal (environ 75-80 caractères par ligne). L'en-tête regroupe les métadonnées de publication.
+  </p>
+  
+  <div class="demo-preview" style="justify-content: flex-start; align-items: stretch; text-align: left; width: 100%;">
+    <article class="ml-article" style="margin: 0; padding: var(--ml-space-4); background-color: var(--ml-color-neutral-50); border: 1px solid var(--ml-color-neutral-200); border-radius: var(--ml-radius-m); max-width: 100%; width: 100%;">
+      <header class="ml-article-header">
+        <div class="ml-article-meta" style="display: flex; align-items: center; gap: var(--ml-space-2); font-size: 13px; color: var(--ml-color-neutral-500); margin-bottom: var(--ml-space-2);">
+          <span class="ml-badge ml-badge-info">Communiqué</span>
+          <span>•</span>
+          <time datetime="2026-07-19">19 juillet 2026</time>
+          <span>•</span>
+          <span>Lecture 3 min</span>
+        </div>
+        <h1 class="ml-article-title" style="font-size: 24px; margin: 0; font-family: var(--ml-font-title); font-weight: 800; color: var(--ml-color-neutral-900);">Simplification des démarches consulaires</h1>
+      </header>
+      <div class="ml-article-body" style="margin-top: var(--ml-space-4);">
+        <p class="ml-lead" style="font-size: 17px; font-weight: 700; color: var(--ml-color-neutral-800); margin-bottom: var(--ml-space-3);">Le Consulat général du Mali à Lyon annonce la mise en service de nouveaux outils numériques pour réduire les délais de traitement.</p>
+        <p class="ml-body" style="margin-bottom: var(--ml-space-3);">Dans le cadre de la modernisation de nos services publics, plusieurs ajustements ont été effectués pour simplifier la vie des usagers de la diaspora...</p>
+      </div>
+    </article>
+  </div>
+
+  <CodeBlock code={`<article class="ml-article">
+  <header class="ml-article-header">
+    <div class="ml-article-meta">
+      <span class="ml-badge ml-badge-info">Communiqué</span>
+      <time datetime="2026-07-19">19 juillet 2026</time>
+      <span>Lecture 3 min</span>
+    </div>
+    <h1 class="ml-article-title">Simplification des démarches</h1>
+  </header>
+
+  <div class="ml-article-body">
+    <p class="ml-lead">Introduction plus grande...</p>
+    <p>Corps de texte standard de l'article...</p>
+  </div>
+</article>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">2. Citations Administratives (Blockquotes)</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">
+    Le composant <code>.ml-blockquote</code> permet de mettre en valeur une déclaration officielle, un avertissement important ou une directive de sécurité.
+  </p>
+  
+  <div class="demo-preview" style="text-align: left; display: block; background-color: var(--ml-color-neutral-50); width: 100%;">
+    <blockquote class="ml-blockquote" style="margin: 0; padding-left: var(--ml-space-4); border-left: 4px solid var(--ml-color-green-500); font-style: italic;">
+      <p style="margin-bottom: var(--ml-space-2);">« Tout dossier incomplet le jour du rendez-vous sera systématiquement rejeté. Assurez-vous de photocopier toutes les pièces justificatives requises en amont. »</p>
+      <cite class="ml-blockquote-footer" style="display: block; font-size: 13px; font-weight: bold; color: var(--ml-color-neutral-500);">— Service des Visas, Consulat du Mali à Lyon</cite>
+    </blockquote>
+  </div>
+
+  <CodeBlock code={`<blockquote class="ml-blockquote">
+  <p>« Texte de la citation officielle... »</p>
+  <cite class="ml-blockquote-footer">— Auteur ou Service Émetteur</cite>
+</blockquote>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">3. Images Légendées (Figures)</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">
+    L'utilisation conjointe des balises <code>.ml-figure</code> et <code>.ml-figcaption</code> offre un cadre harmonieux pour les images d'illustration dans les articles.
+  </p>
+  
+  <div class="demo-preview" style="display: block; background-color: var(--ml-color-neutral-50); width: 100%;">
+    <figure class="ml-figure" style="margin: 0 auto; max-width: 420px; text-align: center;">
+      <img src="/images/mali-28.jpg" alt="Inauguration de la permanence consulaire" style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--ml-radius-m);">
+      <figcaption class="ml-figcaption" style="margin-top: var(--ml-space-2); font-size: 13px; color: var(--ml-color-neutral-500);">Inauguration de la nouvelle permanence consulaire.</figcaption>
+    </figure>
+  </div>
+
+  <CodeBlock code={`<figure class="ml-figure">
+  <img src="chemin/image.jpg" alt="Description">
+  <figcaption class="ml-figcaption">Légende descriptive.</figcaption>
+</figure>`} lang="html" />
+
+</DocsLayout>

@@ -1,0 +1,43 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout
+  title="Typographie"
+  description="Les polices et échelles typographiques du DSML."
+  pageTitle="Typographie"
+  pageSubtitle="Deux polices distinctes séparent l'interface du texte courant pour assurer une lisibilité absolue."
+>
+
+  <h2 class="ml-title-2">Familles de polices</h2>
+  <ul class="doc-list" style="margin-top: var(--ml-space-2);">
+    <li><strong>Archivo :</strong> Pour les titres et l'interface utilisateur (Variable CSS : <code>--ml-font-title</code>).</li>
+    <li><strong>Atkinson Hyperlegible :</strong> Dessinée spécifiquement par l'institut Braille pour maximiser le contraste des glyphes et la lisibilité, notamment pour les malvoyants ou les écrans mobiles (Variable CSS : <code>--ml-font-body</code>).</li>
+  </ul>
+
+  <h2 class="ml-title-2">Hiérarchie & Échelle</h2>
+  <div style="background: var(--ml-color-neutral-0); border: 1px solid var(--ml-color-neutral-200); border-radius: var(--ml-radius-l); overflow: hidden; margin-top: var(--ml-space-4);">
+    <div style="padding: 16px 24px; border-bottom: 1px solid var(--ml-color-neutral-100); display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap;">
+      <div style="width: 180px; font-size: 12px; font-weight: 700; color: var(--ml-color-neutral-500);">Display (.ml-display)</div>
+      <div class="ml-display">Vos démarches en ligne</div>
+    </div>
+    <div style="padding: 16px 24px; border-bottom: 1px solid var(--ml-color-neutral-100); display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap;">
+      <div style="width: 180px; font-size: 12px; font-weight: 700; color: var(--ml-color-neutral-500);">Titre 2 (.ml-title-2)</div>
+      <div class="ml-title-2">Préparez votre visite</div>
+    </div>
+    <div style="padding: 16px 24px; border-bottom: 1px solid var(--ml-color-neutral-100); display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap;">
+      <div style="width: 180px; font-size: 12px; font-weight: 700; color: var(--ml-color-neutral-500);">Titre 3 (.ml-title-3)</div>
+      <div class="ml-title-3">Carte consulaire</div>
+    </div>
+    <div style="padding: 16px 24px; border-bottom: 1px solid var(--ml-color-neutral-100); display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap;">
+      <div style="width: 180px; font-size: 12px; font-weight: 700; color: var(--ml-color-neutral-500);">Corps (.ml-body)</div>
+      <div class="ml-body">La carte consulaire est obligatoire pour tout ressortissant malien résidant dans la région de Lyon.</div>
+    </div>
+  </div>
+
+  <h2 class="ml-title-2">Exemple d'intégration</h2>
+  <CodeBlock code={`<h1 class="ml-display">Titre principal</h1>
+<p class="ml-body">Texte courant en Atkinson Hyperlegible.</p>`} lang="html" />
+
+</DocsLayout>

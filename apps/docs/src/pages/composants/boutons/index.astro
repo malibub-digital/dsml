@@ -1,0 +1,140 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import CodeBlock from '../../../components/CodeBlock.astro';
+---
+
+<DocsLayout
+  title="Boutons"
+  description="Documentation des composants boutons du DSML — variantes, tailles et états."
+  pageTitle="Boutons"
+  pageSubtitle="Les boutons permettent aux usagers de déclencher des actions, d'interagir ou de valider des formulaires administratifs."
+>
+
+  <h2 class="ml-title-2">1. Variantes de couleur</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">
+    Cinq variantes pour chaque cas d'usage : action principale, secondaire, mise en valeur, destructive ou discrète.
+  </p>
+  <div class="demo-preview">
+    <div class="ml-btn-group">
+      <button class="ml-btn ml-btn-primary">Bouton Principal</button>
+      <button class="ml-btn ml-btn-secondary">Bouton Secondaire</button>
+      <button class="ml-btn ml-btn-accent">Accent (Gold)</button>
+      <button class="ml-btn ml-btn-danger">Destructif</button>
+      <button class="ml-btn ml-btn-ghost">Ghost</button>
+    </div>
+  </div>
+  <CodeBlock code={`<button class="ml-btn ml-btn-primary">Bouton Principal</button>
+<button class="ml-btn ml-btn-secondary">Bouton Secondaire</button>
+<button class="ml-btn ml-btn-accent">Accent (Gold)</button>
+<button class="ml-btn ml-btn-danger">Destructif</button>
+<button class="ml-btn ml-btn-ghost">Ghost</button>`} lang="html" />
+
+  <h2 class="ml-title-2">2. Tailles</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Trois tailles pour s'adapter à la densité de l'interface.</p>
+  <div class="demo-preview">
+    <div class="ml-btn-group">
+      <button class="ml-btn ml-btn-primary ml-btn-sm">Petit (.ml-btn-sm)</button>
+      <button class="ml-btn ml-btn-primary">Moyen (standard)</button>
+      <button class="ml-btn ml-btn-primary ml-btn-lg">Grand (.ml-btn-lg)</button>
+    </div>
+  </div>
+  <CodeBlock code={`<button class="ml-btn ml-btn-primary ml-btn-sm">Petit</button>
+<button class="ml-btn ml-btn-primary">Moyen</button>
+<button class="ml-btn ml-btn-primary ml-btn-lg">Grand</button>`} lang="html" />
+
+  <h2 class="ml-title-2">3. États interactifs</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Des retours d'état clairs pour indiquer si une action est bloquée ou en cours de traitement.</p>
+  <div class="demo-preview">
+    <div class="ml-btn-group">
+      <button class="ml-btn ml-btn-primary" disabled>Désactivé</button>
+      <button class="ml-btn ml-btn-secondary disabled">Désactivé (classe)</button>
+      <button class="ml-btn ml-btn-primary ml-btn-loading">Chargement</button>
+      <button class="ml-btn ml-btn-accent ml-btn-loading">Chargement</button>
+    </div>
+  </div>
+  <CodeBlock code={`<!-- Disabled via HTML attribute -->
+<button class="ml-btn ml-btn-primary" disabled>Désactivé</button>
+
+<!-- Disabled via CSS class -->
+<button class="ml-btn ml-btn-secondary disabled">Désactivé</button>
+
+<!-- Loading state -->
+<button class="ml-btn ml-btn-primary ml-btn-loading">Chargement</button>`} lang="html" />
+
+  <h2 class="ml-title-2">4. Boutons avec icônes</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Des boutons enrichis d'icônes SVG pour clarifier le but de l'action.</p>
+  <div class="demo-preview">
+    <div class="ml-btn-group">
+      <button class="ml-btn ml-btn-primary">
+        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Télécharger
+      </button>
+      <button class="ml-btn ml-btn-secondary">
+        Suivant
+        <svg viewBox="0 0 24 24"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42 5.43 5.43H5v2z"/></svg>
+      </button>
+      <button class="ml-btn ml-btn-primary ml-btn-icon-only" aria-label="Rechercher">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      </button>
+    </div>
+  </div>
+  <CodeBlock code={`<!-- Icon on left -->
+<button class="ml-btn ml-btn-primary">
+  <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+  Télécharger
+</button>
+
+<!-- Icon on right -->
+<button class="ml-btn ml-btn-secondary">
+  Suivant
+  <svg viewBox="0 0 24 24">...</svg>
+</button>
+
+<!-- Icon-only button -->
+<button class="ml-btn ml-btn-primary ml-btn-icon-only" aria-label="Rechercher">
+  <svg viewBox="0 0 24 24">...</svg>
+</button>`} lang="html" />
+
+  <h2 class="ml-title-2">5. Pleine largeur</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Pour les zones mobiles ou les formulaires.</p>
+  <div class="demo-preview" style="flex-direction: column; align-items: stretch; gap: var(--ml-space-3);">
+    <button class="ml-btn ml-btn-primary ml-btn-block">Action principale (pleine largeur)</button>
+    <button class="ml-btn ml-btn-secondary ml-btn-block">Action secondaire</button>
+  </div>
+  <CodeBlock code={`<button class="ml-btn ml-btn-primary ml-btn-block">
+  Action principale
+</button>`} lang="html" />
+
+  <h2 class="ml-title-2">Référence des classes</h2>
+  <div style="overflow-x: auto; margin-top: var(--ml-space-4);">
+    <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+      <thead>
+        <tr style="background: var(--ml-color-neutral-50); border-bottom: 2px solid var(--ml-color-neutral-200);">
+          <th style="text-align: left; padding: 10px 12px; font-family: var(--ml-font-title);">Classe</th>
+          <th style="text-align: left; padding: 10px 12px; font-family: var(--ml-font-title);">Rôle</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          [".ml-btn", "Classe de base obligatoire sur tout bouton"],
+          [".ml-btn-primary", "Action principale (vert)"],
+          [".ml-btn-secondary", "Action secondaire (contour)"],
+          [".ml-btn-accent", "Mise en valeur (or)"],
+          [".ml-btn-danger", "Action destructive (rouge)"],
+          [".ml-btn-ghost", "Bouton discret sans fond"],
+          [".ml-btn-sm", "Taille petite"],
+          [".ml-btn-lg", "Taille grande"],
+          [".ml-btn-block", "Bouton pleine largeur (100%)"],
+          [".ml-btn-loading", "État de chargement (spinner)"],
+          [".ml-btn-icon-only", "Bouton icône seul (carré, accessible)"],
+        ].map(([cls, desc]) => (
+          <tr style="border-bottom: 1px solid var(--ml-color-neutral-100);">
+            <td style="padding: 9px 12px;"><code style="font-size: 12px; background: var(--ml-color-neutral-100); padding: 2px 6px; border-radius: 4px;">{cls}</code></td>
+            <td style="padding: 9px 12px; color: var(--ml-color-neutral-700);">{desc}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+</DocsLayout>

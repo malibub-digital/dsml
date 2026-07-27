@@ -1,0 +1,165 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout
+  title="Installation"
+  description="Guide d'installation du DSML en 3 minutes — sans Node.js, via CDN ou fichier local."
+  pageTitle="Installation"
+  pageSubtitle="Intégrez le DSML dans votre projet en 3 minutes, sans Node.js."
+>
+
+  <h2 class="ml-title-2">Méthode 1 — CDN <span class="ml-badge ml-badge-success" style="font-size: 11px; vertical-align: middle;">Recommandé</span></h2>
+  <p class="ml-body-compact">La solution la plus rapide. Collez ce snippet dans votre <code>&lt;head&gt;</code> — aucun outil requis.</p>
+
+  <CodeBlock code={`<!-- DSML Core -->
+<link rel="stylesheet" href="https://cdn.dsml.ml/v0.1/dsml.css">
+
+<!-- Icons (optional) -->
+<link rel="stylesheet" href="https://cdn.dsml.ml/v0.1/dsml-icons.css">`} lang="html" />
+
+  <div class="doc-note" style="margin-top: var(--ml-space-4);">
+    ⚠️ Le CDN <code>cdn.dsml.ml</code> sera disponible à la sortie publique v0.2. En attendant, utilisez la méthode 2 ci-dessous.
+  </div>
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-10);">Méthode 2 — Fichier local <span class="ml-badge" style="font-size: 11px; vertical-align: middle; background: var(--ml-color-neutral-100); color: var(--ml-color-neutral-700); border-color: var(--ml-color-neutral-300);">Zéro dépendance</span></h2>
+  <p class="ml-body-compact">Idéal pour les environnements sans accès internet ou à bande passante limitée.</p>
+
+  <h3 class="ml-title-3">1. Télécharger le dossier <code>core/</code></h3>
+  <CodeBlock code={`# Cloner le dépôt complet
+git clone https://github.com/malibub-digital/dsml.git
+
+# Ou télécharger uniquement le dossier core/ (zip)
+# https://github.com/malibub-digital/dsml/archive/refs/heads/main.zip`} lang="bash" />
+
+  <h3 class="ml-title-3">2. Copier <code>core/css/</code> dans votre projet</h3>
+  <CodeBlock code={`cp -r dsml/core/css/ mon-projet/assets/dsml/
+# Optionnel : copier les assets graphiques
+cp -r dsml/core/assets/ mon-projet/assets/dsml/assets/`} lang="bash" />
+
+  <h3 class="ml-title-3">3. Lier dans votre <code>&lt;head&gt;</code></h3>
+  <CodeBlock code={`<link rel="stylesheet" href="/assets/dsml/css/dsml.css">
+<!-- Icons (optional) -->
+<link rel="stylesheet" href="/assets/dsml/css/dsml-icons.css">`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-10);">Méthode 3 — NPM <span class="ml-badge ml-badge-warning" style="font-size: 11px; vertical-align: middle;">Bientôt disponible</span></h2>
+  <p class="ml-body-compact">Publication sur le registre NPM prévue avec la version v0.2.</p>
+  <CodeBlock code={`npm install @dsml/core
+# ou
+pnpm add @dsml/core`} lang="bash" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-10);">Page minimale complète</h2>
+  <p class="ml-body-compact">Un template HTML prêt à l'emploi respectant la structure DSML.</p>
+
+  <CodeBlock code={`<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mon Service Administratif</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/dsml/css/dsml.css">
+</head>
+<body>
+
+  <!-- Official DSML header -->
+  <header class="ml-header ml-header-shrinkable">
+    <div class="container">
+      <div class="header-top">
+        <div class="brand-block">
+          <img src="/dsml/assets/logo-mali.svg" alt="Armoiries du Mali" class="ml-header-logo">
+          <div class="brand-text">
+            <div class="brand-title">RÉPUBLIQUE DU MALI</div>
+            <div class="site-title">Mon Service</div>
+            <div class="ml-tricolor-bar" aria-hidden="true">
+              <div class="green"></div>
+              <div class="yellow"></div>
+              <div class="red"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="ml-header-nav" aria-label="Menu principal">
+        <a href="/" class="ml-nav-item active">Accueil</a>
+        <a href="/demarches" class="ml-nav-item">Démarches</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <h1 class="ml-display">Bienvenue</h1>
+    <p class="ml-body">Votre service administratif en ligne.</p>
+    <a href="/demarches" class="ml-btn ml-btn-primary">Voir les démarches</a>
+  </main>
+
+  <!-- Official DSML footer -->
+  <footer class="ml-footer" aria-label="Pied de page">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-block">
+            <div class="ml-flag" aria-hidden="true">
+              <div class="green"></div>
+              <div class="yellow"></div>
+              <div class="red"></div>
+            </div>
+            <div class="brand-text">
+              <div class="brand-title">RÉPUBLIQUE DU MALI</div>
+              <div class="brand-motto">Un Peuple – Un But – Une Foi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-links">
+          <a href="/mentions-legales">Mentions légales</a>
+          <a href="/accessibilite">Accessibilité</a>
+        </div>
+        <div class="footer-credits">Propulsé par le <strong>DSML</strong></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('.ml-header-shrinkable');
+    if (header) {
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('ml-scrolled', window.scrollY > 50);
+      }, { passive: true });
+    }
+  </script>
+</body>
+</html>`} lang="html" />
+
+  <h2 class="ml-title-2">Vérifier l'installation</h2>
+  <p class="ml-body-compact">Si votre CSS est correctement chargé, les éléments ci-dessous doivent être stylisés :</p>
+  <div class="demo-preview" style="border-radius: var(--ml-radius-m); border-bottom-left-radius: var(--ml-radius-m); border-bottom-right-radius: var(--ml-radius-m); gap: var(--ml-space-3); flex-wrap: wrap; justify-content: flex-start;">
+    <button class="ml-btn ml-btn-primary">Bouton principal ✓</button>
+    <span class="ml-badge ml-badge-success">Badge ✓</span>
+    <div class="ml-alert ml-alert-info" style="margin: 0; flex: 1; min-width: 200px;">
+      <div class="ml-alert-dot"></div>
+      <div>Alerte d'info ✓</div>
+    </div>
+  </div>
+
+  <h2 class="ml-title-2">Étapes suivantes</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--ml-space-4); margin-top: var(--ml-space-4);">
+    <a href="/fondations/couleurs/" class="ml-card" style="text-decoration: none; padding: var(--ml-space-4);">
+      <div style="font-weight: 700; margin-bottom: 4px;">→ Fondations</div>
+      <div class="ml-caption" style="color: var(--ml-color-neutral-500);">Tokens de couleurs, typo, espacement</div>
+    </a>
+    <a href="/composants/boutons/" class="ml-card" style="text-decoration: none; padding: var(--ml-space-4);">
+      <div style="font-weight: 700; margin-bottom: 4px;">→ Composants</div>
+      <div class="ml-caption" style="color: var(--ml-color-neutral-500);">Boutons, alertes, cartes, formulaires…</div>
+    </a>
+    <a href="/layouts/header-footer/" class="ml-card" style="text-decoration: none; padding: var(--ml-space-4);">
+      <div style="font-weight: 700; margin-bottom: 4px;">→ Gabarits</div>
+      <div class="ml-caption" style="color: var(--ml-color-neutral-500);">En-têtes, pieds de page, structures</div>
+    </a>
+  </div>
+
+</DocsLayout>

@@ -1,0 +1,356 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout
+  title="Cartes"
+  description="Composant de cartes du DSML."
+  pageTitle="Cartes"
+  pageSubtitle="Tuiles d'information, liens et blocs de contenu."
+>
+
+  <h2 class="ml-title-2">1. Carte classique avec Pictogramme</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">
+    Le format standard intègre un pictogramme SVG officiel du DSML. Au survol de la carte, les couleurs intérieures du pictogramme réagissent en synergie avec la bordure.
+  </p>
+  <div class="demo-preview">
+    <a href="#" class="ml-card ml-card-hover" style="max-width: 340px; text-decoration: none;" onclick="return false;">
+      <div class="ml-pictogram" style="width: 48px; height: 48px; margin-bottom: var(--ml-space-2);" aria-hidden="true">
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <rect class="ml-artwork-background" x="4" y="10" width="40" height="28" rx="4" fill="var(--ml-color-green-50)" />
+          <circle class="ml-artwork-major" cx="14" cy="21" r="5" stroke="var(--ml-color-neutral-900)" stroke-width="2" fill="none" />
+          <path class="ml-artwork-major" d="M6 32c0-3.5 3-5.5 8-5.5s8 2 8 5.5" stroke="var(--ml-color-neutral-900)" stroke-width="2" fill="none" />
+          <line class="ml-artwork-major" x1="26" y1="18" x2="38" y2="18" stroke="var(--ml-color-neutral-900)" stroke-width="2" />
+          <line class="ml-artwork-major" x1="26" y1="23" x2="36" y2="23" stroke="var(--ml-color-neutral-900)" stroke-width="2" />
+          <line class="ml-artwork-major" x1="26" y1="28" x2="32" y2="28" stroke="var(--ml-color-neutral-900)" stroke-width="2" />
+          <circle class="ml-artwork-minor" cx="36" cy="30" r="4" fill="var(--ml-color-gold-500)" />
+        </svg>
+      </div>
+      <h2 class="ml-card-title">Carte consulaire</h2>
+      <p class="ml-card-desc">Pièces à fournir, création de dossier et retrait de votre carte consulaire sécurisée.</p>
+      <div class="ml-card-link">Faire la démarche →</div>
+    </a>
+  </div>
+  <CodeBlock code={`<a href="#" class="ml-card ml-card-hover">
+  <div class="ml-pictogram" aria-hidden="true">
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <rect class="ml-artwork-background" x="4" y="10" width="40" height="28" rx="4" />
+      <circle class="ml-artwork-major" cx="14" cy="21" r="5" />
+      <path class="ml-artwork-major" d="M6 32c0-3.5 3-5.5 8-5.5s8 2 8 5.5" />
+      <line class="ml-artwork-major" x1="26" y1="18" x2="38" y2="18" />
+      <line class="ml-artwork-major" x1="26" y1="23" x2="36" y2="23" />
+      <line class="ml-artwork-major" x1="26" y1="28" x2="32" y2="28" />
+      <circle class="ml-artwork-minor" cx="36" cy="30" r="4" />
+    </svg>
+  </div>
+  <h2 class="ml-card-title">Carte consulaire</h2>
+  <p class="ml-card-desc">Description de la démarche...</p>
+  <div class="ml-card-link">Faire la démarche →</div>
+</a>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">2. Carte avec Image (Verticale)</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">
+    Utilise <code>.ml-card-media</code> pour insérer une illustration ou une photographie en haut de la carte. L'image se dilate très légèrement au survol.
+  </p>
+  <div class="demo-preview">
+    <a href="#" class="ml-card ml-card-hover" style="max-width: 340px; text-decoration: none;" onclick="return false;">
+      <div class="ml-card-media" style="height: 160px; overflow: hidden;">
+        <img src="/images/mali-12.jpg" alt="Patrimoine National du Mali">
+      </div>
+      <div class="ml-card-content">
+        <h2 class="ml-card-title">Patrimoine National</h2>
+        <p class="ml-card-desc">Découvrez l'histoire, la culture et les monuments emblématiques de la République du Mali.</p>
+        <div class="ml-card-link">Découvrir →</div>
+      </div>
+    </a>
+  </div>
+  <CodeBlock code={`<a href="#" class="ml-card ml-card-hover">
+  <div class="ml-card-media">
+    <img src="path/to/image.jpg" alt="Description de l'image">
+  </div>
+  <div class="ml-card-content">
+    <h2 class="ml-card-title">Titre de l'actualité</h2>
+    <p class="ml-card-desc">Description courte...</p>
+    <div class="ml-card-link">En savoir plus →</div>
+  </div>
+</a>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">3. Carte Horizontale (Responsive)</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">
+    La classe <code>.ml-card-horizontal</code> réorganise la disposition en ligne sur grand écran (média à gauche, contenu à droite) et se replie automatiquement en colonne sur mobile.
+  </p>
+  <div class="demo-preview" style="width: 100%;">
+    <a href="#" class="ml-card ml-card-hover ml-card-horizontal" style="width: 100%; max-width: 680px; text-decoration: none;" onclick="return false;">
+      <div class="ml-card-media">
+        <img src="/images/mali-6.jpg" alt="Niger River">
+      </div>
+      <div class="ml-card-content">
+        <h2 class="ml-card-title">Coopération Consulaire</h2>
+        <p class="ml-card-desc">Les services du consulat général collaborent étroitement avec les associations de la diaspora malienne en région Auvergne-Rhône-Alpes.</p>
+        <div class="ml-card-link">Consulter les projets →</div>
+      </div>
+    </a>
+  </div>
+  <CodeBlock code={`<a href="#" class="ml-card ml-card-hover ml-card-horizontal">
+  <div class="ml-card-media">
+    <img src="path/to/image.jpg" alt="Description">
+  </div>
+  <div class="ml-card-content">
+    <h2 class="ml-card-title">Coopération Consulaire</h2>
+    <p class="ml-card-desc">Texte explicatif...</p>
+    <div class="ml-card-link">Consulter →</div>
+  </div>
+</a>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">4. Carte Étape / Numérotée</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">
+    Idéale pour guider l'usager à travers un processus par étapes successives (ex : enrôlement de passeport). Elle intègre <code>.ml-card-number</code>.
+  </p>
+  <div class="demo-preview">
+    <div class="ml-card ml-card-hover" style="max-width: 320px;">
+      <span class="ml-card-number">01</span>
+      <h2 class="ml-card-title">Enregistrement en ligne</h2>
+      <p class="ml-card-desc">Remplissez le formulaire de pré-demande et réservez votre créneau de rendez-vous en ligne.</p>
+      <a href="#" class="ml-card-link" onclick="return false;">Accéder au portail →</a>
+    </div>
+  </div>
+  <CodeBlock code={`<div class="ml-card ml-card-hover">
+  <span class="ml-card-number">01</span>
+  <h2 class="ml-card-title">Enregistrement en ligne</h2>
+  <p class="ml-card-desc">Description de l'étape...</p>
+  <a href="#" class="ml-card-link">Accéder au portail →</a>
+</div>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">5. Thématisation &amp; Variantes de couleurs</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">
+    Le DSML propose 5 variantes d'accents colorés pour différencier visuellement certaines thématiques ou niveaux de priorité.
+  </p>
+  <div class="demo-preview" style="width: 100%;">
+    <div class="ml-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--ml-space-4); width: 100%;">
+      
+      <div class="ml-card ml-card-hover ml-card-green">
+        <div class="ml-card-icon">ML</div>
+        <h2 class="ml-card-title">Mali Vert (National)</h2>
+        <p class="ml-card-desc">Accent standard de l'État malien, rassurant et officiel.</p>
+        <a href="#" class="ml-card-link" onclick="return false;">En savoir plus →</a>
+      </div>
+
+      <div class="ml-card ml-card-hover ml-card-gold">
+        <div class="ml-card-icon">OR</div>
+        <h2 class="ml-card-title">Sahel Or (Mise en valeur)</h2>
+        <p class="ml-card-desc">Idéal pour les alertes modérées, les cartes phares ou de prestige.</p>
+        <a href="#" class="ml-card-link" onclick="return false;">En savoir plus →</a>
+      </div>
+
+      <div class="ml-card ml-card-hover ml-card-river">
+        <div class="ml-card-icon">FR</div>
+        <h2 class="ml-card-title">Niger River (Connectivité)</h2>
+        <p class="ml-card-desc">Utilisé pour l'économie numérique, les flux et l'eau.</p>
+        <a href="#" class="ml-card-link" onclick="return false;">En savoir plus →</a>
+      </div>
+
+      <div class="ml-card ml-card-hover ml-card-terra">
+        <div class="ml-card-icon">TR</div>
+        <h2 class="ml-card-title">Sahel Terra (Patrimoine)</h2>
+        <p class="ml-card-desc">Idéal pour la culture, le tourisme, l'artisanat et le terroir.</p>
+        <a href="#" class="ml-card-link" onclick="return false;">En savoir plus →</a>
+      </div>
+
+      <div class="ml-card ml-card-hover ml-card-dark">
+        <div class="ml-card-icon">PR</div>
+        <h2 class="ml-card-title">Premium Dark (Koulouba)</h2>
+        <p class="ml-card-desc">Dégradé sombre et luxueux pour les portails de la Présidence.</p>
+        <a href="#" class="ml-card-link" onclick="return false;">En savoir plus →</a>
+      </div>
+
+    </div>
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">6. Cartes Hero Institutionnelles & Culturelles (.ml-card-hero)</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">
+    Bannières d'en-tête de haute valeur visuelle avec liseré tricolore républicain supérieur. Le DSML propose une gamme complète de thèmes culturels maliens pour s'adapter à la nature de vos portails et démarches.
+  </p>
+
+  <div class="demo-preview" style="display: flex; flex-direction: column; gap: var(--ml-space-4); width: 100%;">
+    
+    <!-- 1. Vert d'État (Standard) -->
+    <div class="ml-card-hero">
+      <div class="ml-card-hero-flag-strip"></div>
+      <div class="ml-card-hero-content">
+        <div class="ml-card-hero-badge">Vert d'État (Républicain)</div>
+        <h3 class="ml-card-hero-title">Portail Général des Services Publics & Administration</h3>
+        <p class="ml-card-hero-desc">
+          L'accent standard de la République du Mali (normes WCAG 2.1 AAA). Recommandé pour les démarches en ligne, actes administratifs et portails de ministères.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2. Indigo & Nuit -->
+    <div class="ml-card-hero ml-card-hero-indigo">
+      <div class="ml-card-hero-flag-strip"></div>
+      <div class="ml-card-hero-content">
+        <div class="ml-card-hero-badge" style="color: #A5B4FC; background: rgba(165, 180, 252, 0.15); border-color: rgba(165, 180, 252, 0.3);">Indigo & Textile Ancien</div>
+        <h3 class="ml-card-hero-title">Patrimoine Culturel & Histoire du Mali</h3>
+        <p class="ml-card-hero-desc">
+          Teinte profonde dédiée à la culture, la conservation des manuscrits anciens de Tombouctou et la valorisation du patrimoine textile national.
+        </p>
+      </div>
+    </div>
+
+    <!-- 3. Bogolan & Argile -->
+    <div class="ml-card-hero ml-card-hero-bogolan">
+      <div class="ml-card-hero-flag-strip"></div>
+      <div class="ml-card-hero-content">
+        <div class="ml-card-hero-badge" style="color: #FDBA74; background: rgba(253, 186, 116, 0.15); border-color: rgba(253, 186, 116, 0.3);">Bogolan & Terroir</div>
+        <h3 class="ml-card-hero-title">Artisanat, Agriculture & Développement Rural</h3>
+        <p class="ml-card-hero-desc">
+          Nuances chaudes de terre cuite et d'argile naturelle. Parfait pour les initiatives de l'agriculture, du tourisme local et de l'artisanat d'art.
+        </p>
+      </div>
+    </div>
+
+    <!-- 4. Fleuve Niger (River Teal) -->
+    <div class="ml-card-hero ml-card-hero-river">
+      <div class="ml-card-hero-flag-strip"></div>
+      <div class="ml-card-hero-content">
+        <div class="ml-card-hero-badge" style="color: #67E8F9; background: rgba(103, 232, 249, 0.15); border-color: rgba(103, 232, 249, 0.3);">Fleuve Niger & Vitalité</div>
+        <h3 class="ml-card-hero-title">Transports, Énergie & Infrastructures Hydrauliques</h3>
+        <p class="ml-card-hero-desc">
+          Un bleu-vert aquatique évoquant le majestueux Djoliba. Idéal pour les ministères de l'équipement, du numérique, des eaux et de la transition écologique.
+        </p>
+      </div>
+    </div>
+
+    <!-- 5. Bazin Éclatant & Wax -->
+    <div class="ml-card-hero ml-card-hero-bazin">
+      <div class="ml-card-hero-flag-strip"></div>
+      <div class="ml-card-hero-content">
+        <div class="ml-card-hero-badge" style="color: #F472B6; background: rgba(244, 114, 182, 0.15); border-color: rgba(244, 114, 182, 0.3);">Bazin Riche & Fêtes</div>
+        <h3 class="ml-card-hero-title">Événements Nationaux & Création Artistique</h3>
+        <p class="ml-card-hero-desc">
+          Dégradé vibrant magenta/violet célébrant l'élégance du bazin et la vitalité créative des festivals culturels de la jeunesse malienne.
+        </p>
+      </div>
+    </div>
+
+    <!-- 6. Sahel Or & Rayonnement -->
+    <div class="ml-card-hero ml-card-hero-gold">
+      <div class="ml-card-hero-flag-strip"></div>
+      <div class="ml-card-hero-content">
+        <div class="ml-card-hero-badge" style="color: #FDE047; background: rgba(253, 224, 71, 0.15); border-color: rgba(253, 224, 71, 0.3);">Sahel Or & Prestige</div>
+        <h3 class="ml-card-hero-title">Économie, Mines & Investissement</h3>
+        <p class="ml-card-hero-desc">
+          Symbole de richesse minérale et d'opportunités économiques. Destiné aux portails des finances, de l'investissement et du commerce extérieur.
+        </p>
+      </div>
+    </div>
+
+    <!-- 7. Sombre Présidence (Koulouba) -->
+    <div class="ml-card-hero ml-card-hero-koulouba">
+      <div class="ml-card-hero-flag-strip"></div>
+      <div class="ml-card-hero-content">
+        <div class="ml-card-hero-badge" style="color: #94A3B8; background: rgba(148, 163, 184, 0.15); border-color: rgba(148, 163, 184, 0.3);">Koulouba Premium</div>
+        <h3 class="ml-card-hero-title">Haute Présidence & Organes Constitutionnels</h3>
+        <p class="ml-card-hero-desc">
+          Habillage sombre et sobre réservé aux communiqués officiels, allocutions présidentielles et instances suprêmes de l'État.
+        </p>
+      </div>
+    </div>
+
+    <!-- 8. Motif Géométrique Bogolan (Pattern SVG Overlay) -->
+    <div class="ml-card-hero ml-card-hero-bogolan ml-card-hero-pattern-bogolan">
+      <div class="ml-card-hero-flag-strip"></div>
+      <div class="ml-card-hero-content">
+        <div class="ml-card-hero-badge" style="color: #FDBA74; background: rgba(253, 186, 116, 0.15); border-color: rgba(253, 186, 116, 0.3);">Motifs Bogolan Traditionnels</div>
+        <h3 class="ml-card-hero-title">Graphismes Géométriques de la Terre du Mali</h3>
+        <p class="ml-card-hero-desc">
+          Intégration d'un filigrane vectoriel géométrique inspiré des formes sacrées du tissu Bogolan. Apporte une dimension tactile et artisanale d'exception.
+        </p>
+      </div>
+    </div>
+
+    <!-- 9. Motif Géométrique Wax & Soleil (Pattern SVG Overlay) -->
+    <div class="ml-card-hero ml-card-hero-bazin ml-card-hero-pattern-wax">
+      <div class="ml-card-hero-flag-strip"></div>
+      <div class="ml-card-hero-content">
+        <div class="ml-card-hero-badge" style="color: #F472B6; background: rgba(244, 114, 182, 0.15); border-color: rgba(244, 114, 182, 0.3);">Motif Rosace Wax & Soleil</div>
+        <h3 class="ml-card-hero-title">Motifs Floraux & Cercle Solaire Wax</h3>
+        <p class="ml-card-hero-desc">
+          Un filigrane en rosace contemporaine inspiré des motifs d'impression Wax. Idéal pour les grands événements artistiques, festivals et portails créatifs.
+        </p>
+      </div>
+    </div>
+
+    <!-- 10. Orange Mandingue Flamboyant -->
+    <div class="ml-card-hero ml-card-hero-orange">
+      <div class="ml-card-hero-flag-strip"></div>
+      <div class="ml-card-hero-content">
+        <div class="ml-card-hero-badge" style="color: #FFEDD5; background: rgba(255, 237, 213, 0.15); border-color: rgba(255, 237, 213, 0.3);">Orange Mandingue</div>
+        <h3 class="ml-card-hero-title">Énergie, Jeunesse & Initiative Entrepreneuriale</h3>
+        <p class="ml-card-hero-desc">
+          L'orange vif représentant le dynamisme des jeunes entrepreneurs et l'élan de la jeunesse du Mali.
+        </p>
+      </div>
+    </div>
+
+    <!-- 11. Ambre Sahel Chaud -->
+    <div class="ml-card-hero ml-card-hero-amber">
+      <div class="ml-card-hero-flag-strip"></div>
+      <div class="ml-card-hero-content">
+        <div class="ml-card-hero-badge" style="color: #FDE68A; background: rgba(253, 230, 138, 0.15); border-color: rgba(253, 230, 138, 0.3);">Ambre Solaire du Sahel</div>
+        <h3 class="ml-card-hero-title">Transition Énergétique & Projets Solaires</h3>
+        <p class="ml-card-hero-desc">
+          Dégradé ambré chaleureux évoquant les rayons solaires de l'Afrique de l'Ouest et les énergies renouvelables.
+        </p>
+      </div>
+    </div>
+
+    <!-- 12. Jaune Solaire Clair (Lumière & Contraste inversé) -->
+    <div class="ml-card-hero ml-card-hero-yellow-light">
+      <div class="ml-card-hero-flag-strip"></div>
+      <div class="ml-card-hero-content">
+        <div class="ml-card-hero-badge">Soleil d'Or & Clarté</div>
+        <h3 class="ml-card-hero-title">Bannière Lumineuse & Mise en Lumière</h3>
+        <p class="ml-card-hero-desc">
+          Carte hero à fond jaune lumineux d'or pour attirer immédiatement l'attention sur des annonces majeures ou des bilans nationaux.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <CodeBlock code={`<!-- 1. Vert d'État (Défaut) -->
+<div class="ml-card-hero">
+  <div class="ml-card-hero-flag-strip"></div>
+  <div class="ml-card-hero-content">
+    <div class="ml-card-hero-badge">Vert d'État</div>
+    <h3 class="ml-card-hero-title">Titre de la carte</h3>
+    <p class="ml-card-hero-desc">Description du composant...</p>
+  </div>
+</div>
+
+<!-- 2. Variantes de dégradés thématiques -->
+<div class="ml-card-hero ml-card-hero-indigo"> ... </div>
+<div class="ml-card-hero ml-card-hero-bogolan"> ... </div>
+<div class="ml-card-hero ml-card-hero-river"> ... </div>
+<div class="ml-card-hero ml-card-hero-bazin"> ... </div>
+<div class="ml-card-hero ml-card-hero-gold"> ... </div>
+<div class="ml-card-hero ml-card-hero-koulouba"> ... </div>
+
+<!-- 3. Variantes avec Filigranes & Motifs Géométriques (Bogolan & Wax) -->
+<div class="ml-card-hero ml-card-hero-bogolan ml-card-hero-pattern-bogolan">
+  <div class="ml-card-hero-flag-strip"></div>
+  <div class="ml-card-hero-content">
+    <div class="ml-card-hero-badge">Motif Bogolan</div>
+    <h3 class="ml-card-hero-title">Filigrane Géométrique Bogolan</h3>
+  </div>
+</div>
+
+<div class="ml-card-hero ml-card-hero-bazin ml-card-hero-pattern-wax">
+  <div class="ml-card-hero-flag-strip"></div>
+  <div class="ml-card-hero-content">
+    <div class="ml-card-hero-badge">Motif Wax</div>
+    <h3 class="ml-card-hero-title">Filigrane Rosace Wax</h3>
+  </div>
+</div>`} lang="html" />
+
+</DocsLayout>

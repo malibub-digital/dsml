@@ -1,0 +1,180 @@
+---
+---
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Démo Header Sticky + Shrink — DSML</title>
+    <link rel="stylesheet" href="/dsml/css/dsml.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--ml-color-neutral-50);
+        font-family: var(--ml-font-body);
+        color: var(--ml-color-neutral-900);
+      }
+      .demo-content {
+        padding: var(--ml-space-8) var(--ml-space-4);
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .demo-card {
+        background: var(--ml-color-neutral-0);
+        padding: var(--ml-space-6);
+        border-radius: var(--ml-radius-l);
+        border: 1px solid var(--ml-color-neutral-200);
+        margin-bottom: var(--ml-space-6);
+        box-shadow: var(--ml-shadow-soft);
+      }
+      .demo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--ml-space-4);
+        margin-top: var(--ml-space-4);
+      }
+      .demo-item {
+        background: var(--ml-color-neutral-100);
+        padding: var(--ml-space-4);
+        border-radius: var(--ml-radius-m);
+        border: 1px solid var(--ml-color-neutral-200);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="ml-header ml-header-sticky ml-header-shrinkable" id="demo-header">
+      <div class="container">
+        <div class="header-top">
+          <a href="#" class="brand-block">
+            <img src="/dsml/assets/logo-mali.svg" alt="Armoiries du Mali" class="ml-header-logo" />
+            <div class="brand-text">
+              <div class="brand-title">RÉPUBLIQUE DU MALI</div>
+              <div class="site-title">Présidence de la République</div>
+              <div class="ml-tricolor-bar">
+                <div class="green"></div>
+                <div class="yellow"></div>
+                <div class="red"></div>
+              </div>
+            </div>
+          </a>
+          <div class="header-actions">
+            <a href="#" class="header-link">Communiqués</a>
+            <button class="ml-header-burger" id="burger-btn" aria-label="Menu Mobile">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <nav class="ml-header-nav" id="demo-nav" aria-label="Menu principal">
+          <div class="ml-header-nav-header">
+            <span>Navigation</span>
+            <button class="ml-header-nav-close" id="close-btn" aria-label="Fermer le menu">&times;</button>
+          </div>
+          <a href="#" class="ml-nav-item active">Accueil</a>
+          <a href="#" class="ml-nav-item">Le Président</a>
+          <a href="#" class="ml-nav-item">Le Gouvernement</a>
+          <a href="#" class="ml-nav-item">Discours & Actes</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="demo-content">
+      <div class="demo-card">
+        <div class="ml-badge ml-badge-info" style="margin-bottom: var(--ml-space-2);">Option Fixe & Rétractable</div>
+        <h1 class="ml-title-1">Mode 3 : Fixe & Rétractable (Shrink on Scroll)</h1>
+        <p class="ml-body">
+          L'en-tête (<code>.ml-header ml-header-sticky ml-header-shrinkable</code>) est déployé avec l'ensemble des titres au sommet. Dès que vous défilez vers le bas (> 30px), l'en-tête s'anime et se réduit de manière très fluide pour libérer l'espace vertical.
+        </p>
+      </div>
+
+      <div class="demo-card">
+        <h2 class="ml-title-2">Comportements visuels lors du défilement :</h2>
+        <div class="demo-grid" style="margin-top: var(--ml-space-3);">
+          <div class="demo-item" style="border-left: 4px solid var(--ml-color-green-500);">
+            <strong>1. Logo des Armoiries :</strong>
+            <p class="ml-body-compact">Se réduit de 58px à 36px (hauteur compacte).</p>
+          </div>
+          <div class="demo-item" style="border-left: 4px solid var(--ml-color-gold-500);">
+            <strong>2. Titre institutionnel :</strong>
+            <p class="ml-body-compact">"RÉPUBLIQUE DU MALI" s'escamote en fondu (opacity 0).</p>
+          </div>
+          <div class="demo-item" style="border-left: 4px solid var(--ml-color-red-500);">
+            <strong>3. Barre tricolore :</strong>
+            <p class="ml-body-compact">Se comprime de 180px à 90px de largeur.</p>
+          </div>
+          <div class="demo-item" style="border-left: 4px solid var(--ml-color-river-500);">
+            <strong>4. Remontée au sommet :</strong>
+            <p class="ml-body-compact">L'en-tête redéploie automatiquement tous les éléments à 0px.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3 class="ml-title-3">Actualités de la Présidence</h3>
+        <div class="demo-grid">
+          <div class="demo-item">
+            <h4 class="ml-label">Conseil des Ministres</h4>
+            <p class="ml-body-compact">Relevé des décisions prises lors de la séance hebdomadaire.</p>
+          </div>
+          <div class="demo-item">
+            <h4 class="ml-label">Audience Officielle</h4>
+            <p class="ml-body-compact">Réception des délégations diplomatiques au Palais de Koulouba.</p>
+          </div>
+          <div class="demo-item">
+            <h4 class="ml-label">Discours à la Nation</h4>
+            <p class="ml-body-compact">Retranscription intégrale de l'adresse du Chef de l'État.</p>
+          </div>
+          <div class="demo-item">
+            <h4 class="ml-label">Projets d'Infrastructures</h4>
+            <p class="ml-body-compact">Lancement des travaux stratégiques de développement national.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-card" style="height: 350px;">
+        <h3 class="ml-title-3">Bloc de défilement prolongé 1</h3>
+        <p class="ml-body">Défilez vers le haut et le bas pour tester la réactivité de l'effet rétractable.</p>
+      </div>
+
+      <div class="demo-card" style="height: 350px;">
+        <h3 class="ml-title-3">Bloc de défilement prolongé 2</h3>
+        <p class="ml-body">Zone médiane de la page.</p>
+      </div>
+
+      <div class="demo-card" style="height: 350px;">
+        <h3 class="ml-title-3">Bloc de défilement prolongé 3</h3>
+        <p class="ml-body-compact">Pied de page de démonstration.</p>
+      </div>
+    </main>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const header = document.getElementById('demo-header');
+        const burgerBtn = document.getElementById('burger-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const nav = document.getElementById('demo-nav');
+
+        if (header) {
+          const onScroll = () => {
+            if (window.scrollY > 30) {
+              header.classList.add('ml-scrolled');
+            } else {
+              header.classList.remove('ml-scrolled');
+            }
+          };
+          window.addEventListener('scroll', onScroll, { passive: true });
+          onScroll();
+        }
+
+        if (burgerBtn && nav) {
+          burgerBtn.addEventListener('click', () => nav.classList.toggle('is-open'));
+        }
+        if (closeBtn && nav) {
+          closeBtn.addEventListener('click', () => nav.classList.remove('is-open'));
+        }
+      });
+    </script>
+  </body>
+</html>

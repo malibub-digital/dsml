@@ -1,0 +1,125 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import HeaderDemoPreview from '../../components/HeaderDemoPreview.astro';
+---
+
+<DocsLayout
+  title="En-tête & Pied de page"
+  description="Structures de header et footer standards du DSML."
+  pageTitle="En-tête & Pied de page"
+  pageSubtitle="Le DSML normalise les composants d'en-tête (.ml-header) et de pied de page (.ml-footer) pour toutes les administrations maliennes."
+>
+
+  <h2 class="ml-title-2">Démonstration Interactive des En-têtes</h2>
+  <p class="ml-body-compact">
+    Testez ci-dessous les différents modes d'en-tête en basculant entre la vue Bureau et le simulateur Smartphone Mobile :
+  </p>
+  
+  <HeaderDemoPreview />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">1. Éléments de marque de l'en-tête (Header)</h2>
+  <p class="ml-body-compact">
+    L'en-tête standard du DSML intègre de manière obligatoire le bloc de marque structuré verticalement avec un soulignement tricolore discret :
+  </p>
+  <ul class="doc-list" style="margin-top: var(--ml-space-2); margin-bottom: var(--ml-space-4);">
+    <li><strong>Logo officiel de la République (<code>logo-mali.svg</code>) :</strong> Les armoiries officielles de l'État malien.</li>
+    <li><strong>Logo de l'AES (<code>logo-aes.svg</code>) :</strong> Le logo officiel de l'Alliance des États du Sahel (optionnel pour les ministères ou organismes rattachés).</li>
+    <li><strong>Titre de la marque (<code>.brand-title</code>) :</strong> Toujours fixé à <code>RÉPUBLIQUE DU MALI</code>.</li>
+    <li><strong>Titre du site (<code>.site-title</code>) :</strong> Nom complet de l'administration, avec une taille de 21px pour une lisibilité maximale.</li>
+    <li><strong>Soulignement tricolore (<code>.ml-tricolor-bar</code>) :</strong> Le drapeau malien (Vert, Jaune, Rouge) représenté de façon discrète et moderne sous forme de barre de progression ou de soulignement sous le titre.</li>
+  </ul>
+
+  <h2 class="ml-title-2">Modes d'En-tête (Non-fixe vs Sticky)</h2>
+  <p class="ml-body-compact">
+    Par défaut, l'en-tête (<code>.ml-header</code>) est <strong>non-fixe</strong> afin d'offrir une expérience épurée et de libérer l'espace vertical lors de la lecture des contenus institutionnels. Pour les applications web ou portails nécessitant une navigation toujours accessible, ajoutez la classe <code>.ml-header-sticky</code>.
+  </p>
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-6);">Recommandations UX pour Mobile</h2>
+  <p class="ml-body-compact">
+    Sur écran mobile (&lt; 860px), l'espace vertical est très restreint (hauteur moyenne 600-800px). Le DSML préconise les pratiques suivantes :
+  </p>
+  <ul class="doc-list" style="margin-top: var(--ml-space-2); margin-bottom: var(--ml-space-4);">
+    <li><strong>Header non-fixe (par défaut) :</strong> Pratique fortement recommandée sur mobile pour maximiser la zone d'affichage des contenus textuels et démarches administratives.</li>
+    <li><strong>Réduction automatique des éléments de marque :</strong> La hauteur des logos passe automatiquement de 58px à 44px, et le titre du site s'adapte à 16px avec retour à la ligne sécurisé.</li>
+    <li><strong>Menu Tiroir / Accordéon (Burger) :</strong> La barre de navigation horizontale se masque pour laisser place à un bouton burger accessible (zone tactile min. 44×44px) ouvrant le menu verticalement avec bouton d'action de fermeture explicite.</li>
+    <li><strong>Neutralisation de l'effet Shrink sur mobile :</strong> Si <code>.ml-header-sticky</code> est utilisé sur mobile, l'effet <code>.ml-header-shrinkable</code> reste discret pour éviter des sauts visuels (Cumulative Layout Shift) sur les petits écrans tactiles.</li>
+  </ul>
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-6);">Structure de l'En-tête standardisé</h2>
+  <CodeBlock code={`<!-- Standard header (static) -->
+<header class="ml-header">
+
+<!-- Fixed header (sticky glassmorphism) -->
+<header class="ml-header ml-header-sticky">
+
+<!-- Fixed header + scroll shrinkable -->
+<header class="ml-header ml-header-sticky ml-header-shrinkable">
+  <div class="container">
+    <div class="header-top">
+      <a href="/" class="brand-block">
+        <img src="/dsml/assets/logo-mali.svg" alt="Armoiries du Mali" class="ml-header-logo">
+        <div class="brand-text">
+          <div class="brand-title">RÉPUBLIQUE DU MALI</div>
+          <div class="site-title">Nom de l'Administration</div>
+          <div class="ml-tricolor-bar">
+            <div class="green"></div>
+            <div class="yellow"></div>
+            <div class="red"></div>
+          </div>
+        </div>
+      </a>
+      <div class="header-actions">
+        <a href="#faq" class="header-link">Aide & FAQ</a>
+      </div>
+    </div>
+    <nav class="ml-header-nav" aria-label="Menu principal">
+      <a href="#" class="ml-nav-item active">Accueil</a>
+      <a href="#" class="ml-nav-item">Services</a>
+    </nav>
+  </div>
+</header>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">Structure du Pied de page (Footer)</h2>
+  <p class="ml-body-compact">
+    Le pied de page (<code>.ml-footer</code>) fournit les informations légales obligatoires, les coordonnées de l'administration et une navigation de second niveau.
+  </p>
+  <CodeBlock code={`<footer class="ml-footer" aria-label="Pied de page">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand-block">
+          <div class="ml-flag" aria-hidden="true">
+            <div class="green"></div>
+            <div class="yellow"></div>
+            <div class="red"></div>
+          </div>
+          <div class="brand-text">
+            <div class="brand-title">RÉPUBLIQUE DU MALI</div>
+            <div class="brand-motto">Un Peuple – Un But – Une Foi</div>
+          </div>
+        </div>
+        <div class="footer-coords">
+          <strong>Ministère de l'Administration Territoriale</strong><br>
+          Hamdallaye ACI 2000, Bamako, Mali<br>
+          Téléphone : +223 20 29 64 54
+        </div>
+      </div>
+      <div class="footer-links-container">
+        <nav class="footer-col" aria-label="Liens">
+          <div class="footer-col-title">Services</div>
+          <a href="#">Formulaires</a>
+          <a href="#">Suivi des demandes</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Accessibilité : partiellement conforme</a>
+      </div>
+    </div>
+  </div>
+</footer>`} lang="html" />
+
+</DocsLayout>

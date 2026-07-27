@@ -1,0 +1,62 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout
+  title="Accordéons"
+  description="Composant d'accordéons du DSML."
+  pageTitle="Accordéons"
+  pageSubtitle="Permettent de masquer/révéler des blocs de contenu de manière progressive (ex : FAQ, pliables)."
+>
+
+  <h2 class="ml-title-2">Démonstration interactive</h2>
+  
+  <div class="demo-preview" style="display: flex; flex-direction: column; align-items: stretch; width: 100%;">
+    <div class="ml-accordion">
+      <button class="ml-accordion-title" aria-expanded="false">
+        Quelles sont les pièces à fournir pour la carte consulaire ?
+      </button>
+      <div class="ml-accordion-content">
+        <p class="ml-body-compact" style="margin: 0; padding-top: var(--ml-space-2);">Vous devez fournir une preuve de nationalité malienne (acte de naissance ou carte NINA), un justificatif d'identité, un justificatif de domicile de moins de 3 mois et deux photos d'identité récentes.</p>
+      </div>
+    </div>
+    <div class="ml-accordion">
+      <button class="ml-accordion-title" aria-expanded="false">
+        Quels sont les délais de traitement d'un passeport ?
+      </button>
+      <div class="ml-accordion-content">
+        <p class="ml-body-compact" style="margin: 0; padding-top: var(--ml-space-2);">Le délai moyen d'enrôlement et de production d'un passeport biométrique est généralement compris entre 2 et 4 semaines après le dépôt physique du dossier.</p>
+      </div>
+    </div>
+  </div>
+
+  <CodeBlock code={`<!-- Accordion structure -->
+<div class="ml-accordion">
+  <button class="ml-accordion-title" aria-expanded="false">
+    Titre de l'accordéon
+  </button>
+  <div class="ml-accordion-content">
+    <p class="ml-body-compact">Contenu ici...</p>
+  </div>
+</div>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-6);">Script d'interaction</h2>
+  <p class="ml-body">Ajoutez ce script simple pour animer vos accordéons :</p>
+  <CodeBlock code={`document.querySelectorAll('.ml-accordion-title').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
+  });
+});`} lang="js" />
+
+  <script>
+    document.querySelectorAll('.ml-accordion-title').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
+      });
+    });
+  </script>
+
+</DocsLayout>

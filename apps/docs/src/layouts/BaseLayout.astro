@@ -1,0 +1,404 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  section?: string;
+}
+
+const {
+  title = "DSML — Design System Mali",
+  description = "Documentation officielle du Design System Mali. Système de conception pour les administrations publiques maliennes.",
+  section = "",
+} = Astro.props;
+
+const navItems = [
+  { href: "/", label: "Accueil", id: "home" },
+  { href: "/introduction/", label: "Introduction", id: "introduction" },
+  { href: "/fondations/couleurs/", label: "Fondations", id: "fondations" },
+  { href: "/composants/boutons/", label: "Composants", id: "composants" },
+  { href: "/layouts/header-footer/", label: "Gabarits", id: "layouts" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0B7A2F" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:url" content="https://dsml.ml{Astro.url.pathname}" />
+    <meta property="og:image" content="https://dsml.ml/images/hero-mali.png" />
+    <meta
+      property="og:image:alt"
+      content="Design System Mali - République du Mali"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://dsml.ml/images/hero-mali.png" />
+    <meta
+      name="twitter:image:alt"
+      content="Design System Mali - République du Mali"
+    />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://dsml.ml{Astro.url.pathname}" />
+
+    <!-- Polices Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- DSML Core CSS -->
+    <link rel="stylesheet" href="/dsml/css/dsml.css" />
+    <link rel="stylesheet" href="/dsml/css/dsml-icons.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <!-- =====================================================
+        HEADER DSML OFFICIEL — ml-header + ml-header-sticky + ml-header-shrinkable
+        ===================================================== -->
+    <header class="ml-header ml-header-sticky ml-header-shrinkable" id="site-header">
+      <div class="container">
+        <div class="header-top">
+          <!-- Bloc de Marque -->
+          <a href="/" class="brand-block">
+            <img
+              src="/dsml/assets/logo-mali.svg"
+              alt="Armoiries de la République du Mali"
+              class="ml-header-logo"
+              width="58"
+              height="58"
+            />
+            <div class="brand-text">
+              <div class="brand-title">RÉPUBLIQUE DU MALI</div>
+              <div class="site-title">Design System Mali</div>
+              <div class="ml-tricolor-bar">
+                <div class="green"></div>
+                <div class="yellow"></div>
+                <div class="red"></div>
+              </div>
+            </div>
+          </a>
+          <!-- Actions rapides -->
+          <div
+            class="header-actions"
+            style="display: flex; gap: var(--ml-space-3); align-items: center;"
+          >
+            <button
+              class="ml-search-trigger"
+              style="padding: 6px 12px; border: 1px solid var(--ml-color-neutral-300); background: var(--ml-color-neutral-0); border-radius: var(--ml-radius-s); cursor: pointer; display: flex; align-items: center; gap: var(--ml-space-2); font-family: var(--ml-font-title); font-size: 13px; font-weight: 600; color: var(--ml-color-neutral-700); transition: all 0.15s ease;"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                style="width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.5;"
+                ><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                ></path></svg
+              >
+              <span class="ml-search-text-full">Rechercher</span>
+              <kbd
+                style="background: var(--ml-color-neutral-100); color: var(--ml-color-neutral-500); padding: 1px 5px; border-radius: 3px; font-size: 10px; font-family: inherit; font-weight: normal; margin-left: 2px; border: 1px solid var(--ml-color-neutral-200);"
+                >/</kbd
+              >
+            </button>
+            <button
+              class="ml-header-burger"
+              aria-label="Menu principal nav"
+              aria-expanded="false"
+            >
+              <svg viewBox="0 0 24 24"
+                ><path d="M4 6h16M4 12h16M4 18h16"></path></svg
+              >
+            </button>
+          </div>
+        </div>
+
+        <!-- Navigation principale -->
+        <nav class="ml-header-nav" aria-label="Menu principal">
+          <div class="ml-header-nav-header">
+            <span>Navigation</span>
+            <button class="ml-header-nav-close" aria-label="Fermer le menu">&times;</button>
+          </div>
+          {
+            navItems.map((item) => (
+              <a
+                href={item.href}
+                class={`ml-nav-item ${currentPath === item.href || (item.href !== "/" && currentPath.startsWith(item.href)) ? "active" : ""}`}
+                aria-current={currentPath === item.href ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </header>
+
+    <!-- Contenu principal -->
+    <main id="main-content" tabindex="-1">
+      <slot />
+    </main>
+
+    <!-- =====================================================
+        FOOTER DSML OFFICIEL — ml-footer
+        ===================================================== -->
+    <footer class="ml-footer" aria-label="Pied de page">
+      <div class="container">
+        <div class="footer-top">
+          <!-- Bloc de Marque + Coordonnées -->
+          <div class="footer-brand">
+            <div class="brand-block">
+              <div class="ml-flag" aria-hidden="true">
+                <div class="green"></div>
+                <div class="yellow"></div>
+                <div class="red"></div>
+              </div>
+              <div class="brand-text">
+                <div class="brand-title">RÉPUBLIQUE DU MALI</div>
+                <div class="brand-motto">Un Peuple – Un But – Une Foi</div>
+              </div>
+            </div>
+            <div class="footer-coords">
+              <strong>DSML — Design System Mali</strong><br />
+              Projet ouvert pour les administrations maliennes<br />
+              <a
+                href="https://github.com/malibub-digital/dsml"
+                target="_blank"
+                rel="noopener noreferrer">github.com/malibub-digital/dsml</a
+              >
+            </div>
+          </div>
+
+          <!-- Colonnes de liens -->
+          <div class="footer-links-container">
+            <nav class="footer-col" aria-label="Fondations du DSML">
+              <div class="footer-col-title">Fondations</div>
+              <a href="/fondations/couleurs/">Couleurs</a>
+              <a href="/fondations/typographie/">Typographie</a>
+              <a href="/fondations/espacements/">Espacements</a>
+              <a href="/fondations/pictogrammes/">Pictogrammes</a>
+            </nav>
+            <nav class="footer-col" aria-label="Composants du DSML">
+              <div class="footer-col-title">Composants</div>
+              <a href="/composants/boutons/">Boutons</a>
+              <a href="/composants/cartes/">Cartes</a>
+              <a href="/composants/formulaires/">Formulaires</a>
+              <a href="/composants/navigation/">Navigation</a>
+            </nav>
+            <nav class="footer-col" aria-label="Ressources du projet">
+              <div class="footer-col-title">Ressources</div>
+              <a href="/installation/">Guide d'installation</a>
+              <a
+                href="https://github.com/malibub-digital/dsml"
+                target="_blank"
+                rel="noopener noreferrer">Code source</a
+              >
+              <a href="/changelog/">Changelog</a>
+              <a href="/contribuer/">Contribuer</a>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Ligne légale -->
+        <div class="footer-bottom">
+          <div class="footer-bottom-links">
+            <a href="/mentions-legales/">Mentions légales</a>
+            <a href="/accessibilite/">Accessibilité : partiellement conforme</a>
+            <a href="/confidentialite/">Confidentialité</a>
+          </div>
+          <div class="footer-credits">
+            <strong>DSML v0.1</strong> — Licence MIT — Projet ouvert
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modale de recherche globale -->
+    <dialog
+      class="ml-modal ml-search-modal"
+      id="ml-search-modal"
+      style="border: 1px solid var(--ml-color-neutral-200); border-radius: var(--ml-radius-m); padding: var(--ml-space-4); max-width: 550px; width: 100%; margin: 10% auto; background: var(--ml-color-neutral-0); box-shadow: var(--ml-shadow-ambient);"
+    >
+      <div
+        class="ml-modal-header"
+        style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--ml-color-neutral-200); padding-bottom: var(--ml-space-2); margin-bottom: var(--ml-space-3);"
+      >
+        <h3
+          class="ml-modal-title"
+          style="margin: 0; font-family: var(--ml-font-title); font-size: 16px; font-weight: 700;"
+        >
+          Recherche dans la documentation
+        </h3>
+        <button
+          class="ml-modal-close"
+          aria-label="Fermer la recherche"
+          style="border: none; background: transparent; font-size: 24px; cursor: pointer; line-height: 1; color: var(--ml-color-neutral-500);"
+          >&times;</button
+        >
+      </div>
+      <div class="ml-modal-body">
+        <div
+          class="ml-search-modal-input-wrapper"
+          style="display: flex; align-items: center; border: 1px solid var(--ml-color-neutral-300); border-radius: var(--ml-radius-s); padding: var(--ml-space-2) var(--ml-space-3); margin-bottom: var(--ml-space-4); background: var(--ml-color-neutral-0); gap: var(--ml-space-2);"
+        >
+          <span class="ml-search-modal-icon">🔍</span>
+          <input
+            type="text"
+            class="ml-search-modal-input"
+            placeholder="Que recherchez-vous ? (ex : boutons, cartes...)"
+            aria-label="Saisir votre recherche"
+            style="border: none; flex: 1; outline: none; font-size: 15px; font-family: var(--ml-font-body); background: transparent; color: var(--ml-color-neutral-900);"
+          />
+        </div>
+
+        <!-- Section Recherches fréquentes (popularSection) -->
+        <div class="ml-search-popular-section">
+          <div
+            class="ml-search-modal-section-title"
+            style="font-size: 11px; font-weight: 700; color: var(--ml-color-neutral-400); text-transform: uppercase; margin-bottom: var(--ml-space-2); letter-spacing: 0.05em;"
+          >
+            Recherches fréquentes
+          </div>
+          <ul
+            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--ml-space-2);"
+          >
+            <li>
+              <a
+                href="/fondations/couleurs/"
+                class="ml-search-modal-item"
+                style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; padding: var(--ml-space-2) var(--ml-space-3); border-radius: var(--ml-radius-s); background: var(--ml-color-neutral-50); color: var(--ml-color-neutral-900); font-family: var(--ml-font-body); transition: background 0.15s;"
+              >
+                <div>
+                  <div
+                    class="ml-search-modal-item-title"
+                    style="font-weight: 700; font-size: 14px;"
+                  >
+                    Couleurs (Palette officielle)
+                  </div>
+                  <div
+                    class="ml-search-modal-item-desc"
+                    style="font-size: 12px; color: var(--ml-color-neutral-500); margin-top: 2px;"
+                  >
+                    Vert, Or, Rouge, Niger River
+                  </div>
+                </div>
+                <span
+                  class="ml-search-modal-item-arrow"
+                  style="font-weight: 700; color: var(--ml-color-neutral-400);"
+                  >→</span
+                >
+              </a>
+            </li>
+            <li>
+              <a
+                href="/composants/boutons/"
+                class="ml-search-modal-item"
+                style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; padding: var(--ml-space-2) var(--ml-space-3); border-radius: var(--ml-radius-s); background: var(--ml-color-neutral-50); color: var(--ml-color-neutral-900); font-family: var(--ml-font-body); transition: background 0.15s;"
+              >
+                <div>
+                  <div
+                    class="ml-search-modal-item-title"
+                    style="font-weight: 700; font-size: 14px;"
+                  >
+                    Boutons (Buttons)
+                  </div>
+                  <div
+                    class="ml-search-modal-item-desc"
+                    style="font-size: 12px; color: var(--ml-color-neutral-500); margin-top: 2px;"
+                  >
+                    Composants de boutons primaires et secondaires
+                  </div>
+                </div>
+                <span
+                  class="ml-search-modal-item-arrow"
+                  style="font-weight: 700; color: var(--ml-color-neutral-400);"
+                  >→</span
+                >
+              </a>
+            </li>
+            <li>
+              <a
+                href="/layouts/header-footer/"
+                class="ml-search-modal-item"
+                style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; padding: var(--ml-space-2) var(--ml-space-3); border-radius: var(--ml-radius-s); background: var(--ml-color-neutral-50); color: var(--ml-color-neutral-900); font-family: var(--ml-font-body); transition: background 0.15s;"
+              >
+                <div>
+                  <div
+                    class="ml-search-modal-item-title"
+                    style="font-weight: 700; font-size: 14px;"
+                  >
+                    En-tête & Pied de page
+                  </div>
+                  <div
+                    class="ml-search-modal-item-desc"
+                    style="font-size: 12px; color: var(--ml-color-neutral-500); margin-top: 2px;"
+                  >
+                    Layouts de header et footer officiels
+                  </div>
+                </div>
+                <span
+                  class="ml-search-modal-item-arrow"
+                  style="font-weight: 700; color: var(--ml-color-neutral-400);"
+                  >→</span
+                >
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Section Résultats (resultsSection - hidden by default) -->
+        <div class="ml-search-results-section" style="display: none;">
+          <div
+            class="ml-search-modal-section-title"
+            style="font-size: 11px; font-weight: 700; color: var(--ml-color-neutral-400); text-transform: uppercase; margin-bottom: var(--ml-space-2); letter-spacing: 0.05em;"
+          >
+            Résultats de recherche
+          </div>
+          <ul
+            class="ml-search-modal-results-list"
+            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--ml-space-2); max-height: 250px; overflow-y: auto;"
+          >
+            <!-- Injecté dynamiquement par search.js -->
+          </ul>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Script global de recherche DSML -->
+    <script src="/dsml/js/search.js" is:inline></script>
+
+    <!-- Script header shrinkable -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const header = document.querySelector(".ml-header-shrinkable");
+        if (header) {
+          window.addEventListener(
+            "scroll",
+            () => {
+              header.classList.toggle("ml-scrolled", window.scrollY > 50);
+            },
+            { passive: true },
+          );
+        }
+      });
+    </script>
+  </body>
+</html>

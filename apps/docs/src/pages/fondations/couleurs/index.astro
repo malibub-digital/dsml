@@ -1,0 +1,753 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import CodeBlock from '../../../components/CodeBlock.astro';
+---
+
+<DocsLayout
+  title="Couleurs & Patrimoine Chromatique"
+  description="Les palettes et tokens de couleur du DSML — harmonie institutionnelle et richesse culturelle malienne (Indigo, Bogolan, Bazin, Wax, Fleuve Niger)."
+  pageTitle="Couleurs & Identité Chromatique"
+  pageSubtitle="Le DSML allie la réassurance du Vert d'État à la richesse culturelle du Mali (Indigo, Bogolan, Bazin, Wax et Fleuve Niger) pour créer des interfaces administratives modernes et inspirantes."
+>
+
+  <div class="color-hero-card">
+    <div class="color-hero-flag-strip"></div>
+    <div class="color-hero-content">
+      <div class="color-hero-badge">Identité Visuelle & Modernité</div>
+      <h2 class="color-hero-title">Une palette institutionnelle ancrée dans l'excellence et la culture</h2>
+      <p class="color-hero-desc">
+        Chaque nuance du DSML a été spécialement étudiée pour garantir une clarté administrative exemplaire (normes WCAG 2.1 AA/AAA) tout en permettant une expression visuelle riche et vivante aux services et événements publics du Mali.
+      </p>
+    </div>
+  </div>
+
+  <div class="theme-studio-section">
+    <div class="studio-header">
+      <div>
+        <span class="studio-tag">Démonstrateur Interactif</span>
+        <h2 class="ml-title-2" style="margin-top:4px; margin-bottom:4px;">Studio de thèmes d'accentuation</h2>
+        <p class="ml-body-compact" style="color: var(--ml-color-neutral-600); margin-bottom:0;">
+          Testez l'impact des différentes palettes culturelles du Mali sur un composant réel en basculant le thème d'accent ci-dessous :
+        </p>
+      </div>
+    </div>
+
+    <div class="theme-buttons-bar">
+      <button class="theme-btn active" data-set-theme="state">
+        <span class="theme-dot" style="background:#0B7A2F;"></span>
+        Vert d'État (Institutionnel)
+      </button>
+      <button class="theme-btn" data-set-theme="indigo">
+        <span class="theme-dot" style="background:#1D4ED8;"></span>
+        Indigo de Ségou
+      </button>
+      <button class="theme-btn" data-set-theme="bogolan">
+        <span class="theme-dot" style="background:#C25E25;"></span>
+        Bogolan Sahélien
+      </button>
+      <button class="theme-btn" data-set-theme="bazin">
+        <span class="theme-dot" style="background:#7E22CE;"></span>
+        Bazin Royal
+      </button>
+      <button class="theme-btn" data-set-theme="river">
+        <span class="theme-dot" style="background:#1B7A94;"></span>
+        Fleuve Niger
+      </button>
+      <button class="theme-btn" data-set-theme="wax">
+        <span class="theme-dot" style="background:#F59E0B;"></span>
+        Wax Ambre
+      </button>
+    </div>
+
+    <div class="studio-preview-box" id="themePreviewBox" data-theme="state">
+      <div class="demo-card">
+        <div class="demo-card-header">
+          <div class="demo-badge">Portail Administré</div>
+          <h3 class="demo-card-title">Demande de Titre Foncier & Cartographie</h3>
+        </div>
+        <div class="demo-card-body">
+          <p class="demo-text">
+            Suivez l'avancement de votre dossier en temps réel. Les notifications automatiques vous alertent à chaque étape de validation.
+          </p>
+          
+          <div class="demo-form-group">
+            <label class="demo-label">Référence du Dossier</label>
+            <input type="text" class="demo-input" value="ML-2026-BKO-8842" readonly />
+          </div>
+
+          <div class="demo-actions">
+            <button class="demo-btn-primary">
+              <i class="ml-icon-check" aria-hidden="true"></i> Valider mon Dossier
+            </button>
+            <button class="demo-btn-secondary">
+              <i class="ml-icon-download" aria-hidden="true"></i> Télécharger le PDF
+            </button>
+          </div>
+
+          <div class="demo-callout">
+            <i class="ml-icon-info" aria-hidden="true"></i>
+            <div>
+              <strong>Note de service :</strong> Les pièces justificatives scannées sont transmises directement aux agents de vérification.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="copyToast" class="copy-toast" aria-live="polite">Code copié dans le presse-papier !</div>
+
+  <div class="palette-section">
+    <div class="palette-section-header">
+      <h2 class="ml-title-2">01. Trio National (Vert, Or & Rouge)</h2>
+      <p class="ml-body-compact" style="color: var(--ml-color-neutral-600);">
+        Les trois couleurs de la Nation malienne formellement déclinées en échelles complètes pour l'ergonomie applicative.
+      </p>
+    </div>
+
+    <h3 class="palette-subtitle">Mali Green — Vert d'État (Accent principal & Navigation)</h3>
+    <div class="palette-grid">
+      <div class="color-swatch" data-copy="--ml-color-green-50">
+        <div class="swatch-color" style="background:var(--ml-color-green-50);"></div>
+        <div class="swatch-info"><div class="swatch-name">Green 50</div><div class="swatch-var">--ml-color-green-50</div><div class="swatch-hex">#EAF3EC</div></div>
+      </div>
+      <div class="color-swatch" data-copy="--ml-color-green-100">
+        <div class="swatch-color" style="background:var(--ml-color-green-100);"></div>
+        <div class="swatch-info"><div class="swatch-name">Green 100</div><div class="swatch-var">--ml-color-green-100</div><div class="swatch-hex">#D8EBDC</div></div>
+      </div>
+      <div class="color-swatch" data-copy="--ml-color-green-200">
+        <div class="swatch-color" style="background:var(--ml-color-green-200);"></div>
+        <div class="swatch-info"><div class="swatch-name">Green 200</div><div class="swatch-var">--ml-color-green-200</div><div class="swatch-hex">#9CC7A8</div></div>
+      </div>
+      <div class="color-swatch" data-copy="--ml-color-green-400">
+        <div class="swatch-color" style="background:var(--ml-color-green-400);"></div>
+        <div class="swatch-info"><div class="swatch-name">Green 400</div><div class="swatch-var">--ml-color-green-400</div><div class="swatch-hex">#0F8A3A</div></div>
+      </div>
+      <div class="color-swatch" data-copy="--ml-color-green-500">
+        <div class="swatch-color" style="background:var(--ml-color-green-500);"></div>
+        <div class="swatch-info"><div class="swatch-name" style="color:var(--ml-color-green-600); font-weight:800;">Green 500 ★</div><div class="swatch-var">--ml-color-green-500</div><div class="swatch-hex">#0B7A2F</div></div>
+      </div>
+      <div class="color-swatch" data-copy="--ml-color-green-700">
+        <div class="swatch-color" style="background:var(--ml-color-green-700);"></div>
+        <div class="swatch-info"><div class="swatch-name">Green 700</div><div class="swatch-var">--ml-color-green-700</div><div class="swatch-hex">#085020</div></div>
+      </div>
+      <div class="color-swatch" data-copy="--ml-color-green-900">
+        <div class="swatch-color" style="background:var(--ml-color-green-900);"></div>
+        <div class="swatch-info"><div class="swatch-name">Green 900</div><div class="swatch-var">--ml-color-green-900</div><div class="swatch-hex">#0A3D1C</div></div>
+      </div>
+      <div class="color-swatch" data-copy="--ml-color-green-mint">
+        <div class="swatch-color" style="background:var(--ml-color-green-mint);"></div>
+        <div class="swatch-info"><div class="swatch-name" style="color:var(--ml-color-green-mint); font-weight:700;">Mint Accent</div><div class="swatch-var">--ml-color-green-mint</div><div class="swatch-hex">#10B981</div></div>
+      </div>
+    </div>
+
+    <h3 class="palette-subtitle" style="margin-top:24px;">Mali Gold — Or de Kéniéba & Bambouk (Mises en valeur & Badges)</h3>
+    <div class="palette-grid">
+      <div class="color-swatch" data-copy="--ml-color-gold-50">
+        <div class="swatch-color" style="background:var(--ml-color-gold-50);"></div>
+        <div class="swatch-info"><div class="swatch-name">Gold 50</div><div class="swatch-var">--ml-color-gold-50</div><div class="swatch-hex">#FBF6E7</div></div>
+      </div>
+      <div class="color-swatch" data-copy="--ml-color-gold-200">
+        <div class="swatch-color" style="background:var(--ml-color-gold-200);"></div>
+        <div class="swatch-info"><div class="swatch-name">Gold 200</div><div class="swatch-var">--ml-color-gold-200</div><div class="swatch-hex">#F3DC8C</div></div>
+      </div>
+      <div class="color-swatch" data-copy="--ml-color-gold-400">
+        <div class="swatch-color" style="background:var(--ml-color-gold-400);"></div>
+        <div class="swatch-info"><div class="swatch-name" style="color:#8A6600; font-weight:800;">Gold 400 ★</div><div class="swatch-var">--ml-color-gold-400</div><div class="swatch-hex">#F5C518</div></div>
+      </div>
+      <div class="color-swatch" data-copy="--ml-color-gold-600">
+        <div class="swatch-color" style="background:var(--ml-color-gold-600);"></div>
+        <div class="swatch-info"><div class="swatch-name">Gold 600</div><div class="swatch-var">--ml-color-gold-600</div><div class="swatch-hex">#B98900</div></div>
+      </div>
+      <div class="color-swatch" data-copy="--ml-color-gold-800">
+        <div class="swatch-color" style="background:var(--ml-color-gold-800);"></div>
+        <div class="swatch-info"><div class="swatch-name">Gold 800</div><div class="swatch-var">--ml-color-gold-800</div><div class="swatch-hex">#8A6600</div></div>
+      </div>
+      <div class="color-swatch" data-copy="--ml-color-gold-amber">
+        <div class="swatch-color" style="background:var(--ml-color-gold-amber);"></div>
+        <div class="swatch-info"><div class="swatch-name" style="color:var(--ml-color-gold-amber); font-weight:700;">Amber Sunshine</div><div class="swatch-var">--ml-color-gold-amber</div><div class="swatch-hex">#F59E0B</div></div>
+      </div>
+    </div>
+
+    <h3 class="palette-subtitle" style="margin-top:24px;">Mali Red — Rouge National (Alertes & Erreurs)</h3>
+    <div class="palette-grid">
+      <div class="color-swatch" data-copy="--ml-color-red-50">
+        <div class="swatch-color" style="background:var(--ml-color-red-50);"></div>
+        <div class="swatch-info"><div class="swatch-name">Red 50</div><div class="swatch-var">--ml-color-red-50</div><div class="swatch-hex">#FBEBEC</div></div>
+      </div>
+      <div class="color-swatch" data-copy="--ml-color-red-200">
+        <div class="swatch-color" style="background:var(--ml-color-red-200);"></div>
+        <div class="swatch-info"><div class="swatch-name">Red 200</div><div class="swatch-var">--ml-color-red-200</div><div class="swatch-hex">#E8B4B8</div></div>
+      </div>
+      <div class="color-swatch" data-copy="--ml-color-red-500">
+        <div class="swatch-color" style="background:var(--ml-color-red-500);"></div>
+        <div class="swatch-info"><div class="swatch-name" style="color:var(--ml-color-red-500); font-weight:800;">Red 500 ★</div><div class="swatch-var">--ml-color-red-500</div><div class="swatch-hex">#CE2029</div></div>
+      </div>
+      <div class="color-swatch" data-copy="--ml-color-red-700">
+        <div class="swatch-color" style="background:var(--ml-color-red-700);"></div>
+        <div class="swatch-info"><div class="swatch-name">Red 700</div><div class="swatch-var">--ml-color-red-700</div><div class="swatch-hex">#991B1B</div></div>
+      </div>
+      <div class="color-swatch" data-copy="--ml-color-red-terracotta">
+        <div class="swatch-color" style="background:var(--ml-color-red-terracotta);"></div>
+        <div class="swatch-info"><div class="swatch-name">Terracotta</div><div class="swatch-var">--ml-color-red-terracotta</div><div class="swatch-hex">#E05A47</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="palette-section">
+    <div class="palette-section-header">
+      <h2 class="ml-title-2">02. Palettes Culturelles & Patrimoniales</h2>
+      <p class="ml-body-compact" style="color: var(--ml-color-neutral-600);">
+        Inspirées de l'art textile, de l'artisanat et des paysages géographiques emblématiques du Mali.
+      </p>
+    </div>
+
+    <div class="cultural-palette-card">
+      <div class="cultural-header" style="border-left-color: var(--ml-color-indigo-segoo);">
+        <div class="cultural-title">Indigo Malien — Tissus de Ségou & Djenné</div>
+        <p class="cultural-desc">
+          Symbole de noblesse et de savoir-faire ancestral de la teinture à l'indigo. Idéal pour les portails de savoir, d'éducation et de diplomatie.
+        </p>
+      </div>
+      <div class="palette-grid">
+        <div class="color-swatch" data-copy="--ml-color-indigo-50"><div class="swatch-color" style="background:var(--ml-color-indigo-50);"></div><div class="swatch-info"><div class="swatch-name">Indigo 50</div><div class="swatch-var">--ml-color-indigo-50</div><div class="swatch-hex">#EEF2FF</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-indigo-200"><div class="swatch-color" style="background:var(--ml-color-indigo-200);"></div><div class="swatch-info"><div class="swatch-name">Indigo 200</div><div class="swatch-var">--ml-color-indigo-200</div><div class="swatch-hex">#C7D2FE</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-indigo-segoo"><div class="swatch-color" style="background:var(--ml-color-indigo-segoo);"></div><div class="swatch-info"><div class="swatch-name" style="color:var(--ml-color-indigo-segoo); font-weight:800;">Indigo Ségou</div><div class="swatch-var">--ml-color-indigo-segoo</div><div class="swatch-hex">#1D4ED8</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-indigo-500"><div class="swatch-color" style="background:var(--ml-color-indigo-500);"></div><div class="swatch-info"><div class="swatch-name">Indigo 500</div><div class="swatch-var">--ml-color-indigo-500</div><div class="swatch-hex">#3730A3</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-indigo-djenne"><div class="swatch-color" style="background:var(--ml-color-indigo-djenne);"></div><div class="swatch-info"><div class="swatch-name">Indigo Djenné</div><div class="swatch-var">--ml-color-indigo-djenne</div><div class="swatch-hex">#1E3A8A</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-indigo-900"><div class="swatch-color" style="background:var(--ml-color-indigo-900);"></div><div class="swatch-info"><div class="swatch-name">Indigo Nuit</div><div class="swatch-var">--ml-color-indigo-900</div><div class="swatch-hex">#120F36</div></div></div>
+      </div>
+    </div>
+
+    <div class="cultural-palette-card" style="margin-top:20px;">
+      <div class="cultural-header" style="border-left-color: var(--ml-color-bogolan-argile);">
+        <div class="cultural-title">Bogolan Sahélien — Terre, Suie & Kaolin</div>
+        <p class="cultural-desc">
+          Les teintes naturelles de l'étoffe de boue malienne (ocre, argile cuite, suie de bambou et kaolin). Parfait pour l'artisanat, le tourisme et l'environnement.
+        </p>
+      </div>
+      <div class="palette-grid">
+        <div class="color-swatch" data-copy="--ml-color-bogolan-kaolin"><div class="swatch-color" style="background:var(--ml-color-bogolan-kaolin); border-bottom:1px solid #E2D9C8;"></div><div class="swatch-info"><div class="swatch-name">Kaolin Blanc</div><div class="swatch-var">--ml-color-bogolan-kaolin</div><div class="swatch-hex">#FBF8F1</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-bogolan-ocre"><div class="swatch-color" style="background:var(--ml-color-bogolan-ocre);"></div><div class="swatch-info"><div class="swatch-name">Ocre Doré</div><div class="swatch-var">--ml-color-bogolan-ocre</div><div class="swatch-hex">#D97706</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-bogolan-argile"><div class="swatch-color" style="background:var(--ml-color-bogolan-argile);"></div><div class="swatch-info"><div class="swatch-name" style="color:var(--ml-color-bogolan-argile); font-weight:800;">Argile Terracotta</div><div class="swatch-var">--ml-color-bogolan-argile</div><div class="swatch-hex">#C25E25</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-bogolan-terre"><div class="swatch-color" style="background:var(--ml-color-bogolan-terre);"></div><div class="swatch-info"><div class="swatch-name">Terre Cuite</div><div class="swatch-var">--ml-color-bogolan-terre</div><div class="swatch-hex">#78350F</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-bogolan-suie"><div class="swatch-color" style="background:var(--ml-color-bogolan-suie);"></div><div class="swatch-info"><div class="swatch-name">Suie de Bambou</div><div class="swatch-var">--ml-color-bogolan-suie</div><div class="swatch-hex">#292524</div></div></div>
+      </div>
+    </div>
+
+    <div class="cultural-palette-card" style="margin-top:20px;">
+      <div class="cultural-header" style="border-left-color: var(--ml-color-bazin-violet-500);">
+        <div class="cultural-title">Bazin Royal & Wax Éclatant — Élégance & Fêtes</div>
+        <p class="cultural-desc">
+          Les couleurs vibrantes et étincelantes des grands boubous en bazin riche et des imprimés wax (violet royal, bougainvillier magenta, ambre). Idéal pour les événements culturels et la création.
+        </p>
+      </div>
+      <div class="palette-grid">
+        <div class="color-swatch" data-copy="--ml-color-bazin-violet-50"><div class="swatch-color" style="background:var(--ml-color-bazin-violet-50);"></div><div class="swatch-info"><div class="swatch-name">Violet Soft</div><div class="swatch-var">--ml-color-bazin-violet-50</div><div class="swatch-hex">#F3E8FF</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-bazin-violet-500"><div class="swatch-color" style="background:var(--ml-color-bazin-violet-500);"></div><div class="swatch-info"><div class="swatch-name" style="color:var(--ml-color-bazin-violet-500); font-weight:800;">Violet Royal</div><div class="swatch-var">--ml-color-bazin-violet-500</div><div class="swatch-hex">#7E22CE</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-bazin-magenta-500"><div class="swatch-color" style="background:var(--ml-color-bazin-magenta-500);"></div><div class="swatch-info"><div class="swatch-name" style="color:var(--ml-color-bazin-magenta-500); font-weight:800;">Bougainvillier</div><div class="swatch-var">--ml-color-bazin-magenta-500</div><div class="swatch-hex">#DB2777</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-bazin-turquoise-500"><div class="swatch-color" style="background:var(--ml-color-bazin-turquoise-500);"></div><div class="swatch-info"><div class="swatch-name" style="color:var(--ml-color-bazin-turquoise-500); font-weight:700;">Turquoise Wax</div><div class="swatch-var">--ml-color-bazin-turquoise-500</div><div class="swatch-hex">#06B6D4</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-wax-amber-500"><div class="swatch-color" style="background:var(--ml-color-wax-amber-500);"></div><div class="swatch-info"><div class="swatch-name" style="color:var(--ml-color-wax-amber-500); font-weight:700;">Wax Ambre</div><div class="swatch-var">--ml-color-wax-amber-500</div><div class="swatch-hex">#F59E0B</div></div></div>
+      </div>
+    </div>
+
+    <div class="cultural-palette-card" style="margin-top:20px;">
+      <div class="cultural-header" style="border-left-color: var(--ml-color-gold-500);">
+        <div class="cultural-title">Or du Sahel & Mandingue — Richesse Minérale & Soleil</div>
+        <p class="cultural-desc">
+          Les nuances d'or éclatant (Bouré, Keniéba), de soleil cuivré et d'orange mandingue. Symboles de prospérité économique, d'énergie et de rayonnement de l'Empire du Mali.
+        </p>
+      </div>
+      <div class="palette-grid">
+        <div class="color-swatch" data-copy="--ml-color-gold-50"><div class="swatch-color" style="background:var(--ml-color-gold-50); border-bottom:1px solid #F3DC8C;"></div><div class="swatch-info"><div class="swatch-name">Or Clair</div><div class="swatch-var">--ml-color-gold-50</div><div class="swatch-hex">#FBF6E7</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-gold-300"><div class="swatch-color" style="background:var(--ml-color-gold-300);"></div><div class="swatch-info"><div class="swatch-name">Sahel Jaune</div><div class="swatch-var">--ml-color-gold-300</div><div class="swatch-hex">#FACC15</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-gold-500"><div class="swatch-color" style="background:var(--ml-color-gold-500);"></div><div class="swatch-info"><div class="swatch-name" style="color:var(--ml-color-gold-900); font-weight:800;">Or de Bouré ★</div><div class="swatch-var">--ml-color-gold-500</div><div class="swatch-hex">#EAB308</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-orange-mandingue"><div class="swatch-color" style="background:#EA580C;"></div><div class="swatch-info"><div class="swatch-name" style="color:#EA580C; font-weight:800;">Orange Mandingue</div><div class="swatch-var">--ml-color-orange-mandingue</div><div class="swatch-hex">#EA580C</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-amber-sahel"><div class="swatch-color" style="background:#D97706;"></div><div class="swatch-info"><div class="swatch-name" style="color:#D97706; font-weight:700;">Ambre Solaire</div><div class="swatch-var">--ml-color-amber-sahel</div><div class="swatch-hex">#D97706</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-gold-900"><div class="swatch-color" style="background:var(--ml-color-gold-900);"></div><div class="swatch-info"><div class="swatch-name">Or Profond</div><div class="swatch-var">--ml-color-gold-900</div><div class="swatch-hex">#785A00</div></div></div>
+      </div>
+    </div>
+
+    <div class="cultural-palette-card" style="margin-top:20px;">
+      <div class="cultural-header" style="border-left-color: var(--ml-color-river-500);">
+        <div class="cultural-title">Fleuve Niger — Eau, Vitalité & Connectivité</div>
+        <p class="cultural-desc">
+          Les nuances d'eau et de teal représentant l'artère nourricière du Mali. Recommandé pour les applications de transport, d'eau, d'infrastructures et d'énergie.
+        </p>
+      </div>
+      <div class="palette-grid">
+        <div class="color-swatch" data-copy="--ml-color-river-50"><div class="swatch-color" style="background:var(--ml-color-river-50);"></div><div class="swatch-info"><div class="swatch-name">River 50</div><div class="swatch-var">--ml-color-river-50</div><div class="swatch-hex">#F0F7F9</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-river-200"><div class="swatch-color" style="background:var(--ml-color-river-200);"></div><div class="swatch-info"><div class="swatch-name">River 200</div><div class="swatch-var">--ml-color-river-200</div><div class="swatch-hex">#B5DDE7</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-river-500"><div class="swatch-color" style="background:var(--ml-color-river-500);"></div><div class="swatch-info"><div class="swatch-name" style="color:var(--ml-color-river-500); font-weight:800;">River Teal ★</div><div class="swatch-var">--ml-color-river-500</div><div class="swatch-hex">#1B7A94</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-river-700"><div class="swatch-color" style="background:var(--ml-color-river-700);"></div><div class="swatch-info"><div class="swatch-name">River 700</div><div class="swatch-var">--ml-color-river-700</div><div class="swatch-hex">#0F4858</div></div></div>
+        <div class="color-swatch" data-copy="--ml-color-river-900"><div class="swatch-color" style="background:var(--ml-color-river-900);"></div><div class="swatch-info"><div class="swatch-name">River Profond</div><div class="swatch-var">--ml-color-river-900</div><div class="swatch-hex">#0C3642</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="palette-section">
+    <div class="palette-section-header">
+      <h2 class="ml-title-2">03. Neutres Chauds & Sables du Sahel</h2>
+      <p class="ml-body-compact" style="color: var(--ml-color-neutral-600);">
+        Des teintes douces, sans froideur synthétique, évitant le gris pur pour préserver le confort visuel.
+      </p>
+    </div>
+    <div class="palette-grid">
+      <div class="color-swatch" data-copy="--ml-color-neutral-0"><div class="swatch-color" style="background:var(--ml-color-neutral-0); border-bottom:1px solid #E5E0D4;"></div><div class="swatch-info"><div class="swatch-name">Alabaster</div><div class="swatch-var">--ml-color-neutral-0</div><div class="swatch-hex">#FDFCFA</div></div></div>
+      <div class="color-swatch" data-copy="--ml-color-neutral-50"><div class="swatch-color" style="background:var(--ml-color-neutral-50);"></div><div class="swatch-info"><div class="swatch-name">Neutral 50</div><div class="swatch-var">--ml-color-neutral-50</div><div class="swatch-hex">#F8F6F1</div></div></div>
+      <div class="color-swatch" data-copy="--ml-color-neutral-100"><div class="swatch-color" style="background:var(--ml-color-neutral-100);"></div><div class="swatch-info"><div class="swatch-name">Neutral 100</div><div class="swatch-var">--ml-color-neutral-100</div><div class="swatch-hex">#F3F0E9</div></div></div>
+      <div class="color-swatch" data-copy="--ml-color-neutral-300"><div class="swatch-color" style="background:var(--ml-color-neutral-300);"></div><div class="swatch-info"><div class="swatch-name">Neutral 300</div><div class="swatch-var">--ml-color-neutral-300</div><div class="swatch-hex">#DDD9CF</div></div></div>
+      <div class="color-swatch" data-copy="--ml-color-neutral-500"><div class="swatch-color" style="background:var(--ml-color-neutral-500);"></div><div class="swatch-info"><div class="swatch-name">Neutral 500</div><div class="swatch-var">--ml-color-neutral-500</div><div class="swatch-hex">#8A877D</div></div></div>
+      <div class="color-swatch" data-copy="--ml-color-neutral-900"><div class="swatch-color" style="background:var(--ml-color-neutral-900);"></div><div class="swatch-info"><div class="swatch-name">Neutral 900</div><div class="swatch-var">--ml-color-neutral-900</div><div class="swatch-hex">#1A1A16</div></div></div>
+    </div>
+  </div>
+
+  <div class="palette-section">
+    <div class="palette-section-header">
+      <h2 class="ml-title-2">04. Dégradés Patrimoniaux</h2>
+      <p class="ml-body-compact" style="color: var(--ml-color-neutral-600);">
+        Réservés exclusivement aux arrière-plans d'en-tête, bannières d'accueil ou cartes phares.
+      </p>
+    </div>
+    <div class="palette-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
+      <div class="color-swatch" data-copy="--ml-gradient-green"><div class="swatch-color" style="background: var(--ml-gradient-green);"></div><div class="swatch-info"><div class="swatch-name">Green Deep</div><div class="swatch-var">--ml-gradient-green</div></div></div>
+      <div class="color-swatch" data-copy="--ml-gradient-indigo"><div class="swatch-color" style="background: var(--ml-gradient-indigo);"></div><div class="swatch-info"><div class="swatch-name">Indigo Nuit</div><div class="swatch-var">--ml-gradient-indigo</div></div></div>
+      <div class="color-swatch" data-copy="--ml-gradient-bogolan"><div class="swatch-color" style="background: var(--ml-gradient-bogolan);"></div><div class="swatch-info"><div class="swatch-name">Bogolan Terre</div><div class="swatch-var">--ml-gradient-bogolan</div></div></div>
+      <div class="color-swatch" data-copy="--ml-gradient-bazin"><div class="swatch-color" style="background: var(--ml-gradient-bazin);"></div><div class="swatch-info"><div class="swatch-name">Bazin Éclatant</div><div class="swatch-var">--ml-gradient-bazin</div></div></div>
+      <div class="color-swatch" data-copy="--ml-gradient-river-glow"><div class="swatch-color" style="background: var(--ml-gradient-river-glow);"></div><div class="swatch-info"><div class="swatch-name">Fleuve Niger Glow</div><div class="swatch-var">--ml-gradient-river-glow</div></div></div>
+      <div class="color-swatch" data-copy="--ml-gradient-sunset"><div class="swatch-color" style="background: var(--ml-gradient-sunset);"></div><div class="swatch-info"><div class="swatch-name">National Sunset</div><div class="swatch-var">--ml-gradient-sunset</div></div></div>
+    </div>
+  </div>
+
+  <div class="palette-section">
+    <div class="palette-section-header">
+      <h2 class="ml-title-2">05. Accessibilité & Conformité WCAG 2.1</h2>
+      <p class="ml-body-compact" style="color: var(--ml-color-neutral-600);">
+        Toutes les associations de couleurs sur le DSML doivent impérativement valider les seuils de lisibilité (AA minimum = 4.5:1).
+      </p>
+    </div>
+
+    <div class="wcag-matrix-grid">
+      <div class="wcag-card" style="background:#0B7A2F; color:#FFFFFF;">
+        <div class="wcag-badge-row"><span class="wcag-pill aaa">AAA (7.2:1)</span></div>
+        <div class="wcag-sample-title">Texte Blanc sur Vert d'État</div>
+        <div class="wcag-sample-code">--ml-color-green-500 + #FFFFFF</div>
+      </div>
+
+      <div class="wcag-card" style="background:#EEF2FF; color:#120F36; border:1px solid #C7D2FE;">
+        <div class="wcag-badge-row"><span class="wcag-pill aaa">AAA (12.4:1)</span></div>
+        <div class="wcag-sample-title">Indigo Nuit sur Fond Soft</div>
+        <div class="wcag-sample-code">--ml-color-indigo-900 + --ml-color-indigo-50</div>
+      </div>
+
+      <div class="wcag-card" style="background:#FBF6E7; color:#3B2E00; border:1px solid #F3DC8C;">
+        <div class="wcag-badge-row"><span class="wcag-pill aaa">AAA (9.8:1)</span></div>
+        <div class="wcag-sample-title">Texte Sombre sur Or Fond</div>
+        <div class="wcag-sample-code">--ml-color-gold-900 + --ml-color-gold-50</div>
+      </div>
+
+      <div class="wcag-card" style="background:#C25E25; color:#FFFFFF;">
+        <div class="wcag-badge-row"><span class="wcag-pill aa">AA (4.8:1)</span></div>
+        <div class="wcag-sample-title">Texte Blanc sur Bogolan Terracotta</div>
+        <div class="wcag-sample-code">--ml-color-bogolan-argile + #FFFFFF</div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .color-hero-card {
+      position: relative;
+      background: linear-gradient(135deg, #052310 0%, #0B5E26 60%, #173822 100%);
+      border-radius: var(--ml-radius-l);
+      color: #FFFFFF;
+      padding: var(--ml-space-6);
+      margin-bottom: var(--ml-space-8);
+      overflow: hidden;
+      box-shadow: var(--ml-shadow-2);
+    }
+    .color-hero-flag-strip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: var(--ml-gradient-flag-mali);
+    }
+    .color-hero-badge {
+      display: inline-block;
+      background: rgba(245, 197, 24, 0.18);
+      border: 1px solid rgba(245, 197, 24, 0.4);
+      color: #FCD34D;
+      font-family: var(--ml-font-title);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 4px 10px;
+      border-radius: var(--ml-radius-pill);
+      margin-bottom: var(--ml-space-3);
+    }
+    .color-hero-title {
+      font-family: var(--ml-font-title);
+      font-size: 22px;
+      font-weight: 800;
+      margin: 0 0 var(--ml-space-2) 0;
+      color: #FFFFFF;
+    }
+    .color-hero-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.88);
+      max-width: 780px;
+      margin: 0;
+    }
+
+    /* THEME STUDIO */
+    .theme-studio-section {
+      background: var(--ml-color-sand-50);
+      border: 1px solid var(--ml-color-neutral-300);
+      border-radius: var(--ml-radius-l);
+      padding: var(--ml-space-6);
+      margin-bottom: var(--ml-space-8);
+      box-shadow: var(--ml-shadow-soft);
+    }
+    .studio-tag {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--ml-color-green-700);
+    }
+    .theme-buttons-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+      margin-bottom: 20px;
+    }
+    .theme-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFFFFF;
+      border: 1px solid var(--ml-color-neutral-300);
+      color: var(--ml-color-neutral-800);
+      padding: 8px 14px;
+      border-radius: var(--ml-radius-pill);
+      font-family: var(--ml-font-title);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .theme-btn:hover {
+      border-color: var(--ml-color-neutral-500);
+      transform: translateY(-1px);
+    }
+    .theme-btn.active {
+      background: var(--ml-color-neutral-900);
+      color: #FFFFFF;
+      border-color: var(--ml-color-neutral-900);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .theme-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .studio-preview-box {
+      background: #FFFFFF;
+      border: 1px solid var(--ml-color-primary-border);
+      border-radius: var(--ml-radius-m);
+      padding: var(--ml-space-6);
+      transition: all 0.3s ease;
+    }
+    .demo-card-header {
+      border-bottom: 1px solid var(--ml-color-neutral-200);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .demo-badge {
+      display: inline-block;
+      background: var(--ml-color-primary-light);
+      color: var(--ml-color-primary);
+      border: 1px solid var(--ml-color-primary-border);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: var(--ml-radius-pill);
+      margin-bottom: 6px;
+    }
+    .demo-card-title {
+      font-family: var(--ml-font-title);
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0;
+      color: var(--ml-color-neutral-900);
+    }
+    .demo-text {
+      font-size: 14px;
+      color: var(--ml-color-neutral-700);
+      margin-bottom: 16px;
+    }
+    .demo-form-group {
+      margin-bottom: 16px;
+    }
+    .demo-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ml-color-neutral-800);
+      margin-bottom: 4px;
+    }
+    .demo-input {
+      width: 100%;
+      max-width: 320px;
+      padding: 8px 12px;
+      border: 2px solid var(--ml-color-primary-border);
+      border-radius: var(--ml-radius-s);
+      font-family: monospace;
+      font-size: 13px;
+      background: var(--ml-color-sand-50);
+      color: var(--ml-color-neutral-900);
+      outline: none;
+    }
+    .demo-input:focus {
+      border-color: var(--ml-color-primary);
+      box-shadow: 0 0 0 3px var(--ml-color-primary-light);
+    }
+    .demo-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .demo-btn-primary {
+      background: var(--ml-color-primary);
+      color: #FFFFFF;
+      border: none;
+      padding: 10px 18px;
+      border-radius: var(--ml-radius-s);
+      font-family: var(--ml-font-title);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s ease;
+    }
+    .demo-btn-primary:hover {
+      background: var(--ml-color-primary-hover);
+    }
+    .demo-btn-secondary {
+      background: var(--ml-color-primary-light);
+      color: var(--ml-color-primary);
+      border: 1px solid var(--ml-color-primary-border);
+      padding: 10px 18px;
+      border-radius: var(--ml-radius-s);
+      font-family: var(--ml-font-title);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .demo-callout {
+      display: flex;
+      gap: 12px;
+      background: var(--ml-color-primary-light);
+      border-left: 4px solid var(--ml-color-primary);
+      padding: 12px 16px;
+      border-radius: 0 var(--ml-radius-s) var(--ml-radius-s) 0;
+      font-size: 13px;
+      color: var(--ml-color-neutral-800);
+    }
+
+    /* PALETTES GRID & SWATCHES */
+    .palette-section {
+      margin-bottom: 40px;
+    }
+    .palette-subtitle {
+      font-family: var(--ml-font-title);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ml-color-neutral-800);
+      margin-bottom: 12px;
+    }
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+    .color-swatch {
+      background: #FFFFFF;
+      border: 1px solid var(--ml-color-neutral-200);
+      border-radius: var(--ml-radius-m);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .color-swatch:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--ml-shadow-ambient);
+      border-color: var(--ml-color-neutral-400);
+    }
+    .swatch-color {
+      height: 64px;
+      width: 100%;
+    }
+    .swatch-info {
+      padding: 8px 10px;
+    }
+    .swatch-name {
+      font-family: var(--ml-font-title);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ml-color-neutral-900);
+    }
+    .swatch-var {
+      font-size: 11px;
+      font-family: monospace;
+      color: var(--ml-color-neutral-500);
+      word-break: break-all;
+    }
+    .swatch-hex {
+      font-size: 10px;
+      font-family: monospace;
+      color: var(--ml-color-neutral-400);
+      margin-top: 2px;
+    }
+
+    .cultural-palette-card {
+      background: #FFFFFF;
+      border: 1px solid var(--ml-color-neutral-200);
+      border-radius: var(--ml-radius-m);
+      padding: 16px;
+    }
+    .cultural-header {
+      border-left: 4px solid var(--ml-color-green-500);
+      padding-left: 12px;
+      margin-bottom: 14px;
+    }
+    .cultural-title {
+      font-family: var(--ml-font-title);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ml-color-neutral-900);
+    }
+    .cultural-desc {
+      font-size: 13px;
+      color: var(--ml-color-neutral-600);
+      margin: 2px 0 0 0;
+    }
+
+    /* WCAG MATRIX */
+    .wcag-matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .wcag-card {
+      padding: 16px;
+      border-radius: var(--ml-radius-m);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 110px;
+    }
+    .wcag-pill {
+      font-family: var(--ml-font-title);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: var(--ml-radius-pill);
+      text-transform: uppercase;
+    }
+    .wcag-pill.aaa {
+      background: #10B981;
+      color: #FFFFFF;
+    }
+    .wcag-pill.aa {
+      background: #F59E0B;
+      color: #FFFFFF;
+    }
+    .wcag-sample-title {
+      font-family: var(--ml-font-title);
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+    .wcag-sample-code {
+      font-family: monospace;
+      font-size: 11px;
+      opacity: 0.85;
+    }
+
+    /* TOAST */
+    .copy-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--ml-color-neutral-900);
+      color: #FFFFFF;
+      padding: 12px 20px;
+      border-radius: var(--ml-radius-pill);
+      font-family: var(--ml-font-title);
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: all 0.25s ease;
+      z-index: 9999;
+    }
+    .copy-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <script>
+    // Live Theme Selector Logic
+    const themeBtns = document.querySelectorAll('[data-set-theme]');
+    const previewBox = document.getElementById('themePreviewBox');
+
+    themeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.getAttribute('data-set-theme');
+        themeBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        if (previewBox) {
+          previewBox.setAttribute('data-theme', theme);
+        }
+      });
+    });
+
+    // Copy swatch code to clipboard
+    const toast = document.getElementById('copyToast');
+    const swatches = document.querySelectorAll('.color-swatch[data-copy]');
+
+    swatches.forEach(swatch => {
+      swatch.addEventListener('click', () => {
+        const code = swatch.getAttribute('data-copy');
+        if (code) {
+          navigator.clipboard.writeText(`var(${code})`).then(() => {
+            if (toast) {
+              toast.textContent = `Copié : var(${code})`;
+              toast.classList.add('show');
+              setTimeout(() => {
+                toast.classList.remove('show');
+              }, 2200);
+            }
+          });
+        }
+      });
+    });
+  </script>
+
+</DocsLayout>

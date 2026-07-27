@@ -1,0 +1,173 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout
+  title="Alertes, Callouts & Bannières"
+  description="Messages de statut, notifications, blocs de mise en valeur et bannières du DSML."
+  pageTitle="Alertes & Mise en valeur"
+  pageSubtitle="Messages de statut, notifications, blocs de mise en valeur éditoriaux et bannières globales."
+>
+
+  <h2 class="ml-title-2">1. Statuts standards</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Chaque statut intègre une icône SVG dédiée pour maximiser la lisibilité et le repérage visuel rapide.</p>
+  
+  <div class="demo-preview" style="display: flex; flex-direction: column; align-items: stretch; gap: var(--ml-space-3); width: 100%;">
+    <div class="ml-alert ml-alert-info">
+      <div class="ml-alert-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      </div>
+      <div class="ml-alert-content">
+        <strong>Information consulaire :</strong> Le délai moyen de traitement des demandes de passeports biométriques est actuellement de 15 jours.
+      </div>
+    </div>
+
+    <div class="ml-alert ml-alert-success">
+      <div class="ml-alert-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      </div>
+      <div class="ml-alert-content">
+        <strong>Enregistrement réussi :</strong> Votre pré-demande de carte consulaire numéro #ML-9836 a bien été reçue.
+      </div>
+    </div>
+
+    <div class="ml-alert ml-alert-warning">
+      <div class="ml-alert-icon">
+        <svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+      </div>
+      <div class="ml-alert-content">
+        <strong>Attention requise :</strong> Tout dossier incomplet lors du rendez-vous physique sera systématiquement rejeté.
+      </div>
+    </div>
+
+    <div class="ml-alert ml-alert-error">
+      <div class="ml-alert-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+      </div>
+      <div class="ml-alert-content">
+        <strong>Erreur critique :</strong> Le paiement en ligne a échoué. Veuillez vérifier le code d'autorisation de votre e-voucher.
+      </div>
+    </div>
+  </div>
+  
+  <CodeBlock code={`<div class="ml-alert ml-alert-info">
+  <div class="ml-alert-icon">
+    <svg viewBox="0 0 24 24"><path d="..."/></svg>
+  </div>
+  <div class="ml-alert-content">
+    <strong>Information :</strong> Message...
+  </div>
+</div>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">2. Variante Compacte / Inline (.ml-alert-sm)</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Des alertes plus petites, sans bordure prononcée, idéales pour être placées dans des formulaires ou des zones restreintes.</p>
+  <div class="demo-preview">
+    <div class="ml-alert ml-alert-success ml-alert-sm" style="width: 100%;">
+      <div class="ml-alert-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      </div>
+      <div class="ml-alert-content">Le numéro de téléphone a été vérifié par SMS.</div>
+    </div>
+  </div>
+  <CodeBlock code={`<div class="ml-alert ml-alert-success ml-alert-sm">
+  <div class="ml-alert-icon">...</div>
+  <div class="ml-alert-content">Message de confirmation...</div>
+</div>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">3. Alertes avec Titre &amp; Fermables</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Pour les notifications importantes structurées avec un titre en gras, une description complète et une croix de fermeture.</p>
+  <div class="demo-preview">
+    <div class="ml-alert ml-alert-warning" style="width: 100%; align-items: flex-start;" id="dismissible-alert-demo-2">
+      <div class="ml-alert-icon" style="margin-top: 2px;">
+        <svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+      </div>
+      <div class="ml-alert-content">
+        <div class="ml-alert-title">Fermeture temporaire du Consulat</div>
+        <div>En raison des fêtes nationales, le consulat général à Lyon sera fermé au public du 21 au 23 septembre inclus. Les rendez-vous pris à ces dates seront reportés.</div>
+      </div>
+      <button class="ml-alert-close" aria-label="Fermer" onclick="document.getElementById('dismissible-alert-demo-2').style.display='none'">
+        <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </button>
+    </div>
+  </div>
+  <CodeBlock code={`<div class="ml-alert ml-alert-warning" style="align-items: flex-start;">
+  <div class="ml-alert-icon" style="margin-top: 2px;">...</div>
+  <div class="ml-alert-content">
+    <div class="ml-alert-title">Titre de l'alerte</div>
+    <div>Description longue de l'alerte...</div>
+  </div>
+  <button class="ml-alert-close" aria-label="Fermer">
+    <svg viewBox="0 0 24 24">...</svg>
+  </button>
+</div>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-10);">4. Callouts / Blocs éditoriaux (.ml-callout)</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Blocs à bordure gauche épaisse et fond teinté pour attirer l'attention du lecteur dans le flux d'un texte.</p>
+  
+  <div class="demo-preview" style="display: flex; flex-direction: column; align-items: stretch; gap: var(--ml-space-3); width: 100%;">
+    <div class="ml-callout">
+      <div class="ml-callout-title">Règle générale</div>
+      La présence physique du demandeur est obligatoire pour la prise d'empreintes biométriques lors du dépôt du dossier de passeport.
+    </div>
+    <div class="ml-callout ml-callout-green">
+      <div class="ml-callout-title">Conseil pratique (Mali Vert)</div>
+      Nous vous recommandons de prendre rendez-vous au moins 2 mois avant l'expiration de votre titre de voyage actuel.
+    </div>
+    <div class="ml-callout ml-callout-gold">
+      <div class="ml-callout-title">Attention importante (Sahel Or)</div>
+      Tout retard de plus de 15 minutes au rendez-vous entraînera l'annulation automatique de votre créneau.
+    </div>
+    <div class="ml-callout ml-callout-river">
+      <div class="ml-callout-title">Service en ligne (Niger River)</div>
+      Vous pouvez suivre l'état d'avancement de votre enrôlement sur le portail citoyen sécurisé.
+    </div>
+  </div>
+
+  <CodeBlock code={`<!-- Standard callout -->
+<div class="ml-callout">
+  <div class="ml-callout-title">Règle générale</div>
+  Texte explicatif...
+</div>
+
+<!-- Green callout -->
+<div class="ml-callout ml-callout-green">
+  <div class="ml-callout-title">Conseil pratique</div>
+  ...
+</div>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-10);">5. Bandeaux d'information générale (.ml-banner)</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Bandeaux d'annonces pleine largeur se positionnant en haut de page pour les notifications globales du site.</p>
+  
+  <div class="demo-preview" style="display: flex; flex-direction: column; align-items: stretch; gap: var(--ml-space-3); padding: var(--ml-space-3) 0; width: 100%;">
+    <div class="ml-banner ml-banner-info" id="banner-info-demo">
+      <div class="ml-banner-content">
+        <span>📢</span>
+        <span><strong>Nouveau service :</strong> La pré-demande de visa en ligne est désormais opérationnelle pour tous les pays de l'AES.</span>
+      </div>
+      <button class="ml-banner-close" aria-label="Fermer" onclick="document.getElementById('banner-info-demo').style.display='none'">
+        <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </button>
+    </div>
+    <div class="ml-banner ml-banner-warning" id="banner-warn-demo">
+      <div class="ml-banner-content">
+        <span>⚠️</span>
+        <span><strong>Maintenance planifiée :</strong> Le portail de paiement sera indisponible le dimanche 26 juillet de 02h00 à 06h00.</span>
+      </div>
+      <button class="ml-banner-close" aria-label="Fermer" onclick="document.getElementById('banner-warn-demo').style.display='none'">
+        <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <CodeBlock code={`<div class="ml-banner ml-banner-info">
+  <div class="ml-banner-content">
+    <span>📢</span>
+    <span><strong>Annonce :</strong> Contenu...</span>
+  </div>
+  <button class="ml-banner-close" aria-label="Fermer">
+    <svg viewBox="0 0 24 24">...</svg>
+  </button>
+</div>`} lang="html" />
+
+</DocsLayout>

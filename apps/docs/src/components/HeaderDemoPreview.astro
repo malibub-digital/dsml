@@ -1,0 +1,149 @@
+---
+export interface Props {
+  initialDemo?: 'static' | 'sticky' | 'shrink';
+}
+
+const { initialDemo = 'static' } = Astro.props;
+---
+
+<div class="demo-sandbox-wrapper" data-initial-demo={initialDemo}>
+  <div class="demo-toolbar">
+    <div class="demo-toolbar-group">
+      <span class="demo-toolbar-label">Mode d'En-tête :</span>
+      <button class={`ml-btn ml-btn-secondary ml-btn-sm demo-mode-btn ${initialDemo === 'static' ? 'active' : ''}`} data-mode="static">Non-fixe (Défaut)</button>
+      <button class={`ml-btn ml-btn-secondary ml-btn-sm demo-mode-btn ${initialDemo === 'sticky' ? 'active' : ''}`} data-mode="sticky">Fixe (Sticky)</button>
+      <button class={`ml-btn ml-btn-secondary ml-btn-sm demo-mode-btn ${initialDemo === 'shrink' ? 'active' : ''}`} data-mode="shrink">Fixe + Shrink</button>
+    </div>
+    <div class="demo-toolbar-group">
+      <span class="demo-toolbar-label">Vue :</span>
+      <button class="ml-btn ml-btn-ghost ml-btn-sm demo-viewport-btn active" data-viewport="desktop" title="Vue Bureau">
+        💻 Bureau
+      </button>
+      <button class="ml-btn ml-btn-ghost ml-btn-sm demo-viewport-btn" data-viewport="mobile" title="Vue Mobile (375px)">
+        📱 Mobile
+      </button>
+      <a id="open-fullscreen" href={`/demos/header-${initialDemo}/`} target="_blank" rel="noopener noreferrer" class="ml-btn ml-btn-primary ml-btn-sm" style="text-decoration: none;">
+        Tester la démo en pleine page ↗
+      </a>
+    </div>
+  </div>
+
+  <div class="demo-frame-container desktop" id="frame-container">
+    <iframe id="demo-iframe" src={`/demos/header-${initialDemo}/`} title="Démonstration Interactive de Header DSML"></iframe>
+  </div>
+</div>
+
+<style>
+  .demo-sandbox-wrapper {
+    margin: var(--ml-space-6) 0;
+    border: 1px solid var(--ml-color-neutral-300);
+    border-radius: var(--ml-radius-l);
+    overflow: hidden;
+    background: var(--ml-color-neutral-100);
+    box-shadow: var(--ml-shadow-soft);
+  }
+
+  .demo-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--ml-space-3);
+    padding: var(--ml-space-3) var(--ml-space-4);
+    background: var(--ml-color-neutral-0);
+    border-bottom: 1px solid var(--ml-color-neutral-200);
+  }
+
+  .demo-toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: var(--ml-space-2);
+    flex-wrap: wrap;
+  }
+
+  .demo-toolbar-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ml-color-neutral-700);
+    margin-right: 4px;
+  }
+
+  .demo-frame-container {
+    width: 100%;
+    height: 480px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    margin: 0 auto;
+    background: var(--ml-color-neutral-0);
+  }
+
+  .demo-frame-container.desktop {
+    width: 100%;
+  }
+
+  .demo-frame-container.mobile {
+    width: 375px;
+    height: 580px;
+    margin: 20px auto;
+    border-radius: 24px;
+    border: 8px solid var(--ml-color-neutral-800);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: inherit;
+  }
+
+  .demo-mode-btn.active,
+  .demo-viewport-btn.active {
+    background-color: var(--ml-color-green-600) !important;
+    color: #ffffff !important;
+    border-color: var(--ml-color-green-600) !important;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const wrappers = document.querySelectorAll('.demo-sandbox-wrapper');
+
+    wrappers.forEach((wrapper) => {
+      const iframe = wrapper.querySelector('#demo-iframe') as HTMLIFrameElement;
+      const frameContainer = wrapper.querySelector('#frame-container');
+      const openFullscreenBtn = wrapper.querySelector('#open-fullscreen') as HTMLAnchorElement;
+      const modeBtns = wrapper.querySelectorAll('.demo-mode-btn');
+      const viewportBtns = wrapper.querySelectorAll('.demo-viewport-btn');
+
+      const updateDemoSource = (mode: string) => {
+        const url = `/demos/header-${mode}/`;
+        if (iframe) iframe.src = url;
+        if (openFullscreenBtn) openFullscreenBtn.href = url;
+      };
+
+      modeBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          modeBtns.forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          const mode = btn.getAttribute('data-mode') || 'static';
+          updateDemoSource(mode);
+        });
+      });
+
+      viewportBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          viewportBtns.forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          const viewport = btn.getAttribute('data-viewport') || 'desktop';
+          if (frameContainer) {
+            if (viewport === 'mobile') {
+              frameContainer.className = 'demo-frame-container mobile';
+            } else {
+              frameContainer.className = 'demo-frame-container desktop';
+            }
+          }
+        });
+      });
+    });
+  });
+</script>

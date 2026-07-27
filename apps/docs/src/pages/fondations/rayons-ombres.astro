@@ -1,0 +1,57 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout
+  title="Rayons & Ombres"
+  description="Arrondis et élévations d'ombrage du DSML."
+  pageTitle="Rayons & Ombres"
+  pageSubtitle="Les arrondis et les élévations créent de l'esthétique premium et indiquent clairement le relief interactif (effets de survol)."
+>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: var(--ml-space-4);">
+    <div style="background-color: var(--ml-color-neutral-0); border: 1px solid var(--ml-color-neutral-200); padding: 20px; border-radius: var(--ml-radius-l);">
+      <h3 class="ml-title-3" style="margin-top: 0; margin-bottom: var(--ml-space-4);">Rayons (Radii)</h3>
+      <div style="display: flex; flex-direction: column; gap: var(--ml-space-3);">
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: var(--ml-color-neutral-500);">Petit (6px) : --ml-radius-s</div>
+          <div style="width: 50px; height: 30px; border: 2px solid var(--ml-color-green-500); border-radius: var(--ml-radius-s); margin-top: 4px;"></div>
+        </div>
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: var(--ml-color-neutral-500);">Moyen (10px) : --ml-radius-m</div>
+          <div style="width: 50px; height: 30px; border: 2px solid var(--ml-color-green-500); border-radius: var(--ml-radius-m); margin-top: 4px;"></div>
+        </div>
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: var(--ml-color-neutral-500);">Grand (12px) : --ml-radius-l</div>
+          <div style="width: 50px; height: 30px; border: 2px solid var(--ml-color-green-500); border-radius: var(--ml-radius-l); margin-top: 4px;"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div style="background-color: var(--ml-color-neutral-0); border: 1px solid var(--ml-color-neutral-200); padding: 20px; border-radius: var(--ml-radius-l);">
+      <h3 class="ml-title-3" style="margin-top: 0; margin-bottom: var(--ml-space-4);">Ombres (Elevations)</h3>
+      <div style="display: flex; flex-direction: column; gap: var(--ml-space-3);">
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: var(--ml-color-neutral-500);">Repos (Shadow 1) : --ml-shadow-1</div>
+          <div style="width: 100%; height: 40px; border: 1px solid var(--ml-color-neutral-100); border-radius: var(--ml-radius-s); box-shadow: var(--ml-shadow-1); background: white; margin-top: 4px;"></div>
+        </div>
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: var(--ml-color-neutral-500);">Survol (Shadow 2) : --ml-shadow-2</div>
+          <div style="width: 100%; height: 40px; border: 1px solid var(--ml-color-neutral-100); border-radius: var(--ml-radius-s); box-shadow: var(--ml-shadow-2); background: white; margin-top: 4px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="ml-title-2">Exemple d'intégration</h2>
+  <CodeBlock code={`.ma-carte {
+  border-radius: var(--ml-radius-l);
+  box-shadow: var(--ml-shadow-1);
+  transition: box-shadow 0.2s ease;
+}
+.ma-carte:hover {
+  box-shadow: var(--ml-shadow-2);
+}`} lang="css" />
+
+</DocsLayout>

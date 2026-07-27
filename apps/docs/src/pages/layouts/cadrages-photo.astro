@@ -1,0 +1,99 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout
+  title="Cadrages & Styles de Photo"
+  description="Styles de cadrage et effets de bordure pour les photos institutionnelles du DSML."
+  pageTitle="Cadrages Photo"
+  pageSubtitle="Le DSML propose plusieurs styles de cadrage et effets d'arrière-plan pour les photos de héros afin de s'adapter à la tonalité éditoriale de chaque site."
+>
+
+  <h2 class="ml-title-2">Styles de cadres disponibles</h2>
+  
+  <div class="preview-frame-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--ml-space-6); margin-top: var(--ml-space-4);">
+    <div style="background: white; padding: var(--ml-space-4); border: 1px solid var(--ml-color-neutral-200); border-radius: var(--ml-radius-m); display: flex; flex-direction: column; justify-content: space-between; gap: var(--ml-space-3);">
+      <div style="font-weight: 700; font-size: 14px; color: var(--ml-color-neutral-900);">1. Standard (Glow Royal) <span class="ml-badge ml-badge-info" style="font-size: 10px; padding: 2px 6px;">Défaut</span></div>
+      <div style="height: 180px; display: flex; align-items: center; justify-content: center; background: #FAF8F5; border-radius: var(--ml-radius-s); overflow: hidden; padding: 20px;">
+        <div class="ml-hero-split-media" style="width: 140px; height: 110px;">
+          <img src="/images/hero-mali.jpg" alt="Exemple Standard" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
+      <code style="font-size: 11px; background: var(--ml-color-neutral-100); padding: 4px 8px; border-radius: var(--ml-radius-s); font-family: monospace; overflow-x: auto; white-space: nowrap;">class="ml-hero-split-media"</code>
+    </div>
+
+    <div style="background: white; padding: var(--ml-space-4); border: 1px solid var(--ml-color-neutral-200); border-radius: var(--ml-radius-m); display: flex; flex-direction: column; justify-content: space-between; gap: var(--ml-space-3);">
+      <div style="font-weight: 700; font-size: 14px; color: var(--ml-color-neutral-900);">2. Glow Sunset</div>
+      <div style="height: 180px; display: flex; align-items: center; justify-content: center; background: #FAF8F5; border-radius: var(--ml-radius-s); overflow: hidden; padding: 20px;">
+        <div class="ml-hero-split-media ml-frame-glow-sunset" style="width: 140px; height: 110px;">
+          <img src="/images/mali-12.jpg" alt="Exemple Glow Sunset" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
+      <code style="font-size: 11px; background: var(--ml-color-neutral-100); padding: 4px 8px; border-radius: var(--ml-radius-s); font-family: monospace; overflow-x: auto; white-space: nowrap;">class="... ml-frame-glow-sunset"</code>
+    </div>
+
+    <div style="background: white; padding: var(--ml-space-4); border: 1px solid var(--ml-color-neutral-200); border-radius: var(--ml-radius-m); display: flex; flex-direction: column; justify-content: space-between; gap: var(--ml-space-3);">
+      <div style="font-weight: 700; font-size: 14px; color: var(--ml-color-neutral-900);">3. Offset Gold</div>
+      <div style="height: 180px; display: flex; align-items: center; justify-content: center; background: #FAF8F5; border-radius: var(--ml-radius-s); overflow: hidden; padding: 20px;">
+        <div class="ml-hero-split-media ml-frame-offset-gold" style="width: 140px; height: 110px;">
+          <img src="/images/mali-28.jpg" alt="Exemple Offset Gold" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
+      <code style="font-size: 11px; background: var(--ml-color-neutral-100); padding: 4px 8px; border-radius: var(--ml-radius-s); font-family: monospace; overflow-x: auto; white-space: nowrap;">class="... ml-frame-offset-gold"</code>
+    </div>
+
+    <div style="background: white; padding: var(--ml-space-4); border: 1px solid var(--ml-color-neutral-200); border-radius: var(--ml-radius-m); display: flex; flex-direction: column; justify-content: space-between; gap: var(--ml-space-3);">
+      <div style="font-weight: 700; font-size: 14px; color: var(--ml-color-neutral-900);">4. Offset Green</div>
+      <div style="height: 180px; display: flex; align-items: center; justify-content: center; background: #FAF8F5; border-radius: var(--ml-radius-s); overflow: hidden; padding: 20px;">
+        <div class="ml-hero-split-media ml-frame-offset-green" style="width: 140px; height: 110px;">
+          <img src="/images/mali-6.jpg" alt="Exemple Offset Green" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
+      <code style="font-size: 11px; background: var(--ml-color-neutral-100); padding: 4px 8px; border-radius: var(--ml-radius-s); font-family: monospace; overflow-x: auto; white-space: nowrap;">class="... ml-frame-offset-green"</code>
+    </div>
+
+    <div style="background: white; padding: var(--ml-space-4); border: 1px solid var(--ml-color-neutral-200); border-radius: var(--ml-radius-m); display: flex; flex-direction: column; justify-content: space-between; gap: var(--ml-space-3);">
+      <div style="font-weight: 700; font-size: 14px; color: var(--ml-color-neutral-900);">5. Gold Brackets</div>
+      <div style="height: 180px; display: flex; align-items: center; justify-content: center; background: #FAF8F5; border-radius: var(--ml-radius-s); overflow: hidden; padding: 20px;">
+        <div class="ml-hero-split-media ml-frame-brackets-gold" style="width: 140px; height: 110px;">
+          <img src="/images/hero-mali.jpg" alt="Exemple Gold Brackets" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
+      <code style="font-size: 11px; background: var(--ml-color-neutral-100); padding: 4px 8px; border-radius: var(--ml-radius-s); font-family: monospace; overflow-x: auto; white-space: nowrap;">class="... ml-frame-brackets-gold"</code>
+    </div>
+
+    <div style="background: white; padding: var(--ml-space-4); border: 1px solid var(--ml-color-neutral-200); border-radius: var(--ml-radius-m); display: flex; flex-direction: column; justify-content: space-between; gap: var(--ml-space-3);">
+      <div style="font-weight: 700; font-size: 14px; color: var(--ml-color-neutral-900);">6. Épuré (Minimal)</div>
+      <div style="height: 180px; display: flex; align-items: center; justify-content: center; background: #FAF8F5; border-radius: var(--ml-radius-s); overflow: hidden; padding: 20px;">
+        <div class="ml-hero-split-media ml-frame-minimal" style="width: 140px; height: 110px;">
+          <img src="/images/mali-28.jpg" alt="Exemple Épuré" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
+      <code style="font-size: 11px; background: var(--ml-color-neutral-100); padding: 4px 8px; border-radius: var(--ml-radius-s); font-family: monospace; overflow-x: auto; white-space: nowrap;">class="... ml-frame-minimal"</code>
+    </div>
+  </div>
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">Exemple d'intégration</h2>
+  <CodeBlock code={`<!-- Image with Offset Gold frame -->
+<div class="ml-hero-split-media ml-frame-offset-gold">
+  <img src="images/hero-mali.jpg" alt="Jeunes entrepreneurs" loading="lazy">
+</div>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">Effet Vignette Image Zoom (Hover Zoom)</h2>
+  <p class="ml-body-compact" style="margin-top: var(--ml-space-2);">
+    Crée une transition de grossissement fluide sur les images et les cartes au survol (hover) ou au focus clavier.
+  </p>
+  <p class="ml-body-compact" style="margin-top: var(--ml-space-2);">
+    Enveloppez simplement votre image dans un conteneur possédant la classe <code>ml-img-zoom-container</code>.
+  </p>
+
+  <CodeBlock code={`<!-- Example with news card -->
+<a href="#" class="news-card">
+  <div class="ml-img-zoom-container" style="height: 130px;">
+    <img src="images/mali-photo.jpg" alt="Description de l'image" loading="lazy">
+  </div>
+  <h3 class="news-title">Titre de l'actualité</h3>
+</a>`} lang="html" />
+
+</DocsLayout>

@@ -1,0 +1,129 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout
+  title="Recherche (Search)"
+  description="Composants de recherche du DSML (barre hero, modale, barre inline)."
+  pageTitle="Recherche"
+  pageSubtitle="Le DSML propose 3 solutions adaptées selon les besoins de visibilité et le volume de contenu des sites publics."
+>
+
+  <h2 class="ml-title-2">1. Barre de recherche Hero (Option 1)</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">
+    Intégrée dans la zone Hero pour attirer immédiatement l'attention (ex : page d'accueil d'un consulat ou d'un ministère).
+  </p>
+  <div class="demo-preview">
+    <form class="ml-search-hero" action="#search" style="width: 100%; max-width: 600px; display: flex;" onsubmit="event.preventDefault();">
+      <input type="text" class="ml-search-hero-input" placeholder="Rechercher une démarche (ex : carte consulaire, passeport)…" style="flex: 1; padding: var(--ml-space-3); border: 1px solid var(--ml-color-neutral-300); border-radius: var(--ml-radius-s) 0 0 var(--ml-radius-s);">
+      <button type="submit" class="ml-search-hero-btn" style="padding: var(--ml-space-3) var(--ml-space-6); background: var(--ml-color-green-500); color: white; border: none; border-radius: 0 var(--ml-radius-s) var(--ml-radius-s) 0; font-weight: bold; cursor: pointer;">Rechercher</button>
+    </form>
+  </div>
+  <CodeBlock code={`<form class="ml-search-hero" action="#recherche">
+  <input type="text" class="ml-search-hero-input" placeholder="Rechercher une démarche (ex : carte consulaire, passeport)…" aria-label="Rechercher">
+  <button type="submit" class="ml-search-hero-btn">Rechercher</button>
+</form>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">2. Bouton discret &amp; Modale de recherche (Option 2)</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">
+    Un bouton discret placé dans le header qui ouvre une modale de recherche complète avec suggestions. Il supporte aussi les raccourcis clavier <kbd>Ctrl+K</kbd> ou <kbd>/</kbd>.
+  </p>
+  <div class="demo-preview">
+    <button class="ml-search-trigger" id="demo-search-trigger" style="padding: var(--ml-space-2) var(--ml-space-4); border: 1px solid var(--ml-color-neutral-300); background: white; border-radius: var(--ml-radius-s); cursor: pointer; display: flex; align-items: center; gap: 8px;">
+      <span>🔍</span> Rechercher <kbd class="ml-search-trigger-shortcut" style="background: var(--ml-color-neutral-100); padding: 2px 6px; border-radius: 4px; font-size: 11px;">/</kbd>
+    </button>
+  </div>
+  <CodeBlock code={`<!-- 1. Trigger button (in header) -->
+<button class="ml-search-trigger" aria-label="Rechercher">
+  <span>🔍</span> Rechercher <kbd class="ml-search-trigger-shortcut">/</kbd>
+</button>
+
+<!-- 2. Modal dialog -->
+<dialog class="ml-modal ml-search-modal" id="ml-search-modal">
+  <div class="ml-modal-header">
+    <h3 class="ml-modal-title">Recherche</h3>
+    <button class="ml-modal-close" aria-label="Fermer">×</button>
+  </div>
+  <div class="ml-modal-body">
+    <div class="ml-search-modal-input-wrapper">
+      <span class="ml-search-modal-icon">🔍</span>
+      <input type="text" class="ml-search-modal-input" placeholder="Que recherchez-vous ?...">
+    </div>
+  </div>
+</dialog>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">3. Barre de recherche en ligne (Option 3)</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">
+    Version compacte sur fond grisé avec bouton d'accentuation plein. Conçue pour s'insérer proprement dans un header ou une colonne latérale de site documentaire (inspirée de beta.gouv.fr).
+  </p>
+  <div class="demo-preview">
+    <div class="ml-search-inline" style="display: flex; background: var(--ml-color-neutral-100); border-radius: var(--ml-radius-s); overflow: hidden; max-width: 400px; width: 100%;">
+      <input type="text" class="ml-search-inline-input" placeholder="Rechercher dans la documentation..." aria-label="Rechercher dans la documentation" style="flex: 1; border: none; padding: var(--ml-space-2) var(--ml-space-3); background: transparent;">
+      <button class="ml-search-inline-btn" aria-label="Rechercher" style="border: none; background: var(--ml-color-green-500); color: white; padding: var(--ml-space-2) var(--ml-space-4); cursor: pointer; display: flex; align-items: center; justify-content: center;">
+        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2;"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      </button>
+    </div>
+  </div>
+  <CodeBlock code={`<div class="ml-search-inline">
+  <input type="text" class="ml-search-inline-input" placeholder="Rechercher..." aria-label="Rechercher">
+  <button class="ml-search-inline-btn" aria-label="Lancer la recherche">
+    <svg viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+  </button>
+</div>`} lang="html" />
+
+  <dialog class="ml-modal ml-search-modal" id="ml-search-modal" style="border: 1px solid var(--ml-color-neutral-200); border-radius: var(--ml-radius-m); padding: var(--ml-space-4); max-width: 500px; width: 100%; margin: 10% auto;">
+    <div class="ml-modal-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--ml-color-neutral-200); padding-bottom: var(--ml-space-2); margin-bottom: var(--ml-space-3);">
+      <h3 class="ml-modal-title" style="margin: 0; font-family: var(--ml-font-title);">Rechercher dans la documentation</h3>
+      <button class="ml-modal-close" aria-label="Fermer la recherche" id="demo-search-close" style="border: none; background: transparent; font-size: 24px; cursor: pointer; line-height: 1;">×</button>
+    </div>
+    <div class="ml-modal-body">
+      <div class="ml-search-modal-input-wrapper" style="display: flex; align-items: center; border: 1px solid var(--ml-color-neutral-300); border-radius: var(--ml-radius-s); padding: var(--ml-space-2); margin-bottom: var(--ml-space-4);">
+        <span class="ml-search-modal-icon" style="margin-right: var(--ml-space-2);">🔍</span>
+        <input type="text" class="ml-search-modal-input" placeholder="Que recherchez-vous ? (ex : boutons, cartes...)" aria-label="Saisir votre recherche" style="border: none; flex: 1; outline: none;">
+      </div>
+      <div class="ml-search-popular-section">
+        <div class="ml-search-modal-section-title" style="font-size: 12px; font-weight: bold; color: var(--ml-color-neutral-400); text-transform: uppercase; margin-bottom: var(--ml-space-2);">Recherches fréquentes</div>
+        <ul class="ml-search-modal-results-list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--ml-space-2);">
+          <li>
+            <a href="/composants/boutons/" class="ml-search-modal-item" style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; padding: var(--ml-space-2); border-radius: var(--ml-radius-s); background: var(--ml-color-neutral-50); color: var(--ml-color-neutral-900);">
+              <div>
+                <div class="ml-search-modal-item-title" style="font-weight: bold; font-size: 14px;">Boutons (Buttons)</div>
+                <div class="ml-search-modal-item-desc" style="font-size: 12px; color: var(--ml-color-neutral-500);">Composants de boutons primaires et secondaires</div>
+              </div>
+              <span class="ml-search-modal-item-arrow">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="/composants/cartes/" class="ml-search-modal-item" style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; padding: var(--ml-space-2); border-radius: var(--ml-radius-s); background: var(--ml-color-neutral-50); color: var(--ml-color-neutral-900);">
+              <div>
+                <div class="ml-search-modal-item-title" style="font-weight: bold; font-size: 14px;">Cartes (Cards)</div>
+                <div class="ml-search-modal-item-desc" style="font-size: 12px; color: var(--ml-color-neutral-500);">Types de cartes, thèmes et grilles</div>
+              </div>
+              <span class="ml-search-modal-item-arrow">→</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    const modal = document.getElementById('ml-search-modal') as HTMLDialogElement;
+    const trigger = document.getElementById('demo-search-trigger');
+    const closeBtn = document.getElementById('demo-search-close');
+
+    if (trigger && modal) {
+      trigger.addEventListener('click', () => {
+        modal.showModal();
+      });
+    }
+
+    if (closeBtn && modal) {
+      closeBtn.addEventListener('click', () => {
+        modal.close();
+      });
+    }
+  </script>
+
+</DocsLayout>
