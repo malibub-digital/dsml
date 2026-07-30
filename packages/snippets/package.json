@@ -1,0 +1,17 @@
+{
+  "name": "@dsml/snippets",
+  "version": "0.1.0",
+  "description": "HTML & Tailwind CSS Accessible Snippet Catalog for DSML",
+  "type": "module",
+  "keywords": [
+    "snippets",
+    "html",
+    "tailwind",
+    "dsml",
+    "components"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

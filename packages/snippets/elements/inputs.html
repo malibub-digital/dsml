@@ -1,0 +1,10 @@
+<!-- DSML Snippet: Accessible Text Input with Label and Helper Text -->
+<div class="space-y-1.5 w-full max-w-md">
+  <label for="user-nin" class="block text-sm font-medium text-[var(--ml-color-neutral-800)]">
+    Numéro NINA / NINA Security Code <span class="text-[var(--ml-color-red-600)]">*</span>
+  </label>
+  <input type="text" id="user-nin" name="nin" required aria-describedby="user-nin-hint" class="w-full px-3.5 py-2.5 text-sm text-[var(--ml-color-neutral-900)] bg-white border border-[var(--ml-color-neutral-300)] rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--ml-color-green-500)] focus:border-[var(--ml-color-green-500)] transition-colors" placeholder="Ex: 1 98 12 750 001 02" />
+  <p id="user-nin-hint" class="text-xs text-[var(--ml-color-neutral-600)]">
+    Saisissez les 14 chiffres figurant sur votre carte RAVEC ou NINA.
+  </p>
+</div>

@@ -1,0 +1,25 @@
+# DSML — Design System Mali Rules for Cursor & AI Agents
+
+You are assisting with development using DSML (Design System Mali). Always adhere to the following rules:
+
+1. **Design Tokens & Colors:**
+   - Use official Malian republican colors: Green (`var(--ml-color-green-500)`), Gold (`var(--ml-color-gold-400)`), Red (`var(--ml-color-red-600)`).
+   - Use cultural palettes when appropriate: Bogolan (`var(--ml-color-bogolan-ocre)`), Indigo (`var(--ml-color-indigo-600)`), Fleuve Niger (`var(--ml-color-river-500)`).
+
+2. **Typography & Styling:**
+   - Title font: Archivo
+   - Body font: Atkinson Hyperlegible
+   - Avoid generic colors (plain blue, plain red). Always use DSML variables or Tailwind utility classes mapped to DSML tokens.
+
+3. **Accessibility (a11y):**
+   - Ensure all interactive elements have visible focus indicators (`focus:ring-2 focus:ring-[var(--ml-color-green-400)]`).
+   - Include ARIA attributes (`aria-describedby`, `aria-label`, `role`) on form elements and banners.
+
+4. **Code Quality:**
+   - Favor HTML + Tailwind snippets over unnecessary JavaScript framework wrappers.
+   - Keep comments in technical English when required, self-documenting code preferred.
+
+5. **Git Flow & Commits:**
+   - Follow Conventional Commits: `<type>(<scope>): <description>` (e.g. `feat(core): ...`, `fix(vue): ...`).
+   - Use dedicated branch prefixes: `feat/<scope>-<name>`, `fix/<scope>-<name>`, `docs/<name>`.
+
