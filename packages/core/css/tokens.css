@@ -1,0 +1,152 @@
+/* ==========================================================================
+   DSML — Design System Mali Tokens (Auto-generated)
+   ========================================================================== */
+
+:root {
+  /* GREEN */
+  --ml-color-green-50: #EAF3EC;
+  --ml-color-green-100: #D8EBDC;
+  --ml-color-green-200: #9CC7A8;
+  --ml-color-green-300: #55AA6F;
+  --ml-color-green-400: #0F8A3A;
+  --ml-color-green-500: #0B7A2F;
+  --ml-color-green-600: #0A6428;
+  --ml-color-green-700: #085020;
+  --ml-color-green-800: #063C18;
+  --ml-color-green-900: #0A3D1C;
+  --ml-color-green-950: #041B0C;
+  --ml-color-green-mint: #10B981;
+  --ml-color-green-emerald: #059669;
+
+  /* GOLD */
+  --ml-color-gold-50: #FBF6E7;
+  --ml-color-gold-100: #F9E9B4;
+  --ml-color-gold-200: #F3DC8C;
+  --ml-color-gold-300: #F7D047;
+  --ml-color-gold-400: #F5C518;
+  --ml-color-gold-500: #EAB308;
+  --ml-color-gold-600: #B98900;
+  --ml-color-gold-700: #946900;
+  --ml-color-gold-800: #8A6600;
+  --ml-color-gold-900: #3B2E00;
+  --ml-color-gold-amber: #F59E0B;
+  --ml-color-gold-sunshine: #FBBF24;
+
+  /* RED */
+  --ml-color-red-50: #FBEBEC;
+  --ml-color-red-100: #F8D7DA;
+  --ml-color-red-200: #E8B4B8;
+  --ml-color-red-400: #DC2626;
+  --ml-color-red-500: #CE2029;
+  --ml-color-red-600: #B4232B;
+  --ml-color-red-700: #991B1B;
+  --ml-color-red-800: #7F1D1D;
+  --ml-color-red-900: #5C1014;
+  --ml-color-red-terracotta: #E05A47;
+  --ml-color-red-crimson: #BE123C;
+
+  /* INDIGO */
+  --ml-color-indigo-50: #EEF2FF;
+  --ml-color-indigo-100: #E0E7FF;
+  --ml-color-indigo-200: #C7D2FE;
+  --ml-color-indigo-300: #93C5FD;
+  --ml-color-indigo-400: #4F46E5;
+  --ml-color-indigo-500: #3730A3;
+  --ml-color-indigo-600: #2E2A85;
+  --ml-color-indigo-700: #231E66;
+  --ml-color-indigo-800: #1C184E;
+  --ml-color-indigo-900: #120F36;
+  --ml-color-indigo-segoo: #1D4ED8;
+  --ml-color-indigo-djenne: #1E3A8A;
+
+  /* BOGOLAN */
+  --ml-color-bogolan-kaolin: #FBF8F1;
+  --ml-color-bogolan-sable: #EFE4D1;
+  --ml-color-bogolan-ocre: #D97706;
+  --ml-color-bogolan-argile: #C25E25;
+  --ml-color-bogolan-terre: #78350F;
+  --ml-color-bogolan-suie: #292524;
+  --ml-color-bogolan-nuit: #1C1917;
+
+  /* BAZIN */
+  --ml-color-bazin-violet-50: #F3E8FF;
+  --ml-color-bazin-violet-500: #7E22CE;
+  --ml-color-bazin-violet-900: #3B0764;
+  --ml-color-bazin-magenta-50: #FCE7F3;
+  --ml-color-bazin-magenta-500: #DB2777;
+  --ml-color-bazin-magenta-900: #831843;
+  --ml-color-bazin-turquoise-50: #ECFEFF;
+  --ml-color-bazin-turquoise-500: #06B6D4;
+  --ml-color-bazin-turquoise-900: #164E63;
+
+  /* RIVER */
+  --ml-color-river-50: #F0F7F9;
+  --ml-color-river-100: #DCEEF3;
+  --ml-color-river-200: #B5DDE7;
+  --ml-color-river-300: #67E8F9;
+  --ml-color-river-400: #38BDF8;
+  --ml-color-river-500: #1B7A94;
+  --ml-color-river-600: #145D71;
+  --ml-color-river-700: #0F4858;
+  --ml-color-river-800: #0A323D;
+  --ml-color-river-900: #0C3642;
+  --ml-color-river-teal: #0EA5E9;
+
+  /* TERRA */
+  --ml-color-terra-50: #FAF4F0;
+  --ml-color-terra-100: #F7E5D9;
+  --ml-color-terra-200: #EEC2A7;
+  --ml-color-terra-500: #C25E25;
+  --ml-color-terra-600: #9C4B1C;
+  --ml-color-terra-900: #54250C;
+  --ml-color-terra-clay: #EA580C;
+
+  /* NEUTRAL */
+  --ml-color-neutral-0: #FDFCFA;
+  --ml-color-neutral-50: #F8F6F1;
+  --ml-color-neutral-100: #F3F0E9;
+  --ml-color-neutral-200: #E8E4DA;
+  --ml-color-neutral-300: #DDD9CF;
+  --ml-color-neutral-400: #A8A297;
+  --ml-color-neutral-500: #8A877D;
+  --ml-color-neutral-600: #66635A;
+  --ml-color-neutral-700: #44423C;
+  --ml-color-neutral-800: #292824;
+  --ml-color-neutral-900: #1A1A16;
+
+  /* SAND */
+  --ml-color-sand-50: #FAF8F5;
+  --ml-color-sand-100: #F4F0E6;
+  --ml-color-sand-200: #EAE3D2;
+  --ml-color-sand-300: #DDD4BD;
+  --ml-color-sand-800: #6E5D3F;
+
+  /* TYPOGRAPHY */
+  --ml-font-title: 'Archivo', sans-serif;
+  --ml-font-body: 'Atkinson Hyperlegible', sans-serif;
+
+  /* SPACING */
+  --ml-space-1: 4px;
+  --ml-space-2: 8px;
+  --ml-space-3: 12px;
+  --ml-space-4: 16px;
+  --ml-space-5: 20px;
+  --ml-space-6: 24px;
+  --ml-space-8: 32px;
+  --ml-space-12: 48px;
+  --ml-space-16: 64px;
+
+  /* BORDER RADIUS */
+  --ml-radius-s: 6px;
+  --ml-radius-m: 10px;
+  --ml-radius-l: 12px;
+  --ml-radius-pill: 20px;
+
+  /* BOX SHADOWS */
+  --ml-shadow-1: 0 1px 3px rgba(30,28,20,0.04);
+  --ml-shadow-2: 0 14px 30px rgba(11,122,47,0.13);
+  --ml-shadow-3: 0 12px 32px rgba(30,28,20,0.14);
+  --ml-shadow-soft: 0 2px 8px rgba(26,26,22,0.06);
+  --ml-shadow-ambient: 0 8px 24px rgba(26,26,22,0.08);
+  --ml-shadow-hover: 0 12px 28px rgba(11,122,47,0.16);
+}

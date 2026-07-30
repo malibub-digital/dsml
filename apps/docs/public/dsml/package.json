@@ -18,6 +18,10 @@
     "url": "git+https://github.com/malibub-digital/dsml.git"
   },
   "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build:tokens": "node scripts/build-tokens.js"
+  },
   "main": "css/dsml.css",
   "style": "css/dsml.css",
   "publishConfig": {

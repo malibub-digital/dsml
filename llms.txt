@@ -1,0 +1,200 @@
+# DSML — Design System Mali (Guide pour LLM / Agents IA)
+
+> Système de conception officiel pour les administrations publiques maliennes.
+> Principes : Accessibilité (RGAA/WCAG AA), Couleurs républicaines (Vert, Or, Rouge), Palette culturelle (Bogolan, Bazin, Fleuve Niger), Zéro dépendance JS obligatoire, optimisé Tailwind CSS & HTML pur.
+
+---
+
+## 1. Palette de Couleurs & Class Tokens Tailwind
+
+### Couleurs Institutionnelles & Culturelles
+- Vert Mali (Primary Actions): `bg-[var(--ml-color-green-500)]` (#0B7A2F), hover: `bg-[var(--ml-color-green-600)]` (#0A6428)
+- Or Mali (Prestige & Accents): `bg-[var(--ml-color-gold-400)]` (#F5C518), `bg-[var(--ml-color-gold-500)]` (#EAB308)
+- Rouge Mali (Alerte & Erreurs): `bg-[var(--ml-color-red-600)]` (#B4232B), `bg-[var(--ml-color-red-700)]` (#991B1B)
+- Indigo de Ségou/Djenné: `bg-[var(--ml-color-indigo-600)]` (#2E2A85), `bg-[var(--ml-color-indigo-800)]` (#1C184E)
+- Sahelian Bogolan: Kaolin (`#FBF8F1`), Sable (`#EFE4D1`), Ocre (`#D97706`), Terre (`#78350F`), Suie (`#292524`)
+- Fleuve Niger (River Teal): `bg-[var(--ml-color-river-500)]` (#1B7A94)
+
+### Polices Officielles
+- Titres & En-têtes : `font-['Archivo',_sans-serif]`
+- Corps de texte : `font-['Atkinson_Hyperlegible',_sans-serif]`
+
+---
+
+## 2. Catalogue de Snippets HTML / Tailwind Accessibles
+
+### Component Snippet: elements/alerts.html
+```html
+<!-- DSML Snippet: Institutional Banner / Info Alert -->
+<div role="region" aria-label="Information officielle" class="p-4 bg-[var(--ml-status-info-bg)] border-l-4 border-[var(--ml-color-indigo-600)] text-[var(--ml-status-info-text)] rounded-r-lg shadow-sm">
+  <div class="flex items-start gap-3">
+    <svg class="w-5 h-5 text-[var(--ml-color-indigo-600)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <div>
+      <h4 class="text-sm font-bold text-[var(--ml-color-indigo-900)]">Communique Officiel</h4>
+      <p class="mt-1 text-sm">
+        Les demandes de passeports biométriques sont désormais traitées exclusivement via le guichet numérique national.
+      </p>
+    </div>
+  </div>
+</div>
+
+```
+
+### Component Snippet: elements/badges.html
+```html
+<!-- DSML Snippet: Status Badge Success -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[var(--ml-status-success-bg)] text-[var(--ml-status-success-text)] border border-[var(--ml-status-success-border)]">
+  <span class="w-1.5 h-1.5 rounded-full bg-[var(--ml-status-success-dot)]"></span>
+  Validé
+</span>
+
+<!-- DSML Snippet: Status Badge Warning -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[var(--ml-status-warning-bg)] text-[var(--ml-status-warning-text)] border border-[var(--ml-status-warning-border)]">
+  <span class="w-1.5 h-1.5 rounded-full bg-[var(--ml-status-warning-dot)]"></span>
+  En attente
+</span>
+
+<!-- DSML Snippet: Status Badge Error -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[var(--ml-status-error-bg)] text-[var(--ml-status-error-text)] border border-[var(--ml-status-error-border)]">
+  <span class="w-1.5 h-1.5 rounded-full bg-[var(--ml-status-error-dot)]"></span>
+  Rejeté
+</span>
+
+<!-- DSML Snippet: Status Badge Info -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[var(--ml-status-info-bg)] text-[var(--ml-status-info-text)] border border-[var(--ml-status-info-border)]">
+  <span class="w-1.5 h-1.5 rounded-full bg-[var(--ml-status-info-dot)]"></span>
+  En cours d'instruction
+</span>
+
+```
+
+### Component Snippet: elements/buttons.html
+```html
+<!-- DSML Snippet: Primary Button -->
+<button type="button" class="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--ml-color-green-500)] hover:bg-[var(--ml-color-green-600)] focus:outline-none focus:ring-2 focus:ring-[var(--ml-color-green-400)] focus:ring-offset-2 rounded-lg transition-colors shadow-sm">
+  <span>Action Principale</span>
+</button>
+
+<!-- DSML Snippet: Secondary Button -->
+<button type="button" class="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-[var(--ml-color-neutral-800)] bg-[var(--ml-color-neutral-100)] hover:bg-[var(--ml-color-neutral-200)] focus:outline-none focus:ring-2 focus:ring-[var(--ml-color-neutral-400)] focus:ring-offset-2 rounded-lg transition-colors border border-[var(--ml-color-neutral-300)]">
+  <span>Action Secondaire</span>
+</button>
+
+<!-- DSML Snippet: Gold Accent Button -->
+<button type="button" class="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-[var(--ml-color-neutral-900)] bg-[var(--ml-color-gold-400)] hover:bg-[var(--ml-color-gold-500)] focus:outline-none focus:ring-2 focus:ring-[var(--ml-color-gold-300)] focus:ring-offset-2 rounded-lg transition-colors shadow-sm">
+  <span>Accès Privilégié</span>
+</button>
+
+<!-- DSML Snippet: Danger Button -->
+<button type="button" class="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--ml-color-red-600)] hover:bg-[var(--ml-color-red-700)] focus:outline-none focus:ring-2 focus:ring-[var(--ml-color-red-400)] focus:ring-offset-2 rounded-lg transition-colors shadow-sm">
+  <span>Supprimer</span>
+</button>
+
+```
+
+### Component Snippet: elements/inputs.html
+```html
+<!-- DSML Snippet: Accessible Text Input with Label and Helper Text -->
+<div class="space-y-1.5 w-full max-w-md">
+  <label for="user-nin" class="block text-sm font-medium text-[var(--ml-color-neutral-800)]">
+    Numéro NINA / NINA Security Code <span class="text-[var(--ml-color-red-600)]">*</span>
+  </label>
+  <input type="text" id="user-nin" name="nin" required aria-describedby="user-nin-hint" class="w-full px-3.5 py-2.5 text-sm text-[var(--ml-color-neutral-900)] bg-white border border-[var(--ml-color-neutral-300)] rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--ml-color-green-500)] focus:border-[var(--ml-color-green-500)] transition-colors" placeholder="Ex: 1 98 12 750 001 02" />
+  <p id="user-nin-hint" class="text-xs text-[var(--ml-color-neutral-600)]">
+    Saisissez les 14 chiffres figurant sur votre carte RAVEC ou NINA.
+  </p>
+</div>
+
+```
+
+### Component Snippet: layout/header.html
+```html
+<!-- DSML Snippet: Institutional Republic Header -->
+<header class="w-full border-b border-[var(--ml-color-neutral-200)] bg-[var(--ml-color-neutral-0)] shadow-sm">
+  <div class="h-1.5 w-full flex">
+    <div class="h-full w-1/3 bg-[var(--ml-color-green-500)]"></div>
+    <div class="h-full w-1/3 bg-[var(--ml-color-gold-400)]"></div>
+    <div class="h-full w-1/3 bg-[var(--ml-color-red-600)]"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <div class="flex flex-col">
+        <span class="text-xs uppercase tracking-wider font-semibold text-[var(--ml-color-neutral-600)]">République du Mali</span>
+        <span class="text-xs font-medium text-[var(--ml-color-neutral-500)]">Un Peuple - Un But - Une Foi</span>
+      </div>
+    </div>
+    <div class="text-right">
+      <span class="text-sm font-bold text-[var(--ml-color-green-700)]">Services Publics Numériques</span>
+    </div>
+  </div>
+</header>
+
+```
+
+---
+
+## 3. Directives & Règles IA (Source : AI_RULES.md)
+
+# Directives d'intégration IA pour le Design System Mali (DSML)
+
+Ce document fournit des règles et instructions **agnostiques** d'assistance IA (Cursor, Windsurf, Copilot, Claude Code, Antigravity, ChatGPT...). Vous pouvez copier ces règles dans le fichier de configuration spécifique à votre IDE.
+
+---
+
+## 🏛️ Règles Générales pour l'Assistant IA
+
+1. **Tokens de Design & Couleurs Officielles :**
+   - Utiliser les couleurs républicaines maliennes : Vert (`var(--ml-color-green-500)`), Or (`var(--ml-color-gold-400)`), Rouge (`var(--ml-color-red-600)`).
+   - Utiliser les palettes culturelles appropriées : Bogolan (`var(--ml-color-bogolan-ocre)`), Indigo (`var(--ml-color-indigo-600)`), Fleuve Niger (`var(--ml-color-river-500)`).
+   - Éviter les couleurs génériques (rouge brut, bleu brut). Préférer la palette `@dsml/tailwind-plugin` ou les variables CSS natives `--ml-color-*`.
+
+2. **Typographie & Styles :**
+   - Titres & En-têtes : `Archivo`, sans-serif
+   - Corps de texte : `Atkinson Hyperlegible`, sans-serif
+
+3. **Accessibilité Numérique (a11y) :**
+   - Inclure des indicateurs de focus visibles (`focus:ring-2 focus:ring-[var(--ml-color-green-400)]`).
+   - Fournir les attributs ARIA requis (`aria-describedby`, `aria-label`, `role`) pour les éléments de formulaire et les bannières institutionnelles.
+
+4. **Standards de Code :**
+   - Privilégier les snippets HTML/Tailwind légers et universels plutôt que des wrappers JS lourds.
+   - Code auto-documenté avec des noms explicites.
+   - Éviter les commentaires parasites ou redondants.
+
+5. **Git Flow & Normes de Commit :**
+   - **Nommage des branches :**
+     - `main` : Branche principale de référence.
+     - `feat/<scope>-<description>` : Développements (`feat/core-badge`, `feat/tailwind-engine`).
+     - `fix/<scope>-<description>` : Corrections (`fix/core-colors`, `fix/docs-responsive`).
+     - `docs/<description>` : Documentation (`docs/git-flow`).
+   - **Format des commits (Conventional Commits) :** `<type>(<scope>): <description>`
+     - Types : `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `ci`
+     - Scopes principaux : `core`, `vue`, `react`, `docs`, `snippets`, `tailwind`, `deps`
+   - **Validation & Merge :** Toujours valider le build (`npm run build`) avant de merge, et effectuer un **Squash Merge** (`git merge --squash`) pour conserver un seul commit propre par fonctionnalité sur `main`.
+
+---
+
+## 📋 Exemples de configuration selon votre IDE
+
+### 1. Cursor (`.cursorrules`)
+Créez un fichier `.cursorrules` à la racine de votre projet client et collez :
+```markdown
+# Rules for DSML (Design System Mali)
+- Always use DSML colors: Green (#0B7A2F), Gold (#F5C518), Red (#B4232B) or --ml-color-* variables.
+- Use Archivo font for titles and Atkinson Hyperlegible for body text.
+- Ensure proper WCAG AA accessibility: visible focus rings, ARIA labels, semantic HTML.
+- Favor Tailwind CSS utility classes extending @dsml/tailwind-plugin.
+- Follow Git Flow: branches feat/<scope>-<name>, commits <type>(<scope>): <desc>.
+```
+
+### 2. Windsurf (`.windsurfrules`)
+Créez un fichier `.windsurfrules` à la racine du projet client.
+
+### 3. GitHub Copilot (`.github/copilot-instructions.md`)
+Créez le fichier `.github/copilot-instructions.md` et ajoutez les consignes ci-dessus.
+
+### 4. Claude Code / Antigravity (`AGENTS.md` ou `CLAUDE.md`)
+Ajoutez une section `# DSML Guidelines` dans votre fichier `AGENTS.md` ou `CLAUDE.md`.
+

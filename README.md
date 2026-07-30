@@ -18,7 +18,7 @@
 
 ---
 
-## 🏛️ Organisation du Monorépo
+## 🏛️ Organisation du dépôt
 
 Le projet est organisé sous forme de **Monorépo NPM Workspaces** clair et modulaire :
 
@@ -121,6 +121,35 @@ La documentation interactive complète est accessible en lançant `npm run dev` 
 
 ---
 
+## 🔀 Git Flow & Normes de Contribution
+
+Afin de maintenir la qualité du monorépo et de faciliter la collaboration entre développeurs et agents IA, nous respectons la convention suivante :
+
+### 1. Structure des branches
+- `main` : Branche principale de référence (stable, prête pour publication NPM).
+- `feat/<scope>-<nom>` : Développements de fonctionnalités ou composants (`feat/core-badge`, `feat/vue-modal`).
+- `fix/<scope>-<nom>` : Corrections de bugs (`fix/core-colors`, `fix/docs-responsive`).
+- `docs/<nom>` : Mises à jour de documentation (`docs/git-flow`).
+
+### 2. Norme de commits (Conventional Commits)
+Les messages de commit doivent suivre le format : `<type>(<scope>): <description>`
+
+- **Types** : `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `ci`
+- **Scopes principaux** : `core`, `vue`, `react`, `docs`, `snippets`, `tailwind`, `deps`
+- **Exemples** :
+  - `feat(core): ajout des tokens du composant alert`
+  - `fix(vue): correction de l'accessibilité ARIA sur la modal`
+  - `docs(readme): mise à jour du git flow`
+
+### 3. Workflow de validation
+1. Créer une branche dédiée depuis `main`.
+2. Effectuer des commits atomiques respectant les règles de code auto-documenté.
+3. Vérifier que les builds locaux fonctionnent (`npm run build` / `npm run pack:core`).
+4. Effectuer un **Squash Merge** vers `main` (`git merge --squash` ou via PR GitHub) pour conserver un historique propre d'un seul commit par fonctionnalité.
+
+---
+
 ## 📄 Licence
 
 Projet sous licence [MIT](./LICENSE).
+

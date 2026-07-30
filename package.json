@@ -1,13 +1,16 @@
 {
   "name": "dsml",
   "private": true,
+  "type": "module",
   "workspaces": [
     "packages/*",
     "apps/*"
   ],
   "scripts": {
     "dev": "npm run dev --workspace=apps/docs",
-    "build": "npm run build --workspace=apps/docs",
+    "build": "npm run build:tokens && npm run build:llms && npm run build --workspace=apps/docs",
+    "build:tokens": "npm run build:tokens --workspace=packages/core",
+    "build:llms": "node scripts/generate-llms.js",
     "build:all": "npm run build --workspaces --if-present",
     "pack:core": "npm pack --workspace=packages/core",
     "publish:core": "npm publish --workspace=packages/core --access public"
