@@ -299,6 +299,8 @@ html {
   scroll-behavior: smooth;
   overflow-x: clip;
   max-width: 100vw;
+  /* Prevent scroll anchoring layout-shift oscillation on sticky header transition */
+  overflow-anchor: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
