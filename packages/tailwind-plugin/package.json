@@ -1,5 +1,5 @@
 {
-  "name": "@dsml/tailwind-plugin",
+  "name": "@malihub/dsml-tailwind-plugin",
   "version": "0.1.0",
   "description": "Official Tailwind CSS Plugin for Design System Mali (DSML)",
   "main": "index.js",

@@ -101,6 +101,28 @@
   --ml-color-river-900: #0C3642;
   --ml-color-river-teal: #0EA5E9;
 
+  /* Orange Mandingue & Sahel Sun (Culture, warmth & Malian Manding heritage) */
+  --ml-color-mandingue-orange: #E65100;
+  --ml-color-mandingue-50: #FFF3E0;
+  --ml-color-mandingue-100: #FFE0B2;
+  --ml-color-mandingue-500: #F57C00;
+  --ml-color-mandingue-700: #E65100;
+  --ml-color-mandingue-900: #BF360C;
+
+  /* Ambre Solaire du Sahel */
+  --ml-color-ambre-sahel: #D97706;
+  --ml-color-ambre-50: #FFFBEB;
+  --ml-color-ambre-100: #FEF3C7;
+  --ml-color-ambre-500: #F59E0B;
+  --ml-color-ambre-800: #92400E;
+
+  /* Soleil d'Or & Clarté */
+  --ml-color-soleil-or: #FBBF24;
+  --ml-color-soleil-50: #FEFCE8;
+  --ml-color-soleil-100: #FEF9C3;
+  --ml-color-soleil-300: #FDE047;
+  --ml-color-soleil-500: #EAB308;
+
   /* Sahel Terra & Sand (Ochre, clay and earth of Mali) */
   --ml-color-terra-50: #FAF4F0;
   --ml-color-terra-100: #F7E5D9;
@@ -129,6 +151,13 @@
   --ml-color-sand-200: #EAE3D2;
   --ml-color-sand-300: #DDD4BD;
   --ml-color-sand-800: #6E5D3F;
+
+  /* Signature DSML Gradients */
+  --ml-gradient-sunset: linear-gradient(135deg, #FFF3E0 0%, #FEF3C7 50%, #FAF4F0 100%);
+  --ml-gradient-indigo: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 50%, #F0F7F9 100%);
+  --ml-gradient-bazin: linear-gradient(135deg, #F3E8FF 0%, #FCE7F3 50%, #FAF8F5 100%);
+  --ml-gradient-[var(--ml-color-green-50)]: linear-gradient(135deg, #EAF3EC 0%, #FBF6E7 50%, #FAF8F5 100%);
+  --ml-gradient-emerald-gold: linear-gradient(135deg, #0B7A2F 0%, #0A6428 50%, #F5C518 100%);
 
   /* Dynamic Primary Contextual Token (Defaults to Green Mali) */
   --ml-color-primary: var(--ml-color-green-500);
@@ -245,6 +274,20 @@
   --ml-color-primary-hover: var(--ml-color-river-600);
   --ml-color-primary-light: var(--ml-color-river-50);
   --ml-color-primary-border: var(--ml-color-river-200);
+}
+
+/* --- 08. UTILITAIRES MOTIFS & FILIGRANES TRADITIONNELS (DSML PATTERNS) --- */
+.ml-pattern-bogolan {
+  background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%3E%3Cpath%20d%3D%22M30%200L60%2030L30%2060L0%2030Z%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%221.5%22%20stroke-dasharray%3D%224%2C4%22%2F%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%226%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%221.5%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: repeat;
+}
+.ml-pattern-wax {
+  background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2232%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%221.5%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2218%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%221.5%22%20stroke-dasharray%3D%224%2C4%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: repeat;
+}
+.ml-pattern-soleil {
+  background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%3E%3Cpath%20d%3D%22M30%200L30%2014M30%2046L30%2060M0%2030L14%2030M46%2030L60%2030%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%221.5%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: repeat;
 }
 
 /* ==========================================================================

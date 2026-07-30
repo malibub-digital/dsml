@@ -6,11 +6,13 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "prebuild": "rm -rf public/dsml && cp -rL ../../packages/core public/dsml",
     "dev": "astro dev",
-    "build": "npm run prebuild && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
+  },
+  "dependencies": {
+    "@malihub/dsml-core": "*"
   },
   "devDependencies": {
     "astro": "^3.6.5"

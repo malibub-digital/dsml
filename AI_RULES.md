@@ -19,10 +19,10 @@ Ce document fournit des règles et instructions **agnostiques** d'assistance IA 
    - Inclure des indicateurs de focus visibles (`focus:ring-2 focus:ring-[var(--ml-color-green-400)]`).
    - Fournir les attributs ARIA requis (`aria-describedby`, `aria-label`, `role`) pour les éléments de formulaire et les bannières institutionnelles.
 
-4. **Standards de Code :**
-   - Privilégier les snippets HTML/Tailwind légers et universels plutôt que des wrappers JS lourds.
-   - Code auto-documenté avec des noms explicites.
-   - Éviter les commentaires parasites ou redondants.
+4. **Catalogue de Snippets & Vibe Coding (`llms.txt`) :**
+   - Privilégier les snippets HTML/Tailwind légers et universels du dossier `packages/snippets/` plutôt que des wrappers JS lourds.
+   - Les assistants IA doivent se référer au fichier `llms.txt` à la racine pour extraire le code source exact des snippets (Boutons, Badges, Alertes, Formulaires, Stepper, Tables, Header, Footer).
+   - Code auto-documenté avec des noms explicites, sans commentaires superflus.
 
 5. **Git Flow & Normes de Commit :**
    - **Nommage des branches :**

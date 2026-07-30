@@ -1,6 +1,6 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro';
-import CodeBlock from '../../components/CodeBlock.astro';
+import SnippetPreview from '../../components/SnippetPreview.astro';
 ---
 
 <DocsLayout
@@ -13,49 +13,31 @@ import CodeBlock from '../../components/CodeBlock.astro';
   <h2 class="ml-title-2">1. Badges de statut</h2>
   <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Badges non cliquables servant uniquement à labelliser l'état d'un dossier ou d'une demande.</p>
   
-  <div class="demo-preview">
-    <span class="ml-badge ml-badge-info">En cours</span>
-    <span class="ml-badge ml-badge-success">Validé</span>
-    <span class="ml-badge ml-badge-warning">Attention</span>
-    <span class="ml-badge ml-badge-error">Erreur</span>
-  </div>
-  
-  <CodeBlock code={`<!-- Status badges -->
-<span class="ml-badge ml-badge-info">En cours</span>
+  <SnippetPreview
+    title="Badges de statut"
+    filename="badges.html"
+    code={`<span class="ml-badge ml-badge-info">En cours</span>
 <span class="ml-badge ml-badge-success">Validé</span>
 <span class="ml-badge ml-badge-warning">Attention</span>
-<span class="ml-badge ml-badge-error">Erreur</span>`} lang="html" />
+<span class="ml-badge ml-badge-error">Erreur</span>`}
+  />
 
   <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">2. Tags / Étiquettes de filtre (.ml-tag)</h2>
   <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Composants interactifs pouvant être cliquables, sélectionnés ou fermés.</p>
   
-  <div class="demo-preview">
-    <span class="ml-tag">Tag Simple</span>
-    <a href="#" class="ml-tag ml-tag-clickable" onclick="return false;">Tag Cliquable</a>
-    <span class="ml-tag ml-tag-selected">Tag Sélectionné</span>
-    <span class="ml-tag" id="dismissible-tag-demo">
-      Passeport
-      <button class="ml-tag-dismiss" aria-label="Supprimer" onclick="document.getElementById('dismissible-tag-demo').style.display='none'">
-        <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-      </button>
-    </span>
-  </div>
-  
-  <CodeBlock code={`<!-- Passive tag -->
-<span class="ml-tag">Tag Simple</span>
-
-<!-- Clickable tag -->
+  <SnippetPreview
+    title="Tags et filtres"
+    filename="tags.html"
+    code={`<span class="ml-tag">Tag Simple</span>
 <a href="#" class="ml-tag ml-tag-clickable">Tag Cliquable</a>
-
-<!-- Active / selected tag -->
 <span class="ml-tag ml-tag-selected">Tag Sélectionné</span>
-
-<!-- Dismissible tag -->
 <span class="ml-tag">
   Passeport
-  <button class="ml-tag-dismiss" aria-label="Fermer">
-    <svg viewBox="0 0 24 24">...</svg>
+  <button class="ml-tag-dismiss" aria-label="Supprimer">
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
   </button>
-</span>`} lang="html" />
+</span>`}
+  />
 
 </DocsLayout>
+

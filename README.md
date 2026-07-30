@@ -24,10 +24,10 @@ Le projet est organisé sous forme de **Monorépo NPM Workspaces** clair et modu
 
 ```
 dsml/
-├── packages/                  # Packages distibuables (bibliothèques)
-│   ├── core/                  # [@dsml/core] Cœur CSS, tokens, assets SVG et JS vanilla (Zéro dépendance)
-│   ├── vue/                   # [@dsml/vue] Wrapper et composants officiels Vue.js 3
-│   └── react/                 # [@dsml/react] Wrapper et composants officiels React
+├── packages/                  # Packages distribuables sur NPM
+│   ├── core/                  # [@malihub/dsml-core] Cœur CSS, tokens, assets SVG et JS vanilla
+│   ├── tailwind-plugin/       # [@malihub/dsml-tailwind-plugin] Plugin officiel Tailwind CSS
+│   └── snippets/              # Catalogue de composants universels HTML / Tailwind
 │
 ├── apps/                      # Applications & sites
 │   └── docs/                  # Site officiel Vitrine & Documentation technique interactive (Astro)
@@ -42,20 +42,35 @@ dsml/
 
 ## 🚀 Prise en main rapide pour les Développeurs
 
-### 1. Installation du package `@dsml/core` via NPM
+### 1. Installation des packages via NPM
 
-Dans un projet web (React, Vue, Vite, Next.js, HTML/JS) :
+Dans tout projet web (Astro, Tailwind, Vite, HTML/JS) :
 
 ```bash
-npm install @dsml/core
+npm install @malihub/dsml-core @malihub/dsml-tailwind-plugin
+```
+
+### 2. Configuration Tailwind CSS (`tailwind.config.mjs`)
+
+Dans votre fichier `tailwind.config.mjs` ou `tailwind.config.js` :
+
+```javascript
+import dsmlPlugin from '@malihub/dsml-tailwind-plugin';
+
+export default {
+  content: ['./src/**/*.{html,js,astro}'],
+  plugins: [
+    dsmlPlugin,
+  ],
+};
 ```
 
 Dans votre point d'entrée JS ou fichier CSS principal :
 
 ```javascript
 // Import du CSS principal et des icônes
-import "@dsml/core/css/dsml.css";
-import "@dsml/core/css/dsml-icons.css";
+import "@malihub/dsml-core/css/dsml.css";
+import "@malihub/dsml-core/css/dsml-icons.css";
 ```
 
 ### 2. Usage HTML direct (sans bundler / via fichier local)
@@ -68,6 +83,24 @@ Vous pouvez aussi simplement télécharger le dossier [`packages/core`](./packag
 ```
 
 ---
+
+## 🎨 Catalogue de Snippets HTML / Tailwind & Vibe Coding (`llms.txt`)
+
+Le DSML met à disposition un catalogue de **snippets HTML / Tailwind ultra-légers** sans dépendance JS lourde dans le dossier [`packages/snippets/`](./packages/snippets/) :
+
+- **Éléments de base :** Boutons (`buttons.html`), Badges & Tags (`badges.html`), Alertes & Notification (`alerts.html`), Formulaires (`forms.html`, `inputs.html`), Cartes (`cards.html`), Tableaux de données (`tables.html`), Progression (`stepper.html`).
+- **Mise en page & Structure :** En-tête institutionnel (`layout/header.html`), Pied de page républicain (`layout/footer.html`).
+
+### Usage avec les Assistants IA & Vibe Coding
+Un fichier optimisé [`llms.txt`](./llms.txt) rassemble tous les snippets et directives du DSML pour que les assistants IA (Cursor, Windsurf, Claude Code, Copilot, Antigravity) puissent générer des composants républicains conformes.
+
+Pour régénérer la documentation `llms.txt` après ajout de nouveaux snippets :
+```bash
+node scripts/generate-llms.js
+```
+
+---
+
 
 ## 💻 Développement local & Contribution au DSML
 
