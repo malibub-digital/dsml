@@ -139,3 +139,10 @@
 1. Toujours inclure les attributs ARIA requis (`aria-describedby`, `role="region"`, `aria-label`).
 2. S'assurer que les contrastes de texte respectent la norme WCAG 2.1 AA.
 3. Toujours fournir des états d'interactivité clairs (`focus:outline-none focus:ring-2`).
+
+---
+
+## 4. Git Flow & Normes de Commit
+1. Nommage des branches : `main`, `feat/<scope>-<description>`, `fix/<scope>-<description>`, `docs/<description>`.
+2. Format des commits : `<type>(<scope>): <description>` (Types: feat, fix, docs, style, refactor, test, chore, ci ; Scopes: core, vue, react, docs, snippets, tailwind, deps).
+3. Validation : Toujours valider `npm run build` avant de soumettre une Pull Request.

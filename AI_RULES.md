@@ -22,6 +22,18 @@ Ce document fournit des règles et instructions **agnostiques** d'assistance IA 
 4. **Standards de Code :**
    - Privilégier les snippets HTML/Tailwind légers et universels plutôt que des wrappers JS lourds.
    - Code auto-documenté avec des noms explicites.
+   - Éviter les commentaires parasites ou redondants.
+
+5. **Git Flow & Normes de Commit :**
+   - **Nommage des branches :**
+     - `main` : Branche principale de référence.
+     - `feat/<scope>-<description>` : Développements (`feat/core-badge`, `feat/tailwind-engine`).
+     - `fix/<scope>-<description>` : Corrections (`fix/core-colors`, `fix/docs-responsive`).
+     - `docs/<description>` : Documentation (`docs/git-flow`).
+   - **Format des commits (Conventional Commits) :** `<type>(<scope>): <description>`
+     - Types : `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `ci`
+     - Scopes principaux : `core`, `vue`, `react`, `docs`, `snippets`, `tailwind`, `deps`
+   - **Validation :** Toujours valider le build (`npm run build`) avant de merge.
 
 ---
 
@@ -35,6 +47,7 @@ Créez un fichier `.cursorrules` à la racine de votre projet client et collez :
 - Use Archivo font for titles and Atkinson Hyperlegible for body text.
 - Ensure proper WCAG AA accessibility: visible focus rings, ARIA labels, semantic HTML.
 - Favor Tailwind CSS utility classes extending @dsml/tailwind-plugin.
+- Follow Git Flow: branches feat/<scope>-<name>, commits <type>(<scope>): <desc>.
 ```
 
 ### 2. Windsurf (`.windsurfrules`)
