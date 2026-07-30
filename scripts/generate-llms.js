@@ -7,6 +7,7 @@ const rootDir = path.join(__dirname, '..');
 
 const tokensPath = path.join(rootDir, 'packages/core/tokens/tokens.json');
 const snippetsDir = path.join(rootDir, 'packages/snippets');
+const aiRulesPath = path.join(rootDir, 'AI_RULES.md');
 const outputPathRoot = path.join(rootDir, 'llms.txt');
 const outputPathDocs = path.join(rootDir, 'apps/docs/public/llms.txt');
 
@@ -61,20 +62,10 @@ snippetFiles.forEach((file) => {
   llmsContent += `### Component Snippet: ${relPath}\n\`\`\`html\n${content}\n\`\`\`\n\n`;
 });
 
-llmsContent += `---
-
-## 3. Directives de Conception & Accessibilité (a11y)
-1. Toujours inclure les attributs ARIA requis (\`aria-describedby\`, \`role="region"\`, \`aria-label\`).
-2. S'assurer que les contrastes de texte respectent la norme WCAG 2.1 AA.
-3. Toujours fournir des états d'interactivité clairs (\`focus:outline-none focus:ring-2\`).
-
----
-
-## 4. Git Flow & Normes de Commit
-1. Nommage des branches : \`main\`, \`feat/<scope>-<description>\`, \`fix/<scope>-<description>\`, \`docs/<description>\`.
-2. Format des commits : \`<type>(<scope>): <description>\` (Types: feat, fix, docs, style, refactor, test, chore, ci ; Scopes: core, vue, react, docs, snippets, tailwind, deps).
-3. Validation & Merge : Toujours valider \`npm run build\` et utiliser Squash Merge (\`git merge --squash\`) lors de la fusion dans \`main\`.
-`;
+if (fs.existsSync(aiRulesPath)) {
+  const aiRulesContent = fs.readFileSync(aiRulesPath, 'utf8');
+  llmsContent += `---\n\n## 3. Directives & Règles IA (Source : AI_RULES.md)\n\n${aiRulesContent}\n`;
+}
 
 fs.writeFileSync(outputPathRoot, llmsContent, 'utf8');
 console.log(`Successfully generated ${outputPathRoot}`);
