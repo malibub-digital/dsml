@@ -145,7 +145,7 @@ Les messages de commit doivent suivre le format : `<type>(<scope>): <description
 1. Créer une branche dédiée depuis `main`.
 2. Effectuer des commits atomiques respectant les règles de code auto-documenté.
 3. Vérifier que les builds locaux fonctionnent (`npm run build` / `npm run pack:core`).
-4. Soumettre une Pull Request vers `main`.
+4. Effectuer un **Squash Merge** vers `main` (`git merge --squash` ou via PR GitHub) pour conserver un historique propre d'un seul commit par fonctionnalité.
 
 ---
 

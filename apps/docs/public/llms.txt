@@ -145,4 +145,4 @@
 ## 4. Git Flow & Normes de Commit
 1. Nommage des branches : `main`, `feat/<scope>-<description>`, `fix/<scope>-<description>`, `docs/<description>`.
 2. Format des commits : `<type>(<scope>): <description>` (Types: feat, fix, docs, style, refactor, test, chore, ci ; Scopes: core, vue, react, docs, snippets, tailwind, deps).
-3. Validation : Toujours valider `npm run build` avant de soumettre une Pull Request.
+3. Validation & Merge : Toujours valider `npm run build` et utiliser Squash Merge (`git merge --squash`) lors de la fusion dans `main`.

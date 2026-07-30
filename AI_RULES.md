@@ -33,7 +33,7 @@ Ce document fournit des règles et instructions **agnostiques** d'assistance IA 
    - **Format des commits (Conventional Commits) :** `<type>(<scope>): <description>`
      - Types : `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `ci`
      - Scopes principaux : `core`, `vue`, `react`, `docs`, `snippets`, `tailwind`, `deps`
-   - **Validation :** Toujours valider le build (`npm run build`) avant de merge.
+   - **Validation & Merge :** Toujours valider le build (`npm run build`) avant de merge, et effectuer un **Squash Merge** (`git merge --squash`) pour conserver un seul commit propre par fonctionnalité sur `main`.
 
 ---
 
