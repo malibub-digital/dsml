@@ -1777,6 +1777,48 @@ a:hover {
     padding: 0 4px;
   }
 
+  .ml-header-utility-nav {
+    display: flex;
+    flex-direction: column;
+    padding: var(--ml-space-2) 0;
+    background-color: var(--ml-color-neutral-50);
+  }
+
+  .ml-utility-item {
+    display: flex;
+    align-items: center;
+    gap: var(--ml-space-2);
+    padding: var(--ml-space-2) var(--ml-space-4);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ml-color-neutral-700);
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+
+  .ml-utility-item:hover {
+    background-color: var(--ml-color-neutral-200);
+    color: var(--ml-color-neutral-900);
+  }
+
+  .ml-utility-divider {
+    height: 1px;
+    background-color: var(--ml-color-neutral-200);
+    margin: var(--ml-space-1) 0;
+  }
+
+  @media (min-width: 861px) {
+    .ml-header-utility-nav,
+    .ml-utility-divider {
+      display: none !important;
+    }
+  }
+
   .ml-header .ml-nav-item {
     padding: 12px 20px;
     border-bottom: none;
