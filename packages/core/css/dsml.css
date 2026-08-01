@@ -1056,6 +1056,7 @@ a:hover {
 }
 
 .ml-input, .ml-select {
+  box-sizing: border-box;
   font-family: var(--ml-font-body);
   font-size: 15px;
   padding: 10px 14px;
@@ -2742,6 +2743,65 @@ a:hover {
 .ml-input-group .ml-btn:last-child {
   border-top-right-radius: var(--ml-radius-s);
   border-bottom-right-radius: var(--ml-radius-s);
+}
+
+/* Segmented Control */
+.ml-segmented-control {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--ml-color-neutral-100);
+  border: 1px solid var(--ml-color-neutral-200);
+  border-radius: var(--ml-radius-m, 8px);
+  padding: 2px;
+  gap: 2px;
+  box-sizing: border-box;
+}
+
+.ml-segmented-control-dark {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.ml-segment-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ml-space-2, 8px);
+  padding: 4px 10px;
+  border-radius: var(--ml-radius-s, 4px);
+  font-family: var(--ml-font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ml-color-neutral-600);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.ml-segment-btn:hover {
+  color: var(--ml-color-neutral-900);
+}
+
+.ml-segment-btn.active {
+  background-color: var(--ml-color-neutral-0);
+  color: var(--ml-color-neutral-900);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.ml-segmented-control-dark .ml-segment-btn {
+  color: var(--ml-color-neutral-400);
+}
+
+.ml-segmented-control-dark .ml-segment-btn:hover {
+  color: var(--ml-color-neutral-0);
+}
+
+.ml-segmented-control-dark .ml-segment-btn.active {
+  background-color: var(--ml-color-river-600);
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 /* ==========================================================================

@@ -182,4 +182,54 @@ import CodeBlock from '../../components/CodeBlock.astro';
   <div class="ml-upload-desc">PDF, PNG, JPG jusqu'à 5 Mo</div>
 </div>`} lang="html" />
 
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">7. Commandes segmentées (Segmented Control)</h2>
+  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Composant de sélection exclusive à plusieurs options (boutons radio visuels), idéal pour changer de mode de vue (ex. Édition / Aperçu) ou filtrer des sous-ensembles de données.</p>
+  <div class="demo-preview" style="display: flex; flex-direction: column; align-items: center; max-width: 500px; margin: 0 auto; gap: var(--ml-space-4); width: 100%;">
+    <div>
+      <div style="font-size: 12px; font-weight: 700; color: var(--ml-color-neutral-500); margin-bottom: 8px; text-align: center;">Mode clair (.ml-segmented-control)</div>
+      <div class="ml-segmented-control" role="radiogroup" aria-label="Filtre de vue">
+        <button type="button" class="ml-segment-btn active" role="radio" aria-checked="true">Tous</button>
+        <button type="button" class="ml-segment-btn" role="radio" aria-checked="false">En cours</button>
+        <button type="button" class="ml-segment-btn" role="radio" aria-checked="false">Terminés</button>
+      </div>
+    </div>
+
+    <div style="background: #0f172a; padding: 16px; border-radius: 8px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+      <div style="font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 8px; text-align: center;">Mode sombre / Barres d'outils (.ml-segmented-control-dark)</div>
+      <div class="ml-segmented-control ml-segmented-control-dark" role="radiogroup" aria-label="Mode d'édition">
+        <button type="button" class="ml-segment-btn active" role="radio" aria-checked="true">
+          <i class="ml-icon-edit-line ml-icon--xs"></i>
+          <span>Édition</span>
+        </button>
+        <button type="button" class="ml-segment-btn" role="radio" aria-checked="false">
+          <i class="ml-icon-eye-line ml-icon--xs"></i>
+          <span>Aperçu</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <CodeBlock code={`<!-- Standard Light Mode -->
+<div class="ml-segmented-control" role="radiogroup" aria-label="Filtre">
+  <button type="button" class="ml-segment-btn active" role="radio" aria-checked="true">Tous</button>
+  <button type="button" class="ml-segment-btn" role="radio" aria-checked="false">En cours</button>
+</div>
+
+<!-- Dark / Toolbar Mode -->
+<div class="ml-segmented-control ml-segmented-control-dark" role="radiogroup" aria-label="Mode">
+  <button type="button" class="ml-segment-btn active" role="radio" aria-checked="true">
+    <i class="ml-icon-edit-line ml-icon--xs"></i>
+    <span>Édition</span>
+  </button>
+  <button type="button" class="ml-segment-btn" role="radio" aria-checked="false">
+    <i class="ml-icon-eye-line ml-icon--xs"></i>
+    <span>Aperçu</span>
+  </button>
+</div>`} lang="html" />
+
+<script>
+  import { initSegmentedControls } from '@malihub/dsml-core/js/segmented-control.js';
+  initSegmentedControls();
+  document.addEventListener('astro:page-load', initSegmentedControls);
+</script>
+
 </DocsLayout>
