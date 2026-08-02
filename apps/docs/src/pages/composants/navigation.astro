@@ -10,207 +10,85 @@ import CodeBlock from '../../components/CodeBlock.astro';
   pageSubtitle="Composants essentiels pour structurer la navigation globale et secondaire de vos applications administrative et portails publics."
 >
 
-  <h2 class="ml-title-2">01. En-tête Institutionnel & Navigation Principale</h2>
+  <h2 class="ml-title-2">01. Barre de Navigation Principale (.ml-header-nav)</h2>
   <p class="ml-body" style="color: var(--ml-color-neutral-600); margin-bottom: var(--ml-space-4);">
-    L'en-tête (<code>.ml-header</code>) regroupe l'identité officielle de la République du Mali, la barre tricolore, la barre de recherche globale ainsi que la navigation principale. Il s'adapte dynamiquement en réduisant sa taille au défilement (<code>.ml-header-shrinkable</code>).
+    La barre de navigation principale (<code>.ml-header-nav</code>) héberge les liens de premier niveau de votre application web ou portail institutionnel. Elle gère la mise en avant de l'onglet actif (<code>.ml-nav-item.active</code>) avec soulignement dynamique vert national et survol lumineux.
   </p>
 
-  <h3 class="ml-title-3" style="font-size: 16px; font-weight: 700; color: var(--ml-color-neutral-800); margin-bottom: var(--ml-space-2);">A. Version Desktop (Barre Horizontale)</h3>
-
-  <div class="demo-preview" style="display: block; width: 100%; padding: 0; overflow: hidden; border: 1px solid var(--ml-color-neutral-200); border-radius: var(--ml-radius-m);">
-    <header class="ml-header" style="position: relative; box-shadow: none; border-bottom: 1px solid var(--ml-color-neutral-200);">
-      <div class="container" style="max-width: 100%;">
-        <div class="header-top" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px;">
-          <div class="brand-block" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
-            <img src="/dsml/assets/logo-mali.svg" alt="Armoiries du Mali" class="ml-header-logo" width="36" height="36" />
-            <div class="brand-text">
-              <div class="brand-title" style="font-size: 10px; font-weight: 800; letter-spacing: 0.05em; color: var(--ml-color-green-emerald);">RÉPUBLIQUE DU MALI</div>
-              <div class="site-title" style="font-size: 16px; font-weight: 700; color: var(--ml-color-neutral-900);">Portail National des Services</div>
-              <div class="ml-tricolor-bar" style="display: flex; height: 3px; width: 100%; margin-top: 4px;">
-                <div style="flex: 1; background: var(--ml-color-green-flag);"></div>
-                <div style="flex: 1; background: var(--ml-color-yellow-flag);"></div>
-                <div style="flex: 1; background: var(--ml-color-red-flag);"></div>
-              </div>
-            </div>
-          </div>
-          <div class="header-actions" style="display: flex; gap: var(--ml-space-3); align-items: center;">
-            <button class="ml-search-trigger" style="padding: 6px 12px; border: 1px solid var(--ml-color-neutral-300); background: var(--ml-color-neutral-0); border-radius: var(--ml-radius-s); cursor: pointer; display: flex; align-items: center; gap: var(--ml-space-2); font-size: 13px; font-weight: 600; color: var(--ml-color-neutral-700);">
-              <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-              <span>Rechercher</span>
-            </button>
-          </div>
-        </div>
-        <nav class="ml-header-nav" style="display: flex; gap: 8px; border-top: 1px solid var(--ml-color-neutral-100); padding: 8px 16px; background: var(--ml-color-neutral-50);">
-          <a href="#" class="ml-nav-item active" onclick="return false;" style="padding: 6px 12px; border-radius: var(--ml-radius-s); font-weight: 700; color: var(--ml-color-green-emerald); background: var(--ml-color-green-50); text-decoration: none;">Accueil</a>
-          <a href="#" class="ml-nav-item" onclick="return false;" style="padding: 6px 12px; border-radius: var(--ml-radius-s); font-weight: 600; color: var(--ml-color-neutral-700); text-decoration: none;">Démarches</a>
-          <a href="#" class="ml-nav-item" onclick="return false;" style="padding: 6px 12px; border-radius: var(--ml-radius-s); font-weight: 600; color: var(--ml-color-neutral-700); text-decoration: none;">Ministères</a>
-          <a href="#" class="ml-nav-item" onclick="return false;" style="padding: 6px 12px; border-radius: var(--ml-radius-s); font-weight: 600; color: var(--ml-color-neutral-700); text-decoration: none;">Actualités</a>
-        </nav>
-      </div>
-    </header>
-  </div>
-
-  <h3 class="ml-title-3" style="font-size: 16px; font-weight: 700; color: var(--ml-color-neutral-800); margin-top: var(--ml-space-6); margin-bottom: var(--ml-space-2);">B. Version Mobile & Tablette (Bouton Burger & Tiroir Accordéon)</h3>
-  <p class="ml-body" style="color: var(--ml-color-neutral-600); margin-bottom: var(--ml-space-4);">
-    En dessous de <code>860px</code>, la navigation horizontale bascule automatiquement en mode mobile : le bouton burger (<code>.ml-header-burger</code>) apparaît et la navigation s'ouvre sous forme de tiroir déroulant (<code>.ml-header-nav.is-open</code>) doté d’un en-tête d'action (<code>.ml-header-nav-header</code>) avec bouton de fermeture (<code>.ml-header-nav-close</code>).
-  </p>
-
-  <div class="demo-preview" style="display: flex; gap: var(--ml-space-6); flex-wrap: wrap; justify-content: center; background: var(--ml-color-neutral-100); padding: var(--ml-space-6); border-radius: var(--ml-radius-m);">
-    <!-- Simulation Smartphone Fermé -->
-    <div style="width: 320px; border: 2px solid var(--ml-color-neutral-300); border-radius: 16px; background: var(--ml-color-neutral-0); overflow: hidden; box-shadow: var(--ml-shadow-ambient);">
-      <div style="background: var(--ml-color-neutral-200); padding: 4px 12px; font-size: 11px; font-weight: 700; color: var(--ml-color-neutral-700); text-align: center; border-bottom: 1px solid var(--ml-color-neutral-300);">Écran mobile (Fermé)</div>
-      <header class="ml-header" style="box-shadow: none;">
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px;">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <img src="/dsml/assets/logo-mali.svg" alt="Mali" width="28" height="28" />
-            <div>
-              <div style="font-size: 8px; font-weight: 800; color: var(--ml-color-green-emerald);">RÉPUBLIQUE DU MALI</div>
-              <div style="font-size: 13px; font-weight: 700;">Portail National</div>
-            </div>
-          </div>
-          <button class="ml-header-burger" style="display: flex; width: 36px; height: 36px;" aria-label="Ouvrir le menu">
-            <svg viewBox="0 0 24 24" style="width: 18px; height: 18px;"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
-          </button>
-        </div>
-      </header>
-    </div>
-
-    <!-- Simulation Smartphone Ouvert -->
-    <div style="width: 320px; border: 2px solid var(--ml-color-green-500); border-radius: 16px; background: var(--ml-color-neutral-0); overflow: hidden; box-shadow: var(--ml-shadow-elevated);">
-      <div style="background: var(--ml-color-green-100); padding: 4px 12px; font-size: 11px; font-weight: 700; color: var(--ml-color-green-800); text-align: center; border-bottom: 1px solid var(--ml-color-green-200);">Écran mobile (Tiroir Ouvert)</div>
-      <header class="ml-header" style="box-shadow: none;">
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--ml-color-neutral-100);">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <img src="/dsml/assets/logo-mali.svg" alt="Mali" width="28" height="28" />
-            <div>
-              <div style="font-size: 8px; font-weight: 800; color: var(--ml-color-green-emerald);">RÉPUBLIQUE DU MALI</div>
-              <div style="font-size: 13px; font-weight: 700;">Portail National</div>
-            </div>
-          </div>
-          <button class="ml-header-burger" style="display: flex; width: 36px; height: 36px; background: var(--ml-color-green-50); border-color: var(--ml-color-green-300); color: var(--ml-color-green-700);" aria-label="Menu ouvert" aria-expanded="true">
-            <svg viewBox="0 0 24 24" style="width: 18px; height: 18px;"><path d="M6 18L18 6M6 6l12 12"></path></svg>
-          </button>
-        </div>
-        <nav class="ml-header-nav is-open" style="display: flex !important; flex-direction: column; background: var(--ml-color-neutral-0);">
-          <div class="ml-header-nav-header" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--ml-color-neutral-200); font-weight: 800; font-size: 13px; color: var(--ml-color-neutral-900);">
-            <span>Navigation Principale</span>
-            <button class="ml-header-nav-close" style="border: none; background: transparent; font-size: 20px; font-weight: bold; cursor: pointer; color: var(--ml-color-neutral-600);">&times;</button>
-          </div>
-          <a href="#" class="ml-nav-item active" onclick="return false;" style="padding: 10px 16px; border-left: 4px solid var(--ml-color-green-500); background: var(--ml-color-green-50); font-weight: 700; color: var(--ml-color-green-700); text-decoration: none;">Accueil</a>
-          <a href="#" class="ml-nav-item" onclick="return false;" style="padding: 10px 16px; border-left: 4px solid transparent; color: var(--ml-color-neutral-800); text-decoration: none; border-top: 1px solid var(--ml-color-neutral-100);">Démarches admin</a>
-          <a href="#" class="ml-nav-item" onclick="return false;" style="padding: 10px 16px; border-left: 4px solid transparent; color: var(--ml-color-neutral-800); text-decoration: none; border-top: 1px solid var(--ml-color-neutral-100);">Ministères & Institutions</a>
-          <a href="#" class="ml-nav-item" onclick="return false;" style="padding: 10px 16px; border-left: 4px solid transparent; color: var(--ml-color-neutral-800); text-decoration: none; border-top: 1px solid var(--ml-color-neutral-100);">Actualités</a>
-        </nav>
-      </header>
+  <div class="demo-preview">
+    <div style="background: var(--ml-color-neutral-0); border: 1px solid var(--ml-color-neutral-200); border-radius: var(--ml-radius-s); overflow: hidden; width: 100%;">
+      <nav class="ml-header-nav" id="demo-main-nav" aria-label="Menu principal de démonstration">
+        <a href="#" class="ml-nav-item active demo-main-nav-link" onclick="return false;">Accueil</a>
+        <a href="#" class="ml-nav-item demo-main-nav-link" onclick="return false;">Démarches en ligne</a>
+        <a href="#" class="ml-nav-item demo-main-nav-link" onclick="return false;">Ministères & Institutions</a>
+        <a href="#" class="ml-nav-item demo-main-nav-link" onclick="return false;">Actualités & Presse</a>
+        <a href="#" class="ml-nav-item demo-main-nav-link" onclick="return false;">Espace Citoyen</a>
+      </nav>
     </div>
   </div>
 
-  <CodeBlock code={`<!-- HTML : Structure En-tête Desktop & Mobile avec tiroir burger -->
-<header class="ml-header ml-header-sticky ml-header-shrinkable" id="site-header">
-  <div class="container">
-    <div class="header-top">
-      <a href="/" class="brand-block">
-        <img src="/dsml/assets/logo-mali.svg" alt="Armoiries du Mali" class="ml-header-logo" width="42" height="42" />
-        <div class="brand-text">
-          <div class="brand-title">RÉPUBLIQUE DU MALI</div>
-          <div class="site-title">Nom de l'Administration</div>
-          <div class="ml-tricolor-bar">
-            <div class="green"></div>
-            <div class="yellow"></div>
-            <div class="red"></div>
-          </div>
-        </div>
-      </a>
-      <div class="header-actions">
-        <!-- Bouton Burger visible sur écran mobile (<860px) -->
-        <button class="ml-header-burger" id="header-burger" aria-label="Menu principal" aria-expanded="false">
-          <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        </button>
-      </div>
-    </div>
-    <!-- Tiroir de Navigation principal -->
-    <nav class="ml-header-nav" id="header-nav" aria-label="Menu principal">
-      <div class="ml-header-nav-header">
-        <span>Navigation</span>
-        <button class="ml-header-nav-close" id="header-nav-close" aria-label="Fermer le menu">&times;</button>
-      </div>
-      <a href="/" class="ml-nav-item active">Accueil</a>
-      <a href="/demarches/" class="ml-nav-item">Démarches</a>
-      <a href="/actualites/" class="ml-nav-item">Actualités</a>
-    </nav>
-  </div>
-</header>
-
-<!-- JavaScript Vanilla : Gestion de l'ouverture / fermeture mobile -->
-<script>
-  const burgerBtn = document.getElementById('header-burger');
-  const closeBtn = document.getElementById('header-nav-close');
-  const navMenu = document.getElementById('header-nav');
-
-  function toggleMenu() {
-    const isOpen = navMenu.classList.toggle('is-open');
-    burgerBtn.setAttribute('aria-expanded', isOpen.toString());
-  }
-
-  burgerBtn?.addEventListener('click', toggleMenu);
-  closeBtn?.addEventListener('click', toggleMenu);
-</script>`} lang="html" />
+  <CodeBlock code={`<nav class="ml-header-nav" aria-label="Menu principal">
+  <a href="/" class="ml-nav-item active">Accueil</a>
+  <a href="/demarches/" class="ml-nav-item">Démarches</a>
+  <a href="/ministeres/" class="ml-nav-item">Ministères</a>
+  <a href="/actualites/" class="ml-nav-item">Actualités</a>
+</nav>`} lang="html" />
 
   <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">02. Sous-Menu et Menu Déroulant (Dropdown)</h2>
   <p class="ml-body" style="color: var(--ml-color-neutral-600); margin-bottom: var(--ml-space-4);">
     Les sous-menus contextuels s'affichent sous forme de panneau flottant en verre dépoli (glassmorphism) lors du survol ou du clic sur l'élément déclencheur.
   </p>
 
-  <div class="demo-preview" style="display: flex; justify-content: center; padding: 40px var(--ml-space-4); background: var(--ml-color-neutral-100); border-radius: var(--ml-radius-m);">
-    <div class="dropdown-container" style="position: relative; display: inline-block;">
-      <button type="button" class="dropdown-trigger" style="display: inline-flex; align-items: center; gap: 6px; color: var(--ml-color-green-emerald); font-family: var(--ml-font-title); font-weight: 700; font-size: 14px; padding: 8px 16px; border-radius: var(--ml-radius-pill); background-color: var(--ml-color-green-50); border: 1px solid var(--ml-color-green-200); cursor: pointer;">
+  <div class="demo-preview" style="display: flex; justify-content: center; padding: 40px var(--ml-space-4);">
+    <div class="ml-dropdown" id="demo-dropdown">
+      <button type="button" class="ml-dropdown-trigger" id="demo-dropdown-trigger" aria-expanded="false">
         <span>Espace Citoyen / Agent</span>
-        <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2;"><path d="M6 9l6 6 6-6"></path></svg>
+        <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; transition: transform 0.2s ease;"><path d="M6 9l6 6 6-6"></path></svg>
       </button>
-      <div class="dropdown-menu show" style="position: relative; top: 8px; right: 0; width: 240px; background: var(--ml-color-neutral-0); border: 1px solid var(--ml-color-neutral-200); border-radius: var(--ml-radius-m); box-shadow: var(--ml-shadow-ambient); padding: var(--ml-space-2); display: flex; flex-direction: column; gap: 2px;">
-        <div class="dropdown-title" style="font-size: 10px; font-weight: 800; letter-spacing: 0.08em; color: var(--ml-color-neutral-500); padding: 6px 10px 4px; text-transform: uppercase;">Accès sécurisé</div>
-        <a href="#" class="dropdown-item" onclick="return false;" style="text-decoration: none; color: var(--ml-color-neutral-900); font-size: 14px; padding: 8px 10px; border-radius: var(--ml-radius-s); display: flex; align-items: center; gap: 8px; background: var(--ml-color-green-50); color: var(--ml-color-green-emerald); font-weight: 600;">
-          <span class="dropdown-dot user" style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--ml-color-green-500);"></span>
+      <div class="ml-dropdown-menu" id="demo-dropdown-menu">
+        <div class="ml-dropdown-title">Accès sécurisé</div>
+        <a href="#" class="ml-dropdown-item active" onclick="return false;">
+          <span class="ml-dropdown-dot user"></span>
           Mes Démarches en ligne
         </a>
-        <a href="#" class="dropdown-item" onclick="return false;" style="text-decoration: none; color: var(--ml-color-neutral-900); font-size: 14px; padding: 8px 10px; border-radius: var(--ml-radius-s); display: flex; align-items: center; gap: 8px;">
-          <span class="dropdown-dot agent" style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--ml-color-gold-amber);"></span>
+        <a href="#" class="ml-dropdown-item" onclick="return false;">
+          <span class="ml-dropdown-dot agent"></span>
           Portail Agent Public
         </a>
-        <div class="dropdown-divider" style="height: 1px; background-color: var(--ml-color-neutral-200); margin: 4px 6px;"></div>
-        <a href="#" class="dropdown-item" onclick="return false;" style="text-decoration: none; color: var(--ml-color-neutral-700); font-size: 13px; padding: 8px 10px;">Aide & Support technique</a>
+        <div class="ml-dropdown-divider"></div>
+        <a href="#" class="ml-dropdown-item" onclick="return false;">Aide & Support technique</a>
       </div>
     </div>
   </div>
 
   <CodeBlock code={`<!-- Menu déroulant (Sous-menu contextuel) -->
-<div class="dropdown-container">
-  <button type="button" class="dropdown-trigger" aria-expanded="true">
+<div class="ml-dropdown">
+  <button type="button" class="ml-dropdown-trigger" aria-expanded="true">
     <span>Espace Citoyen</span>
     <svg viewBox="0 0 24 24" width="14" height="14"><path d="M6 9l6 6 6-6"></path></svg>
   </button>
-  <div class="dropdown-menu show">
-    <div class="dropdown-title">Accès sécurisé</div>
-    <a href="#" class="dropdown-item">
-      <span class="dropdown-dot user"></span>
+  <div class="ml-dropdown-menu show">
+    <div class="ml-dropdown-title">Accès sécurisé</div>
+    <a href="#" class="ml-dropdown-item active">
+      <span class="ml-dropdown-dot user"></span>
       Mes Démarches en ligne
     </a>
-    <a href="#" class="dropdown-item">
-      <span class="dropdown-dot agent"></span>
+    <a href="#" class="ml-dropdown-item">
+      <span class="ml-dropdown-dot agent"></span>
       Portail Agent Public
     </a>
-    <div class="dropdown-divider"></div>
-    <a href="#" class="dropdown-item">Aide & Support</a>
+    <div class="ml-dropdown-divider"></div>
+    <a href="#" class="ml-dropdown-item">Aide & Support</a>
   </div>
 </div>`} lang="html" />
 
   <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">03. Fil d'Ariane (Breadcrumbs)</h2>
-  <div class="demo-preview" style="display: block; width: 100%;">
-    <nav class="ml-breadcrumb" aria-label="Fil d'Ariane">
-      <ol class="ml-breadcrumb-list" style="display: flex; list-style: none; padding: 0; margin: 0; gap: var(--ml-space-2); font-size: 14px;">
-        <li class="ml-breadcrumb-item"><a href="#" onclick="return false;" style="text-decoration: none; color: var(--ml-color-neutral-600);">Accueil</a></li>
-        <li class="ml-breadcrumb-item"><span style="margin-right: 8px; color: var(--ml-color-neutral-400);">/</span><a href="#" onclick="return false;" style="text-decoration: none; color: var(--ml-color-neutral-600);">Démarches</a></li>
-        <li class="ml-breadcrumb-item active" aria-current="page" style="font-weight: bold; color: var(--ml-color-neutral-900);"><span style="margin-right: 8px; color: var(--ml-color-neutral-400);">/</span>Carte Consulaire</li>
+  <div class="demo-preview">
+    <nav class="ml-breadcrumb" aria-label="Fil d'Ariane" id="demo-breadcrumb">
+      <ol class="ml-breadcrumb-list">
+        <li class="ml-breadcrumb-item"><a href="#" class="demo-bc-link" onclick="return false;">Accueil</a></li>
+        <li class="ml-breadcrumb-item"><a href="#" class="demo-bc-link" onclick="return false;">Démarches</a></li>
+        <li class="ml-breadcrumb-item active" aria-current="page">Carte Consulaire</li>
       </ol>
     </nav>
   </div>
@@ -224,13 +102,13 @@ import CodeBlock from '../../components/CodeBlock.astro';
 
   <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">04. Pagination</h2>
   <div class="demo-preview">
-    <nav class="ml-pagination" aria-label="Pagination">
-      <a href="#" class="ml-pagination-btn disabled" onclick="return false;">‹ Préc.</a>
-      <a href="#" class="ml-pagination-btn active" onclick="return false;">1</a>
-      <a href="#" class="ml-pagination-btn" onclick="return false;">2</a>
+    <nav class="ml-pagination" aria-label="Pagination" id="demo-pagination">
+      <a href="#" class="ml-pagination-btn disabled" id="demo-pag-prev" onclick="return false;">‹ Préc.</a>
+      <a href="#" class="ml-pagination-btn active demo-pag-num" data-page="1" onclick="return false;">1</a>
+      <a href="#" class="ml-pagination-btn demo-pag-num" data-page="2" onclick="return false;">2</a>
       <span class="ml-pagination-ellipsis">...</span>
-      <a href="#" class="ml-pagination-btn" onclick="return false;">10</a>
-      <a href="#" class="ml-pagination-btn" onclick="return false;">Suiv. ›</a>
+      <a href="#" class="ml-pagination-btn demo-pag-num" data-page="10" onclick="return false;">10</a>
+      <a href="#" class="ml-pagination-btn" id="demo-pag-next" onclick="return false;">Suiv. ›</a>
     </nav>
   </div>
   <CodeBlock code={`<nav class="ml-pagination" aria-label="Pagination">
@@ -243,26 +121,26 @@ import CodeBlock from '../../components/CodeBlock.astro';
 </nav>`} lang="html" />
 
   <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">05. Indicateur d'étapes (Stepper)</h2>
-  <div class="demo-preview" style="display: block; width: 100%;">
-    <div class="ml-stepper" style="display: flex; gap: var(--ml-space-4); justify-content: space-between; flex-wrap: wrap;">
-      <div class="ml-step completed" style="display: flex; align-items: center; gap: var(--ml-space-2);">
-        <div class="ml-step-circle" style="width: 28px; height: 28px; border-radius: 50%; background: var(--ml-color-green-500); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">✓</div>
-        <div class="ml-step-label" style="font-weight: 500; color: var(--ml-color-neutral-600);">Pièces requises</div>
+  <div class="demo-preview">
+    <div class="ml-stepper" id="demo-stepper">
+      <div class="ml-step completed" data-step="1" style="cursor: pointer;">
+        <div class="ml-step-circle">✓</div>
+        <div class="ml-step-label">Pièces requises</div>
       </div>
-      <div class="ml-step active" style="display: flex; align-items: center; gap: var(--ml-space-2);">
-        <div class="ml-step-circle" style="width: 28px; height: 28px; border-radius: 50%; background: var(--ml-color-green-500); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">2</div>
-        <div class="ml-step-label" style="font-weight: bold; color: var(--ml-color-neutral-900);">Formulaire</div>
+      <div class="ml-step active" data-step="2" style="cursor: pointer;">
+        <div class="ml-step-circle">2</div>
+        <div class="ml-step-label">Formulaire</div>
       </div>
-      <div class="ml-step" style="display: flex; align-items: center; gap: var(--ml-space-2);">
-        <div class="ml-step-circle" style="width: 28px; height: 28px; border-radius: 50%; background: var(--ml-color-neutral-200); color: var(--ml-color-neutral-600); display: flex; align-items: center; justify-content: center; font-weight: bold;">3</div>
-        <div class="ml-step-label" style="font-weight: 500; color: var(--ml-color-neutral-400);">Rendez-vous</div>
+      <div class="ml-step" data-step="3" style="cursor: pointer;">
+        <div class="ml-step-circle">3</div>
+        <div class="ml-step-label">Rendez-vous</div>
       </div>
     </div>
   </div>
   <CodeBlock code={`<div class="ml-stepper">
   <!-- Completed step -->
   <div class="ml-step completed">
-    <div class="ml-step-circle">1</div>
+    <div class="ml-step-circle">✓</div>
     <div class="ml-step-label">Pièces requises</div>
   </div>
   <!-- Active step -->
@@ -279,36 +157,36 @@ import CodeBlock from '../../components/CodeBlock.astro';
 
   <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">06. Menu Latéral (Sidemenu) & Accordéon Mobile</h2>
   <p class="ml-body" style="color: var(--ml-color-neutral-600); margin-bottom: var(--ml-space-4);">
-    Le menu latéral (<code>.ml-sidemenu</code>) organise la navigation secondaire d'une sous-section. Sur grand écran, il s'affiche verticalement. Sur mobile, il s'enroule sous forme d'un bouton de niveau de rubrique escamotable avec chevron.
+    Le menu latéral (<code>.ml-sidemenu</code>) organise la navigation secondaire d'une sous-section. Sur grand écran, il s'affiche verticalement. Sur mobile ou avec la classe <code>.ml-sidemenu--mobile</code>, il s'enroule sous forme d'un bouton de niveau de rubrique escamotable avec chevron.
   </p>
 
   <div class="demo-preview" style="display: flex; gap: var(--ml-space-6); flex-wrap: wrap; justify-content: center; background: var(--ml-color-neutral-100); padding: var(--ml-space-6); border-radius: var(--ml-radius-m);">
     <!-- Sidemenu Desktop -->
     <div style="flex: 1; min-width: 260px; max-width: 320px; background: var(--ml-color-neutral-0); border-radius: var(--ml-radius-m); padding: var(--ml-space-4); border: 1px solid var(--ml-color-neutral-200); box-shadow: var(--ml-shadow-ambient);">
-      <div style="font-size: 11px; font-weight: 800; color: var(--ml-color-green-emerald); text-transform: uppercase; margin-bottom: 8px;">Affichage Desktop</div>
-      <nav class="ml-sidemenu" aria-label="Menu desktop">
-        <div class="ml-sidemenu__title" style="font-weight: 800; font-size: 14px; color: var(--ml-color-neutral-900); padding-bottom: 8px; border-bottom: 2px solid var(--ml-color-green-500); margin-bottom: 8px;">Renseignements Admin</div>
-        <ul class="ml-sidemenu__list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px;">
-          <li class="ml-sidemenu__item"><a href="#" class="ml-sidemenu__link active" onclick="return false;" style="display: block; padding: 8px 12px; border-radius: var(--ml-radius-s); background: var(--ml-color-green-50); color: var(--ml-color-green-700); font-weight: 700; text-decoration: none;">Périmètre d'application</a></li>
-          <li class="ml-sidemenu__item"><a href="#" class="ml-sidemenu__link" onclick="return false;" style="display: block; padding: 8px 12px; border-radius: var(--ml-radius-s); color: var(--ml-color-neutral-700); text-decoration: none;">Procédure d'agrément</a></li>
-          <li class="ml-sidemenu__item"><a href="#" class="ml-sidemenu__link" onclick="return false;" style="display: block; padding: 8px 12px; border-radius: var(--ml-radius-s); color: var(--ml-color-neutral-700); text-decoration: none;">Formulaires officiels</a></li>
+      <div style="font-size: 11px; font-weight: 800; color: var(--ml-color-green-emerald); text-transform: uppercase; margin-bottom: 12px;">Affichage Desktop</div>
+      <nav class="ml-sidemenu" id="demo-sidemenu-desktop" aria-label="Menu desktop">
+        <div class="ml-sidemenu__title">Renseignements Admin</div>
+        <ul class="ml-sidemenu__list">
+          <li class="ml-sidemenu__item"><a href="#" class="ml-sidemenu__link" onclick="return false;">Périmètre d'application</a></li>
+          <li class="ml-sidemenu__item"><a href="#" class="ml-sidemenu__link active" onclick="return false;">Procédure d'agrément</a></li>
+          <li class="ml-sidemenu__item"><a href="#" class="ml-sidemenu__link" onclick="return false;">Formulaires officiels</a></li>
         </ul>
       </nav>
     </div>
 
     <!-- Sidemenu Accordéon Mobile -->
     <div style="flex: 1; min-width: 260px; max-width: 320px; background: var(--ml-color-neutral-0); border-radius: var(--ml-radius-m); padding: var(--ml-space-4); border: 1px solid var(--ml-color-neutral-200); box-shadow: var(--ml-shadow-ambient);">
-      <div style="font-size: 11px; font-weight: 800; color: var(--ml-color-gold-amber); text-transform: uppercase; margin-bottom: 8px;">Affichage Mobile (Accordéon)</div>
-      <nav class="ml-sidemenu" aria-label="Menu mobile accordéon">
-        <button type="button" class="ml-sidemenu__btn" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--ml-color-neutral-300); border-radius: var(--ml-radius-s); background: var(--ml-color-neutral-50); font-weight: 700; font-size: 13px; color: var(--ml-color-neutral-800); cursor: pointer;" aria-expanded="true">
+      <div style="font-size: 11px; font-weight: 800; color: var(--ml-color-gold-amber); text-transform: uppercase; margin-bottom: 12px;">Affichage Mobile (Accordéon)</div>
+      <nav class="ml-sidemenu ml-sidemenu--mobile" aria-label="Menu mobile accordéon">
+        <button type="button" class="ml-sidemenu__btn" id="demo-sidemenu-acc-btn" aria-expanded="true">
           <span>Dans cette rubrique (3 pages)</span>
-          <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.5; transform: rotate(180deg);"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <svg class="ml-sidemenu__btn-icon" id="demo-sidemenu-acc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
-        <div class="ml-sidemenu__content" style="margin-top: 8px; border-top: 1px dashed var(--ml-color-neutral-200); padding-top: 8px;">
-          <ul class="ml-sidemenu__list" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px;">
-            <li class="ml-sidemenu__item"><a href="#" class="ml-sidemenu__link active" onclick="return false;" style="display: block; padding: 8px 12px; border-radius: var(--ml-radius-s); background: var(--ml-color-green-50); color: var(--ml-color-green-700); font-weight: 700; text-decoration: none;">Périmètre d'application</a></li>
-            <li class="ml-sidemenu__item"><a href="#" class="ml-sidemenu__link" onclick="return false;" style="display: block; padding: 8px 12px; border-radius: var(--ml-radius-s); color: var(--ml-color-neutral-700); text-decoration: none;">Procédure d'agrément</a></li>
-            <li class="ml-sidemenu__item"><a href="#" class="ml-sidemenu__link" onclick="return false;" style="display: block; padding: 8px 12px; border-radius: var(--ml-radius-s); color: var(--ml-color-neutral-700); text-decoration: none;">Formulaires officiels</a></li>
+        <div class="ml-sidemenu__content" id="demo-sidemenu-acc-content">
+          <ul class="ml-sidemenu__list">
+            <li class="ml-sidemenu__item"><a href="#" class="ml-sidemenu__link" onclick="return false;">Périmètre d'application</a></li>
+            <li class="ml-sidemenu__item"><a href="#" class="ml-sidemenu__link active" onclick="return false;">Procédure d'agrément</a></li>
+            <li class="ml-sidemenu__item"><a href="#" class="ml-sidemenu__link" onclick="return false;">Formulaires officiels</a></li>
           </ul>
         </div>
       </nav>
@@ -334,7 +212,7 @@ import CodeBlock from '../../components/CodeBlock.astro';
   <p class="ml-body" style="color: var(--ml-color-neutral-600); margin-bottom: var(--ml-space-4);">
     Le sommaire permet à l'usager de naviguer directement entre les différentes sections d'une même page d'article ou de documentation via des ancres.
   </p>
-  <div class="demo-preview" style="display: block; width: 100%;">
+  <div class="demo-preview">
     <nav class="ml-summary" aria-label="Sommaire de la page">
       <div class="ml-summary__title">SOMMAIRE</div>
       <ol class="ml-summary__list">
@@ -353,4 +231,172 @@ import CodeBlock from '../../components/CodeBlock.astro';
   </ol>
 </nav>`} lang="html" />
 
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">08. Barre d'Administration (Admin Toolbar & Scroll Horizontale Optionnel)</h2>
+  <p class="ml-body" style="color: var(--ml-color-neutral-600); margin-bottom: var(--ml-space-4);">
+    La barre d'administration (<code>.ml-admin-bar</code>) offre une barre fixe d'actions (sticky en haut sur desktop et ancrée en bas sur mobile). La classe modificatrice optionnelle <code>.ml-admin-bar-scrollable</code> permet un défilement horizontal fluide du contenu sur mobile sans rogner ni déformer les éléments d'action.
+  </p>
+
+  <div class="demo-preview" style="display: block; width: 100%; padding: var(--ml-space-4); background: var(--ml-color-neutral-900); border-radius: var(--ml-radius-m);">
+    <div class="ml-admin-bar ml-admin-bar-scrollable" style="position: relative; top: auto; bottom: auto; background: transparent; border-bottom: none; box-shadow: none;">
+      <div class="ml-admin-bar-container" style="padding: 0; max-width: 100%;">
+        <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+          <span class="ml-badge-admin" style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 9999px; background: rgba(14, 165, 233, 0.15); color: #38bdf8; font-weight: 700; font-size: 11px; text-transform: uppercase;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background-color: #22c55e; box-shadow: 0 0 8px #22c55e;"></span>
+            <span>Admin</span>
+          </span>
+          <div class="ml-segmented-control ml-segmented-control-dark" id="demo-admin-segmented">
+            <button type="button" class="ml-segment-btn active" data-segment="preview">Aperçu</button>
+            <button type="button" class="ml-segment-btn" data-segment="edit">Édition</button>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+          <span id="demo-admin-badge" style="font-size: 12px; color: #38bdf8; background: rgba(56, 189, 248, 0.12); padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(56, 189, 248, 0.25);">3 modifications non enregistrées</span>
+          <button type="button" class="ml-btn ml-btn--primary ml-btn--sm" id="demo-admin-save-btn">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <CodeBlock code={`<!-- Standard Admin Bar -->
+<div class="ml-admin-bar">
+  <div class="ml-admin-bar-container">
+    <!-- Barre d'outils d'administration -->
+  </div>
+</div>
+
+<!-- Optionnel: Barre d'outils avec scroll horizontal fluide sur mobile -->
+<div class="ml-admin-bar ml-admin-bar-scrollable">
+  <div class="ml-admin-bar-container">
+    <!-- Contenu défilable sans déformation -->
+  </div>
+</div>`} lang="html" />
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 0. Main Nav Tabs Interactivity
+      const mainNavLinks = document.querySelectorAll<HTMLElement>(".demo-main-nav-link");
+      mainNavLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          mainNavLinks.forEach((l) => l.classList.remove("active"));
+          link.classList.add("active");
+        });
+      });
+
+      // 1. Dropdown Interactivity
+      const dropdownTrigger = document.getElementById("demo-dropdown-trigger");
+      const dropdownMenu = document.getElementById("demo-dropdown-menu");
+
+      if (dropdownTrigger && dropdownMenu) {
+        dropdownTrigger.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const isExpanded = dropdownTrigger.getAttribute("aria-expanded") === "true";
+          dropdownTrigger.setAttribute("aria-expanded", (!isExpanded).toString());
+          dropdownMenu.classList.toggle("show", !isExpanded);
+        });
+
+        const items = dropdownMenu.querySelectorAll(".ml-dropdown-item, .dropdown-item");
+        items.forEach((item) => {
+          item.addEventListener("click", (e) => {
+            e.preventDefault();
+            items.forEach((i) => i.classList.remove("active"));
+            item.classList.add("active");
+            setTimeout(() => {
+              dropdownMenu.classList.remove("show");
+              dropdownTrigger.setAttribute("aria-expanded", "false");
+            }, 180);
+          });
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!dropdownTrigger.contains(e.target as Node) && !dropdownMenu.contains(e.target as Node)) {
+            dropdownMenu.classList.remove("show");
+            dropdownTrigger.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      // 2. Pagination Interactivity
+      const pagBtns = document.querySelectorAll<HTMLElement>(".demo-pag-num");
+      pagBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          pagBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+        });
+      });
+
+      // 3. Stepper Interactivity
+      const steps = document.querySelectorAll<HTMLElement>("#demo-stepper .ml-step");
+      steps.forEach((step, idx) => {
+        step.addEventListener("click", () => {
+          steps.forEach((s, sIdx) => {
+            const circle = s.querySelector(".ml-step-circle") as HTMLElement;
+            if (!circle) return;
+
+            if (sIdx < idx) {
+              s.className = "ml-step completed";
+              circle.textContent = "✓";
+            } else if (sIdx === idx) {
+              s.className = "ml-step active";
+              circle.textContent = (sIdx + 1).toString();
+            } else {
+              s.className = "ml-step";
+              circle.textContent = (sIdx + 1).toString();
+            }
+          });
+        });
+      });
+
+      // 4. Sidemenu Links Interactivity
+      const sidemenuLinks = document.querySelectorAll<HTMLElement>(".ml-sidemenu__link");
+      sidemenuLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const nav = link.closest(".ml-sidemenu");
+          if (!nav) return;
+          nav.querySelectorAll(".ml-sidemenu__link").forEach((l) => l.classList.remove("active"));
+          link.classList.add("active");
+        });
+      });
+
+      // 5. Sidemenu Mobile Accordion Toggle
+      const accBtn = document.getElementById("demo-sidemenu-acc-btn");
+      if (accBtn) {
+        accBtn.addEventListener("click", () => {
+          const isOpen = accBtn.getAttribute("aria-expanded") === "true";
+          accBtn.setAttribute("aria-expanded", (!isOpen).toString());
+        });
+      }
+
+      // 6. Admin Toolbar Interactivity
+      const segmentedControl = document.getElementById("demo-admin-segmented");
+      if (segmentedControl) {
+        const segBtns = segmentedControl.querySelectorAll<HTMLElement>(".ml-segment-btn");
+        segBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            segBtns.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+          });
+        });
+      }
+
+      const saveBtn = document.getElementById("demo-admin-save-btn");
+      const adminBadge = document.getElementById("demo-admin-badge");
+      if (saveBtn) {
+        saveBtn.addEventListener("click", () => {
+          saveBtn.textContent = "✓ Enregistré !";
+          if (adminBadge) {
+            adminBadge.textContent = "Modifications enregistrées";
+          }
+          setTimeout(() => {
+            saveBtn.textContent = "Enregistrer";
+            if (adminBadge) {
+              adminBadge.textContent = "0 modification en attente";
+            }
+          }, 2200);
+        });
+      }
+    });
+  </script>
 </DocsLayout>

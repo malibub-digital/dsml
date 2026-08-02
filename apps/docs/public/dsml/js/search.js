@@ -79,8 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
       { title: 'Recherche (Search)', desc: 'Barres de recherche et modales du DSML intégrées', url: '/composants/recherche/' },
       { title: 'Contenu & Articles', desc: 'Composants de contenu de type article et mise en page éditoriale', url: '/composants/articles/' },
       { title: 'Blocs de code', desc: 'Mise en forme des blocs de code source et coloration syntaxique', url: '/composants/blocs-de-code/' },
-      { title: 'En-tête & Pied de page (Layout)', desc: 'Layouts de header et footer officiels du DSML', url: '/layouts/header-footer/' },
-      { title: 'Cadrages Photo', desc: 'Règles et exemples de cadrages photo réglementaires pour le gouvernement', url: '/layouts/cadrages-photo/' },
+      { title: 'En-tête & Pied de page', desc: 'Composants de header et footer officiels du DSML', url: '/composants/header-footer/' },
+      { title: 'Cadrages Photo', desc: 'Règles et exemples de cadrages photo réglementaires pour le gouvernement', url: '/fondations/cadrages-photo/' },
       { title: 'Accessibilité', desc: 'Déclaration d\'accessibilité et conformité RGAA / WCAG du DSML', url: '/accessibilité' },
       { title: 'Contribuer', desc: 'Guide pour contribuer au développement et à l\'amélioration du DSML', url: '/contribuer' },
       { title: 'Mentions Légales', desc: 'Informations légales et éditoriales du Design System Mali', url: '/mentions-legales' }

@@ -69,44 +69,7 @@ import SnippetPreview from '../../components/SnippetPreview.astro';
 </div>`}
   />
 
-  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">3. Bandeau d'Administration & Notification (.ml-admin-banner)</h2>
-  <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Bandeau fixe ou collant (sticky/fixed) conçu pour afficher l'état du système, le mode de travail (Édition/Aperçu avec Segmented Control) et les actions globales d'administration.</p>
-
-  <SnippetPreview
-    title="Bandeau d'administration responsive"
-    filename="admin-banner.html"
-    code={`<div class="ml-admin-banner">
-  <div class="ml-admin-banner__container">
-    <div class="ml-admin-banner__group">
-      <span class="ml-badge ml-badge--success" style="font-size: 0.75rem; text-transform: uppercase;">
-        <span class="ml-status-dot ml-dot-green"></span>
-        Admin
-      </span>
-
-      <div class="ml-segmented-control ml-segmented-control-dark" role="radiogroup" aria-label="Mode de travail">
-        <button type="button" class="ml-segment-btn active" role="radio" aria-checked="true" title="Mode Aperçu">
-          <i class="ml-icon-eye-line ml-icon--xs"></i>
-          <span>Aperçu</span>
-        </button>
-        <button type="button" class="ml-segment-btn" role="radio" aria-checked="false" title="Mode Édition">
-          <i class="ml-icon-edit-line ml-icon--xs"></i>
-          <span>Édition</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="ml-admin-banner__group">
-      <span style="font-size: 0.75rem; color: var(--ml-color-river-400, #38bdf8); font-weight: 500;">
-        2 modification(s) non enregistrée(s)
-      </span>
-      <button type="button" class="ml-btn ml-btn--primary ml-btn--sm">Enregistrer</button>
-      <button type="button" class="ml-btn ml-btn--success ml-btn--sm">Publier</button>
-    </div>
-  </div>
-</div>`}
-  />
-
-  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">4. Bandeau d'Information Global (.ml-notice-banner)</h2>
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">3. Bandeau d'Information Global (.ml-notice-banner)</h2>
   <p class="ml-body-compact" style="margin-bottom: var(--ml-space-4);">Bandeau pleine largeur affiché en haut d'un site pour transmettre un message prioritaire, une alerte de maintenance ou une annonce officielle à l'échelle nationale.</p>
 
   <SnippetPreview

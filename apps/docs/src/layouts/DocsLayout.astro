@@ -53,11 +53,13 @@ const sidebarNav = [
       },
       { href: "/fondations/icones/", label: "06. Icônes", id: "icones" },
       { href: "/fondations/marque-nationale/", label: "07. Marque & Drapeau", id: "marque-nationale" },
+      { href: "/fondations/cadrages-photo/", label: "08. Cadrages Photo", id: "cadrages-photo" },
     ],
   },
   {
     group: "Composants",
     items: [
+      { href: "/composants/header-footer/", label: "En-tête & Pied de page", id: "header-footer" },
       { href: "/composants/boutons/", label: "Boutons", id: "boutons" },
       { href: "/composants/alertes/", label: "Alertes", id: "alertes" },
       { href: "/composants/cartes/", label: "Cartes", id: "cartes" },
@@ -95,21 +97,6 @@ const sidebarNav = [
       },
     ],
   },
-  {
-    group: "Gabarits",
-    items: [
-      {
-        href: "/layouts/header-footer/",
-        label: "En-tête & Pied de page",
-        id: "header-footer",
-      },
-      {
-        href: "/layouts/cadrages-photo/",
-        label: "Cadrages Photo",
-        id: "cadrages-photo",
-      },
-    ],
-  },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -119,8 +106,6 @@ if (currentPath.includes("/fondations/")) {
   activeGroup = "Fondations";
 } else if (currentPath.includes("/composants/")) {
   activeGroup = "Composants";
-} else if (currentPath.includes("/layouts/")) {
-  activeGroup = "Gabarits";
 }
 
 const filteredSidebarNav = sidebarNav.filter(
@@ -214,9 +199,16 @@ const filteredSidebarNav = sidebarNav.filter(
         .docs-mobile-nav-toggle {
           display: inline-flex !important;
         }
+        .docs-mobile-sidemenu {
+          display: block !important;
+        }
         .docs-content {
           padding: var(--ml-space-4) 0 var(--ml-space-12) 0 !important;
         }
+      }
+
+      .docs-mobile-sidemenu {
+        display: none;
       }
 
       .docs-mobile-nav-toggle {
@@ -603,11 +595,6 @@ const filteredSidebarNav = sidebarNav.filter(
               class={`ml-nav-item ${currentPath.startsWith("/composants") ? "active" : ""}`}
               >Composants</a
             >
-            <a
-              href="/layouts/header-footer/"
-              class={`ml-nav-item ${currentPath.startsWith("/layouts") ? "active" : ""}`}
-              >Gabarits</a
-            >
           </nav>
         </div>
       </header>
@@ -675,7 +662,7 @@ const filteredSidebarNav = sidebarNav.filter(
         <!-- Zone de contenu -->
         <main class="docs-content" id="main-content">
           <!-- Accordéon mobile sous-rubriques (ml-sidemenu) -->
-          <nav class="ml-sidemenu ml-mb-4" aria-label="Navigation de la section">
+          <nav class="ml-sidemenu docs-mobile-sidemenu ml-mb-4" aria-label="Navigation de la section">
             <button
               type="button"
               class="ml-sidemenu__btn"
@@ -903,7 +890,7 @@ const filteredSidebarNav = sidebarNav.filter(
             </li>
             <li>
               <a
-                href="/layouts/header-footer/"
+                href="/composants/header-footer/"
                 class="ml-search-modal-item"
                 style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; padding: var(--ml-space-2) var(--ml-space-3); border-radius: var(--ml-radius-s); background: var(--ml-color-neutral-50); color: var(--ml-color-neutral-900); font-family: var(--ml-font-body); transition: background 0.15s;"
               >

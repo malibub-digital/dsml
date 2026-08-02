@@ -1565,10 +1565,14 @@ a:hover {
   color: var(--ml-color-green-emerald);
 }
 
+.ml-dropdown,
+.dropdown-container,
 .ml-header .dropdown-container {
   position: relative;
 }
 
+.ml-dropdown-trigger,
+.dropdown-trigger,
 .ml-header .dropdown-trigger {
   display: inline-flex;
   align-items: center;
@@ -1585,11 +1589,15 @@ a:hover {
   transition: all 0.22s ease;
 }
 
+.ml-dropdown-trigger:hover,
+.dropdown-trigger:hover,
 .ml-header .dropdown-trigger:hover {
   background-color: var(--ml-color-green-100);
   box-shadow: var(--ml-shadow-soft);
 }
 
+.ml-dropdown-menu,
+.dropdown-menu,
 .ml-header .dropdown-menu {
   position: absolute;
   top: calc(100% + 8px);
@@ -1608,10 +1616,14 @@ a:hover {
   z-index: 110;
 }
 
+.ml-dropdown-menu.show,
+.dropdown-menu.show,
 .ml-header .dropdown-menu.show {
   display: flex;
 }
 
+.ml-dropdown-title,
+.dropdown-title,
 .ml-header .dropdown-title {
   font-family: var(--ml-font-title);
   font-size: 10px;
@@ -1622,6 +1634,8 @@ a:hover {
   text-transform: uppercase;
 }
 
+.ml-dropdown-item,
+.dropdown-item,
 .ml-header .dropdown-item {
   text-decoration: none;
   color: var(--ml-color-neutral-900);
@@ -1634,11 +1648,22 @@ a:hover {
   transition: all 0.15s ease;
 }
 
+.ml-dropdown-item:hover,
+.dropdown-item:hover,
 .ml-header .dropdown-item:hover {
   background-color: var(--ml-color-neutral-100);
   color: var(--ml-color-green-emerald);
 }
 
+.ml-dropdown-item.active,
+.dropdown-item.active {
+  background-color: var(--ml-color-green-50);
+  color: var(--ml-color-green-emerald);
+  font-weight: 600;
+}
+
+.ml-dropdown-dot,
+.dropdown-dot,
 .ml-header .dropdown-dot {
   width: 8px;
   height: 8px;
@@ -1646,9 +1671,15 @@ a:hover {
   flex-shrink: 0;
   box-shadow: 0 0 6px currentColor;
 }
+.ml-dropdown-dot.user,
+.dropdown-dot.user,
 .ml-header .dropdown-dot.user { background-color: var(--ml-color-green-mint); }
+.ml-dropdown-dot.agent,
+.dropdown-dot.agent,
 .ml-header .dropdown-dot.agent { background-color: var(--ml-color-gold-amber); }
 
+.ml-dropdown-divider,
+.dropdown-divider,
 .ml-header .dropdown-divider {
   height: 1px;
   background-color: var(--ml-color-neutral-200);
@@ -1692,8 +1723,8 @@ a:hover {
   display: none;
 }
 
+.ml-header-nav,
 .ml-header .ml-header-nav {
-  border-top: 1px solid var(--ml-color-neutral-100);
   display: flex;
   gap: var(--ml-space-2);
   font-family: var(--ml-font-title);
@@ -1706,10 +1737,16 @@ a:hover {
   -webkit-overflow-scrolling: touch;
 }
 
+.ml-header .ml-header-nav {
+  border-top: 1px solid var(--ml-color-neutral-100);
+}
+
+.ml-header-nav::-webkit-scrollbar,
 .ml-header .ml-header-nav::-webkit-scrollbar {
   display: none;
 }
 
+.ml-nav-item,
 .ml-header .ml-nav-item {
   padding: 14px 16px;
   color: var(--ml-color-neutral-900);
@@ -1719,12 +1756,14 @@ a:hover {
   text-decoration: none;
 }
 
+.ml-nav-item:hover,
 .ml-header .ml-nav-item:hover {
   color: var(--ml-color-green-600);
   border-bottom-color: var(--ml-color-green-mint);
   background: linear-gradient(180deg, rgba(16, 185, 129, 0) 55%, rgba(16, 185, 129, 0.04) 100%);
 }
 
+.ml-nav-item.active,
 .ml-header .ml-nav-item.active {
   border-bottom-color: var(--ml-color-green-500);
   color: var(--ml-color-green-600);
@@ -2824,10 +2863,58 @@ a:hover {
   color: var(--ml-color-neutral-0);
 }
 
-.ml-segmented-control-dark .ml-segment-btn.active {
-  background-color: var(--ml-color-river-600);
-  color: #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+/* Admin Toolbar Component */
+.ml-admin-bar {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background-color: var(--ml-color-neutral-900, #0f172a);
+  color: var(--ml-color-neutral-0, #f8fafc);
+  font-family: var(--ml-font-body, inherit);
+  font-size: var(--ml-font-size-sm, 14px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid var(--ml-color-river-600, #0284c7);
+}
+
+.ml-admin-bar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Optional Horizontal Scrollable Admin Toolbar (Mobile/Responsive) */
+.ml-admin-bar-scrollable .ml-admin-bar-container,
+.ml-admin-bar-container.ml-admin-bar-scrollable {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.ml-admin-bar-scrollable .ml-admin-bar-container::-webkit-scrollbar,
+.ml-admin-bar-container.ml-admin-bar-scrollable::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .ml-admin-bar {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-bottom: none;
+    border-top: 2px solid var(--ml-color-river-600, #0284c7);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.35);
+    background-color: rgba(15, 23, 42, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
 }
 
 /* ==========================================================================
@@ -4061,7 +4148,7 @@ a:hover {
 
 /* Side menu / Sub-navigation */
 .ml-sidemenu {
-  display: none;
+  display: block;
   width: 100%;
 }
 .ml-sidemenu__btn {
@@ -4134,6 +4221,29 @@ a:hover {
   border-left: 3px solid var(--ml-color-green-500);
   border-radius: 0 var(--ml-radius-s) var(--ml-radius-s) 0;
   padding-left: 9px;
+}
+
+.ml-sidemenu--accordion .ml-sidemenu__btn,
+.ml-sidemenu--mobile .ml-sidemenu__btn {
+  display: flex;
+}
+.ml-sidemenu--accordion .ml-sidemenu__title,
+.ml-sidemenu--mobile .ml-sidemenu__title {
+  display: none;
+}
+.ml-sidemenu--accordion .ml-sidemenu__content,
+.ml-sidemenu--mobile .ml-sidemenu__content {
+  display: none;
+  margin-top: var(--ml-space-2);
+  padding: var(--ml-space-3);
+  background: var(--ml-color-neutral-0);
+  border: 1px solid var(--ml-color-neutral-200);
+  border-radius: var(--ml-radius-m);
+  box-shadow: var(--ml-shadow-1);
+}
+.ml-sidemenu--accordion .ml-sidemenu__btn[aria-expanded="true"] + .ml-sidemenu__content,
+.ml-sidemenu--mobile .ml-sidemenu__btn[aria-expanded="true"] + .ml-sidemenu__content {
+  display: block;
 }
 
 @media (max-width: 860px) {

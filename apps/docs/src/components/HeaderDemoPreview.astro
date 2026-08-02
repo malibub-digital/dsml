@@ -8,24 +8,35 @@ const { initialDemo = 'static' } = Astro.props;
 
 <div class="demo-sandbox-wrapper" data-initial-demo={initialDemo}>
   <div class="demo-toolbar">
-    <div class="demo-toolbar-group">
-      <span class="demo-toolbar-label">Mode d'En-tête :</span>
-      <button class={`ml-btn ml-btn-secondary ml-btn-sm demo-mode-btn ${initialDemo === 'static' ? 'active' : ''}`} data-mode="static">Non-fixe (Défaut)</button>
-      <button class={`ml-btn ml-btn-secondary ml-btn-sm demo-mode-btn ${initialDemo === 'sticky' ? 'active' : ''}`} data-mode="sticky">Fixe (Sticky)</button>
-      <button class={`ml-btn ml-btn-secondary ml-btn-sm demo-mode-btn ${initialDemo === 'shrink' ? 'active' : ''}`} data-mode="shrink">Fixe + Shrink</button>
+    <div class="demo-toolbar-left">
+      <div class="demo-control-group">
+        <span class="demo-toolbar-label">Mode :</span>
+        <div class="demo-segmented">
+          <button type="button" class={`demo-seg-btn demo-mode-btn ${initialDemo === 'static' ? 'active' : ''}`} data-mode="static">Statique</button>
+          <button type="button" class={`demo-seg-btn demo-mode-btn ${initialDemo === 'sticky' ? 'active' : ''}`} data-mode="sticky">Fixe (Sticky)</button>
+          <button type="button" class={`demo-seg-btn demo-mode-btn ${initialDemo === 'shrink' ? 'active' : ''}`} data-mode="shrink">Fixe + Shrink</button>
+        </div>
+      </div>
+
+      <div class="demo-control-group">
+        <span class="demo-toolbar-label">Vue :</span>
+        <div class="demo-segmented">
+          <button type="button" class="demo-seg-btn demo-viewport-btn active" data-viewport="desktop" title="Vue Bureau">
+            <svg class="demo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <span>Bureau</span>
+          </button>
+          <button type="button" class="demo-seg-btn demo-viewport-btn" data-viewport="mobile" title="Vue Mobile (375px)">
+            <svg class="demo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"></rect><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3"></line></svg>
+            <span>Mobile</span>
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="demo-toolbar-group">
-      <span class="demo-toolbar-label">Vue :</span>
-      <button class="ml-btn ml-btn-ghost ml-btn-sm demo-viewport-btn active" data-viewport="desktop" title="Vue Bureau">
-        💻 Bureau
-      </button>
-      <button class="ml-btn ml-btn-ghost ml-btn-sm demo-viewport-btn" data-viewport="mobile" title="Vue Mobile (375px)">
-        📱 Mobile
-      </button>
-      <a id="open-fullscreen" href={`/demos/header-${initialDemo}/`} target="_blank" rel="noopener noreferrer" class="ml-btn ml-btn-primary ml-btn-sm" style="text-decoration: none;">
-        Tester la démo en pleine page ↗
-      </a>
-    </div>
+
+    <a id="open-fullscreen" href={`/demos/header-${initialDemo}/`} target="_blank" rel="noopener noreferrer" class="demo-link-fullscreen">
+      <span>Pleine page</span>
+      <svg class="demo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+    </a>
   </div>
 
   <div class="demo-frame-container desktop" id="frame-container">
@@ -36,7 +47,7 @@ const { initialDemo = 'static' } = Astro.props;
 <style>
   .demo-sandbox-wrapper {
     margin: var(--ml-space-6) 0;
-    border: 1px solid var(--ml-color-neutral-300);
+    border: 1px solid var(--ml-color-neutral-200);
     border-radius: var(--ml-radius-l);
     overflow: hidden;
     background: var(--ml-color-neutral-100);
@@ -49,23 +60,95 @@ const { initialDemo = 'static' } = Astro.props;
     justify-content: space-between;
     align-items: center;
     gap: var(--ml-space-3);
-    padding: var(--ml-space-3) var(--ml-space-4);
+    padding: 10px 16px;
     background: var(--ml-color-neutral-0);
     border-bottom: 1px solid var(--ml-color-neutral-200);
   }
 
-  .demo-toolbar-group {
+  .demo-toolbar-left {
     display: flex;
     align-items: center;
-    gap: var(--ml-space-2);
+    gap: 18px;
     flex-wrap: wrap;
   }
 
+  .demo-control-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
   .demo-toolbar-label {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
-    color: var(--ml-color-neutral-700);
-    margin-right: 4px;
+    color: var(--ml-color-neutral-500);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .demo-segmented {
+    display: inline-flex;
+    padding: 3px;
+    background: var(--ml-color-neutral-100);
+    border-radius: var(--ml-radius-s);
+    border: 1px solid var(--ml-color-neutral-200);
+    gap: 2px;
+  }
+
+  .demo-seg-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    font-family: var(--ml-font-title);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ml-color-neutral-600);
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    user-select: none;
+  }
+
+  .demo-seg-btn:hover {
+    color: var(--ml-color-neutral-900);
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .demo-seg-btn.active {
+    background: var(--ml-color-neutral-0);
+    color: var(--ml-color-green-700);
+    font-weight: 700;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  .demo-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  .demo-link-fullscreen {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    font-family: var(--ml-font-title);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ml-color-green-700);
+    background: var(--ml-color-green-50);
+    border: 1px solid var(--ml-color-green-200);
+    border-radius: var(--ml-radius-s);
+    text-decoration: none;
+    transition: all 0.18s ease;
+  }
+
+  .demo-link-fullscreen:hover {
+    background: var(--ml-color-green-100);
+    border-color: var(--ml-color-green-300);
   }
 
   .demo-frame-container {
@@ -94,13 +177,6 @@ const { initialDemo = 'static' } = Astro.props;
     height: 100%;
     border: none;
     border-radius: inherit;
-  }
-
-  .demo-mode-btn.active,
-  .demo-viewport-btn.active {
-    background-color: var(--ml-color-green-600) !important;
-    color: #ffffff !important;
-    border-color: var(--ml-color-green-600) !important;
   }
 </style>
 

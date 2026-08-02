@@ -1,0 +1,169 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+import HeaderDemoPreview from '../../components/HeaderDemoPreview.astro';
+---
+
+<DocsLayout
+  title="En-tête & Pied de page"
+  description="Structures d'en-tête (header) et de pied de page (footer) officielles du DSML."
+  pageTitle="En-tête & Pied de page"
+  pageSubtitle="Les deux composants d'encadrement majeurs (.ml-header et .ml-footer) qui assurent la conformité visuelle et l'identité de l'État sur tous les sites publics maliens."
+>
+
+  <h2 class="ml-title-2">01. En-tête Institutionnel (Header)</h2>
+  <p class="ml-body" style="color: var(--ml-color-neutral-600); margin-bottom: var(--ml-space-4);">
+    L'en-tête (<code>.ml-header</code>) regroupe l'identité officielle de la République du Mali, la barre tricolore, la barre de recherche globale ainsi que la navigation principale. Il s'adapte dynamiquement en réduisant sa taille au défilement (<code>.ml-header-shrinkable</code>) et bascule sous forme de tiroir burger sur mobile (&lt; 860px).
+  </p>
+
+  <HeaderDemoPreview />
+
+  <h3 class="ml-title-3" style="font-size: 16px; font-weight: 700; color: var(--ml-color-neutral-800); margin-top: var(--ml-space-6); margin-bottom: var(--ml-space-2);">Éléments de marque de l'en-tête</h3>
+  <ul class="doc-list" style="margin-top: var(--ml-space-2); margin-bottom: var(--ml-space-4);">
+    <li><strong>Armoiries nationales (<code>logo-mali.svg</code>) :</strong> Les armoiries officielles de l'État malien.</li>
+    <li><strong>Logo de l’AES (<code>logo-aes.svg</code>) :</strong> Le logo officiel de l'Alliance des États du Sahel (optionnel).</li>
+    <li><strong>Titre de la marque (<code>.brand-title</code>) :</strong> Fixé de manière réglementaire à <code>RÉPUBLIQUE DU MALI</code>.</li>
+    <li><strong>Titre du site (<code>.site-title</code>) :</strong> Nom de l'administration ou du service public.</li>
+    <li><strong>Soulignement tricolore (<code>.ml-tricolor-bar</code>) :</strong> Le drapeau du Mali (Vert, Jaune, Rouge).</li>
+  </ul>
+
+  <CodeBlock code={`<!-- En-tête officiel standard (Non-fixe / Sticky / Shrinkable) -->
+<header class="ml-header ml-header-sticky ml-header-shrinkable" id="site-header">
+  <div class="container">
+    <div class="header-top">
+      <a href="/" class="brand-block">
+        <img src="/dsml/assets/logo-mali.svg" alt="Armoiries du Mali" class="ml-header-logo" width="42" height="42">
+        <div class="brand-text">
+          <div class="brand-title">RÉPUBLIQUE DU MALI</div>
+          <div class="site-title">Nom de l'Administration</div>
+          <div class="ml-tricolor-bar">
+            <div class="green"></div>
+            <div class="yellow"></div>
+            <div class="red"></div>
+          </div>
+        </div>
+      </a>
+      <div class="header-actions">
+        <button class="ml-header-burger" id="header-burger" aria-label="Menu principal">
+          <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+    </div>
+    <nav class="ml-header-nav" id="header-nav" aria-label="Menu principal">
+      <a href="/" class="ml-nav-item active">Accueil</a>
+      <a href="/demarches/" class="ml-nav-item">Démarches</a>
+      <a href="/actualites/" class="ml-nav-item">Actualités</a>
+    </nav>
+  </div>
+</header>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-10);">02. Pied de Page Officiel (Footer)</h2>
+  <p class="ml-body" style="color: var(--ml-color-neutral-600); margin-bottom: var(--ml-space-4);">
+    Le pied de page (<code>.ml-footer</code>) conclut la structure de la page. Il présente obligatoirement le bloc de marque de l'État, la devise nationale (<em>Un Peuple – Un But – Une Foi</em>), les coordonnées de l’administration, les accès rapides et la mention d'accessibilité.
+  </p>
+
+  <!-- Démo Visuelle Interactive du Footer -->
+  <div class="demo-preview" style="display: block; width: 100%; padding: 0; overflow: hidden; border: 1px solid var(--ml-color-neutral-300); border-radius: var(--ml-radius-l); box-shadow: var(--ml-shadow-soft); margin-bottom: var(--ml-space-4);">
+    <div style="background: var(--ml-color-neutral-100); padding: 8px 16px; font-size: 12px; font-weight: 700; color: var(--ml-color-neutral-700); border-bottom: 1px solid var(--ml-color-neutral-200); display: flex; justify-content: space-between; align-items: center;">
+      <span>Aperçu du Pied de Page Officiel (.ml-footer)</span>
+      <span class="ml-badge ml-badge-success" style="font-size: 10px; padding: 2px 8px;">Conforme DSML v0.1</span>
+    </div>
+    <footer class="ml-footer" style="margin: 0;" aria-label="Pied de page de démonstration">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="brand-block">
+              <div class="ml-flag" aria-hidden="true">
+                <div class="green"></div>
+                <div class="yellow"></div>
+                <div class="red"></div>
+              </div>
+              <div class="brand-text">
+                <div class="brand-title">RÉPUBLIQUE DU MALI</div>
+                <div class="brand-motto">Un Peuple – Un But – Une Foi</div>
+              </div>
+            </div>
+            <div class="footer-coords">
+              <strong>Ministère de la Communication & de l'Économie Numérique</strong><br />
+              Cité Administrative, Bâtiment 8, Bamako, République du Mali<br />
+              Téléphone : +223 20 22 41 00 · Contact : contact@communication.gouv.ml
+            </div>
+          </div>
+          <div class="footer-links-container">
+            <nav class="footer-col" aria-label="Démarches & Services">
+              <div class="footer-col-title">Services Publics</div>
+              <a href="#" onclick="return false;">Cartes NINA & Consulaires</a>
+              <a href="#" onclick="return false;">Passeports biométriques</a>
+              <a href="#" onclick="return false;">Télé-procédures impôts</a>
+            </nav>
+            <nav class="footer-col" aria-label="Informations">
+              <div class="footer-col-title">Informations</div>
+              <a href="#" onclick="return false;">Journal Officiel du Mali</a>
+              <a href="#" onclick="return false;">Communiqués du Conseil</a>
+              <a href="#" onclick="return false;">Annuaire des Ministères</a>
+            </nav>
+            <nav class="footer-col" aria-label="DSML">
+              <div class="footer-col-title">Design System</div>
+              <a href="/fondations/couleurs/">Palette de couleurs</a>
+              <a href="/composants/navigation/">Composants de navigation</a>
+              <a href="/installation/">Guide d'intégration</a>
+            </nav>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-bottom-links">
+            <a href="#" onclick="return false;">Mentions légales</a>
+            <a href="#" onclick="return false;">Données personnelles</a>
+            <a href="#" onclick="return false;">Accessibilité : partiellement conforme</a>
+          </div>
+          <div class="footer-credits">
+            © 2026 République du Mali · Gouvernement du Mali
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <CodeBlock code={`<!-- Pied de page officiel du DSML -->
+<footer class="ml-footer" aria-label="Pied de page">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand-block">
+          <div class="ml-flag" aria-hidden="true">
+            <div class="green"></div>
+            <div class="yellow"></div>
+            <div class="red"></div>
+          </div>
+          <div class="brand-text">
+            <div class="brand-title">RÉPUBLIQUE DU MALI</div>
+            <div class="brand-motto">Un Peuple – Un But – Une Foi</div>
+          </div>
+        </div>
+        <div class="footer-coords">
+          <strong>Nom du Ministère / Direction</strong><br>
+          Adresse physique, Bamako, Mali<br>
+          Contact : contact@gouv.ml
+        </div>
+      </div>
+      <div class="footer-links-container">
+        <nav class="footer-col" aria-label="Liens utiles">
+          <div class="footer-col-title">Rubrique</div>
+          <a href="#">Lien utile 1</a>
+          <a href="#">Lien utile 2</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-links">
+        <a href="/mentions-legales/">Mentions légales</a>
+        <a href="/accessibilite/">Accessibilité : partiellement conforme</a>
+      </div>
+      <div class="footer-credits">
+        © 2026 République du Mali
+      </div>
+    </div>
+  </div>
+</footer>`} lang="html" />
+
+</DocsLayout>
