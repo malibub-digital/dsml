@@ -108,9 +108,15 @@ import CodeBlock from '../../components/CodeBlock.astro';
 
   <script>
     document.querySelectorAll('.ml-accordion-title').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
         const isExpanded = btn.getAttribute('aria-expanded') === 'true';
         btn.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
+      });
+    });
+
+    document.querySelectorAll('.ml-action-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
       });
     });
   </script>

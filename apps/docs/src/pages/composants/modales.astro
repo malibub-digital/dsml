@@ -1,0 +1,130 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import CodeBlock from '../../components/CodeBlock.astro';
+---
+
+<DocsLayout
+  title="Modales & Popups"
+  description="Composant de fenêtres modales et boîtes de dialogue du DSML."
+  pageTitle="Modales & Boîtes de Dialogue"
+  pageSubtitle="Permettent d'afficher des boîtes de dialogue centrées avec arrière-plan flouté pour la saisie de formulaires, la confirmation d'actions ou les alertes."
+>
+
+  <h2 class="ml-title-2">Démonstration interactive</h2>
+  <p class="ml-body">Cliquez sur les boutons ci-dessous pour ouvrir les exemples de fenêtres modales :</p>
+  
+  <div class="demo-preview" style="display: flex; gap: 1rem; align-items: center; justify-content: flex-start; padding: 1.5rem; background: var(--ml-color-neutral-50); border-radius: 0.75rem; border: 1px solid var(--ml-color-neutral-200);">
+    <button type="button" id="open-demo-modal-1" class="ml-btn ml-btn--primary ml-btn--sm">
+      <i class="ml-icon-edit-line ml-icon--xs"></i>
+      <span>Ouvrir la modale d'édition</span>
+    </button>
+
+    <button type="button" id="open-demo-modal-2" class="ml-btn ml-btn--secondary ml-btn--sm">
+      <i class="ml-icon-delete-bin-line ml-icon--xs"></i>
+      <span>Ouvrir la modale de confirmation</span>
+    </button>
+  </div>
+
+  <!-- Demo Modal 1: Form / Edit -->
+  <div id="demo-modal-1" class="ml-modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="ml-modal-content">
+      <div class="ml-modal-header">
+        <h3 class="ml-modal-heading">
+          <i class="ml-icon-edit-line ml-icon--xs" style="color: var(--ml-color-green-700);"></i>
+          <span>Éditer l'élément</span>
+        </h3>
+        <button type="button" class="ml-modal-close-btn demo-close-1" aria-label="Fermer">&times;</button>
+      </div>
+      <div class="ml-modal-body">
+        <p class="ml-modal-desc">Modifiez la valeur du texte ci-dessous puis appliquez les changements.</p>
+        <div class="ml-form-group">
+          <label for="demo-input-text" class="ml-form-label">Contenu textuel</label>
+          <textarea id="demo-input-text" class="ml-form-input" rows="4">Base juridique de la procédure administrative officielle.</textarea>
+        </div>
+      </div>
+      <div class="ml-modal-footer">
+        <button type="button" class="ml-btn ml-btn--secondary ml-btn--sm demo-close-1">Annuler</button>
+        <button type="button" class="ml-btn ml-btn--primary ml-btn--sm demo-close-1">Appliquer la modification</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Demo Modal 2: Delete Confirm -->
+  <div id="demo-modal-2" class="ml-modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="ml-modal-content" style="width: 440px;">
+      <div class="ml-modal-header">
+        <h3 class="ml-modal-heading" style="color: #e11d48;">
+          <i class="ml-icon-delete-bin-line ml-icon--xs"></i>
+          <span>Confirmer la suppression</span>
+        </h3>
+        <button type="button" class="ml-modal-close-btn demo-close-2" aria-label="Fermer">&times;</button>
+      </div>
+      <div class="ml-modal-body">
+        <p class="ml-modal-desc" style="margin: 0;">
+          Êtes-vous sûr de vouloir supprimer cet élément ? Cette action ne pourra pas être annulée une fois confirmée.
+        </p>
+      </div>
+      <div class="ml-modal-footer">
+        <button type="button" class="ml-btn ml-btn--secondary ml-btn--sm demo-close-2">Annuler</button>
+        <button type="button" class="ml-btn ml-btn--danger ml-btn--sm demo-close-2">Confirmer la suppression</button>
+      </div>
+    </div>
+  </div>
+
+  <CodeBlock code={`<!-- Structure HTML d'une modale DSML -->
+<div class="ml-modal-overlay hidden" id="ma-modale" role="dialog" aria-modal="true">
+  <div class="ml-modal-content">
+    <div class="ml-modal-header">
+      <h3 class="ml-modal-heading">
+        <i class="ml-icon-edit-line ml-icon--xs"></i>
+        <span>Titre de la modale</span>
+      </h3>
+      <button type="button" class="ml-modal-close-btn" aria-label="Fermer">&times;</button>
+    </div>
+    <div class="ml-modal-body">
+      <p class="ml-modal-desc">Description ou sous-titre de la modale.</p>
+      <!-- Contenu ou formulaire -->
+    </div>
+    <div class="ml-modal-footer">
+      <button type="button" class="ml-btn ml-btn--secondary ml-btn--sm">Annuler</button>
+      <button type="button" class="ml-btn ml-btn--primary ml-btn--sm">Valider</button>
+    </div>
+  </div>
+</div>`} lang="html" />
+
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-6);">Script d'ouverture et fermeture</h2>
+  <CodeBlock code={`// Pour ouvrir la modale
+document.getElementById('mon-bouton-ouvrir').addEventListener('click', () => {
+  document.getElementById('ma-modale').classList.remove('hidden');
+});
+
+// Pour fermer la modale
+document.querySelectorAll('.fermer-modale').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('ma-modale').classList.add('hidden');
+  });
+});`} lang="js" />
+
+  <script>
+    document.getElementById('open-demo-modal-1')?.addEventListener('click', () => {
+      document.getElementById('demo-modal-1')?.classList.remove('hidden');
+    });
+
+    document.getElementById('open-demo-modal-2')?.addEventListener('click', () => {
+      document.getElementById('demo-modal-2')?.classList.remove('hidden');
+    });
+
+    document.querySelectorAll('.demo-close-1').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('demo-modal-1')?.classList.add('hidden');
+      });
+    });
+
+    document.querySelectorAll('.demo-close-2').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('demo-modal-2')?.classList.add('hidden');
+      });
+    });
+  </script>
+
+</DocsLayout>
