@@ -41,6 +41,62 @@ import CodeBlock from '../../components/CodeBlock.astro';
   </div>
 </div>`} lang="html" />
 
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-8);">Accordéons avec barre d'actions d'édition</h2>
+  <p class="ml-body">Permet d'ajouter une barre de boutons circulaires d'actions à droite du titre d'un accordéon ou d'une carte de liste (ex : boutons monter, descendre, éditer, supprimer).</p>
+
+  <div class="demo-preview" style="display: flex; flex-direction: column; align-items: stretch; width: 100%;">
+    <div class="ml-accordion" style="background: white; padding: 1.25rem; border-radius: 0.75rem; border: 1px solid var(--ml-color-neutral-200); margin-bottom: 0.75rem;">
+      <div class="ml-accordion-header">
+        <button class="ml-accordion-title" aria-expanded="true" style="margin: 0;">
+          Quelle est la base juridique de la procédure administrative ?
+        </button>
+        <div class="ml-action-toolbar">
+          <button type="button" class="ml-action-btn" title="Monter" disabled>
+            <i class="ml-icon-arrow-up-line ml-icon--xs"></i>
+          </button>
+          <button type="button" class="ml-action-btn" title="Descendre">
+            <i class="ml-icon-arrow-down-line ml-icon--xs"></i>
+          </button>
+          <button type="button" class="ml-action-btn" title="Éditer">
+            <i class="ml-icon-edit-line ml-icon--xs"></i>
+          </button>
+          <button type="button" class="ml-action-btn ml-action-btn--danger" title="Supprimer">
+            <i class="ml-icon-delete-bin-line ml-icon--xs"></i>
+          </button>
+        </div>
+      </div>
+      <div class="ml-accordion-content">
+        <p class="ml-body-compact" style="margin: 0; padding-top: var(--ml-space-2);">La procédure administrative repose sur les textes réglementaires et décrets régissant l'accueil et le traitement des requêtes des usagers du service public.</p>
+      </div>
+    </div>
+  </div>
+
+  <CodeBlock code={`<!-- Accordéon avec barre d'actions -->
+<div class="ml-accordion">
+  <div class="ml-accordion-header">
+    <button class="ml-accordion-title" aria-expanded="false">
+      Titre de l'élément
+    </button>
+    <div class="ml-action-toolbar">
+      <button type="button" class="ml-action-btn" title="Monter">
+        <i class="ml-icon-arrow-up-line ml-icon--xs"></i>
+      </button>
+      <button type="button" class="ml-action-btn" title="Descendre">
+        <i class="ml-icon-arrow-down-line ml-icon--xs"></i>
+      </button>
+      <button type="button" class="ml-action-btn" title="Éditer">
+        <i class="ml-icon-edit-line ml-icon--xs"></i>
+      </button>
+      <button type="button" class="ml-action-btn ml-action-btn--danger" title="Supprimer">
+        <i class="ml-icon-delete-bin-line ml-icon--xs"></i>
+      </button>
+    </div>
+  </div>
+  <div class="ml-accordion-content">
+    <p class="ml-body-compact">Contenu du pli...</p>
+  </div>
+</div>`} lang="html" />
+
   <h2 class="ml-title-2" style="margin-top: var(--ml-space-6);">Script d'interaction</h2>
   <p class="ml-body">Ajoutez ce script simple pour animer vos accordéons :</p>
   <CodeBlock code={`document.querySelectorAll('.ml-accordion-title').forEach(btn => {
