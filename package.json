@@ -14,6 +14,7 @@
     "build:all": "npm run build --workspaces --if-present",
     "pack:core": "npm pack --workspace=packages/core",
     "publish:core": "npm publish --workspace=packages/core --access public",
-    "publish:tailwind": "npm publish --workspace=packages/tailwind-plugin --access public"
+    "publish:tailwind": "npm publish --workspace=packages/tailwind-plugin --access public",
+    "release": "node scripts/release.js"
   }
 }
