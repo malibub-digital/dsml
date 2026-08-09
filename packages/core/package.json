@@ -20,7 +20,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build:tokens": "node scripts/build-tokens.js"
+    "build:tokens": "node scripts/build-tokens.js",
+    "build": "npm run build:tokens"
   },
   "main": "css/dsml.css",
   "style": "css/dsml.css",
