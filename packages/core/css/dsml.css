@@ -1374,6 +1374,7 @@ a:hover {
   padding: var(--ml-space-5);
   overflow-y: auto;
   flex-grow: 1;
+  background: var(--ml-color-white, #ffffff);
 }
 
 .ml-modal-desc {
