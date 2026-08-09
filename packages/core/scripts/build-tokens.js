@@ -3,6 +3,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// 1. Build CSS tokens from tokens.json
 const tokensPath = path.join(__dirname, '../tokens/tokens.json');
 const outputPath = path.join(__dirname, '../css/tokens.css');
 
@@ -45,3 +47,20 @@ cssContent += `}\n`;
 
 fs.writeFileSync(outputPath, cssContent, 'utf8');
 console.log(`Successfully generated ${outputPath}`);
+
+// 2. Build SVG Sprite for pictograms
+const pictogramsJsonPath = path.join(__dirname, '../../../apps/docs/src/data/pictograms.json');
+const spriteOutputPath = path.join(__dirname, '../assets/dsml-pictograms.svg');
+
+if (fs.existsSync(pictogramsJsonPath)) {
+  const pictograms = JSON.parse(fs.readFileSync(pictogramsJsonPath, 'utf8'));
+  let symbols = [];
+  pictograms.forEach(p => {
+    const matches = p.svg.match(/<symbol[\s\S]*?<\/symbol>/g) || [];
+    symbols.push(...matches);
+  });
+
+  const spriteSvg = `<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">\n${symbols.join('\n')}\n</svg>`;
+  fs.writeFileSync(spriteOutputPath, spriteSvg, 'utf8');
+  console.log(`Successfully generated SVG sprite for ${pictograms.length} pictograms at ${spriteOutputPath}`);
+}

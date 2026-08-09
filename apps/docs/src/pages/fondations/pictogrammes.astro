@@ -41,47 +41,33 @@ const categories = [...new Set(pictograms.map(p => p.category))].sort();
     </div>
   </div>
 
-  <h2 class="ml-title-2">Exemple d'intégration</h2>
-  <p class="ml-body-compact">Insérez directement le SVG dans votre markup HTML ou intégrez-le au sein d'un composant d'information :</p>
+  <h2 class="ml-title-2" style="margin-top: var(--ml-space-6);">Méthodes d'intégration pour les développeurs</h2>
+  <p class="ml-body">
+    Le package <code class="ml-code">@malihub/dsml-core</code> propose deux méthodes d'intégration selon les besoins de votre projet :
+  </p>
 
-  <div class="demo-preview" style="display: flex; gap: var(--ml-space-6); align-items: center; justify-content: center; background: var(--ml-color-neutral-50); padding: var(--ml-space-6); border-radius: var(--ml-radius-l); border: 1px solid var(--ml-color-neutral-200); margin-top: var(--ml-space-3); flex-wrap: wrap;">
-    <div class="picto-demo-item" style="display: flex; flex-direction: column; align-items: center; gap: var(--ml-space-2); text-align: center;">
-      <div class="ml-pictogram" style="width: 72px; height: 72px;">
-        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-          <symbol id="demo-building-decorative"><path d="M68 13a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM41 76a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM15 10a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></symbol>
-          <symbol id="demo-building-minor"><path d="M53 44a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H43a1 1 0 0 1-1-1V45a1 1 0 0 1 1-1Zm-6 7h-3v3h3v-3Zm5 0h-3v3h3v-3Zm-5-5h-3v3h3v-3Zm5 0h-3v3h3v-3Zm-7-14a1 1 0 0 1 1 1s-.4 1-1 1H35a1 1 0 0 1-1-1s.4-1 1-1h10Z"/></symbol>
-          <symbol id="demo-building-major"><path d="M29 18a1 1 0 0 1 1 1s-.4 1-1 1h-7v2h3a1 1 0 0 1 1 1h-1v2.7L40 18l15.6 7.6 24.5 12a1 1 0 0 1 .5 1.3l-2.5 5.5a1 1 0 0 1-1.4.5L60 37.6v4.9a1 1 0 1 1-2 0v-5.9L40 27.1 22 36.6V60h4V45a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v15h11a1 1 0 1 1 0 2H9a1 1 0 0 1 0-2h3v-2.1C9.4 57.6 8 55.9 8 53c0-2.9 1.4-7 4.1-12.4l.2-.5.8-.3h.4l.3.2.1.2C16.6 46 18 50.1 18 53c0 2.9-1.4 4.6-4 4.9V60h6V37.6l-1.5.8a1 1 0 0 1-1.4-.5l-2.5-5.5a1 1 0 0 1 .5-1.3l7.1-3.5V24h-1a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h8Z"/></symbol>
-          <use class="ml-artwork-decorative" href="#demo-building-decorative"/>
-          <use class="ml-artwork-minor" href="#demo-building-minor"/>
-          <use class="ml-artwork-major" href="#demo-building-major"/>
-        </svg>
-      </div>
-      <span class="ml-caption" style="font-weight: 600;">Style Standard</span>
-    </div>
-
-    <div class="picto-demo-card" style="display: flex; align-items: center; gap: var(--ml-space-4); background: var(--ml-color-neutral-0); padding: var(--ml-space-4) var(--ml-space-5); border-radius: var(--ml-radius-m); border: 1px solid var(--ml-color-neutral-200); box-shadow: var(--ml-shadow-soft); max-width: 380px;">
-      <div class="ml-pictogram" style="width: 56px; height: 56px;">
-        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-          <symbol id="demo-acc-decorative"><path d="M61 73a1 1 0 0 1 0-2 1 1 0 0 1 0 2ZM69 10a1 1 0 0 1 0-2 1 1 0 0 1 0 2ZM14 12a1 1 0 0 1 0-2 1 1 0 0 1 0 2Z"/></symbol>
-          <symbol id="demo-acc-minor"><path d="M40 19a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-6 4a6 6 0 1 1 12 0 6 6 0 0 1-12 0Z"/></symbol>
-          <symbol id="demo-acc-major"><path d="M57 29a2.5 2.5 0 0 1 1.1 5l-11.4 3.3a1 1 0 0 0-.7 1v6.3l4.2 14.3a3 3 0 0 1-5.6 1.9L40 48.6l-4.6 12.2a3 3 0 0 1-5.6-1.9L34 44.6v-6.3a1 1 0 0 0-.7-1L21.9 34a2.5 2.5 0 0 1 1.1-5l16.9 2.7h.3L57 29ZM40 12c-15.5 0-28 12.5-28 28s12.5 28 28 28 28-12.5 28-28-12.5-28-28-28Z"/></symbol>
-          <use class="ml-artwork-decorative" href="#demo-acc-decorative"/>
-          <use class="ml-artwork-minor" href="#demo-acc-minor"/>
-          <use class="ml-artwork-major" href="#demo-acc-major"/>
-        </svg>
-      </div>
-      <div>
-        <h4 style="margin: 0 0 4px 0; font-size: 15px; font-weight: 700; color: var(--ml-color-neutral-900);">Services d'Accessibilité</h4>
-        <p style="margin: 0; font-size: 13px; color: var(--ml-color-neutral-600); line-height: 1.4;">Accès garanti aux démarches administratives pour tous les citoyens.</p>
-      </div>
-    </div>
-  </div>
-
-  <CodeBlock code={`<div class="ml-pictogram">
+  <h3 class="ml-title-3" style="margin-top: var(--ml-space-4);">Option 1 : Direct Inline SVG (Recommandée)</h3>
+  <p class="ml-body-compact">Copiez directement l'élément SVG depuis le catalogue ci-dessous et insérez-le dans votre composant (HTML, Astro, React, Vue) :</p>
+  <CodeBlock code={`<div class="ml-pictogram" style="width: 64px; height: 64px;">
   <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-    <use class="ml-artwork-decorative" href="#picto-id-decorative"/>
-    <use class="ml-artwork-minor" href="#picto-id-minor"/>
-    <use class="ml-artwork-major" href="#picto-id-major"/>
+    <symbol id="acc-decorative"><path d="..."/></symbol>
+    <symbol id="acc-minor"><path d="..."/></symbol>
+    <symbol id="acc-major"><path d="..."/></symbol>
+    <use class="ml-artwork-decorative" href="#acc-decorative"/>
+    <use class="ml-artwork-minor" href="#acc-minor"/>
+    <use class="ml-artwork-major" href="#acc-major"/>
+  </svg>
+</div>`} lang="html" />
+
+  <h3 class="ml-title-3" style="margin-top: var(--ml-space-4);">Option 2 : Via le Sprite SVG unifié (<code class="ml-code">dsml-pictograms.svg</code>)</h3>
+  <p class="ml-body-compact">Si vous utilisez le sprite global inclus dans <code class="ml-code">@malihub/dsml-core/assets/dsml-pictograms.svg</code>, faites référence directement aux symboles id :</p>
+  <CodeBlock code={`<!-- 1. Charger le sprite SVG en haut du layout ou via une balise img/fetch -->
+<!-- 2. Référencer le pictogramme souhaité : -->
+<div class="ml-pictogram" style="width: 64px; height: 64px;">
+  <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <use class="ml-artwork-decorative" href="#accessibility-0-decorative"/>
+    <use class="ml-artwork-minor" href="#accessibility-0-minor"/>
+    <use class="ml-artwork-major" href="#accessibility-0-major"/>
   </svg>
 </div>`} lang="html" />
 
