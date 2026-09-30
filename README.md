@@ -91,13 +91,16 @@ Le DSML met à disposition un catalogue de **snippets HTML / Tailwind ultra-lég
 - **Éléments de base :** Boutons (`buttons.html`), Badges & Tags (`badges.html`), Alertes & Notification (`alerts.html`), Formulaires (`forms.html`, `inputs.html`), Cartes (`cards.html`), Tableaux de données (`tables.html`), Progression (`stepper.html`).
 - **Mise en page & Structure :** En-tête institutionnel (`layout/header.html`), Pied de page républicain (`layout/footer.html`).
 
-### Usage avec les Assistants IA & Vibe Coding
-Un fichier optimisé [`llms.txt`](./llms.txt) rassemble tous les snippets et directives du DSML pour que les assistants IA (Cursor, Windsurf, Claude Code, Copilot, Antigravity) puissent générer des composants républicains conformes.
+### Usage avec les Assistants IA & Vibe Coding (`llms.txt` & `AI_RULES.md`)
+Le DSML fournit un protocole complet d'assistance IA pour alimenter vos assistants de code (Cursor, Windsurf, Claude Code, Copilot, Antigravity) :
+- **`AI_RULES.md`** : Directives agnostiques d'intégration IA (couleurs républicaines, accessibilité ARIA, règles de commit Git Flow, exemples `.cursorrules`).
+- **`llms.txt`** : Fichier compilé automatiquement rassemble tous les snippets et directives du DSML pour que les LLM génèrent du code républicain conforme.
 
 Pour régénérer la documentation `llms.txt` après ajout de nouveaux snippets :
 ```bash
-node scripts/generate-llms.js
+npm run build:llms  # ou node scripts/generate-llms.js
 ```
+
 
 ---
 
