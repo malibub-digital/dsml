@@ -283,6 +283,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     padding: 28px 24px 24px;
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .step-card:hover {
@@ -349,18 +351,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 14px;
     color: var(--ml-color-neutral-500);
     line-height: 1.55;
-    margin: 0;
+    margin: 0 0 16px;
+    min-height: 44px;
   }
   .step-code {
-    margin-top: 14px;
+    margin-top: auto;
     background: var(--ml-color-neutral-900);
     color: #A8E6BE;
     font-family: 'Courier New', monospace;
     font-size: 12px;
-    padding: 10px 14px;
+    padding: 14px 16px;
     border-radius: 8px;
     overflow-x: auto;
-    max-width: 100%;
+    width: 100%;
+    min-height: 96px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     box-sizing: border-box;
     line-height: 1.5;
     white-space: pre-wrap;
@@ -512,12 +519,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   /* ----- Code snippet ----- */
   .quickstart {
-    background: var(--ml-color-neutral-900);
+    background: var(--ml-color-neutral-50);
+    border-top: 1px solid var(--ml-color-neutral-200);
+    border-bottom: 1px solid var(--ml-color-neutral-200);
     padding: 72px 0;
   }
   .snippet-wrapper {
     max-width: 680px;
     margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--ml-color-neutral-300);
   }
   .snippet-header {
     display: flex;
@@ -773,7 +786,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <h3 class="step-title">Livrez votre service</h3>
           </div>
           <p class="step-desc">Le design est conforme aux standards de l'État malien. Aucune configuration.</p>
-          <div class="step-code" style="color: #6EE89A; padding-top: 16px; padding-bottom: 16px;">
+          <div class="step-code" style="color: #6EE89A;">
             ✓ Identité d'État intégrée<br>
             ✓ Responsive &amp; accessible<br>
             ✓ 0 dépendance JS requise
@@ -910,10 +923,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="quickstart">
     <div class="container">
       <div class="section-header" style="margin-bottom: 36px;">
-        <div class="section-overtitle" style="color: var(--ml-color-green-mint);">Code</div>
-        <h2 class="section-title" style="color: white;">Intégrez en 30 secondes</h2>
-        <p class="section-desc" style="color: rgba(255,255,255,0.5);">
-          Copiez ce bloc dans le <code style="background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; color: #A8E6BE;">&lt;head&gt;</code> de vos pages.
+        <div class="section-overtitle">Code</div>
+        <h2 class="section-title">Intégrez en 30 secondes</h2>
+        <p class="section-desc">
+          Copiez ce bloc dans le <code style="background: var(--ml-color-neutral-200); padding: 2px 6px; border-radius: 4px; color: var(--ml-color-green-700);">&lt;head&gt;</code> de vos pages.
         </p>
       </div>
 

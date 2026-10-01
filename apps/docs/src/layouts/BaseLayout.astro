@@ -58,6 +58,22 @@ const currentPath = Astro.url.pathname;
     <!-- Canonical -->
     <link rel="canonical" href="https://dsml.ml{Astro.url.pathname}" />
 
+    <script is:inline>
+      (function () {
+        try {
+          const saved = localStorage.getItem('ml_theme') || localStorage.getItem('consulat_theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const theme = saved === 'dark' || (!saved && prefersDark) ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', theme);
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <!-- Polices Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -116,6 +132,32 @@ const currentPath = Astro.url.pathname;
                 style="background: var(--ml-color-neutral-100); color: var(--ml-color-neutral-500); padding: 1px 5px; border-radius: 3px; font-size: 10px; font-family: inherit; font-weight: normal; margin-left: 2px; border: 1px solid var(--ml-color-neutral-200);"
                 >/</kbd
               >
+            </button>
+            <button
+              type="button"
+              id="base-theme-toggle-btn"
+              class="ml-theme-toggle-btn"
+              aria-label="Basculer entre thème clair et thème sombre"
+              title="Basculer entre thème clair et thème sombre (Ctrl+Shift+D)"
+            >
+              <span class="theme-icon-sun" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path d="M12 2v2"></path>
+                  <path d="M12 20v2"></path>
+                  <path d="m4.93 4.93 1.41 1.41"></path>
+                  <path d="m17.66 17.66 1.41 1.41"></path>
+                  <path d="M2 12h2"></path>
+                  <path d="M20 12h2"></path>
+                  <path d="m6.34 17.66-1.41 1.41"></path>
+                  <path d="m19.07 4.93-1.41 1.41"></path>
+                </svg>
+              </span>
+              <span class="theme-icon-moon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+              </span>
             </button>
             <button
               class="ml-header-burger"
@@ -396,6 +438,32 @@ const currentPath = Astro.url.pathname;
             { passive: true },
           );
         }
+
+        // Theme Toggle
+        function toggleTheme() {
+          const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          const nextTheme = isDark ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', nextTheme);
+          document.documentElement.classList.toggle('dark', nextTheme === 'dark');
+          try {
+            localStorage.setItem('ml_theme', nextTheme);
+          } catch (e) {}
+        }
+
+        const themeBtn = document.getElementById("base-theme-toggle-btn");
+        if (themeBtn) {
+          themeBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            toggleTheme();
+          });
+        }
+
+        window.addEventListener("keydown", (e) => {
+          if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === "D" || e.key === "d")) {
+            e.preventDefault();
+            toggleTheme();
+          }
+        });
       });
     </script>
   </body>
