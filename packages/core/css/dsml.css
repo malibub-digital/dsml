@@ -1824,7 +1824,8 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 2px;
+  gap: 6px;
+  transition: gap 0.25s ease;
 }
 
 .ml-header .brand-title {
@@ -1849,6 +1850,13 @@ a:hover {
   display: none;
 }
 
+.ml-header .site-title-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 600px;
+}
+
 .ml-header .site-title {
   font-family: var(--ml-font-title);
   font-weight: 800;
@@ -1867,7 +1875,8 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 2px;
+  gap: 6px;
+  transition: gap 0.25s ease;
 }
 .ml-header .brand-block.ml-brand-koulouba .brand-title {
   font-size: 11px;
@@ -1888,8 +1897,10 @@ a:hover {
 .ml-tricolor-bar {
   display: flex;
   height: 5px;
-  width: 180px;
-  margin-top: 8px;
+  width: 105%;
+  min-width: 60px;
+  max-width: 105%;
+  margin-top: 6px;
   border-radius: 2px;
   overflow: hidden;
   transition: width 0.25s ease, height 0.25s ease, margin-top 0.25s ease;
@@ -2758,6 +2769,10 @@ a:hover {
   transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.ml-header-shrinkable .brand-text {
+  transition: gap 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .ml-header-shrinkable .brand-title {
   transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
@@ -2796,6 +2811,10 @@ a:hover {
   height: 32px;
 }
 
+.ml-header-shrinkable.ml-scrolled .brand-text {
+  gap: 0px !important;
+}
+
 .ml-header-shrinkable.ml-scrolled .brand-title {
   opacity: 0 !important;
   max-height: 0 !important;
@@ -2809,7 +2828,7 @@ a:hover {
 }
 
 .ml-header-shrinkable.ml-scrolled .ml-tricolor-bar {
-  width: 90px;
+  width: 105%;
   height: 3px;
   margin-top: 4px;
 }
