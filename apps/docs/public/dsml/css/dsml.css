@@ -1699,7 +1699,8 @@ a:hover {
   }
 
   .ml-tricolor-bar {
-    width: 120px;
+    width: 105%;
+    max-width: 105%;
     height: 3px;
     margin-top: 4px;
   }
