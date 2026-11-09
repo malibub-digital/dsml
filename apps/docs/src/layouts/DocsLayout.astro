@@ -597,8 +597,21 @@ const filteredSidebarNav = sidebarNav.filter(
               <button class="ml-header-nav-close" aria-label="Fermer le menu">&times;</button>
             </div>
             <div class="ml-header-utility-nav">
-              <div class="flex items-center justify-between px-3 py-2 bg-[var(--ml-bg-surface-subtle)] rounded-xl mb-2" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: var(--ml-bg-surface-subtle); border-radius: var(--ml-radius-m); margin-bottom: var(--ml-space-2);">
-                <span style="font-size: 13px; font-weight: 600; color: var(--ml-text-secondary);">Mode d'affichage</span>
+              <div class="ml-theme-drawer-row">
+                <span class="ml-theme-drawer-label">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2"></path>
+                    <path d="M12 20v2"></path>
+                    <path d="m4.93 4.93 1.41 1.41"></path>
+                    <path d="m17.66 17.66 1.41 1.41"></path>
+                    <path d="M2 12h2"></path>
+                    <path d="M20 12h2"></path>
+                    <path d="m6.34 17.66-1.41 1.41"></path>
+                    <path d="m19.07 4.93-1.41 1.41"></path>
+                  </svg>
+                  <span>Mode d'affichage</span>
+                </span>
                 <button
                   type="button"
                   id="docs-mobile-theme-toggle"
@@ -833,10 +846,9 @@ const filteredSidebarNav = sidebarNav.filter(
               <button
                 type="button"
                 id="docs-footer-theme-toggle"
-                class="ml-theme-toggle-btn ml-theme-toggle-trigger"
+                class="ml-theme-toggle-btn ml-theme-toggle--pill ml-theme-toggle-trigger"
                 aria-label="Basculer entre thème clair et thème sombre"
                 title="Basculer entre thème clair et thème sombre (Ctrl+Shift+D)"
-                style="padding: 3px 10px; font-size: 12px;"
               >
                 <span class="theme-icon-sun" aria-hidden="true">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -856,7 +868,7 @@ const filteredSidebarNav = sidebarNav.filter(
                     <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
                   </svg>
                 </span>
-                <span class="theme-toggle-label">Mode</span>
+                <span class="theme-toggle-label">Thème</span>
               </button>
             </div>
             <div class="footer-credits">DSML v0.1 — Licence MIT</div>
